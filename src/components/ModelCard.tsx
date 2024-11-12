@@ -1,16 +1,9 @@
 import React from 'react';
 import { Check, Edit3 } from 'lucide-react';
+import type { ModelVariant } from '../types';
 
 interface ModelCardProps {
-  model: {
-    id: string;
-    name: string;
-    series: string;
-    year: number;
-    imageUrl: string;
-    owned: boolean;
-    notes?: string;
-  };
+  model: ModelVariant;
   onToggleOwned: (id: string) => void;
   onEditNotes: (id: string) => void;
 }
@@ -20,7 +13,7 @@ export function ModelCard({ model, onToggleOwned, onEditNotes }: ModelCardProps)
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
       <div className="relative">
         <img
-          src={model.imageUrl}
+          src={model.image_url}
           alt={model.name}
           className="w-full h-48 object-cover"
           onError={(e) => {
@@ -42,8 +35,12 @@ export function ModelCard({ model, onToggleOwned, onEditNotes }: ModelCardProps)
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{model.name}</h3>
         <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-3">
-          <p>Series: {model.series}</p>
+          <p>Series: {model.series} {model.series_number}</p>
           <p>Year: {model.year}</p>
+          <p>Color: {model.color}</p>
+          {model.collection_number && (
+            <p>Collection #: {model.collection_number}</p>
+          )}
         </div>
         {model.notes && (
           <p className="text-sm text-gray-500 dark:text-gray-500 italic mb-3">{model.notes}</p>

@@ -1,0 +1,29 @@
+name = "hotwheels-collection"
+compatibility_date = "2024-02-20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hotwheels-collection"
+database_id = "d3fee45a-de0a-4f76-8d03-f461910f2bae"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "hotwheels-images"
+
+[vars]
+ENVIRONMENT = "production"
+
+[site]
+bucket = "./dist"
+
+[build]
+command = "npm run build"
+
+# Configure functions
+[functions]
+directory = "functions"
+node_compat = true
+
+[[routes]]
+pattern = "/api/*"
+custom_domain = true

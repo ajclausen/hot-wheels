@@ -76,7 +76,9 @@ export default function App() {
             Hot Wheels Collection
           </h1>
           {user && (
-            <p className="text-gray-600 dark:text-gray-400">Welcome, {user.name}</p>
+            <p className="text-gray-600 dark:text-gray-400">
+              Welcome, {user.alias || user.name}
+            </p>
           )}
         </header>
 

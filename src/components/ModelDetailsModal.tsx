@@ -24,10 +24,6 @@ export function ModelDetailsModal({
     if (!url) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
-    // Add scale parameter if it's a wikia URL and doesn't already have it
-    if (url.includes('static.wikia.nocookie.net') && !url.includes('scale-to-width-down')) {
-      return `${url}/revision/latest/scale-to-width-down/1000?cb=20240709000234`;
-    }
     return url;
   };
 
@@ -42,9 +38,9 @@ export function ModelDetailsModal({
       className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm"
       onClick={handleContainerClick}
     >
-      <div className="min-h-screen px-4 py-12 flex items-center justify-center">
+      <div className="min-h-screen px-4 pb-20 pt-4 flex items-start justify-center">
         <div 
-          className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-4xl w-full overflow-hidden mx-auto my-auto"
+          className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-4xl w-full mx-auto mb-20"
           onClick={e => e.stopPropagation()}
         >
           {/* Header */}
@@ -66,7 +62,7 @@ export function ModelDetailsModal({
                 <img
                   src={getImageUrl(model.image_url)}
                   alt={model.name}
-                  className="w-full rounded-lg shadow-lg object-contain bg-gray-100 dark:bg-gray-900"
+                  className="w-full rounded-lg shadow-lg object-contain bg-gray-100 dark:bg-gray-900 aspect-video"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
@@ -172,9 +168,6 @@ export function ModelDetailsModal({
               </div>
             </div>
           </div>
-
-          {/* Footer padding to ensure content doesn't get hidden behind the bottom nav */}
-          <div className="h-20" />
         </div>
       </div>
     </div>

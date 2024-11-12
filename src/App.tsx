@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TabNavigation } from './components/TabNavigation';
 import { InventoryView } from './components/InventoryView';
 import { SearchView } from './components/SearchView';
@@ -17,7 +17,7 @@ export default function App() {
   const [userModels, setUserModels] = useState<HotWheelsModel[]>([]);
   const [selectedModelId, setSelectedModelId] = useState<string | null>(null);
   const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchInputRef = React.useRef<HTMLInputElement>(null);
 
   const selectedModel = selectedModelId 
     ? models.find(model => model.id === selectedModelId)
@@ -29,19 +29,8 @@ export default function App() {
         axios.get('/api/models'),
         axios.get('/api/collection')
       ]).then(([modelsRes, collectionRes]) => {
-        const transformedModels = modelsRes.data.map((model: any) => ({
-          ...model,
-          imageUrl: model.image_url,
-          owned: Boolean(model.owned)
-        }));
-        const transformedUserModels = collectionRes.data.map((model: any) => ({
-          ...model,
-          imageUrl: model.image_url,
-          owned: true
-        }));
-        
-        setModels(transformedModels);
-        setUserModels(transformedUserModels);
+        setModels(modelsRes.data);
+        setUserModels(collectionRes.data);
       }).catch(console.error);
     }
   }, [user]);
@@ -126,15 +115,7 @@ export default function App() {
         setUserModels(prev => prev.filter(m => m.id !== id));
       } else {
         const response = await axios.post(`/api/collection/${id}`, { notes: '' });
-        const addedModel = response.data;
-        
-        const transformedModel = {
-          ...addedModel,
-          imageUrl: addedModel.image_url,
-          owned: true
-        };
-        
-        setUserModels(prev => [...prev, transformedModel]);
+        setUserModels(prev => [...prev, response.data]);
       }
 
       setModels(prev => prev.map(model => 

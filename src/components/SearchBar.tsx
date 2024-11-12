@@ -26,11 +26,13 @@ export function SearchBar({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full pl-12 pr-4 py-3.5 bg-gray-900 dark:bg-gray-800 text-white placeholder-gray-400 
-                   rounded-2xl border border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 
-                   focus:ring-opacity-50 shadow-lg transition-all duration-200"
+          className="w-full pl-12 pr-4 py-3.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
+                   placeholder-gray-500 dark:placeholder-gray-400 rounded-2xl border border-gray-200 
+                   dark:border-gray-700 focus:border-blue-500 dark:focus:border-blue-400 
+                   focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-opacity-50 
+                   shadow-lg transition-all duration-200"
         />
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
       </div>
 
       {showFilter && (
@@ -39,7 +41,7 @@ export function SearchBar({
           className={`p-3.5 rounded-2xl border shadow-lg transition-all duration-200 ${
             filterActive
               ? 'bg-blue-500 border-blue-600 text-white hover:bg-blue-600'
-              : 'bg-gray-900 dark:bg-gray-800 border-gray-700 text-gray-400 hover:border-blue-500 hover:text-blue-500'
+              : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-500 dark:hover:text-blue-400'
           }`}
         >
           <Filter className="h-5 w-5" />

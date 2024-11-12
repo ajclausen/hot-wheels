@@ -3,10 +3,11 @@ import { TabNavigation } from './components/TabNavigation';
 import { InventoryView } from './components/InventoryView';
 import { SearchView } from './components/SearchView';
 import { ProfileView } from './components/ProfileView';
+import { StatisticsView } from './components/StatisticsView';
 import { Modal } from './components/Modal';
 import { NotesEditor } from './components/NotesEditor';
 import { useAuth } from './context/AuthContext';
-import type { HotWheelsModel, CollectionStats as StatsType } from './types';
+import type { HotWheelsModel } from './types';
 import axios from 'axios';
 
 export default function App() {
@@ -22,14 +23,12 @@ export default function App() {
     ? models.find(model => model.id === selectedModelId)
     : null;
 
-  // Fetch all models and user's collection on mount
   useEffect(() => {
     if (user) {
       Promise.all([
         axios.get('/api/models'),
         axios.get('/api/collection')
       ]).then(([modelsRes, collectionRes]) => {
-        // Transform the image_url to imageUrl for consistency
         const transformedModels = modelsRes.data.map((model: any) => ({
           ...model,
           imageUrl: model.image_url,
@@ -46,19 +45,6 @@ export default function App() {
       }).catch(console.error);
     }
   }, [user]);
-
-  const stats: StatsType = useMemo(() => {
-    const seriesCounts = userModels.reduce((acc, model) => {
-      acc[model.series] = (acc[model.series] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
-
-    return {
-      total: models.length,
-      owned: userModels.length,
-      series: seriesCounts
-    };
-  }, [models, userModels]);
 
   if (loading) {
     return (
@@ -85,7 +71,6 @@ export default function App() {
         {activeTab === 'inventory' && (
           <InventoryView
             models={userModels}
-            stats={stats}
             onToggleOwned={handleToggleOwned}
             onEditNotes={handleEditNotes}
             onOpenSearch={handleOpenSearch}
@@ -99,6 +84,13 @@ export default function App() {
             onToggleOwned={handleToggleOwned}
             onEditNotes={handleEditNotes}
             searchInputRef={searchInputRef}
+          />
+        )}
+
+        {activeTab === 'statistics' && (
+          <StatisticsView
+            models={models}
+            userModels={userModels}
           />
         )}
 
@@ -136,7 +128,6 @@ export default function App() {
         const response = await axios.post(`/api/collection/${id}`, { notes: '' });
         const addedModel = response.data;
         
-        // Transform the model to match our frontend structure
         const transformedModel = {
           ...addedModel,
           imageUrl: addedModel.image_url,
@@ -146,7 +137,6 @@ export default function App() {
         setUserModels(prev => [...prev, transformedModel]);
       }
 
-      // Update the models list to reflect the new owned status
       setModels(prev => prev.map(model => 
         model.id === id ? { ...model, owned: !isOwned } : model
       ));

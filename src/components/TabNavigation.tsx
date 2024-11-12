@@ -1,5 +1,5 @@
 import React from 'react';
-import { Car, Search, User } from 'lucide-react';
+import { Car, Search, User, BarChart2 } from 'lucide-react';
 
 interface TabNavigationProps {
   activeTab: string;
@@ -29,6 +29,16 @@ export function TabNavigation({ activeTab, onTabChange }: TabNavigationProps) {
           >
             <Search className="h-6 w-6" />
             <span className="text-sm mt-1">Search</span>
+          </button>
+
+          <button
+            onClick={() => onTabChange('statistics')}
+            className={`flex flex-col items-center py-3 px-6 ${
+              activeTab === 'statistics' ? 'text-blue-500' : 'text-gray-500'
+            }`}
+          >
+            <BarChart2 className="h-6 w-6" />
+            <span className="text-sm mt-1">Stats</span>
           </button>
 
           <button

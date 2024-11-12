@@ -17,34 +17,40 @@ interface ModelCardProps {
 
 export function ModelCard({ model, onToggleOwned, onEditNotes }: ModelCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-      <div className="relative h-48">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+      <div className="relative">
         <img
           src={model.imageUrl}
           alt={model.name}
-          className="w-full h-full object-cover"
+          className="w-full h-48 object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+          }}
         />
         <button
           onClick={() => onToggleOwned(model.id)}
-          className={`absolute top-2 right-2 p-2 rounded-full ${
-            model.owned ? 'bg-green-500' : 'bg-gray-200'
+          className={`absolute top-2 right-2 p-1.5 rounded-full ${
+            model.owned 
+              ? 'bg-green-500 text-white' 
+              : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
           }`}
         >
-          <Check className={`h-5 w-5 ${model.owned ? 'text-white' : 'text-gray-500'}`} />
+          <Check className="h-4 w-4" />
         </button>
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2">{model.name}</h3>
-        <div className="text-sm text-gray-600 mb-2">
-          <p>{model.series}</p>
-          <p>{model.year}</p>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{model.name}</h3>
+        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-3">
+          <p>Series: {model.series}</p>
+          <p>Year: {model.year}</p>
         </div>
         {model.notes && (
-          <p className="text-sm text-gray-500 italic mb-2">{model.notes}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-500 italic mb-3">{model.notes}</p>
         )}
         <button
           onClick={() => onEditNotes(model.id)}
-          className="text-blue-500 hover:text-blue-600 flex items-center gap-1"
+          className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1 transition-colors"
         >
           <Edit3 className="h-4 w-4" />
           <span>Edit Notes</span>

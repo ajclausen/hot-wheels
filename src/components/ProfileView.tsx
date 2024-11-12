@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Settings, Share2, Download, Upload, User, Moon, Sun,
+  Settings, Share2, Download, Upload, User,
   ChevronRight, Save, X
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export function ProfileView() {
   const { user, updateUser } = useAuth();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme, ThemeIcon } = useTheme();
   const [isEditing, setIsEditing] = useState(false);
   const [alias, setAlias] = useState(user?.alias || '');
   const [error, setError] = useState('');
@@ -30,7 +30,6 @@ export function ProfileView() {
       const response = await axios.get('/api/collection/export');
       const collection = response.data;
       
-      // Create CSV content
       const headers = ['Name', 'Series', 'Year', 'Color', 'Collection Number', 'Notes', 'Acquired Date'];
       const csvContent = [
         headers.join(','),
@@ -45,7 +44,6 @@ export function ProfileView() {
         ].map(field => `"${field}"`).join(','))
       ].join('\n');
 
-      // Create download link
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
@@ -69,7 +67,6 @@ export function ProfileView() {
         if (file.type === 'application/json') {
           data = JSON.parse(content);
         } else {
-          // Parse CSV
           const lines = content.split('\n');
           const headers = lines[0].split(',');
           data = lines.slice(1).map(line => {
@@ -88,6 +85,10 @@ export function ProfileView() {
     } catch (err) {
       setError('Failed to import collection');
     }
+  };
+
+  const handleThemeChange = () => {
+    setTheme(theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light');
   };
 
   return (
@@ -146,16 +147,18 @@ export function ProfileView() {
 
       <div className="space-y-4">
         <button 
-          onClick={toggleTheme}
+          onClick={handleThemeChange}
           className="w-full bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-white"
         >
           <div className="flex items-center space-x-3">
-            {theme === 'dark' ? (
-              <Moon className="h-5 w-5" />
-            ) : (
-              <Sun className="h-5 w-5" />
-            )}
-            <span>{theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
+            <ThemeIcon className="h-5 w-5" />
+            <span>
+              {theme === 'system' 
+                ? 'System Theme' 
+                : theme === 'dark' 
+                  ? 'Dark Mode' 
+                  : 'Light Mode'}
+            </span>
           </div>
           <ChevronRight className="h-5 w-5 text-gray-400" />
         </button>

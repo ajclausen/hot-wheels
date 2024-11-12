@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Search, Filter } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { ModelCard } from './ModelCard';
 import type { HotWheelsModel } from '../types';
+import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
 
 interface InventoryViewProps {
@@ -28,7 +29,7 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
     const matchesSearch = searchQuery
       ? model.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         model.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        model.collectionNumber.toLowerCase().includes(searchQuery.toLowerCase())
+        model.collectionNumber?.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
 
     const matchesYear = !filters.year || model.year.toString() === filters.year;
@@ -40,27 +41,14 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
 
   return (
     <div className="pb-20">
-      <div className="sticky top-0 bg-gray-100 pt-4 pb-2 z-10">
-        <div className="flex gap-2 mb-4">
-          <div className="relative flex-1">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search your collection..."
-              className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
-            />
-            <Search className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-          </div>
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className={`p-3 rounded-lg border ${
-              showFilters ? 'bg-blue-50 border-blue-200' : 'border-gray-300'
-            }`}
-          >
-            <Filter className={`h-5 w-5 ${showFilters ? 'text-blue-500' : 'text-gray-400'}`} />
-          </button>
-        </div>
+      <div className="sticky top-0 bg-gray-100 dark:bg-gray-900 pt-4 pb-2 z-10 px-4">
+        <SearchBar
+          value={searchQuery}
+          onChange={setSearchQuery}
+          showFilter={true}
+          filterActive={showFilters}
+          onFilterClick={() => setShowFilters(!showFilters)}
+        />
 
         {showFilters && (
           <SearchFilters
@@ -82,23 +70,27 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
         <Search className="h-6 w-6" />
       </button>
 
-      {filteredModels.length === 0 ? (
-        <div className="text-center py-8">
-          <p className="text-gray-500">No models match your filters.</p>
-          <p className="text-gray-400 text-sm">Try adjusting your search terms or filters.</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredModels.map(model => (
-            <ModelCard
-              key={model.id}
-              model={model}
-              onToggleOwned={onToggleOwned}
-              onEditNotes={onEditNotes}
-            />
-          ))}
-        </div>
-      )}
+      <div className="px-4">
+        {filteredModels.length === 0 ? (
+          <div className="text-center py-8">
+            <p className="text-gray-500 dark:text-gray-400">No models match your filters.</p>
+            <p className="text-gray-400 dark:text-gray-500 text-sm">
+              Try adjusting your search terms or filters.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredModels.map(model => (
+              <ModelCard
+                key={model.id}
+                model={model}
+                onToggleOwned={onToggleOwned}
+                onEditNotes={onEditNotes}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

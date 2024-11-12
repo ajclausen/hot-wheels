@@ -53,9 +53,13 @@ export function ModelDetailsModal({
     if (!url || imageError) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
-    // Remove any scaling parameters and force high quality
-    const baseUrl = url.split('/revision')[0];
-    return `${baseUrl}/revision/latest/scale-to-width-down/1000`;
+
+    // Extract the base path and filename
+    const matches = url.match(/\/([^\/]+?)(?:\.jpg|\.png)?(?:\/revision\/|$)/);
+    if (!matches) return url;
+
+    const filename = matches[1];
+    return `https://static.wikia.nocookie.net/hotwheels/images/${url.charAt(url.length - 10)}/${url.charAt(url.length - 9)}/${filename}.jpg`;
   };
 
   return (
@@ -76,12 +80,12 @@ export function ModelDetailsModal({
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-6 pb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Image */}
             <div className="relative">
               <img
-                src={getFullSizeImageUrl(model.image_url)}
+                src={model.image_url}
                 alt={model.name}
                 className="w-full rounded-lg shadow-lg object-contain bg-gray-800 aspect-video"
                 onError={() => setImageError(true)}

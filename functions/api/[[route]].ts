@@ -111,22 +111,41 @@ app.put('/api/me/alias', async (c) => {
   }
 
   try {
+    // Log the incoming request
+    console.log('Update alias request for user:', user.id);
+
     const body = await c.req.json();
     const alias = body.alias?.trim();
-    
+
     if (typeof alias !== 'string') {
       return c.json({ error: 'Invalid alias format' }, 400);
     }
 
-    // Update the alias with proper error handling
-    const result = await c.env.DB.prepare(
-      `UPDATE users 
-       SET alias = ?, updated_at = CURRENT_TIMESTAMP 
-       WHERE id = ? 
-       RETURNING id, email, name, alias`
+    // First, verify the user exists and log the result
+    const { results: existingUser } = await c.env.DB.prepare(
+      `SELECT id FROM users WHERE id = ?`
     )
+      .bind(user.id)
+      .all();
+
+    console.log('Existing user check:', existingUser);
+
+    if (!existingUser.length) {
+      return c.json({ error: 'User not found in database' }, 404);
+    }
+
+    // Attempt the update with detailed error handling
+    const result = await c.env.DB.prepare(`
+      UPDATE users 
+      SET alias = ?, 
+          updated_at = CURRENT_TIMESTAMP 
+      WHERE id = ? 
+      RETURNING id, email, name, alias
+    `)
       .bind(alias, user.id)
       .run();
+
+    console.log('Update result:', result);
 
     if (!result.success) {
       throw new Error('Database update failed');

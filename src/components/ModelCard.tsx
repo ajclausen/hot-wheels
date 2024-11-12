@@ -6,9 +6,10 @@ interface ModelCardProps {
   model: ModelVariant;
   onToggleOwned: (id: string) => void;
   onEditNotes: (id: string) => void;
+  onClick: () => void;
 }
 
-export function ModelCard({ model, onToggleOwned, onEditNotes }: ModelCardProps) {
+export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelCardProps) {
   const [imageError, setImageError] = React.useState(false);
 
   // Function to get the correct image URL
@@ -16,12 +17,24 @@ export function ModelCard({ model, onToggleOwned, onEditNotes }: ModelCardProps)
     if (!url || imageError) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
-    // Remove any query parameters or revision info
     return url.split('/revision')[0];
   };
 
+  const handleToggleOwned = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onToggleOwned(model.id);
+  };
+
+  const handleEditNotes = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onEditNotes(model.id);
+  };
+
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+    <div 
+      onClick={onClick}
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer"
+    >
       <div className="relative">
         <img
           src={getImageUrl(model.image_url)}
@@ -30,7 +43,7 @@ export function ModelCard({ model, onToggleOwned, onEditNotes }: ModelCardProps)
           onError={() => setImageError(true)}
         />
         <button
-          onClick={() => onToggleOwned(model.id)}
+          onClick={handleToggleOwned}
           className={`absolute top-2 right-2 p-1.5 rounded-full ${
             model.owned 
               ? 'bg-green-500 text-white' 
@@ -54,7 +67,7 @@ export function ModelCard({ model, onToggleOwned, onEditNotes }: ModelCardProps)
           <p className="text-sm text-gray-500 dark:text-gray-500 italic mb-3">{model.notes}</p>
         )}
         <button
-          onClick={() => onEditNotes(model.id)}
+          onClick={handleEditNotes}
           className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1 transition-colors"
         >
           <Edit3 className="h-4 w-4" />

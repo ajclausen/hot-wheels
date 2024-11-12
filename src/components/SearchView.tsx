@@ -3,6 +3,7 @@ import { Plus, Check } from 'lucide-react';
 import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
+import { ModelDetailsModal } from './ModelDetailsModal';
 
 interface SearchViewProps {
   models: ModelVariant[];
@@ -12,9 +13,10 @@ interface SearchViewProps {
   searchInputRef?: React.RefObject<HTMLInputElement>;
 }
 
-export function SearchView({ models, userModels, onToggleOwned, searchInputRef }: SearchViewProps) {
+export function SearchView({ models, userModels, onToggleOwned, onEditNotes, searchInputRef }: SearchViewProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
+  const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
   const [filters, setFilters] = useState({
     year: '',
     series: '',
@@ -26,7 +28,6 @@ export function SearchView({ models, userModels, onToggleOwned, searchInputRef }
     if (!url) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
-    // Remove any query parameters or revision info
     return url.split('/revision')[0];
   };
 
@@ -75,10 +76,16 @@ export function SearchView({ models, userModels, onToggleOwned, searchInputRef }
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
           {filteredModels.map((model) => {
             const isOwned = userModels.some(m => m.id === model.id);
+            const fullModel = {
+              ...model,
+              owned: isOwned
+            };
+            
             return (
               <div
                 key={model.id}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                onClick={() => setSelectedModel(fullModel)}
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
               >
                 <div className="relative">
                   <img
@@ -100,7 +107,10 @@ export function SearchView({ models, userModels, onToggleOwned, searchInputRef }
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{model.name}</h3>
                     <button
-                      onClick={() => onToggleOwned(model.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onToggleOwned(model.id);
+                      }}
                       className={`p-1.5 rounded-full transition-colors ${
                         isOwned
                           ? 'text-green-500 hover:bg-green-50 dark:hover:bg-green-900'
@@ -134,6 +144,16 @@ export function SearchView({ models, userModels, onToggleOwned, searchInputRef }
           </div>
         )}
       </div>
+
+      {selectedModel && (
+        <ModelDetailsModal
+          model={selectedModel}
+          isOpen={true}
+          onClose={() => setSelectedModel(null)}
+          onToggleOwned={onToggleOwned}
+          onEditNotes={onEditNotes}
+        />
+      )}
     </div>
   );
 }

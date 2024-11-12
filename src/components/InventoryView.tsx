@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { ModelCard } from './ModelCard';
-import type { HotWheelsModel } from '../types';
+import { ModelDetailsModal } from './ModelDetailsModal';
+import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
 
 interface InventoryViewProps {
-  models: HotWheelsModel[];
+  models: ModelVariant[];
   onToggleOwned: (id: string) => void;
   onEditNotes: (id: string) => void;
   onOpenSearch: () => void;
@@ -15,6 +16,7 @@ interface InventoryViewProps {
 export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch }: InventoryViewProps) {
   const [showFilters, setShowFilters] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
   const [filters, setFilters] = useState({
     year: '',
     series: '',
@@ -29,7 +31,7 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
     const matchesSearch = searchQuery
       ? model.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         model.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        model.collectionNumber?.toLowerCase().includes(searchQuery.toLowerCase())
+        model.collection_number?.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
 
     const matchesYear = !filters.year || model.year.toString() === filters.year;
@@ -86,11 +88,22 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
                 model={model}
                 onToggleOwned={onToggleOwned}
                 onEditNotes={onEditNotes}
+                onClick={() => setSelectedModel(model)}
               />
             ))}
           </div>
         )}
       </div>
+
+      {selectedModel && (
+        <ModelDetailsModal
+          model={selectedModel}
+          isOpen={true}
+          onClose={() => setSelectedModel(null)}
+          onToggleOwned={onToggleOwned}
+          onEditNotes={onEditNotes}
+        />
+      )}
     </div>
   );
 }

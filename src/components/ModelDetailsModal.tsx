@@ -46,21 +46,26 @@ export function ModelDetailsModal({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   // Function to get the high-resolution image URL
-  const getFullSizeImageUrl = (url: string) => {
+  const getImageUrl = (url: string) => {
     if (!url || imageError) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
-
-    // Extract the base path and filename
-    const matches = url.match(/\/([^\/]+?)(?:\.jpg|\.png)?(?:\/revision\/|$)/);
-    if (!matches) return url;
-
-    const filename = matches[1];
-    return `https://static.wikia.nocookie.net/hotwheels/images/${url.charAt(url.length - 10)}/${url.charAt(url.length - 9)}/${filename}.jpg`;
+    
+    // If it's already a full URL with scale parameter, ensure it's high resolution
+    if (url.includes('scale-to-width-down')) {
+      return url.replace(/\/scale-to-width-down\/\d+/, '/scale-to-width-down/1000');
+    }
+    
+    // If it's a revision URL, get the base image URL
+    if (url.includes('/revision/')) {
+      return url.split('/revision/')[0];
+    }
+    
+    return url;
   };
+
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
@@ -85,7 +90,7 @@ export function ModelDetailsModal({
             {/* Image */}
             <div className="relative">
               <img
-                src={model.image_url}
+                src={getImageUrl(model.image_url)}
                 alt={model.name}
                 className="w-full rounded-lg shadow-lg object-contain bg-gray-800 aspect-video"
                 onError={() => setImageError(true)}

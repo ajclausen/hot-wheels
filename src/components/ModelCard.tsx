@@ -17,6 +17,17 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
     if (!url || imageError) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
+    
+    // If it's already a full URL with scale parameter, ensure it's high resolution
+    if (url.includes('scale-to-width-down')) {
+      return url.replace(/\/scale-to-width-down\/\d+/, '/scale-to-width-down/1000');
+    }
+    
+    // If it's a revision URL, get the base image URL
+    if (url.includes('/revision/')) {
+      return url.split('/revision/')[0];
+    }
+    
     return url;
   };
 

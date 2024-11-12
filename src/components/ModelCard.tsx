@@ -17,7 +17,11 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
     if (!url || imageError) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
-    return url.split('/revision')[0];
+    // Add scale parameter if it's a wikia URL and doesn't already have it
+    if (url.includes('static.wikia.nocookie.net') && !url.includes('scale-to-width-down')) {
+      return `${url}/revision/latest/scale-to-width-down/800?cb=20240709000234`;
+    }
+    return url;
   };
 
   const handleToggleOwned = (e: React.MouseEvent) => {
@@ -41,6 +45,7 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
           alt={model.name}
           className="w-full h-48 object-cover"
           onError={() => setImageError(true)}
+          loading="lazy"
         />
         <button
           onClick={handleToggleOwned}

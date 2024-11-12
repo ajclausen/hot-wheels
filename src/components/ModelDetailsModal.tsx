@@ -24,15 +24,29 @@ export function ModelDetailsModal({
     if (!url) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
-    return url.split('/revision')[0];
+    // Add scale parameter if it's a wikia URL and doesn't already have it
+    if (url.includes('static.wikia.nocookie.net') && !url.includes('scale-to-width-down')) {
+      return `${url}/revision/latest/scale-to-width-down/1000?cb=20240709000234`;
+    }
+    return url;
+  };
+
+  const handleContainerClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      
-      <div className="relative min-h-screen flex items-center justify-center p-4">
-        <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-4xl w-full overflow-hidden">
+    <div 
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm"
+      onClick={handleContainerClick}
+    >
+      <div className="min-h-screen px-4 py-12 flex items-center justify-center">
+        <div 
+          className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-4xl w-full overflow-hidden mx-auto my-auto"
+          onClick={e => e.stopPropagation()}
+        >
           {/* Header */}
           <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{model.name}</h2>
@@ -52,11 +66,12 @@ export function ModelDetailsModal({
                 <img
                   src={getImageUrl(model.image_url)}
                   alt={model.name}
-                  className="w-full rounded-lg shadow-lg object-cover"
+                  className="w-full rounded-lg shadow-lg object-contain bg-gray-100 dark:bg-gray-900"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
                   }}
+                  loading="lazy"
                 />
                 <button
                   onClick={() => onToggleOwned(model.id)}
@@ -157,6 +172,9 @@ export function ModelDetailsModal({
               </div>
             </div>
           </div>
+
+          {/* Footer padding to ensure content doesn't get hidden behind the bottom nav */}
+          <div className="h-20" />
         </div>
       </div>
     </div>

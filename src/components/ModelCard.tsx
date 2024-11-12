@@ -9,17 +9,25 @@ interface ModelCardProps {
 }
 
 export function ModelCard({ model, onToggleOwned, onEditNotes }: ModelCardProps) {
+  const [imageError, setImageError] = React.useState(false);
+
+  // Function to get the correct image URL
+  const getImageUrl = (url: string) => {
+    if (!url || imageError) {
+      return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+    }
+    // Remove any query parameters or revision info
+    return url.split('/revision')[0];
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
       <div className="relative">
         <img
-          src={model.image_url}
+          src={getImageUrl(model.image_url)}
           alt={model.name}
           className="w-full h-48 object-cover"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
-          }}
+          onError={() => setImageError(true)}
         />
         <button
           onClick={() => onToggleOwned(model.id)}

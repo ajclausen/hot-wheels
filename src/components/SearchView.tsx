@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Plus, Check } from 'lucide-react';
-import type { HotWheelsModel } from '../types';
+import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
 
 interface SearchViewProps {
-  models: HotWheelsModel[];
-  userModels: HotWheelsModel[];
+  models: ModelVariant[];
+  userModels: ModelVariant[];
   onToggleOwned: (id: string) => void;
   onEditNotes: (id: string) => void;
   searchInputRef?: React.RefObject<HTMLInputElement>;
@@ -21,6 +21,15 @@ export function SearchView({ models, userModels, onToggleOwned, searchInputRef }
     color: ''
   });
 
+  // Function to get the correct image URL
+  const getImageUrl = (url: string) => {
+    if (!url) {
+      return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+    }
+    // Remove any query parameters or revision info
+    return url.split('/revision')[0];
+  };
+
   const uniqueYears = [...new Set(models.map(m => m.year))].sort((a, b) => b - a);
   const uniqueSeries = [...new Set(models.map(m => m.series))].sort();
   const uniqueColors = [...new Set(models.map(m => m.color))].sort();
@@ -29,7 +38,7 @@ export function SearchView({ models, userModels, onToggleOwned, searchInputRef }
     const matchesSearch = searchQuery
       ? model.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         model.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        model.collectionNumber?.toLowerCase().includes(searchQuery.toLowerCase())
+        model.collection_number?.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
 
     const matchesYear = !filters.year || model.year.toString() === filters.year;
@@ -73,7 +82,7 @@ export function SearchView({ models, userModels, onToggleOwned, searchInputRef }
               >
                 <div className="relative">
                   <img
-                    src={model.imageUrl}
+                    src={getImageUrl(model.image_url)}
                     alt={model.name}
                     className="w-full h-48 object-cover"
                     onError={(e) => {
@@ -104,9 +113,9 @@ export function SearchView({ models, userModels, onToggleOwned, searchInputRef }
                   <div className="space-y-1">
                     <p className="text-sm text-gray-600 dark:text-gray-400">Series: {model.series}</p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Year: {model.year}</p>
-                    {model.collectionNumber && (
+                    {model.collection_number && (
                       <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Collection #: {model.collectionNumber}
+                        Collection #: {model.collection_number}
                       </p>
                     )}
                   </div>

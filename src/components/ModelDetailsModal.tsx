@@ -41,11 +41,14 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-start justify-center">
       <div 
         ref={modalRef}
         className="relative bg-gray-900 rounded-2xl shadow-2xl w-full max-w-4xl mx-auto my-4 overflow-hidden"
-        style={{ maxHeight: 'calc(100vh - 2rem)' }}
+        style={{ 
+          maxHeight: 'calc(100vh - 5rem)', // Account for top and bottom margins
+          margin: '1rem 1rem 5rem 1rem' // Extra bottom margin for nav bar
+        }}
       >
         <div className="sticky top-0 z-10 bg-gray-900 border-b border-gray-800">
           <div className="flex justify-between items-center p-6">
@@ -59,7 +62,7 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
           </div>
         </div>
 
-        <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 8rem)' }}>
+        <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 13rem)' }}>
           <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative">

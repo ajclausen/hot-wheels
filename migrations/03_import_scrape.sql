@@ -1,32 +1,16 @@
--- First, create a temporary table for the new variants
-CREATE TABLE IF NOT EXISTS temp_variants (
-  id TEXT PRIMARY KEY,
-  castingName TEXT,
-  collectionNumber TEXT,
-  series TEXT,
-  seriesNumber TEXT,
-  year INTEGER,
-  color TEXT,
-  tampos TEXT,
-  wheelType TEXT,
-  baseColor TEXT,
-  windowColor TEXT,
-  interiorColor TEXT,
-  countryMade TEXT,
-  toyNumber TEXT,
-  image_url TEXT
-);
+-- Insert or update base models first
+INSERT OR REPLACE INTO models (
+  id,
+  name,
+  debut_series
+)
+SELECT DISTINCT
+  substr(json_extract(value, '$.id'), 1, 16) as id,
+  json_extract(value, '$.castingName') as name,
+  json_extract(value, '$.series') as debut_series
+FROM json_each(readfile('scrape-results.json'));
 
--- Insert or update the base model
-INSERT OR IGNORE INTO models (id, name, debut_series, designer)
-VALUES (
-  'baja-bison-t5',
-  'Baja Bison T5',
-  'HW Green Speed',
-  'Sonny Fisher'
-);
-
--- Insert the variants
+-- Insert or replace variants
 INSERT OR REPLACE INTO model_variants (
   id,
   model_id,
@@ -43,28 +27,33 @@ INSERT OR REPLACE INTO model_variants (
   country_made,
   toy_number,
   image_url
-) VALUES
-('fb5a9aa65f0c6236', 'baja-bison-t5', '143/250', 'HW Green Speed', '7/10', 2023, 'Navy blue', 
- '["Baja Bison T5","RALLY EL SEGUNDO 23","SONNY","SFMOTOR SPORTS","TW","COX1975 SUSPENSION","Hot Wheels EV","044","various other sponsors on sides"]',
- 'AeroDisc', 'Metalflake gunmetal gray/Metal', 'Smoke tint', 'Black', 'Malaysia', 'HKG44',
- 'https://images.clausen.app/models/fb5a9aa65f0c6236.webp'),
+)
+SELECT
+  json_extract(value, '$.id') as id,
+  substr(json_extract(value, '$.id'), 1, 16) as model_id,
+  json_extract(value, '$.collectionNumber') as collection_number,
+  json_extract(value, '$.series') as series,
+  json_extract(value, '$.seriesNumber') as series_number,
+  json_extract(value, '$.year') as year,
+  json_extract(value, '$.color') as color,
+  json_extract(value, '$.tampos') as tampos,
+  json_extract(value, '$.wheelType') as wheel_type,
+  json_extract(value, '$.baseColor') as base_color,
+  json_extract(value, '$.windowColor') as window_color,
+  json_extract(value, '$.interiorColor') as interior_color,
+  json_extract(value, '$.countryMade') as country_made,
+  COALESCE(json_extract(value, '$.toyNumber'), 'Unknown') as toy_number,
+  json_extract(value, '$.image_url') as image_url
+FROM json_each(readfile('scrape-results.json'));
 
-('0e29781f4a47b026', 'baja-bison-t5', '143/250', 'HW Green Speed', '7/10', 2023, 'Green',
- '["Baja Bison T5","RALLY EL SEGUNDO 23","SONNY","SFMOTOR SPORTS","TW","COX1975 SUSPENSION","Hot Wheels EV","044","various other sponsors on sides"]',
- 'AeroDisc', 'Metalflake yellow/Metal', 'Smoke tint', 'Black', 'Malaysia', 'HKK23',
- 'https://images.clausen.app/models/0e29781f4a47b026.webp'),
-
-('b6240c6e0e61de44', 'baja-bison-t5', '058/250', 'HW First Response', '7/10', 2024, 'Black',
- '["FIRST RESPONSE","HWGRFX","SFMOTOR SPORTS","Hot Wheels logo","& blue","orange","& white stripes on sides"]',
- 'Orange rim, black AeroDisc', 'Gray/Metal', 'Orange tint', 'Gray', 'Malaysia', 'HTB61',
- 'https://images.clausen.app/models/b6240c6e0e61de44.webp'),
-
-('9ffbfe9d1871345b', 'baja-bison-t5', '058/250', 'HW First Response', '7/10', 2024, 'Red',
- '["FIRST RESPONSE","HWGRFX","SFMOTOR SPORTS","Hot Wheels logo","& yellow","black","& white stripes on sides"]',
- 'BAJA5', 'Black/Metal', 'Blue tint', 'Yellow', 'Malaysia', 'HTD29',
- 'https://images.clausen.app/models/9ffbfe9d1871345b.webp'),
-
-('d37dce69f9e58ef7', 'baja-bison-t5', '', 'Purple and Gold', '6/6', 2025, 'Chrome gold',
- '["Hot Wheels logo","57","black and plum on sides"]',
- 'BLOR', 'Unknown', 'Unknown', 'Unknown', 'Malaysia', 'JDM25',
- 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3');
+-- Verify the import
+SELECT 
+  mv.id,
+  m.name,
+  mv.collection_number,
+  mv.series,
+  mv.year,
+  mv.color
+FROM model_variants mv
+JOIN models m ON mv.model_id = m.id
+ORDER BY mv.year DESC, mv.series, mv.collection_number;

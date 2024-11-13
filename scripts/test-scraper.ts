@@ -9,7 +9,7 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 // Load environment variables from .dev.vars
 dotenv.config({ path: '.dev.vars' });
 
-const TEST_CASTING_URL = 'https://hotwheels.fandom.com/wiki/Baja_Bison_T5';
+const LIST_PAGE_URL = 'https://hotwheels.fandom.com/wiki/List_of_2023_Hot_Wheels_new_castings';
 const IMAGE_CACHE_DIR = './test-image-cache';
 const R2_BUCKET_URL = process.env.R2_PUBLIC_URL || 'https://your-r2-bucket-url';
 
@@ -50,7 +50,12 @@ function parseTampos(tamposText: string): string[] {
     .split(/[,\n]/)
     .map((t) => t.trim())
     .filter(Boolean)
-    .map((t) => t.replace(/^"(.*)"$/, '$1').replace(/^"/, '').replace(/"$/, ''));
+    .map((t) =>
+      t
+        .replace(/^"(.*)"$/, '$1')
+        .replace(/^"/, '')
+        .replace(/"$/, '')
+    );
 }
 
 async function uploadToR2(buffer: Buffer, modelId: string): Promise<string> {
@@ -151,13 +156,12 @@ async function processImage(imageUrl: string, modelId: string): Promise<string> 
   }
 }
 
-async function testScrape() {
-  const { browser, context } = await setupBrowser();
+async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheelsVariant[]> {
   const page = await context.newPage();
 
   try {
-    console.log('Starting test scrape...');
-    await page.goto(TEST_CASTING_URL, { waitUntil: 'networkidle' });
+    console.log(`Navigating to model page: ${modelUrl}`);
+    await page.goto(modelUrl, { waitUntil: 'networkidle' });
 
     // Get basic casting info
     const castingInfo = await page.evaluate(() => {
@@ -184,7 +188,7 @@ async function testScrape() {
         const cells = Array.from(row.querySelectorAll('td, th'));
 
         // Skip header rows
-        if (cells[0]?.textContent.trim() === 'Col #') {
+        if (cells[0]?.textContent.trim() === 'Col #' || cells[0]?.textContent.trim() === 'Year') {
           console.log(`Row ${rowIndex} is a header row. Skipping.`);
           return;
         }
@@ -304,9 +308,50 @@ async function testScrape() {
       console.log();
     }
 
+    await page.close();
+    return processedVariants;
+  } catch (error) {
+    console.error(`Error scraping model page ${modelUrl}:`, error);
+    await page.close();
+    return [];
+  }
+}
+
+async function testScrape() {
+  const { browser, context } = await setupBrowser();
+  const page = await context.newPage();
+
+  try {
+    console.log('Starting test scrape...');
+    await page.goto(LIST_PAGE_URL, { waitUntil: 'networkidle' });
+
+    // Extract model URLs from the list page
+    const modelUrls = await page.evaluate(() => {
+      const tableRows = Array.from(document.querySelectorAll('table.wikitable tbody tr'));
+      const urls = [];
+
+      tableRows.forEach((row) => {
+        const link = row.querySelector('td a');
+        if (link && link.href.includes('/wiki/')) {
+          urls.push(link.href);
+        }
+      });
+
+      return urls;
+    });
+
+    console.log(`Found ${modelUrls.length} model URLs`);
+
+    const allVariants = [];
+
+    for (const modelUrl of modelUrls) {
+      const variants = await scrapeModelPage(modelUrl, context);
+      allVariants.push(...variants);
+    }
+
     // Save results to file
     const resultsPath = path.join(process.cwd(), 'scrape-results.json');
-    await fs.writeFile(resultsPath, JSON.stringify(processedVariants, null, 2));
+    await fs.writeFile(resultsPath, JSON.stringify(allVariants, null, 2));
     console.log(`\nSaved results to ${resultsPath}`);
     console.log('\nTo import to D1, run:');
     console.log('wrangler d1 execute hotwheels-collection --file=./migrations/03_import_scrape.sql');

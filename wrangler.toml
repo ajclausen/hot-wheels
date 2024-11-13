@@ -14,7 +14,7 @@ bucket_name = "hotwheels-images"
 [vars]
 ENVIRONMENT = "production"
 API_URL = "https://hotwheels.clausen.app"
-R2_PUBLIC_URL = "https://pub-593fbe5a3cab4c2f9d39d8d8380dcea0.r2.dev"
+R2_PUBLIC_URL = "https://images.clausen.app"
 
 [site]
 bucket = "./dist"

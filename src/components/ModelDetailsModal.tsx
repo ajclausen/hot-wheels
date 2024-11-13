@@ -38,19 +38,6 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
     };
   }, [isOpen, onClose]);
 
-  // Function to get the correct image URL
-  const getImageUrl = (url: string) => {
-    if (!url) {
-      return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
-    }
-    // If it's already an R2 URL, use it as is
-    if (url.includes('r2.dev')) {
-      return url;
-    }
-    // For wiki URLs, remove the revision parameter
-    return url.split('/revision')[0];
-  };
-
   if (!isOpen) return null;
 
   return (
@@ -73,7 +60,7 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="relative">
               <img
-                src={getImageUrl(model.image_url)}
+                src={model.image_url}
                 alt={model.name}
                 className="w-full rounded-lg shadow-lg object-contain bg-gray-800 aspect-video"
                 onError={(e) => {

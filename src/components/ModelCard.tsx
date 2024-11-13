@@ -22,19 +22,6 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
     onEditNotes(model.id);
   };
 
-  // Function to get the correct image URL
-  const getImageUrl = (url: string) => {
-    if (!url) {
-      return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
-    }
-    // If it's already an R2 URL, use it as is
-    if (url.includes('r2.dev')) {
-      return url;
-    }
-    // For wiki URLs, remove the revision parameter
-    return url.split('/revision')[0];
-  };
-
   return (
     <div 
       onClick={onClick}
@@ -42,7 +29,7 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
     >
       <div className="relative w-full pt-[75%]">
         <img
-          src={getImageUrl(model.image_url)}
+          src={model.image_url}
           alt={model.name}
           className="absolute inset-0 w-full h-full object-cover"
           onError={(e) => {

@@ -7,7 +7,6 @@ import { StatisticsView } from './components/StatisticsView';
 import { Modal } from './components/Modal';
 import { NotesEditor } from './components/NotesEditor';
 import { useAuth } from './context/AuthContext';
-import { Car } from 'lucide-react';
 import type { HotWheelsModel } from './types';
 import axios from 'axios';
 
@@ -47,18 +46,12 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <header className="mb-8 text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Car className="h-8 w-8 text-blue-500" />
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-              Hot Wheels Collection
-            </h1>
-          </div>
-          {user && (
-            <p className="text-gray-600 dark:text-gray-400">
-              Welcome, {user.alias || user.name}
-            </p>
-          )}
+        <header className="mb-8 flex justify-center">
+          <img 
+            src="/hotwheels-logo.png" 
+            alt="Hot Wheels" 
+            className="h-16 object-contain"
+          />
         </header>
 
         {activeTab === 'inventory' && (

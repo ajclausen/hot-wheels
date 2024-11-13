@@ -9,7 +9,7 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 // Load environment variables from .dev.vars
 dotenv.config({ path: '.dev.vars' });
 
-const LIST_PAGE_URL = 'https://hotwheels.fandom.com/wiki/List_of_2022_Hot_Wheels_new_castings';
+const LIST_PAGE_URL = 'https://hotwheels.fandom.com/wiki/List_of_2021_Hot_Wheels_new_castings';
 const IMAGE_CACHE_DIR = './test-image-cache';
 const R2_BUCKET_URL = process.env.R2_PUBLIC_URL || 'https://your-r2-bucket-url';
 

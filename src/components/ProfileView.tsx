@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  Settings, Share2, Download, Upload, User,
-  ChevronRight, Save, X
+  Share2, Download, Upload, User,
+  ChevronRight, Save, X, Sun, Moon, Monitor
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -9,10 +9,11 @@ import axios from 'axios';
 
 export function ProfileView() {
   const { user, updateUser } = useAuth();
-  const { theme, setTheme, ThemeIcon } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [isEditing, setIsEditing] = useState(false);
   const [alias, setAlias] = useState(user?.alias || '');
   const [error, setError] = useState('');
+  const [showThemeMenu, setShowThemeMenu] = useState(false);
 
   const handleUpdateAlias = async () => {
     try {
@@ -87,8 +88,15 @@ export function ProfileView() {
     }
   };
 
-  const handleThemeChange = () => {
-    setTheme(theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light');
+  const getThemeIcon = () => {
+    switch (theme) {
+      case 'light':
+        return <Sun className="h-5 w-5" />;
+      case 'dark':
+        return <Moon className="h-5 w-5" />;
+      default:
+        return <Monitor className="h-5 w-5" />;
+    }
   };
 
   return (
@@ -146,22 +154,59 @@ export function ProfileView() {
       </div>
 
       <div className="space-y-4">
-        <button 
-          onClick={handleThemeChange}
-          className="w-full bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-white"
-        >
-          <div className="flex items-center space-x-3">
-            <ThemeIcon className="h-5 w-5" />
-            <span>
-              {theme === 'system' 
-                ? 'System Theme' 
-                : theme === 'dark' 
-                  ? 'Dark Mode' 
-                  : 'Light Mode'}
-            </span>
-          </div>
-          <ChevronRight className="h-5 w-5 text-gray-400" />
-        </button>
+        <div className="relative">
+          <button 
+            onClick={() => setShowThemeMenu(!showThemeMenu)}
+            className="w-full bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-white"
+          >
+            <div className="flex items-center space-x-3">
+              {getThemeIcon()}
+              <span>
+                {theme === 'system' 
+                  ? 'System Theme' 
+                  : theme === 'dark' 
+                    ? 'Dark Mode' 
+                    : 'Light Mode'}
+              </span>
+            </div>
+            <ChevronRight className={`h-5 w-5 text-gray-400 transition-transform ${showThemeMenu ? 'rotate-90' : ''}`} />
+          </button>
+
+          {showThemeMenu && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden z-10">
+              <button
+                onClick={() => {
+                  setTheme('light');
+                  setShowThemeMenu(false);
+                }}
+                className="w-full p-4 flex items-center space-x-3 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-white"
+              >
+                <Sun className="h-5 w-5" />
+                <span>Light Mode</span>
+              </button>
+              <button
+                onClick={() => {
+                  setTheme('dark');
+                  setShowThemeMenu(false);
+                }}
+                className="w-full p-4 flex items-center space-x-3 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-white"
+              >
+                <Moon className="h-5 w-5" />
+                <span>Dark Mode</span>
+              </button>
+              <button
+                onClick={() => {
+                  setTheme('system');
+                  setShowThemeMenu(false);
+                }}
+                className="w-full p-4 flex items-center space-x-3 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-white"
+              >
+                <Monitor className="h-5 w-5" />
+                <span>System Theme</span>
+              </button>
+            </div>
+          )}
+        </div>
 
         <button 
           onClick={handleExportCollection}

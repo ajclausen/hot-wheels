@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { X, Check, Edit3 } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { X, Check, Edit3, Plus } from 'lucide-react';
 import type { ModelVariant } from '../types';
 
 interface ModelDetailsModalProps {
@@ -13,6 +13,11 @@ interface ModelDetailsModalProps {
 export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEditNotes }: ModelDetailsModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const [imageError, setImageError] = React.useState(false);
+  const [isOwned, setIsOwned] = useState(model.owned);
+
+  useEffect(() => {
+    setIsOwned(model.owned);
+  }, [model.owned]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -37,6 +42,11 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
       document.body.style.overflow = '';
     };
   }, [isOpen, onClose]);
+
+  const handleToggleOwned = () => {
+    setIsOwned(!isOwned);
+    onToggleOwned(model.id);
+  };
 
   if (!isOpen) return null;
 
@@ -79,14 +89,14 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
                   />
                 </div>
                 <button
-                  onClick={() => onToggleOwned(model.id)}
-                  className={`absolute top-4 right-4 p-2 rounded-full shadow-lg ${
-                    model.owned
-                      ? 'bg-green-500 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-300'
+                  onClick={handleToggleOwned}
+                  className={`absolute top-4 right-4 p-2 rounded-full shadow-lg transition-colors ${
+                    isOwned
+                      ? 'bg-green-500 text-white hover:bg-green-600'
+                      : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                   }`}
                 >
-                  <Check className="h-5 w-5" />
+                  {isOwned ? <Check className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
                 </button>
               </div>
 

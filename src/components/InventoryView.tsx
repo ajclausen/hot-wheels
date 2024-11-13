@@ -20,7 +20,8 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
   const [filters, setFilters] = useState({
     year: '',
     series: '',
-    color: ''
+    color: '',
+    sort: 'newest'
   });
 
   const uniqueYears = [...new Set(models.map(m => m.year))].sort((a, b) => b - a);
@@ -39,6 +40,29 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
     const matchesColor = !filters.color || model.color === filters.color;
 
     return matchesSearch && matchesYear && matchesSeries && matchesColor;
+  });
+
+  // Sort the filtered models
+  const sortedModels = [...filteredModels].sort((a, b) => {
+    switch (filters.sort) {
+      case 'newest':
+        return b.year - a.year;
+      case 'oldest':
+        return a.year - b.year;
+      case 'name-asc':
+        return a.name.localeCompare(b.name);
+      case 'name-desc':
+        return b.name.localeCompare(a.name);
+      case 'series':
+        return a.series.localeCompare(b.series) || 
+               (a.collection_number || '').localeCompare(b.collection_number || '');
+      case 'number':
+        const aNum = parseInt((a.collection_number || '').replace(/\D/g, '')) || 0;
+        const bNum = parseInt((b.collection_number || '').replace(/\D/g, '')) || 0;
+        return aNum - bNum;
+      default:
+        return 0;
+    }
   });
 
   return (
@@ -73,7 +97,7 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
       </button>
 
       <div className="px-4">
-        {filteredModels.length === 0 ? (
+        {sortedModels.length === 0 ? (
           <div className="text-center py-8">
             <p className="text-gray-500 dark:text-gray-400">No models match your filters.</p>
             <p className="text-gray-400 dark:text-gray-500 text-sm">
@@ -82,7 +106,7 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4">
-            {filteredModels.map(model => (
+            {sortedModels.map(model => (
               <ModelCard
                 key={model.id}
                 model={model}

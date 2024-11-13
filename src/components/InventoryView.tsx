@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { ModelCard } from './ModelCard';
+import { ModelList } from './ModelList';
 import { ModelDetailsModal } from './ModelDetailsModal';
 import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
+import { ViewToggle, type ViewMode } from './ViewToggle';
 
 interface InventoryViewProps {
   models: ModelVariant[];
@@ -17,11 +19,12 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
   const [showFilters, setShowFilters] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [filters, setFilters] = useState({
     year: '',
     series: '',
     color: '',
-    sort: 'newest'
+    sort: 'name-asc'
   });
 
   const uniqueYears = [...new Set(models.map(m => m.year))].sort((a, b) => b - a);
@@ -42,7 +45,6 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
     return matchesSearch && matchesYear && matchesSeries && matchesColor;
   });
 
-  // Sort the filtered models
   const sortedModels = [...filteredModels].sort((a, b) => {
     switch (filters.sort) {
       case 'newest':
@@ -65,16 +67,34 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
     }
   });
 
+  const getGridColumns = () => {
+    switch (viewMode) {
+      case 'grid':
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+      case 'large':
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+      case 'list':
+        return 'grid-cols-1';
+      default:
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+    }
+  };
+
   return (
     <div className="pb-20">
       <div className="sticky top-0 bg-gray-100 dark:bg-gray-900 pt-4 pb-2 z-10 px-4">
-        <SearchBar
-          value={searchQuery}
-          onChange={setSearchQuery}
-          showFilter={true}
-          filterActive={showFilters}
-          onFilterClick={() => setShowFilters(!showFilters)}
-        />
+        <div className="flex gap-4 mb-4">
+          <div className="flex-1">
+            <SearchBar
+              value={searchQuery}
+              onChange={setSearchQuery}
+              showFilter={true}
+              filterActive={showFilters}
+              onFilterClick={() => setShowFilters(!showFilters)}
+            />
+          </div>
+          <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
+        </div>
 
         {showFilters && (
           <SearchFilters
@@ -105,15 +125,25 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4">
+          <div className={`grid ${getGridColumns()} gap-4 mt-4`}>
             {sortedModels.map(model => (
-              <ModelCard
-                key={model.id}
-                model={model}
-                onToggleOwned={onToggleOwned}
-                onEditNotes={onEditNotes}
-                onClick={() => setSelectedModel(model)}
-              />
+              viewMode === 'list' ? (
+                <ModelList
+                  key={model.id}
+                  model={model}
+                  onToggleOwned={onToggleOwned}
+                  onClick={() => setSelectedModel(model)}
+                />
+              ) : (
+                <ModelCard
+                  key={model.id}
+                  model={model}
+                  onToggleOwned={onToggleOwned}
+                  onEditNotes={onEditNotes}
+                  onClick={() => setSelectedModel(model)}
+                  size={viewMode === 'large' ? 'large' : 'normal'}
+                />
+              )
             ))}
           </div>
         )}

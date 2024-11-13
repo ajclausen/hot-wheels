@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Plus, Check } from 'lucide-react';
 import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
 import { ModelDetailsModal } from './ModelDetailsModal';
+import { ModelCard } from './ModelCard';
+import { ModelList } from './ModelList';
+import { ViewToggle, type ViewMode } from './ViewToggle';
 
 interface SearchViewProps {
   models: ModelVariant[];
@@ -17,11 +19,12 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [filters, setFilters] = useState({
     year: '',
     series: '',
     color: '',
-    sort: 'newest'
+    sort: 'name-asc'
   });
 
   const uniqueYears = [...new Set(models.map(m => m.year))].sort((a, b) => b - a);
@@ -42,7 +45,6 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
     return matchesSearch && matchesYear && matchesSeries && matchesColor;
   });
 
-  // Sort the filtered models
   const sortedModels = [...filteredModels].sort((a, b) => {
     switch (filters.sort) {
       case 'newest':
@@ -65,17 +67,35 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
     }
   });
 
+  const getGridColumns = () => {
+    switch (viewMode) {
+      case 'grid':
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+      case 'large':
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+      case 'list':
+        return 'grid-cols-1';
+      default:
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+    }
+  };
+
   return (
     <div className="pb-20">
       <div className="sticky top-0 bg-gray-100 dark:bg-gray-900 pt-4 pb-2 z-10 px-4">
-        <SearchBar
-          value={searchQuery}
-          onChange={setSearchQuery}
-          showFilter={true}
-          filterActive={showFilters}
-          onFilterClick={() => setShowFilters(!showFilters)}
-          placeholder="Search all Hot Wheels models..."
-        />
+        <div className="flex gap-4 mb-4">
+          <div className="flex-1">
+            <SearchBar
+              value={searchQuery}
+              onChange={setSearchQuery}
+              showFilter={true}
+              filterActive={showFilters}
+              onFilterClick={() => setShowFilters(!showFilters)}
+              placeholder="Search all Hot Wheels models..."
+            />
+          </div>
+          <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
+        </div>
 
         {showFilters && (
           <SearchFilters
@@ -89,7 +109,7 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
       </div>
 
       <div className="px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        <div className={`grid ${getGridColumns()} gap-4 mt-4`}>
           {sortedModels.map((model) => {
             const isOwned = userModels.some(m => m.id === model.id);
             const fullModel = {
@@ -97,56 +117,22 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
               owned: isOwned
             };
             
-            return (
-              <div
+            return viewMode === 'list' ? (
+              <ModelList
                 key={model.id}
+                model={fullModel}
+                onToggleOwned={onToggleOwned}
                 onClick={() => setSelectedModel(fullModel)}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
-              >
-                <div className="relative">
-                  <img
-                    src={model.image_url}
-                    alt={model.name}
-                    className="w-full h-48 object-cover"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
-                    }}
-                  />
-                  {isOwned && (
-                    <div className="absolute top-2 right-2 bg-green-500 text-white p-1.5 rounded-full">
-                      <Check className="h-4 w-4" />
-                    </div>
-                  )}
-                </div>
-                <div className="p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{model.name}</h3>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onToggleOwned(model.id);
-                      }}
-                      className={`p-1.5 rounded-full transition-colors ${
-                        isOwned
-                          ? 'text-green-500 hover:bg-green-50 dark:hover:bg-green-900'
-                          : 'text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900'
-                      }`}
-                    >
-                      {isOwned ? <Check className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
-                    </button>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Series: {model.series}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Year: {model.year}</p>
-                    {model.collection_number && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Collection #: {model.collection_number}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
+              />
+            ) : (
+              <ModelCard
+                key={model.id}
+                model={fullModel}
+                onToggleOwned={onToggleOwned}
+                onEditNotes={onEditNotes}
+                onClick={() => setSelectedModel(fullModel)}
+                size={viewMode === 'large' ? 'large' : 'normal'}
+              />
             );
           })}
         </div>

@@ -1,16 +1,16 @@
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '2f66fc7cf20153a4',
-  'Mazda Autozam',
+  '157531b65d45432b',
+  'volvo p1800 gasser',
   'HW Dream Garage'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -27,36 +27,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '2f66fc7cf20153a4',
-  '2f66fc7cf20153a4',
+  'a6d2ccd075209956',
+  '157531b65d45432b',
   '001/250',
   'HW Dream Garage',
-  '3/5',
-  2024,
-  'White',
-  '["Detailed headlights and trim","4WD","Mazda logo on front","TEXAS TOOT\" logos on side"]',
-  'White Rim OR6SP',
+  '1/5',
+  2023,
+  'forest green',
+  '["Detailed headlights","HOT WHEELS\" on doors","silver trim"]',
+  'SK5SP & 5SP',
   'Black/Plastic',
-  'Smoke tint',
-  'Gray',
+  'Blue tint',
+  'Chrome',
   'Malaysia',
-  'HRY51',
-  'https://images.clausen.app/models/2f66fc7cf20153a4.webp'
-);
+  'hkg27',
+  'https://images.clausen.app/models/720a7d61b499ec2d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '892b22bf8e249b6d',
-  'Mazda Autozam',
+  '157531b65d45432b',
+  'volvo p1800 gasser',
   'HW Dream Garage'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -73,3304 +81,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '892b22bf8e249b6d',
-  '892b22bf8e249b6d',
+  'e389cfbab9f4d9f3',
+  '157531b65d45432b',
   '001/250',
   'HW Dream Garage',
-  '3/5',
-  2024,
-  'Matte "moody" blue',
-  '["Detailed headlights and trim","4WD","Mazda logo on front","TEXAS TOOT\" logos on side"]',
-  'Dark gray Rim OR6SP',
-  'Black/Plastic',
-  'Smoke tint',
-  'Dark gray',
-  'Malaysia',
-  'HTC86',
-  'https://images.clausen.app/models/892b22bf8e249b6d.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'e44f239d87bc87e7',
-  'Mazda Autozam',
-  'HW Dream Garage'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'e44f239d87bc87e7',
-  'e44f239d87bc87e7',
-  '008/250',
-  'HW Dream Garage',
   '1/5',
-  2025,
-  'Red',
-  '["Detailed headlights and trim","white stripes","star on sides"]',
-  'White Rim OR6SP',
+  2023,
+  'maroon',
+  '["Detailed headlights","HOT WHEELS\" on doors","silver trim"]',
+  'SK5SP & 5SP',
   'Black/Plastic',
-  'Smoke tint',
-  'Gray',
-  'Malaysia',
-  'HYW66',
-  'https://images.clausen.app/models/e44f239d87bc87e7.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '71c098f26cb4595c',
-  'Mazda Autozam',
-  'HW Dream Garage'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '71c098f26cb4595c',
-  '71c098f26cb4595c',
-  '008/250',
-  'HW Dream Garage',
-  '1/5',
-  2025,
-  'ZAMAC',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'HYY10',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'a5a65684c8297482',
-  'Monster High Ghoul Mobile',
-  'HW Screen Time'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'a5a65684c8297482',
-  'a5a65684c8297482',
-  '003/250',
-  'HW Screen Time',
-  '1/10',
-  2024,
-  'Lavender',
-  '["Detailed headlights","spider web designs on sides"]',
-  'Pink Chrome 10SP',
-  'Black/Plastic',
-  'Chartreuse tint',
-  'Magenta',
-  'Malaysia',
-  'HRY45',
-  'https://images.clausen.app/models/a5a65684c8297482.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'a84c678e5bba6026',
-  'Monster High Ghoul Mobile',
-  'HW Screen Time'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'a84c678e5bba6026',
-  'a84c678e5bba6026',
-  '003/250',
-  'HW Screen Time',
-  '1/10',
-  2024,
-  'Black',
-  '["Detailed headlights","spider web designs on sides","hood","&amp; trunk"]',
-  'Purple Chrome 10SP',
-  'Black/Plastic',
-  'Orange tint',
-  'Pink',
-  'Malaysia',
-  'HTC80',
-  'https://images.clausen.app/models/a84c678e5bba6026.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'e3df36bd3b7f3f4c',
-  'Monster High Ghoul Mobile',
-  'HW Screen Time'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'e3df36bd3b7f3f4c',
-  'e3df36bd3b7f3f4c',
-  '003/250',
-  'HW Screen Time',
-  '1/10',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'HYW61',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '53f82f43ee2a90e5',
-  'Czinger 21C',
-  'HW Green Speed'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '53f82f43ee2a90e5',
-  '53f82f43ee2a90e5',
-  '013/250',
-  'HW Green Speed',
-  '1/10',
-  2024,
-  'Blue My Mind',
-  '["Detailed headlights","taillights","badging and exhaust"]',
-  'Gray Y5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY49',
-  'https://images.clausen.app/models/53f82f43ee2a90e5.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '531d8f0ddb2094d0',
-  'Czinger 21C',
-  'HW Green Speed'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '531d8f0ddb2094d0',
-  '531d8f0ddb2094d0',
-  '013/250',
-  'HW Green Speed',
-  '1/10',
-  2024,
-  'ZAMAC',
-  '["Detailed headlights","taillights","badging and exhaust"]',
-  'Y5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HTF46',
-  'https://images.clausen.app/models/531d8f0ddb2094d0.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '9c3368c7fd63011b',
-  'Czinger 21C',
-  'HW Green Speed'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '9c3368c7fd63011b',
-  '9c3368c7fd63011b',
-  '013/250',
-  'HW Green Speed',
-  '1/10',
-  2024,
-  'Red My Mind',
-  '["Detailed headlights","taillights","badging and exhaust"]',
-  'Black Y5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HTC92',
-  'https://images.clausen.app/models/9c3368c7fd63011b.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'd64dc1e067f0e0b6',
-  'Punk Rod',
-  'Rod Squad'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'd64dc1e067f0e0b6',
-  'd64dc1e067f0e0b6',
-  '026/250',
-  'Rod Squad',
-  '1/5',
-  2024,
-  'Matte Black',
-  '["Orange stripe down body","8\" on hood"]',
-  'Gray AeroDisc/Orange TRAP5',
-  'Black/Plastic',
-  'Orange tint',
-  'Black',
-  'Malaysia',
-  'HRY48',
-  'https://images.clausen.app/models/d64dc1e067f0e0b6.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'f4d20bca4c2042f9',
-  'Punk Rod',
-  'Rod Squad'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'f4d20bca4c2042f9',
-  'f4d20bca4c2042f9',
-  '026/250',
-  'Rod Squad',
-  '1/5',
-  2024,
-  'Matte "moody" Blue',
-  '["Gold stripe down body","8\" on hood"]',
-  'AeroDisc/TRAP5',
-  'Black/Plastic',
-  'Orange tint',
-  'Black',
-  'Malaysia',
-  'HTC98',
-  'https://images.clausen.app/models/f4d20bca4c2042f9.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'fd49aa9037a7cca3',
-  'Punk Rod',
-  'HW Modified'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'fd49aa9037a7cca3',
-  'fd49aa9037a7cca3',
-  '071/250',
-  'HW Modified',
-  '3/5',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'Unknown',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '319c3e5d16a22baa',
-  'Drift''n Break',
-  'HW Modified'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '319c3e5d16a22baa',
-  '319c3e5d16a22baa',
-  '035/250',
-  'HW Modified',
-  '4/10',
-  2024,
-  'Metalflake Purple',
-  '["Black stripes &amp; Hot Wheels logo on sides"]',
-  'TRAP5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Chrome',
-  'Malaysia',
-  'HRY53',
-  'https://images.clausen.app/models/319c3e5d16a22baa.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '36d20bb0c6658d25',
-  'Drift''n Break',
-  'HW Modified'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '36d20bb0c6658d25',
-  '36d20bb0c6658d25',
-  '035/250',
-  'HW Modified',
-  '4/10',
-  2024,
-  'Lime green',
-  '["Black stripes &amp; Hot Wheels logo on sides"]',
-  'TRAP5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Chrome',
-  'Malaysia',
-  'HTD15',
-  'https://images.clausen.app/models/36d20bb0c6658d25.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'ea1847e4dc578e87',
-  'Proton Saga',
-  'Compact Kings'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'ea1847e4dc578e87',
-  'ea1847e4dc578e87',
-  '041/250',
-  'Compact Kings',
-  '3/5',
-  2024,
-  'Red',
-  '["Black side stripes and \"SAGA\" wordmark on sides","detailed grille with Proton badge"]',
-  'AeroDisc',
-  'Red/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY46',
-  'https://images.clausen.app/models/ea1847e4dc578e87.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'd02b27aae6750145',
-  'Proton Saga',
-  'Hot Wheels × PROTON Kids Design Competition'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'd02b27aae6750145',
-  'd02b27aae6750145',
-  '',
-  'Hot Wheels × PROTON Kids Design Competition',
-  '',
-  2024,
-  'Red',
-  '["Black side stripes and \"SAGA\" wordmark on sides","detailed grille with Proton badge"]',
-  'AeroDisc',
-  'Red/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HXN11',
-  'https://images.clausen.app/models/d02b27aae6750145.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'e20dcb9356948f00',
-  'Proton Saga',
-  'Mattel Malaysia Sdn. Bhd. Employee Exclusive'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'e20dcb9356948f00',
-  'e20dcb9356948f00',
-  '',
-  'Mattel Malaysia Sdn. Bhd. Employee Exclusive',
-  '',
-  2024,
-  'Champagne',
-  '["Detailed side trim","Proton badge","black hood lines","SAGA","HAPPY BIRTHDAY\" wordmark on sides"]',
-  'AeroDisc',
-  'Champagne/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'AA050',
-  'https://images.clausen.app/models/e20dcb9356948f00.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '0f5be44491309c44',
-  'Proton Saga',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '0f5be44491309c44',
-  '0f5be44491309c44',
-  '038/250',
-  'Factory Fresh',
-  '3/5',
-  2025,
-  'Matte white',
-  '["Black side stripes and \"SAGA\" wordmark on sides","detailed grille with Proton badge"]',
-  'AeroDisc',
-  'White/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HYW90',
-  'https://images.clausen.app/models/0f5be44491309c44.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c3b42f70de3c2b77',
-  'Batman & Robin Batmobile',
-  'Batman'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c3b42f70de3c2b77',
-  'c3b42f70de3c2b77',
-  '054/250',
-  'Batman',
-  '2/5',
-  2024,
-  'Black',
-  '["Silver accents"]',
-  'AeroDisc',
-  'Black/Plastic',
-  'Chrome',
-  'Black',
-  'Malaysia',
-  'HRY54',
-  'https://images.clausen.app/models/c3b42f70de3c2b77.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '765032fa012ae134',
-  'Batman & Robin Batmobile',
-  'Batman'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '765032fa012ae134',
-  '765032fa012ae134',
-  '054/250',
-  'Batman',
-  '2/5',
-  2024,
-  'Dark blue',
-  '["Silver accents"]',
-  'AeroDisc',
-  'Dark blue/Plastic',
-  'Chrome',
-  'Dark blue',
-  'Malaysia',
-  'HTD51',
-  'https://images.clausen.app/models/765032fa012ae134.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '9e9d128cd27c4b7f',
-  'Batman & Robin Batmobile',
-  'Batmobile Collection 5-Pack'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '9e9d128cd27c4b7f',
-  '9e9d128cd27c4b7f',
-  '',
-  'Batmobile Collection 5-Pack',
-  '',
-  2024,
-  'Matte black',
-  '["Silver accents"]',
-  'MM5',
-  'Black/Plastic',
-  'Chrome',
-  'Black',
-  'Indonesia',
-  'JBG93',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'a2b854debb8a0ffc',
-  'Batman & Robin Batmobile',
-  'Batman'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'a2b854debb8a0ffc',
-  'a2b854debb8a0ffc',
-  '002/250',
-  'Batman',
-  '1/5',
-  2025,
-  'Black',
-  '["Silver accents"]',
-  'RA6',
-  'Black/Plastic',
-  'Chrome',
-  'Black',
-  'Malaysia',
-  'HYW60',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '554189a5f4826c1a',
-  'HW Ultimate T-Rex Transporter',
-  'HW Screen Time'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '554189a5f4826c1a',
-  '554189a5f4826c1a',
-  '055/250',
-  'HW Screen Time',
-  '4/10',
-  2024,
-  'Celtic blue',
-  '["White accents","HW68","Hot Wheels logo","simulated <a href=\"/wiki/TRAP5\" title=\"TRAP5\">TRAP5</a> wheel on sides"]',
-  'HRY50',
-  'Orange/Metal',
-  'Chrome',
-  'Orange tire, blue chrome TRAP5',
-  'Hot Wheels Let''s RaceNew ModelBase code(s): S40, S41, S42, S45',
-  'Malaysia',
-  'https://images.clausen.app/models/554189a5f4826c1a.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '40e8384b531e0962',
-  'HW Ultimate T-Rex Transporter',
-  'HW Screen Time'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '40e8384b531e0962',
-  '40e8384b531e0962',
-  '055/250',
-  'HW Screen Time',
-  '4/10',
-  2024,
-  'Red',
-  '["Yellow accents","HW68","Hot Wheels logo","simulated <a href=\"/wiki/TRAP5\" title=\"TRAP5\">TRAP5</a> wheel on sides"]',
-  'HTC84',
-  'Yellow/Metal',
-  'Chrome',
-  'Yellow tire, red chrome TRAP5',
-  'Hot Wheels Let''s RaceNew ModelBase code(s): T05, T09',
-  'Malaysia',
-  'https://images.clausen.app/models/40e8384b531e0962.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'd8cd9c6ee4b97838',
-  'Vespa 90 SS Super Sprint (1966)',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'd8cd9c6ee4b97838',
-  'd8cd9c6ee4b97838',
-  '071/250',
-  'Factory Fresh',
-  '6/10',
-  2024,
-  'Monza Red',
-  '["White Hot Wheels logo on sides and \"Vespa\" on front","SUPER SPRINT\" badging"]',
-  'MCCR',
-  'Red/Metal',
-  'Red',
-  'Black',
-  'Malaysia',
-  'HRY52',
-  'https://images.clausen.app/models/d8cd9c6ee4b97838.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '996aabeacf960c6e',
-  'Vespa 90 SS Super Sprint (1966)',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '996aabeacf960c6e',
-  '996aabeacf960c6e',
-  '071/250',
-  'Factory Fresh',
-  '6/10',
-  2024,
-  'Blu Estroverso',
-  '["White Hot Wheels logo on sides and \"Vespa\" on front","SUPER SPRINT\" badging"]',
-  'MCCR',
-  'Blue/Metal',
-  'Blue',
-  'Black',
-  'Malaysia',
-  'HTD23',
-  'https://images.clausen.app/models/996aabeacf960c6e.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'f5bd0d23cdd631f5',
-  'Mo-Stash',
-  'Experimotors'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'f5bd0d23cdd631f5',
-  'f5bd0d23cdd631f5',
-  '073/250',
-  'Experimotors',
-  '4/5',
-  2024,
-  'Maroon',
-  '["The INCREDIBLE MO-STASH <i>Special</i>","43","Faulty","Free!\" on sides"]',
-  'DD8',
-  'Black/Plastic',
-  'Chrome',
-  'Gray',
-  'Malaysia',
-  'HRY56',
-  'https://images.clausen.app/models/f5bd0d23cdd631f5.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '1026965c522221b9',
-  'Mo-Stash',
-  'Experimotors'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '1026965c522221b9',
-  '1026965c522221b9',
-  '073/250',
-  'Experimotors',
-  '4/5',
-  2024,
-  'Metalflake Grey',
-  '["The INCREDIBLE MO-STASH <i>Special</i>","43","Faulty","Free!\" on sides"]',
-  'Red chrome rim, Black DD8',
-  'Black/Plastic',
-  'Chrome',
-  'Black',
-  'Malaysia',
-  'HTD64',
-  'https://images.clausen.app/models/1026965c522221b9.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '6f60f4c612a2ff3a',
-  '''23 Ram 1500',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '6f60f4c612a2ff3a',
-  '6f60f4c612a2ff3a',
-  '097/250',
-  'Factory Fresh',
-  '7/10',
-  2024,
-  'Flame Red',
-  '["Detailed headlights and taillights","black side trim with RAM logo","black stripes &amp; Hot Wheels logo"]',
-  'BLOR',
-  'Gray/Plastic',
-  'Clear',
-  'Black',
-  'Malaysia',
-  'HXB33',
-  'https://images.clausen.app/models/6f60f4c612a2ff3a.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '6e45bec976004aa7',
-  '''23 Ram 1500',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '6e45bec976004aa7',
-  '6e45bec976004aa7',
-  '097/250',
-  'Factory Fresh',
-  '7/10',
-  2024,
-  'Hydro Blue',
-  '["Detailed headlights and taillights","black side trim with RAM logo","black stripes &amp; Hot Wheels logo"]',
-  'BLOR',
-  'Gray/Plastic',
-  'Light smoke tint',
-  'Black',
-  'Malaysia',
-  'HTC82',
-  'https://images.clausen.app/models/6e45bec976004aa7.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'ce2f69b0ff91cedd',
-  '''87 Audi quattro',
-  'HW Turbo'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'ce2f69b0ff91cedd',
-  'ce2f69b0ff91cedd',
-  '102/250',
-  'HW Turbo',
-  '2/5',
-  2024,
-  'Red',
-  '["Detailed headlights and trim","black Hot Wheels and fading Audi logos on sides","quattro\" on front license plate"]',
-  '10SP',
-  'Black/Plastic',
-  'Clear',
-  'Black',
-  'Malaysia',
-  'HRY55',
-  'https://images.clausen.app/models/ce2f69b0ff91cedd.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '3399a4da3cb66780',
-  '''87 Audi quattro',
-  'HW Turbo'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '3399a4da3cb66780',
-  '3399a4da3cb66780',
-  '102/250',
-  'HW Turbo',
-  '2/5',
-  2024,
-  'Black',
-  '["Detailed headlights and trim","white Hot Wheels and fading Audi logos on sides","quattro\" on front license plate"]',
-  '10SP',
-  'Black/Plastic',
-  'Clear',
-  'Black',
-  'Malaysia',
-  'HTD24',
-  'https://images.clausen.app/models/3399a4da3cb66780.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'e849c04aa75f50f2',
-  '''87 Audi quattro',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'e849c04aa75f50f2',
-  'e849c04aa75f50f2',
-  '016/250',
-  'Factory Fresh',
-  '2/5',
-  2025,
-  'Teal',
-  '["Detailed headlights and trim","white Hot Wheels and fading Audi logos on sides"]',
-  'White 10SP',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HYW72',
-  'https://images.clausen.app/models/e849c04aa75f50f2.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'a4b28cc3f6cdf615',
-  '''87 Audi quattro',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'a4b28cc3f6cdf615',
-  'a4b28cc3f6cdf615',
-  '016/250',
-  'Factory Fresh',
-  '2/5',
-  2025,
-  'Spectraflame seafoam green',
-  '["Detailed headlights and trim","white Hot Wheels and fading Audi logos on sides","TH logo on doors"]',
-  'White RR10SPM',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'JBC35',
-  'https://images.clausen.app/models/a4b28cc3f6cdf615.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c1e6a8252d504543',
-  'Flippin Fast',
-  'HW Celebration Racers'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c1e6a8252d504543',
-  'c1e6a8252d504543',
-  '103/250',
-  'HW Celebration Racers',
-  '6/10',
-  2024,
-  'Orange',
-  '["Large Hot Wheels logo","silvered engines on both sides","white stripes","small \"HWGRFX\" on front wing on orange side","partial white Hot Wheels flames","orange stripes","large \"HWGRFX\" on rear wing","68\" on black side"]',
-  'HRY59',
-  'Black/Plastic',
-  'Gray',
-  'Chrome Red Rim 5SP',
-  'World Autism Awareness DayNew ModelBase code(s): S48',
-  'Malaysia',
-  'https://images.clausen.app/models/c1e6a8252d504543.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'f9306d456fa30625',
-  'Flippin Fast',
-  'HW Celebration Racers'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'f9306d456fa30625',
-  'f9306d456fa30625',
-  '103/250',
-  'HW Celebration Racers',
-  '6/10',
-  2024,
-  'Dark green',
-  '["Large Hot Wheels logo","silvered engines on both sides","yellow stripes","small \"HWGRFX\" on front wing on black side","partial white Hot Wheels flames","black stripes","large \"HWGRFX\" on rear wing","68\" on yellow side"]',
-  'HTD44',
-  'Yellow/Plastic',
-  'Gray',
-  '5SP',
-  'World Autism Awareness DayNew ModelBase code(s):',
-  'Malaysia',
-  'https://images.clausen.app/models/f9306d456fa30625.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c405c1cdb80a01ca',
-  'Flippin Fast',
-  'Unknown'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c405c1cdb80a01ca',
-  'c405c1cdb80a01ca',
-  '?/250',
-  'Unknown',
-  '',
-  2024,
-  'Red',
-  '["Flippin Fast RACING\" on wings","AREK","<a href=\"/wiki/Leeway_Chang\" title=\"Leeway Chang\">LWC Racing</a>\" on sides"]',
-  'Unknown',
-  'White/Plastic',
-  'Yellow',
-  '5SP',
-  'Base code(s):',
-  'Malaysia',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '431e3965a00c9bd7',
-  'Silverado EV RST',
-  'HW Green Speed'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '431e3965a00c9bd7',
-  '431e3965a00c9bd7',
-  '110/250',
-  'HW Green Speed',
-  '8/10',
-  2024,
-  'Northsky Blue Metallic',
-  '["Detailed headlights","taillights","SILV<font color=\"blue\">E</font>RADO\" badging on sides","<font color=\"red\">RS</font>T\" badging on hood"]',
-  'Y5',
-  'Gray/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY63',
-  'https://images.clausen.app/models/431e3965a00c9bd7.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'cb08f0e6304b25af',
-  'Silverado EV RST',
-  'HW Green Speed'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'cb08f0e6304b25af',
-  'cb08f0e6304b25af',
-  '110/250',
-  'HW Green Speed',
-  '8/10',
-  2024,
-  'Black',
-  '["Detailed headlights","taillights","SILV<font color=\"blue\">E</font>RADO\" badging on sides","<font color=\"red\">RS</font>T\" badging on hood"]',
-  'Y5',
-  'Gray/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HTD57',
-  'https://images.clausen.app/models/cb08f0e6304b25af.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '3e99f53855aa7b43',
-  'Pontiac Aztek Custom',
-  'HW Modified'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '3e99f53855aa7b43',
-  '3e99f53855aa7b43',
-  '111/250',
-  'HW Modified',
-  '9/10',
-  2024,
-  'Metalflake robin egg blue',
-  '["Detailed headlights and trim","digital camouflage","Yokohama","K&amp;N","Hot Wheels logos","68\" on sides and hood"]',
-  'Y5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY61',
-  'https://images.clausen.app/models/3e99f53855aa7b43.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '14b25d795fa901f0',
-  'Pontiac Aztek Custom',
-  'HTD37'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '14b25d795fa901f0',
-  '14b25d795fa901f0',
-  'Red',
-  'HTD37',
-  '',
-  2024,
-  'New ModelBase code(s): T12, T13',
-  '["<a href=\"https://static.wikia.nocookie.net/hotwheels/images/2/22/HTD37.jpg/revision/latest?cb=20241027195130\" class=\"image\"><img alt=\"HTD37\" src=\"data:image/gif;base64","R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D\" decoding=\"async\" loading=\"lazy\" width=\"75\" height=\"50\" data-image-name=\"HTD37.jpg\" data-image-key=\"HTD37.jpg\" data-relevant=\"1\" data-src=\"https://static.wikia.nocookie.net/hotwheels/images/2/22/HTD37.jpg/revision/latest/scale-to-width-down/75?cb=20241027195130\" class=\"lazyload\"></a>"]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'https://images.clausen.app/models/14b25d795fa901f0.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '0e9ab5115934bf63',
-  'Cadillac Project GTP Hypercar',
-  'HW Turbo'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '0e9ab5115934bf63',
-  '0e9ab5115934bf63',
-  '123/250',
-  'HW Turbo',
-  '3/5',
-  2024,
-  'Satin black',
-  '["Cadillac badging","9\" &amp; \"<small>LE MONSTRE</small>\" on sides","golden trim surrounding roof"]',
-  'Gold E10SP',
-  'Black/Plastic',
-  'Light smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY60',
-  'https://images.clausen.app/models/0e9ab5115934bf63.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '44a1828796b38688',
-  'Cadillac Project GTP Hypercar',
-  'HW Turbo'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '44a1828796b38688',
-  '44a1828796b38688',
-  '123/250',
-  'HW Turbo',
-  '3/5',
-  2024,
-  'Metalflake dark blue',
-  '["Cadillac badging","9\" &amp; \"<small>LE MONSTRE</small>\" on sides","golden trim surrounding roof"]',
-  'Gold E10SP',
-  'Black/Plastic',
-  'Light smoke tint',
-  'Black',
-  'Malaysia',
-  'HTD35',
-  'https://images.clausen.app/models/44a1828796b38688.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'da7bc88bdd726060',
-  'Jaguar Mk1',
-  'HW Race Day'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'da7bc88bdd726060',
-  'da7bc88bdd726060',
-  '127/250',
-  'HW Race Day',
-  '6/10',
-  2024,
-  'Gray',
-  '["Detailed headlights","Castrol logo","12","GORDON WILLIAMS TONY WILLIAMS GRANT WILLIAMS","GRANT WILLIAMS RACING\" on sides","BUY 1\" front license plate"]',
-  'Chrome rim, Black DD8',
-  'Chrome/Plastic',
-  'Smoke tint',
-  'Red',
-  'Malaysia',
-  'HRY80',
-  'https://images.clausen.app/models/da7bc88bdd726060.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '0937d7ffbce125eb',
-  'Jaguar Mk1',
-  'HW Race Day'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '0937d7ffbce125eb',
-  '0937d7ffbce125eb',
-  '075/250',
-  'HW Race Day',
-  '2/10',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'HYX19',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '681970fe98fff340',
-  'Jaguar Mk1',
-  'Car Culture: Team Transport#74'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '681970fe98fff340',
-  '681970fe98fff340',
-  '',
-  'Car Culture: Team Transport#74',
-  '',
-  2025,
-  'British Racing Green',
-  '[]',
-  'D7RR',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Thailand',
-  'JBM29',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '822e4d723a571cc3',
-  'Ford Performance Supervan 4',
-  'HW Green Speed'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '822e4d723a571cc3',
-  '822e4d723a571cc3',
-  '128/250',
-  'HW Green Speed',
-  '9/10',
-  2024,
-  'White',
-  '["Standard Ford logo on sides &amp; rear; Ford PRO commercial fleet logo","Productivity Accelerated","&amp; light gray hatch pattern on sides; \"SUPERVAN\" &amp; blue","gray","&amp; silver pattern on rear; detailed taillights"]',
-  'B10SP',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY90',
-  'https://images.clausen.app/models/822e4d723a571cc3.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '9d82863e1ccac13a',
-  'Ford Performance Supervan 4',
-  'HW Green Speed'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '9d82863e1ccac13a',
-  '9d82863e1ccac13a',
-  '128/250',
-  'HW Green Speed',
-  '9/10',
-  2024,
-  'Metalflake Blue',
-  '["Standard Ford logo on sides &amp; rear; Ford PRO commercial fleet logo","Productivity Accelerated","&amp; white hatch pattern on sides; \"SUPERVAN\" &amp; white","gray","&amp; silver pattern on rear; detailed taillights"]',
-  'WL4',
-  'Black/Plastic',
-  'Smoke tint',
-  'Grey',
-  'Malaysia',
-  'HTD33',
-  'https://images.clausen.app/models/9d82863e1ccac13a.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c546facd5d6556d1',
-  'Ford Performance Supervan 4',
-  'HW First Response'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c546facd5d6556d1',
-  'c546facd5d6556d1',
-  '017/250',
-  'HW First Response',
-  '1/5',
-  2025,
-  'Red',
-  '["Yellow hazard striping","HW FIRST RESPONSE\" on sides","heart pulse graphic","light green chevrons","Ford logo on front quarterpanel","Treasure Hunt flame logo on rear quarterpanel","Supervan 4\" badging on rear"]',
-  'PR5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Lime green',
-  'Malaysia',
-  'JBC20',
-  'https://images.clausen.app/models/c546facd5d6556d1.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'fa130dedb2902168',
-  'Terra-Tracktyl',
-  'HW Track Champs'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'fa130dedb2902168',
-  'fa130dedb2902168',
-  '131/250',
-  'HW Track Champs',
-  '1/5',
-  2024,
-  'Black',
-  '["Pink","teal and white graphics","Hot Wheels logo","143","<a href=\"/wiki/Craig_Callum\" title=\"Craig Callum\">CC</a>","HWGRFX","<a href=\"/wiki/Mike_McClone\" title=\"Mike McClone\">CLONE</a>","<a href=\"/wiki/Jerry_Thienprasiddhi\" title=\"Jerry Thienprasiddhi\">JT</a>\" on sides"]',
-  'PR5',
-  'Dark gray/Metal',
-  'Smoke tint',
-  'Gray',
-  'Malaysia',
-  'HRY65',
-  'https://images.clausen.app/models/fa130dedb2902168.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'b1cd7c1ac5a9548c',
-  'Terra-Tracktyl',
-  'White PR5'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'b1cd7c1ac5a9548c',
-  'b1cd7c1ac5a9548c',
-  'Blue',
-  'White PR5',
-  '',
-  2024,
-  'HTD48',
-  '["<i><a href=\"/wiki/Hot_Wheels_Let%27s_Race\" title=\"Hot Wheels Let''s Race\">Hot Wheels Let''s Race</a></i><br><i><a href=\"/wiki/2024_New_Models\" title=\"2024 New Models\">New Model</a></i><br>Base code(s):"]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'https://images.clausen.app/models/b1cd7c1ac5a9548c.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '23ce4f86177e333b',
-  'Porsche 911 Carrera (2024)',
-  'Experimotors'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '23ce4f86177e333b',
-  '23ce4f86177e333b',
-  '134/250',
-  'Experimotors',
-  '5/5',
-  2024,
-  'ZAMAC',
-  '["Porsche badge on hood","black \"PORSCHE\" on right side","HOTWHEELS\" on left side","Hot Wheels logo on sides"]',
-  'New ModelBase code(s): S50, S51, T03',
-  'ZAMAC',
-  'HRY64',
-  'Malaysia',
-  'Unknown',
-  'Unknown',
-  'https://images.clausen.app/models/23ce4f86177e333b.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '860f4a37a0aa86fc',
-  'Porsche 911 Carrera (2024)',
-  'Experimotors'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '860f4a37a0aa86fc',
-  '860f4a37a0aa86fc',
-  '134/250',
-  'Experimotors',
-  '5/5',
-  2024,
-  'White',
-  '["Porsche badge on hood","blue \"PORSCHE\" on right side","HOTWHEELS\" on left side","Hot Wheels logo on sides"]',
-  'New ModelBase code(s): T27',
-  'Blue/Metal',
-  'HTD78',
-  'Malaysia',
-  'Unknown',
-  'Unknown',
-  'https://images.clausen.app/models/860f4a37a0aa86fc.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '43c67cba0f968515',
-  'Rapid Pulse',
-  'HW First Response'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '43c67cba0f968515',
-  '43c67cba0f968515',
-  '137/250',
-  'HW First Response',
-  '10/10',
-  2024,
-  'White',
-  '["Red stripes","EMERGENCY","RAPID PULSE","&amp; stylized star of life with Hot Wheels logos on sides"]',
-  'AeroDisc',
-  'Red/Metal',
   'Blue tint',
-  'Gray',
-  'Malaysia',
-  'HRY68',
-  'https://images.clausen.app/models/43c67cba0f968515.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '9f92dbe1787747ff',
-  'Rapid Pulse',
-  'HW First Response'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '9f92dbe1787747ff',
-  '9f92dbe1787747ff',
-  '137/250',
-  'HW First Response',
-  '10/10',
-  2024,
-  'Red',
-  '["Dark yellow stripes","EMERGENCY","RAPID PULSE","&amp; stylized star of life with Hot Wheels logos on sides"]',
-  'AeroDisc',
-  'ZAMAC',
-  'Blue tint',
-  'Gray',
-  'Malaysia',
-  'HTD71',
-  'https://images.clausen.app/models/9f92dbe1787747ff.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c637dc3d96cfdf6d',
-  'BMW M3 Wagon',
-  'HW Modified'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c637dc3d96cfdf6d',
-  'c637dc3d96cfdf6d',
-  '138/250',
-  'HW Modified',
-  '10/10',
-  2024,
-  'Metalflake Blue',
-  '["Artistic depiction of BMW M logos","90\" on hood and sides","Goodyear","Bilstein","Motul","<a href=\"/wiki/Andr%C3%A9s_Andrieu\" title=\"Andrés Andrieu\">A<small>A</small></a>\" logos on sides"]',
-  'WE10SP',
-  'Ice blue/Plastic',
-  'Smoke tint',
-  'White',
-  'Malaysia',
-  'HRY67',
-  'https://images.clausen.app/models/c637dc3d96cfdf6d.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'b367036c3bd7b49d',
-  'BMW M3 Wagon',
-  'HW Modified'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'b367036c3bd7b49d',
-  'b367036c3bd7b49d',
-  '138/250',
-  'HW Modified',
-  '10/10',
-  2024,
-  'Red',
-  '["Artistic depiction of BMW M logos","90\" on hood and sides","Goodyear","Bilstein","Motul","<a href=\"/wiki/Andr%C3%A9s_Andrieu\" title=\"Andrés Andrieu\">A<small>A</small></a>\" logos on sides"]',
-  'Gold E10SP',
-  'Red
-/
-Plastic',
-  'Tinted (Smoke)',
-  'Black',
-  'Malaysia',
-  'HTD89',
-  'https://images.clausen.app/models/b367036c3bd7b49d.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'bf9644a662d703e1',
-  'Hirohata Merc',
-  'Rod Squad'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'bf9644a662d703e1',
-  'bf9644a662d703e1',
-  '143/250',
-  'Rod Squad',
-  '5/5',
-  2024,
-  'Seafoam',
-  '["Silver side trim","fender badges","headlights"]',
-  'WWB5SP',
-  'Dark teal/Plastic',
-  'Clear',
   'Chrome',
   'Malaysia',
-  'HRY69',
-  'https://images.clausen.app/models/bf9644a662d703e1.webp'
-);
+  'hkj94',
+  'https://images.clausen.app/models/81761d3ed1de9631.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '65fbb9eb5075e280',
-  'Hirohata Merc',
-  'Rod Squad'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '65fbb9eb5075e280',
-  '65fbb9eb5075e280',
-  '143/250',
-  'Rod Squad',
-  '5/5',
-  2024,
-  'Metalflake apple green',
-  '["Silver side trim","fender badges","headlights"]',
-  'WWB5SP',
-  'Dark green/Plastic',
-  'Clear',
-  'Chrome',
-  'Malaysia',
-  'HTD66',
-  'https://images.clausen.app/models/65fbb9eb5075e280.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '27cec939af3e66a8',
-  'Hirohata Merc',
-  'Rod Squad'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '27cec939af3e66a8',
-  '27cec939af3e66a8',
-  '046/250',
-  'Rod Squad',
-  '4/10',
-  2025,
-  'Plum',
-  '["Silver side trim","white flames","headlights"]',
-  'WW5SP',
-  'White/Plastic',
-  'Clear',
-  'Chrome',
-  'Malaysia',
-  'HYW97',
-  'https://images.clausen.app/models/27cec939af3e66a8.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '97abab630afaa400',
-  'Hirohata Merc',
-  'Rod Squad'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '97abab630afaa400',
-  '97abab630afaa400',
-  '046/250',
-  'Rod Squad',
-  '4/10',
-  2025,
-  'Spectraflame purple',
-  '["Silver side trim","white flames","headlights","TH logo on rear wheel cover"]',
-  'WWMD',
-  'White/Plastic',
-  'Clear',
-  'Chrome',
-  'Malaysia',
-  'JBC36',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '5b5048f8375c9ab8',
-  'Birthday Burner',
-  'HW Celebration Racers'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '5b5048f8375c9ab8',
-  '5b5048f8375c9ab8',
-  '146/250',
-  'HW Celebration Racers',
-  '8/10',
-  2024,
-  'Brown',
-  '["Cake graphics","Hot Wheels logo on sides"]',
-  '5SP',
-  'Blue/Metal',
-  'Chrome',
-  'Red',
-  'Malaysia',
-  'HRY72',
-  'https://images.clausen.app/models/5b5048f8375c9ab8.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '0b322e8fcc4f693a',
-  'Birthday Burner',
-  'HW Celebration Racers'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '0b322e8fcc4f693a',
-  '0b322e8fcc4f693a',
-  '146/250',
-  'HW Celebration Racers',
-  '8/10',
-  2024,
-  'Pink',
-  '["Cake graphics","Hot Wheels logo on sides"]',
-  'White & pink 5SP',
-  'Seafoam/Metal',
-  'Light blue',
-  'Chrome',
-  'Malaysia',
-  'HTD83',
-  'https://images.clausen.app/models/0b322e8fcc4f693a.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '95fbf2e779522e8f',
-  'Mazda RX-3 (Tooned)',
-  'HW J-Imports'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '95fbf2e779522e8f',
-  '95fbf2e779522e8f',
-  '156/250',
-  'HW J-Imports',
-  '7/10',
-  2024,
-  'Orange',
-  '["Brown accents","early Toyo Tires logo","K&amp;N logo","ロータングクラーン","<i>MAZDA</i> <small>TOYO KOGYO CO. LTD</small>","123\" on sides"]',
-  'Black MicroOH5',
-  'Chrome/Plastic',
-  'Light smoke tint',
-  'Black with black rollcage',
-  'Malaysia',
-  'HRY71',
-  'https://images.clausen.app/models/95fbf2e779522e8f.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'd70f442c33932181',
-  'Mazda RX-3 (Tooned)',
-  'HW J-Imports'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'd70f442c33932181',
-  'd70f442c33932181',
-  '156/250',
-  'HW J-Imports',
-  '7/10',
-  2024,
-  'White',
-  '["Blue accents","early Toyo Tires logo","K&amp;N logo","ロータングクラーン","<i>MAZDA</i> <small>TOYO KOGYO CO. LTD</small>","123\" on sides"]',
-  'Copper MicroOH5',
-  'Chrome/Plastic',
-  'Smoke tint',
-  'Black with black rollcage',
-  'Malaysia',
-  'HTD77',
-  'https://images.clausen.app/models/d70f442c33932181.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c18a2ccb043eecb6',
-  'Porsche 904 Carrera GTS',
-  'HW Exotics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c18a2ccb043eecb6',
-  'c18a2ccb043eecb6',
-  '158/250',
-  'HW Exotics',
-  '1/10',
-  2024,
-  'Metalflake silver',
-  '["Blue striping on hood","Porsche logo on sides","86\" on hood","rear and sides","Carrera GTS\" badging on rear"]',
-  'DD8',
-  'Gray/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY73',
-  'https://images.clausen.app/models/c18a2ccb043eecb6.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2a440f18debc74f4',
-  'Porsche 904 Carrera GTS',
-  ''
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2a440f18debc74f4',
-  '2a440f18debc74f4',
-  'RSW',
-  '',
-  '',
-  2024,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'b8b3c834781bee15',
-  'Porsche 904 Carrera GTS',
-  'HW Exotics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'b8b3c834781bee15',
-  'b8b3c834781bee15',
-  '158/250',
-  'HW Exotics',
-  '1/10',
-  2024,
-  'Red',
-  '["Black striping on hood","Porsche logo on sides","86\" on hood","rear and sides","Carrera GTS\" badging on rear"]',
-  'DD8',
-  'Red/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HTD94',
-  'https://images.clausen.app/models/b8b3c834781bee15.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '3d97ca6e2a2bbec3',
-  'Porsche 904 Carrera GTS',
-  'HW Race Day?/10'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '3d97ca6e2a2bbec3',
-  '3d97ca6e2a2bbec3',
-  '?/250',
-  'HW Race Day?/10',
-  '',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'HYX41',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '3f97ce5311f4305f',
-  'Mailed It!',
-  'HW Art Cars'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '3f97ce5311f4305f',
-  '3f97ce5311f4305f',
-  '164/250',
-  'HW Art Cars',
-  '10/10',
-  2024,
-  'Metalflake dark blue',
-  '["Red and white stripes","smoke graphics","dog graphics","MATTY WUZ HERE","✦WOOF!✦\" on left door","HWPS <small>ALWAYS ON TIME!</small> KINDA\" on left rear panel","MAILED IT! <small>GO!</small>\" graffiti on right door","<a href=\"/wiki/Tyler_Charest\" title=\"Tyler Charest\">TC</a>","''24 ART CARS\" graffiti","HWPS <small>ALWAYS ON TIME!</small>\" on right rear panels","HWGRFX\" on wing","Y\" on roof"]',
-  'AeroDisc & DD8',
-  'Black/Plastic',
-  'Smoke tint',
-  'Gray',
-  'Malaysia',
-  'HRY82',
-  'https://images.clausen.app/models/3f97ce5311f4305f.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'ae5c73c485cca9de',
-  'Mailed It!',
-  'HW Art Cars'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'ae5c73c485cca9de',
-  'ae5c73c485cca9de',
-  '164/250',
-  'HW Art Cars',
-  '10/10',
-  2024,
-  'White',
-  '["Red and blue stripes","smoke graphics","dog graphics","MATTY WUZ HERE","✦WOOF!✦\" on left door","HWPS <small>ALWAYS ON TIME!</small> KINDA\" on left rear panel","MAILED IT! <small>GO!</small>\" graffiti on right door","<a href=\"/wiki/Tyler_Charest\" title=\"Tyler Charest\">TC</a>","''24 ART CARS\" graffiti","HWPS <small>ALWAYS ON TIME!</small>\" on right rear panels","HWGRFX\" on wing","Y\" on roof"]',
-  'AeroDisc & DD8',
-  'Black/Plastic',
-  'Smoke tint',
-  'Chrome',
-  'Malaysia',
-  'HTD91',
-  'https://images.clausen.app/models/ae5c73c485cca9de.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c7037eb833b25402',
-  'Mailed It!',
-  'HW Metro'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c7037eb833b25402',
-  'c7037eb833b25402',
-  '057/250',
-  'HW Metro',
-  '3/5',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'JBC22',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'b7f0fc62e882b01e',
-  'Later Crater',
+  '157531b65d45432b',
+  'volvo p1800 gasser',
   'HW Reverse Rake'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -3387,128 +135,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'b7f0fc62e882b01e',
-  'b7f0fc62e882b01e',
-  '166/250',
+  'c4ebb3891857ad7c',
+  '157531b65d45432b',
+  '153/250',
   'HW Reverse Rake',
-  '5/5',
+  '4/5',
   2024,
-  'Turquoise',
-  '["Orange &amp; Yellow stripes","Black stripes with White \"57","LATER CRATER","Hot Wheels logo","<a href=\"/wiki/Craig_Callum\" title=\"Craig Callum\">Ↄ•C</a>","<a href=\"/wiki/Leeway_Chang\" title=\"Leeway Chang\">LW</a>","Eng\" on sides"]',
-  'Grey AeroDisc',
-  'ZAMAC',
-  'Tinted',
-  'Black',
-  'Malaysia',
-  'HRY75',
-  'https://images.clausen.app/models/b7f0fc62e882b01e.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '25cfa9542713ac65',
-  'Rink Racer',
-  'HW Ride-Ons'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '25cfa9542713ac65',
-  '25cfa9542713ac65',
-  '168/250',
-  'HW Ride-Ons',
-  '5/5',
-  2024,
-  'Ultramarine',
-  '["Orange &amp; white stripes","&amp; Hot Wheels logo on sides"]',
-  'HRY79',
+  'matte azure',
+  '["43","LICKETY SPLIT","<a href=\"/wiki/Craig_Callum\" title=\"Craig Callum\">C. CALLUM</a>\" on sides","white stripes","white Hot Wheels logo on sides"]',
+  'Gray SK5SP & Gray 5SP',
   'Black/Plastic',
-  'Gray',
-  'Black RA6',
-  'Hot Wheels Let''s RaceNew ModelBase code(s): T04, T12, T13',
-  'Malaysia',
-  'https://images.clausen.app/models/25cfa9542713ac65.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'f24ca4e65854255b',
-  'Rink Racer',
-  'HW Ride-Ons'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'f24ca4e65854255b',
-  'f24ca4e65854255b',
-  '168/250',
-  'HW Ride-Ons',
-  '5/5',
-  2024,
-  'Green',
-  '["Black and White stripes","Hot Wheels logo on sides"]',
-  'HTF11',
-  'Black/Plastic',
+  'Orange tint',
   'Chrome',
-  'Black RA6',
-  'Hot Wheels Let''s RaceNew ModelBase code(s):',
   'Malaysia',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+  'htb92',
+  'https://images.clausen.app/models/8975c649153133b7.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '9ff8ab48234d9c34',
-  'Porsche 911 Rallye',
-  'HW Turbo'
+  '157531b65d45432b',
+  'volvo p1800 gasser',
+  'HW Reverse Rake'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -3525,450 +189,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '9ff8ab48234d9c34',
-  '9ff8ab48234d9c34',
-  '172/250',
-  'HW Turbo',
-  '5/5',
-  2024,
-  'White',
-  '["Detailed headlights","Rothmans Porsche livery","953","Roughroads PORSCHE\" on sides"]',
-  'White MC5',
-  'Gray/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY70',
-  'https://images.clausen.app/models/9ff8ab48234d9c34.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '376dc6ca56d3e0ed',
-  'Kowloon''d Hypervan',
-  'HW Metro'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '376dc6ca56d3e0ed',
-  '376dc6ca56d3e0ed',
-  '187/250',
-  'HW Metro',
-  '10/10',
-  2024,
-  'Green',
-  '["KOWLOON''D HYPERVAN","HWGRFX\" on right side","🔴TSIM SHA TSUI 尖沙咀\" on destination sign","<small>\"PRIVATE LIGHT BUS 16 SEATS 私家小型巴士十六座位\"</small> on sides of roof","white stripe","Hot Wheels","HWGRFX","Binh L. Fanny C. Alex A. Pitt L. <a href=\"/wiki/Eric_So\" title=\"Eric So\">Eric S.</a> Edmond F. Philip L. <a href=\"/wiki/Ronald_Wong\" title=\"Ronald Wong\">Ron W.</a>\" on roof"]',
-  'Gray AeroDisc (front), White rim, Black DD8 (back)',
-  'Black/Plastic',
-  'Smoke tint',
-  'Tan',
-  'Malaysia',
-  'HRY84',
-  'https://images.clausen.app/models/376dc6ca56d3e0ed.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '7cbd52fa9d078078',
-  'Kowloon''d Hypervan',
-  'HW Metro'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '7cbd52fa9d078078',
-  '7cbd52fa9d078078',
-  '006/250',
-  'HW Metro',
-  '1/5',
-  2025,
-  'White',
-  '["Black accents","goldenrod diagonals with yellow highlights","paw prints","Pet Transport\" on sides"]',
-  'White 5SP',
-  'Black/Plastic',
-  'Smoke tint',
-  'Red',
-  'Malaysia',
-  'HYW64',
-  'https://images.clausen.app/models/7cbd52fa9d078078.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'ea40352f6fab4084',
-  '''67 Lotus Type 49',
-  'HW Race Day'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'ea40352f6fab4084',
-  'ea40352f6fab4084',
-  '188/250',
-  'HW Race Day',
-  '8/10',
-  2024,
-  'British Racing Green',
-  '["Team Lotus Racing livery","5\" on sides &amp; top"]',
-  'L4',
-  'White/Metal',
-  'Yellow tint',
-  'White',
-  'Malaysia',
-  'HRY76',
-  'https://images.clausen.app/models/ea40352f6fab4084.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '3e15f055b35a7c3a',
-  '''67 Lotus Type 49',
-  'HW Race Day'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '3e15f055b35a7c3a',
-  '3e15f055b35a7c3a',
-  '188/250',
-  'HW Race Day',
-  '8/10',
-  2024,
-  'British Racing Green',
-  '["Team Lotus Racing livery","4\" on sides &amp; top"]',
-  'L4',
-  'Black/Metal',
-  'Yellow tint',
-  'Black',
-  'Malaysia',
-  'HTD99',
-  'https://images.clausen.app/models/3e15f055b35a7c3a.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '47c4da73849dd340',
-  'Track Dwagon',
-  'HW Track Champs'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '47c4da73849dd340',
-  '47c4da73849dd340',
-  '189/250',
-  'HW Track Champs',
+  '2921fcdb8889b993',
+  '157531b65d45432b',
+  '153/250',
+  'HW Reverse Rake',
   '4/5',
   2024,
-  'Matte light gray',
-  '["Black accents","009","速度\" on sides","Screeming Skullz iconography","<a href=\"/wiki/Dwayne_Vance\" title=\"Dwayne Vance\">VANCE</a>\" graffiti on sides"]',
-  'Front: White AeroDiscBack: White DD8',
-  'Hot pink/Metal',
-  'Hot pink tint',
-  'Metalflake gray',
-  'Malaysia',
-  'HRY74',
-  'https://images.clausen.app/models/47c4da73849dd340.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'f376b0e6d665cab3',
-  'Track Dwagon',
-  'HW Track Champs'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'f376b0e6d665cab3',
-  'f376b0e6d665cab3',
-  '189/250',
-  'HW Track Champs',
-  '4/5',
-  2024,
-  'Black',
-  '["Yellow accents","009","速度\" on sides","Screeming Skullz iconography","<a href=\"/wiki/Dwayne_Vance\" title=\"Dwayne Vance\">VANCE</a>\" graffiti on sides"]',
-  'Front: Grey Lip AeroDiscBack: Grey DD8',
-  'Matte Black/Metal',
-  'Yellow tint',
-  'Black',
-  'Malaysia',
-  'HTF12',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '259757db8639a6df',
-  '1966 Triumph Tiger 100',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '259757db8639a6df',
-  '259757db8639a6df',
-  '190/250',
-  'Factory Fresh',
-  '10/10',
-  2024,
-  'White',
-  '["Black accents","79\" on sides","silver exhaust pipes"]',
-  'MCCR',
-  'White/Metal',
-  'Clear',
-  'Black',
-  'Malaysia',
-  'HRY62',
-  'https://images.clausen.app/models/259757db8639a6df.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '889364ba24aea4dc',
-  '1966 Triumph Tiger 100',
-  'Factory Fresh'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '889364ba24aea4dc',
-  '889364ba24aea4dc',
-  '190/250',
-  'Factory Fresh',
-  '10/10',
-  2024,
-  'Blue',
-  '["White accents","79\" on sides","silver exhaust pipes"]',
-  'MCCR',
-  'Blue/Metal',
-  'Clear',
-  'White',
-  'Malaysia',
-  'HTD43',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c193a1c113dd150b',
-  'Formula E Gen3',
-  'HW Race Day'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c193a1c113dd150b',
-  'c193a1c113dd150b',
-  '193/250',
-  'HW Race Day',
-  '9/10',
-  2024,
-  'Black',
-  '["Blue gradient accents","Formula E \"e\" wordmark on sides and nosecone","Formula E logo on wing","ABB FIA Formula E World Championship logo on nosecone"]',
-  'HRY66',
+  'spectraflame light blue',
+  '["43","LICKETY SPLIT","<a href=\"/wiki/Craig_Callum\" title=\"Craig Callum\">C. CALLUM</a>\" on sides","white stripes","white Hot Wheels logo on sides","TH logo on front fender"]',
+  'Pink Rim RRDragD',
   'Black/Plastic',
-  'Black',
-  'B10SP',
-  'New ModelBase code(s): T17, T18, T19, T21',
+  'Pink tint',
+  'Chrome',
   'Malaysia',
-  'https://images.clausen.app/models/c193a1c113dd150b.webp'
-);
+  'htf37',
+  'https://images.clausen.app/models/fbd20243832833f6.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '78831d61b6f581af',
-  '''22 Ford Maverick Custom',
-  'HW Hot Trucks'
+  '157531b65d45432b',
+  'volvo p1800 gasser',
+  'Hot Wheels Legends Tour Themed Multipack'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -3985,57 +243,11 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '78831d61b6f581af',
-  '78831d61b6f581af',
-  '196/250',
-  'HW Hot Trucks',
-  '10/10',
-  2024,
-  'Metalflake Velocity Blue',
-  '["Detailed headlights and taillights","white stripes with red highlights","Motul","Bilstein","Ford logos on sides"]',
-  'Gray L4',
-  'Black/Plastic',
-  'Light smoke tint',
-  'Dark chrome',
-  'Malaysia',
-  'HRY78',
-  'https://images.clausen.app/models/78831d61b6f581af.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2ff6c1a83ef4d539',
-  '''22 Ford Maverick Custom',
-  'HW Modified'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2ff6c1a83ef4d539',
-  '2ff6c1a83ef4d539',
-  '049/250',
-  'HW Modified',
-  '1/5',
+  'ea3c4593f2f435ce',
+  '157531b65d45432b',
+  '',
+  'Hot Wheels Legends Tour Themed Multipack',
+  '',
   2025,
   '',
   '[]',
@@ -4043,24 +255,518 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Malaysia',
-  'HYX00',
-  'https://images.clausen.app/models/2ff6c1a83ef4d539.webp'
-);
+  'Thailand',
+  'jby78',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '927387a470e202b3',
-  'Toyota GR86 Cup',
+  '7a0a94cc3f257e9f',
+  'ford escort rs2000',
+  'Retro Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '1b7562ef6baeaf8b',
+  '7a0a94cc3f257e9f',
+  '004/250',
+  'Retro Racers',
+  '1/10',
+  2023,
+  'white',
+  '["Detailed taillights","eggshell Blue","mid Blue &amp; navy Blue stripes","RS2000X\" on sides","HWS RS2K\" license plate"]',
+  'Gray AeroDisc & Grey 5SP',
+  'White/Plastic',
+  'Light Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg25',
+  'https://images.clausen.app/models/f5bbe01ded64745b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7a0a94cc3f257e9f',
+  'ford escort rs2000',
+  'Red Edition'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'fbcca95e99452023',
+  '7a0a94cc3f257e9f',
+  '004/250',
+  'Red Edition',
+  '1/12',
+  2023,
+  'black',
+  '["Detailed taillights","pale Pink","Red &amp; Maroon stripes","RS2000X\" &amp; \"RED\" on sides","HWS RS2K\" license plate"]',
+  'Gold AeroDisc & Gold 5SP',
+  'White/Plastic',
+  'Light Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkl43',
+  'https://images.clausen.app/models/b2fa0fe51b1f7af8.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7a0a94cc3f257e9f',
+  'ford escort rs2000',
+  'Retro Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6aba14cc4cb9815c',
+  '7a0a94cc3f257e9f',
+  '004/250',
+  'Retro Racers',
+  '1/10',
+  2023,
+  'red',
+  '["Detailed taillights","Yellow and White stripes","RS2000X\" on sides","HWS RS2K\" license plate"]',
+  'AeroDisc & 5SP',
+  'Red/Plastic',
+  'Light Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkj77',
+  'https://images.clausen.app/models/18078c41d6e313ac.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7a0a94cc3f257e9f',
+  'ford escort rs2000',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '026c0cad1db091a1',
+  '7a0a94cc3f257e9f',
+  '023/250',
+  'Factory Fresh',
+  '1/10',
+  2024,
+  'neon green',
+  '["Detailed headlights and taillights","RS2000 X\" license plate"]',
+  '5SP',
+  'Green/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htc48',
+  'https://images.clausen.app/models/90794a4eb680c79f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7a0a94cc3f257e9f',
+  'ford escort rs2000',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd53ec5175e6555e4',
+  '7a0a94cc3f257e9f',
+  '023/250',
+  'Factory Fresh',
+  '1/10',
+  2024,
+  'spectraflame green',
+  '["Detailed headlights and taillights","RS2000 X\" license plate","TH logo on rear"]',
+  'RR8SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htf30',
+  'https://images.clausen.app/models/030aa980aa51cb2b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3644f2905554314d',
+  'dessert drifter',
+  'Sweet Rides'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'cc80697e8268e1a4',
+  '3644f2905554314d',
+  '008/250',
+  'Sweet Rides',
+  '1/5',
+  2023,
+  'transparent green',
+  '["Lime graphic","Dessert Drifter\" on wing"]',
+  '5SP',
+  'Chrome/Plastic',
+  'White',
+  'Gray',
+  'Malaysia',
+  'hkg24',
+  'https://images.clausen.app/models/b85cf3e54e021510.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3644f2905554314d',
+  'dessert drifter',
+  'Sweet Rides'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'aff43bf7ff3fbf48',
+  '3644f2905554314d',
+  '008/250',
+  'Sweet Rides',
+  '1/5',
+  2023,
+  'transparent red',
+  '["Cherry graphic","Dessert Drifter\" on wing"]',
+  '5SP',
+  'Grey/Plastic',
+  'White',
+  'Gray',
+  'Malaysia',
+  'hkj90',
+  'https://images.clausen.app/models/532afc5878a9311c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3644f2905554314d',
+  'dessert drifter',
+  'Fast Foodie'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '78629518392805fe',
+  '3644f2905554314d',
+  '162/250',
+  'Fast Foodie',
+  '2/5',
+  2024,
+  'transparent blue',
+  '["Blueberry graphic","Dessert Drifter\" on wing"]',
+  '5SP',
+  'Grey/Plastic',
+  'White',
+  'Gray',
+  'Malaysia',
+  'htb47',
+  'https://images.clausen.app/models/3b0447ffecce14b5.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3644f2905554314d',
+  'dessert drifter',
+  'Fast Foodie'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6a3110e948827ca9',
+  '3644f2905554314d',
+  '162/250',
+  'Fast Foodie',
+  '2/5',
+  2024,
+  'transparent yellow',
+  '["Lemon graphic","Dessert Drifter\" on wing"]',
+  '5SP',
+  'Chrome/Plastic',
+  'White',
+  'Gray',
+  'Malaysia',
+  'htd87',
+  'https://images.clausen.app/models/cc2a7e6951d8f554.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4cedf39299fad62a',
+  'nissan patrol custom',
   'HW J-Imports'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4077,36 +783,476 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '927387a470e202b3',
-  '927387a470e202b3',
-  '203/250',
+  '49e256190cfa4a33',
+  '4cedf39299fad62a',
+  '020/250',
   'HW J-Imports',
-  '10/10',
+  '1/10',
+  2023,
+  'ivory',
+  '["Red &amp; orange stripes","Motul logo","HILL CLIMB RACE TEAM","<small>NISSAN</small> PATROL\" on sides"]',
+  'Grey BLOR',
+  'Black/Plastic',
+  'Smoke tint',
+  'Dark chrome',
+  'Malaysia',
+  'hkg23',
+  'https://images.clausen.app/models/2ece6dfe774c60a4.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4cedf39299fad62a',
+  'nissan patrol custom',
+  'HW J-Imports'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6e98269c9ca86952',
+  '4cedf39299fad62a',
+  '020/250',
+  'HW J-Imports',
+  '1/10',
+  2023,
+  'white',
+  '["Gold","red &amp; black stripes","Motul logo","HILL CLIMB RACE TEAM","<small>NISSAN</small> PATROL\" on sides"]',
+  'Gold BLOR',
+  'Black/Plastic',
+  'Smoke tint',
+  'Dark chrome',
+  'Malaysia',
+  'hkl46',
+  'https://images.clausen.app/models/35b25139a5644f2d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4cedf39299fad62a',
+  'nissan patrol custom',
+  'HW J-Imports'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '81257f75aa0b8c5b',
+  '4cedf39299fad62a',
+  '020/250',
+  'HW J-Imports',
+  '1/10',
+  2023,
+  'dark blue',
+  '["Red &amp; white stripes","Motul logo","HILL CLIMB RACE TEAM","<small>NISSAN</small> PATROL\" on sides"]',
+  'White BLOR',
+  'Black/Plastic',
+  'Smoke tint',
+  'Dark chrome',
+  'Malaysia',
+  'hkk61',
+  'https://images.clausen.app/models/fba17b5116abbae1.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4cedf39299fad62a',
+  'nissan patrol custom',
+  'HW First Response'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '88bd258608eddfda',
+  '4cedf39299fad62a',
+  '034/250',
+  'HW First Response',
+  '5/10',
   2024,
-  'Race Team Blue',
-  '["Detailed headlights and badging","Toyota Gazoo Racing","Roman Empire logos","70","TONI BREIDINGER\" on sides","Hot Wheels logos on sides and hood","detailed hood elements"]',
-  'GY5',
+  'red',
+  '["Snow splatter","yellow and goldenrod diagonals","MOUNTAIN RESCUE","HOT WHEELS FIRST RESPONSE\" on sides"]',
+  'Black & White BLOR',
+  'White/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htb59',
+  'https://images.clausen.app/models/d3bec55a108801a2.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4cedf39299fad62a',
+  'nissan patrol custom',
+  'HW First Response'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd6ae5c4c21b4e9b8',
+  '4cedf39299fad62a',
+  '034/250',
+  'HW First Response',
+  '5/10',
+  2024,
+  'green',
+  '["Snow splatter","yellow and goldenrod diagonals","MOUNTAIN RESCUE","HOT WHEELS FIRST RESPONSE\" on sides"]',
+  'Black & White BLOR',
+  'White/Plastic',
+  'Blue tint',
+  'Black',
+  'Malaysia',
+  'htc89',
+  'https://images.clausen.app/models/0d79d5b8f7a68d86.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a66e826e6c8d661a',
+  'draggin'' wagon',
+  'Experimotors'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'aa39f444f80c56a3',
+  'a66e826e6c8d661a',
+  '022/250',
+  'Experimotors',
+  '1/5',
+  2023,
+  'red',
+  '["1\" on wing","Hot Wheels logo on side panels"]',
+  'HKG26',
+  'ZAMAC',
+  'Black',
+  'SK5SP/5SP',
+  'New ModelBase code(s): R32, R35, R37',
+  'malaysia',
+  'https://images.clausen.app/models/bbe035a4f17c5b6c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a66e826e6c8d661a',
+  'draggin'' wagon',
+  'Experimotors'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '10419667488a591b',
+  'a66e826e6c8d661a',
+  '022/250',
+  'Experimotors',
+  '1/5',
+  2023,
+  'blue',
+  '["1\" on wing","Hot Wheels logo on side panels"]',
+  'HKK71',
+  'ZAMAC',
+  'Black',
+  'SK5SP/5SP',
+  'New ModelBase code(s): R49, R50',
+  'malaysia',
+  'https://images.clausen.app/models/e00b066e72a3f5b3.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a66e826e6c8d661a',
+  'draggin'' wagon',
+  'HW Ride-Ons'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bb7f880ef577d179',
+  'a66e826e6c8d661a',
+  '141/250',
+  'HW Ride-Ons',
+  '4/5',
+  2024,
+  'yellow',
+  '["DRAGGIN'' WAGON\" on sides","black stripes on sides","2\" on spoiler","white Hot Wheels logo on sides","Treasure Hunt logo on sides"]',
+  'HTF21',
+  'ZAMAC',
+  'Black',
+  'SK5SP/5SP',
+  'Hot Wheels Let''s RaceTreasure HuntBase code(s): T03, T04',
+  'malaysia',
+  'https://images.clausen.app/models/0ceecefb9d3da8d8.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '19aebc4d17a05e5e',
+  'tesla model y',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '44aa8e23f47e63b2',
+  '19aebc4d17a05e5e',
+  '037/250',
+  'HW Green Speed',
+  '1/10',
+  2023,
+  'pearl white',
+  '["Detailed headlights","taillights and trim","<u>DUAL MOTOR</u>\" badging on rear","GIGATXS\" license plate"]',
+  'Black 10SP',
   'Black/Plastic',
   'Smoke tint',
   'White',
   'Malaysia',
-  'HRY77',
-  'https://images.clausen.app/models/927387a470e202b3.webp'
-);
+  'hkg28',
+  'https://images.clausen.app/models/62a6f3ae2b1411fd.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'c00dd166b7c240f0',
-  'Toyota GR86 Cup',
-  'Compact Kings'
+  '19aebc4d17a05e5e',
+  'tesla model y',
+  'Red Edition'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4123,82 +1269,1772 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'c00dd166b7c240f0',
-  'c00dd166b7c240f0',
-  '079/250',
-  'Compact Kings',
-  '1/10',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'HYX23',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '03d0ca581ce980ba',
-  'Pagani Utopia',
-  'HW Exotics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '03d0ca581ce980ba',
-  '03d0ca581ce980ba',
-  '205/250',
-  'HW Exotics',
-  '5/10',
-  2024,
-  'Grigio Rinascimento',
-  '["Detailed headlights and trim","Horacio Pagani\" signature on sides","Utopia\" on rear"]',
+  '76f40b85795a7471',
+  '19aebc4d17a05e5e',
+  '037/250',
+  'Red Edition',
+  '3/12',
+  2023,
+  'midnight cherry red',
+  '["Detailed headlights","taillights and trim","<u>DUAL MOTOR</u>\" badging on rear","GIGATXS\" license plate"]',
   '10SP',
-  'Off-white/Plastic',
+  'Black/Plastic',
   'Smoke tint',
-  'Red',
+  'Black',
   'Malaysia',
-  'HRY83',
-  'https://images.clausen.app/models/03d0ca581ce980ba.webp'
-);
+  'hkl53',
+  'https://images.clausen.app/models/2c23a96d0f5f0d8b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '2ad32ee4a20ecc6c',
-  'Honda S800 Racing',
+  '19aebc4d17a05e5e',
+  'tesla model y',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ec4c7cbda0dfc732',
+  '19aebc4d17a05e5e',
+  '037/250',
+  'HW Green Speed',
+  '1/10',
+  2023,
+  'midnight silver metallic',
+  '["Detailed headlights","taillights and trim","<u>DUAL MOTOR</u>\" badging on rear","GIGATXS\" license plate"]',
+  '10SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkk20',
+  'https://images.clausen.app/models/8a2c569f687c0f8b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '19aebc4d17a05e5e',
+  'tesla model y',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f7d1acdcf0009438',
+  '19aebc4d17a05e5e',
+  '015/250',
+  'HW Green Speed',
+  '3/10',
+  2024,
+  'deep blue metallic',
+  '["Detailed headlights","taillights and trim","<u>DUAL MOTOR</u>\" badging on rear","EVSPEED\" license plate"]',
+  '10SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htb80',
+  'https://images.clausen.app/models/4ae4cba9acddf076.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '19aebc4d17a05e5e',
+  'tesla model y',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7cb6ce1461c1ef97',
+  '19aebc4d17a05e5e',
+  '015/250',
+  'HW Green Speed',
+  '3/10',
+  2024,
+  'solid black',
+  '["Detailed headlights","taillights and trim","<u>DUAL MOTOR</u>\" badging on rear","EVSPEED\" license plate"]',
+  '10SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htc93',
+  'https://images.clausen.app/models/b032087d7105c238.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4e0f12602ff4aacc',
+  'rally speciale',
+  'HW Track Champs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '4ba7d2019bcc1d32',
+  '4e0f12602ff4aacc',
+  '040/250',
+  'HW Track Champs',
+  '1/5',
+  2023,
+  'black',
+  '["Blue","Red and White accents","Castrol and Bilstein logos","29","<i><a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">SONNY</a></i>\" on side and hood"]',
+  'White & Chrome Red AeroDisc',
+  'Red/Metal',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'hkg29',
+  'https://images.clausen.app/models/bb91a10cfa9e1071.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4e0f12602ff4aacc',
+  'rally speciale',
+  'HW Track Champs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6fea8a9ccf9de06b',
+  '4e0f12602ff4aacc',
+  '040/250',
+  'HW Track Champs',
+  '1/5',
+  2023,
+  'white',
+  '["Green","Red and White accents","Castrol and Bilstein logos","29","<i><a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">SONNY</a></i>\" on side and hood"]',
+  'Gold AeroDisc',
+  'Green/Metal',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkk37',
+  'https://images.clausen.app/models/2c0ac3dfa1ee9c2d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4e0f12602ff4aacc',
+  'rally speciale',
+  'HW Dirt'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a1a4da8928c6ae73',
+  '4e0f12602ff4aacc',
+  '179/250',
+  'HW Dirt',
+  '2/10',
+  2024,
+  'red',
+  '["White accents","K-HULL","CVAUGHN","95","HWGRFX\" on sides","hood and roof"]',
+  'Bronze rim, Brown AeroDisc',
+  'White/Metal',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htb25',
+  'https://images.clausen.app/models/e9d43e845b92ab27.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4e0f12602ff4aacc',
+  'rally speciale',
+  'HW Dirt'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '97d25ff064f08136',
+  '4e0f12602ff4aacc',
+  '179/250',
+  'HW Dirt',
+  '2/10',
+  2024,
+  'navy blue',
+  '["Yellow accents","K-HULL","CVAUGHN","95","HWGRFX\" on sides","hood and roof"]',
+  'Bronze rim, Brown AeroDisc',
+  'Blue/Metal',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htf06',
+  'https://images.clausen.app/models/244f4163385e5cc3.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '082c3bf5a13277ed',
+  'batman forever batmobile',
+  'Batman'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a88cba2a513a2dde',
+  '082c3bf5a13277ed',
+  '055/250',
+  'Batman',
+  '2/5',
+  2023,
+  'black',
+  '["Blue accents"]',
+  'HKG38',
+  'Black/Plastic',
+  'Chrome',
+  'AeroDisc',
+  'New ModelBase code(s): R39, R40, R42',
+  'malaysia',
+  'https://images.clausen.app/models/ed8ac05505869498.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '082c3bf5a13277ed',
+  'batman forever batmobile',
+  'Batman'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7e08abe0b95e2553',
+  '082c3bf5a13277ed',
+  '055/250',
+  'Batman',
+  '2/5',
+  2023,
+  'matte metalflake gray',
+  '["Blue accents"]',
+  'HKJ73',
+  'Gray/Plastic',
+  'Chrome',
+  'Gray AeroDisc',
+  'New ModelBase code(s): S05, S09',
+  'malaysia',
+  'https://images.clausen.app/models/8e3caf3cfbeade4b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '082c3bf5a13277ed',
+  'batman forever batmobile',
+  'Batman'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6609528c48dc7e15',
+  '082c3bf5a13277ed',
+  '106/250',
+  'Batman',
+  '3/5',
+  2024,
+  'black',
+  '["Blue accents","Treasure Hunt logo on left-side windshield"]',
+  'HTF19',
+  'Black/Plastic',
+  'Chrome Blue',
+  'RA6',
+  'Treasure HuntBase code(s): S48, S49',
+  'malaysia',
+  'https://images.clausen.app/models/9a8303ed1db07d37.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '082c3bf5a13277ed',
+  'batman forever batmobile',
+  '85th Anniversary Batmobile Collection'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '1973dcac1a070dc7',
+  '082c3bf5a13277ed',
+  '',
+  '85th Anniversary Batmobile Collection',
+  '',
+  2024,
+  'black',
+  '["Blue accents"]',
+  'JBX17',
+  'Black/Metal',
+  'Chrome',
+  'DISH',
+  'San Diego Comic-Con ExclusiveBase code(s):',
+  'indonesia',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '082c3bf5a13277ed',
+  'batman forever batmobile',
+  'Pop Culture: Batman Forever'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '1973dcac1a070dc7',
+  '082c3bf5a13277ed',
+  '',
+  'Pop Culture: Batman Forever',
+  '',
+  2024,
+  'black',
+  '["Blue accents"]',
+  'HVJ39',
+  'Black/Metal',
+  'Chrome',
+  'Light blueDISH',
+  'New Die-Cast ChassisBase code(s): T31',
+  'indonesia',
+  'https://images.clausen.app/models/4b8c9702e8152105.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '77ee381d63ba21c9',
+  'brickin'' delivery',
+  'Brick Rides'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a0e2fd7161c14409',
+  '77ee381d63ba21c9',
+  '058/250',
+  'Brick Rides',
+  '3/5',
+  2023,
+  'green',
+  '["BRICKIN'' DELIVERY\" on cargo compartment"]',
+  'Yellow & orange 5SP',
+  'ZAMAC',
+  'Blue tint',
+  'Yellow',
+  'Malaysia',
+  'hkg31',
+  'https://images.clausen.app/models/bde5d024f39cc6bb.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '77ee381d63ba21c9',
+  'brickin'' delivery',
+  'Brick Rides'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7e964bec7a32293b',
+  '77ee381d63ba21c9',
+  '058/250',
+  'Brick Rides',
+  '3/5',
+  2023,
+  'yellow',
+  '["BRICKIN'' DELIVERY","Hot Wheels logo","&amp; flying MEGA block with white &amp; turquoise stripes on cargo compartment"]',
+  'Black & blue 5SP',
+  'ZAMAC',
+  'Orange tint',
+  'Blue',
+  'Malaysia',
+  'hkj87',
+  'https://images.clausen.app/models/a7fe92b09051a273.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '77ee381d63ba21c9',
+  'brickin'' delivery',
+  'HW Metro'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6a9ad57fdc3cb7b1',
+  '77ee381d63ba21c9',
+  '104/250',
+  'HW Metro',
+  '1/10',
+  2024,
+  'orange',
+  '["BRICKIN'' DELIVERY","Hot Wheels logo","dark orange stripe","&amp; yellow","orange","&amp; red flames on cargo compartment"]',
+  'Black & red 5SP',
+  'ZAMAC',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htb13',
+  'https://images.clausen.app/models/1318a887fbe1daaf.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'bd71793dd7d3d3e9',
+  'ducati desertx',
+  'HW Moto'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b73d110bf83c7928',
+  'bd71793dd7d3d3e9',
+  '067/250',
+  'HW Moto',
+  '1/5',
+  2023,
+  'star white silk',
+  '["Detailed headlights","red and white diagonals","<small>DUCATI</small> <big>DESERTX</big>\" on red diagonal"]',
+  'ORMC',
+  'Black / Metal',
+  'Black',
+  'Black',
+  'Malaysia',
+  'hkg32',
+  'https://images.clausen.app/models/0edd02a776d77247.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'bd71793dd7d3d3e9',
+  'ducati desertx',
+  'HKK31'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '57071358bcd0500c',
+  'bd71793dd7d3d3e9',
+  'superlight yellow',
+  'HKK31',
+  '',
+  2024,
+  'new modelbase code(s): s19',
+  '["<a href=\"https://static.wikia.nocookie.net/hotwheels/images/3/35/HKK31.jpg/revision/latest?cb=20230729090346\" class=\"image\"><img alt=\"HKK31\" src=\"data:image/gif;base64","R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D\" decoding=\"async\" loading=\"lazy\" width=\"75\" height=\"100\" data-image-name=\"HKK31.jpg\" data-image-key=\"HKK31.jpg\" data-relevant=\"1\" data-src=\"https://static.wikia.nocookie.net/hotwheels/images/3/35/HKK31.jpg/revision/latest/scale-to-width-down/75?cb=20230729090346\" class=\"lazyload\"></a>"]',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/540e8edb5cf1e6be.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'bd71793dd7d3d3e9',
+  'ducati desertx',
+  'HW Dirt'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '64e81daa07e9e900',
+  'bd71793dd7d3d3e9',
+  '197/250',
+  'HW Dirt',
+  '3/10',
+  2024,
+  'star white silk',
+  '["Detailed headlights","black and red trapezoid near headlight","black","red and gray graphics","Rally\" and \"DesertX\" inside trapezoid","DUCATI\" on both sides"]',
+  'Brown ORMC',
+  'Black / Metal',
+  'Black',
+  'Black',
+  'Malaysia',
+  'htb26',
+  'https://images.clausen.app/models/f59d51a3dd3c5f6a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '301f2db4bb583cc6',
+  'rimac nevera',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b39039b655d99b2e',
+  '301f2db4bb583cc6',
+  '070/250',
+  'HW Green Speed',
+  '4/10',
+  2023,
+  'riviera blue',
+  '["Detailed headlights","taillights and trim"]',
+  'Y5',
+  'Blue/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg36',
+  'https://images.clausen.app/models/b4b0874d9e9372c6.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '301f2db4bb583cc6',
+  'rimac nevera',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7fb47952c60fd486',
+  '301f2db4bb583cc6',
+  '070/250',
+  'HW Green Speed',
+  '4/10',
+  2023,
+  'galactic white',
+  '["Detailed headlights","taillights and trim"]',
+  'Y5',
+  'White/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkk21',
+  'https://images.clausen.app/models/4ba857f9c78823cb.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '301f2db4bb583cc6',
+  'rimac nevera',
+  'Unknown'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7fd8816510bc15a6',
+  '301f2db4bb583cc6',
+  '',
+  'Unknown',
+  '',
+  2025,
+  'red',
+  '["Detailed headlights","taillights and trim"]',
+  'Chrome red J5',
+  'Red / Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'unknown',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '79462b09acd437c3',
+  'audi 90 quattro',
+  'Retro Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '8a619c76da8af67f',
+  '79462b09acd437c3',
+  '077/250',
+  'Retro Racers',
+  '6/10',
+  2023,
+  'white',
+  '["Audi Sport racing livery","4","Audi quattro","Goodyear logo","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\"><b>F</b>campbell</a>","CVAUGHN","<a href=\"/wiki/Dwayne_Vance\" title=\"Dwayne Vance\">DAV</a>","GT\" on sides"]',
+  'White AeroDisc',
+  'Black/Plastic',
+  'Light smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg35',
+  'https://images.clausen.app/models/8d4f270a7b7a0451.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '79462b09acd437c3',
+  'audi 90 quattro',
+  'Retro Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '9a8337fe23e8e864',
+  '79462b09acd437c3',
+  '077/250',
+  'Retro Racers',
+  '6/10',
+  2023,
+  'red',
+  '["Audi Sport racing livery","4","Audi quattro","Goodyear logo","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\"><b>F</b>campbell</a>","CVAUGHN","<a href=\"/wiki/Dwayne_Vance\" title=\"Dwayne Vance\">DAV</a>","GT\" on sides"]',
+  'White AeroDisc',
+  'Black/Plastic',
+  'Light smoke tint',
+  'Black',
+  'Malaysia',
+  'hkj81',
+  'https://images.clausen.app/models/63f57f351eb79c1b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '79462b09acd437c3',
+  'audi 90 quattro',
+  'HW Turbo'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '07902d2e9323ec34',
+  '79462b09acd437c3',
+  '144/250',
+  'HW Turbo',
+  '4/5',
+  2024,
+  'dark blue',
+  '["White and red stripes on sides and hood","Audi Sport","Audi quattro","Audi logo on sides","24\" on sides and hood","various sponsors"]',
+  'White AeroDisc',
+  'Black/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htc64',
+  'https://images.clausen.app/models/47af1925d756fd1f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '79462b09acd437c3',
+  'audi 90 quattro',
+  'HW Turbo'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b0c838d3fcf84012',
+  '79462b09acd437c3',
+  '144/250',
+  'HW Turbo',
+  '4/5',
+  2024,
+  'spectraflame dark blue',
+  '["White and red stripes on sides and hood","Audi Sport","Audi quattro","Audi logo on sides","24\" on sides and hood","various sponsors","TH logo on door"]',
+  'White, Gold Rim RRA',
+  'Black/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htf36',
+  'https://images.clausen.app/models/2ba47944487882c5.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '79462b09acd437c3',
+  'audi 90 quattro',
+  'MEGA Showcase Hot Wheels'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '51048023dd524c28',
+  '79462b09acd437c3',
+  '',
+  'MEGA Showcase Hot Wheels',
+  '',
+  2024,
+  'white',
+  '["Audi Sport racing livery","4","Audi quattro","Goodyear logo","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\"><b>F</b>campbell</a>","CVAUGHN","<a href=\"/wiki/Dwayne_Vance\" title=\"Dwayne Vance\">DAV</a>","GT\" on sides"]',
+  'White AeroDisc',
+  'Black/Plastic',
+  'Light smoke tint',
+  'Black',
+  'Malaysia',
+  'hry20',
+  'https://images.clausen.app/models/4ff9eb54e2397985.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '36a7db2694ee0406',
+  'hw braille racer - twin mill',
+  'Experimotors'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '38b98c79748386f5',
+  '36a7db2694ee0406',
+  '085/250',
+  'Experimotors',
+  '4/5',
+  2023,
+  'white',
+  '["Gray racing stripes"]',
+  'HKG33',
+  'White/Plastic',
+  'White',
+  'Gray outer rim, White OH5',
+  'National Federation of the BlindNew ModelBase code(s): R42, R44, R45, R47',
+  'malaysia',
+  'https://images.clausen.app/models/10340785a46c7f40.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '36a7db2694ee0406',
+  'hw braille racer - twin mill',
+  'Experimotors'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0f9238620fffad4d',
+  '36a7db2694ee0406',
+  '085/250',
+  'Experimotors',
+  '4/5',
+  2023,
+  'zamac',
+  '["Gray racing stripes"]',
+  'HKK74',
+  'Polished Chrome/Plastic',
+  'Polished Chrome',
+  'Chrome rim, Gray OH5',
+  'National Federation of the BlindNew ModelBase code(s): S08, S10, S13, S14',
+  'malaysia',
+  'https://images.clausen.app/models/d555161278a289d9.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '36a7db2694ee0406',
+  'hw braille racer - twin mill',
+  'HW Celebration Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '003a7cae02acd442',
+  '36a7db2694ee0406',
+  '027/250',
+  'HW Celebration Racers',
+  '1/10',
+  2024,
+  'matte crimson',
+  '["Hot Pink and White stripes"]',
+  'HRY95',
+  'White/Plastic',
+  'Black',
+  'Black rim, Gray AeroDisc',
+  'World Braille Day 2024Base code(s): S36, S41',
+  'malaysia',
+  'https://images.clausen.app/models/f5e66819d55c89ce.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '36a7db2694ee0406',
+  'hw braille racer - twin mill',
+  'HW Celebration Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '13424980ae34feab',
+  '36a7db2694ee0406',
+  '027/250',
+  'HW Celebration Racers',
+  '1/10',
+  2024,
+  'matte green',
+  '["Light Green and White stripes"]',
+  'HTC99',
+  'White/Plastic',
+  'Black',
+  'Black rim, Gray AeroDisc',
+  'World Braille Day 2024Base code(s): T03, T05, T06',
+  'malaysia',
+  'https://images.clausen.app/models/0649bfdd1394aad4.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'bf1e61e6c3609243',
+  'group c fantasy',
+  'HW Track Champs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '9aa13d0ba7dc68aa',
+  'bf1e61e6c3609243',
+  '089/250',
+  'HW Track Champs',
+  '3/5',
+  2023,
+  'white',
+  '["Blue","teal and lime green accents","Sonny Spec\" on sides","SF<small>MOTOR SPORTS</small>","DL Machines\" on top of doors","Hot Wheels logo on front fender","34\" on rear fender"]',
+  'Front: White AeroDiscRear: Chrome Rim AeroDisc',
+  'Blue/Metal',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg34',
+  'https://images.clausen.app/models/60dc6a5a2e21348c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'bf1e61e6c3609243',
+  'group c fantasy',
+  'Black/Metal'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ac2c16213dc84da8',
+  'bf1e61e6c3609243',
+  'yellow',
+  'Black/Metal',
+  '',
+  2024,
+  'front: white aerodiscrear: chrome rim aerodisc',
+  '["HKK39"]',
+  'Unknown',
+  'New ModelBase code(s): S09, S14',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/eb1c6b514ba4aa97.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'bf1e61e6c3609243',
+  'group c fantasy',
   'HW Race Day'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4215,36 +3051,2420 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '2ad32ee4a20ecc6c',
-  '2ad32ee4a20ecc6c',
-  '209/250',
+  '6db1ef620e326194',
+  'bf1e61e6c3609243',
+  '074/250',
   'HW Race Day',
-  '10/10',
+  '1/10',
   2024,
+  'dark blue',
+  '["White and turquoise stripes on sides","front","back fenders and hood. \"3\" on front fender and sides","HWGRFX","durn\" and Hot Wheels logo on sides"]',
+  'White AeroDisc/White Rim 10SP',
+  'Metalflake Space Blue/Metal',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htc74',
+  'https://images.clausen.app/models/0e5733ed9c7f238a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'bf1e61e6c3609243',
+  'group c fantasy',
+  'Plum/Metal'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'c89c03ea027bd724',
+  'bf1e61e6c3609243',
+  'teal',
+  'Plum/Metal',
+  '',
+  2024,
+  'chrome orange & chrome orange rim aerodisc',
+  '["HTD25"]',
+  'Unknown',
+  'Hot Wheels Let''s RaceBase code(s): T05, T06, T10',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/98172b054bcd77a7.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '52bef24f53de35fb',
+  'brick and motor',
+  'Brick Rides'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '2725f7c1fc10a912',
+  '52bef24f53de35fb',
+  '104/250',
+  'Brick Rides',
+  '4/5',
+  2023,
+  'red',
+  '["Yellow pinstriping","skull","B/M\" on sides"]',
+  'Black',
+  'Black/Metal',
+  'Silver',
+  'Metallic dark Gray',
+  'HKG37',
+  'blor/sk5sp',
+  'https://images.clausen.app/models/8182e22195815316.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '52bef24f53de35fb',
+  'brick and motor',
+  'Brick Rides'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ac2b7b1fdf8d17ef',
+  '52bef24f53de35fb',
+  '104/250',
+  'Brick Rides',
+  '4/5',
+  2023,
+  'green',
+  '["Yellow pinstriping","skull","B/M\" on sides"]',
   'Yellow',
-  '["Red stripes down hood &amp; roof","25","ホットホィール","on sides and hood","A","GT-I","<a href=\"/wiki/Leeway_Chang\" title=\"Leeway Chang\">LWC</a>\" on sides","Hot Wheels logo on rear fender","RSC\" on roof","Honda logo and badging on front fender"]',
+  'Yellow/Metal',
+  'Silver',
+  'Metallic dark Gray',
+  'HKJ88',
+  'blor/sk5sp',
+  'https://images.clausen.app/models/c84cf20c1b7c5bde.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '52bef24f53de35fb',
+  'brick and motor',
+  'Experimotors'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0dbb074e50591f5e',
+  '52bef24f53de35fb',
+  '025/250',
+  'Experimotors',
+  '1/5',
+  2024,
+  'dark blue',
+  '["Red lines","White \"8\" on sides"]',
+  'Red',
+  'Red/Metal',
+  'Silver',
+  'Silver',
+  'HTC55',
+  'blor/sk5sp',
+  'https://images.clausen.app/models/38eff92002ad4179.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '52bef24f53de35fb',
+  'brick and motor',
+  'Experimotors'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7773e94c3087e41c',
+  '52bef24f53de35fb',
+  '025/250',
+  'Experimotors',
+  '1/5',
+  2024,
+  'white',
+  '["Black scallops","8","&amp; Hot Wheels logo on sides"]',
+  'Copper',
+  'Copper/Metal',
+  'Black',
+  'Black',
+  'HTC97',
+  'blor/sk5sp',
+  'https://images.clausen.app/models/d19cfb09d3d0bf97.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f559a70d1bb144b9',
+  'el segundo coupe',
+  'HW Dream Garage'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '898d232a84e1fd9b',
+  'f559a70d1bb144b9',
+  '105/250',
+  'HW Dream Garage',
+  '4/5',
+  2023,
+  'metalflake gray',
+  '["White circles on sides"]',
+  'Black LW',
+  'Dark chrome/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg39',
+  'https://images.clausen.app/models/c6fa3a58b293e855.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f559a70d1bb144b9',
+  'el segundo coupe',
+  'HW Dream Garage'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ad343f319e8726bb',
+  'f559a70d1bb144b9',
+  '105/250',
+  'HW Dream Garage',
+  '4/5',
+  2023,
+  'anodized black',
+  '["Gold and gray pinstriping"]',
+  'GLW',
+  'Gold chrome/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'hkj96',
+  'https://images.clausen.app/models/2b76fac56789b2a6.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f559a70d1bb144b9',
+  'el segundo coupe',
+  'HW Turbo'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '16f55047e0769629',
+  'f559a70d1bb144b9',
+  '051/250',
+  'HW Turbo',
+  '1/5',
+  2024,
+  'teal',
+  '["68","yellow and red striping down hood and sides","HWGRAFX","iNTAN\" on sides"]',
+  'PR5',
+  'Black/Plastic',
+  'Clear',
+  'Gray',
+  'Malaysia',
+  'htc63',
+  'https://images.clausen.app/models/797615a34a6ede60.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f559a70d1bb144b9',
+  'el segundo coupe',
+  'HW Turbo'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '93a760e8ffc60b5d',
+  'f559a70d1bb144b9',
+  '051/250',
+  'HW Turbo',
+  '1/5',
+  2024,
+  'blue',
+  '["68","gold and red striping down hood and sides","HWGRAFX","iNTAN\" on sides"]',
+  'CGPR5',
+  'White/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htd10',
+  'https://images.clausen.app/models/ccd31531b838a6ac.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '621de5a08d241e19',
+  '''73 honda civic custom',
+  'HW J-Imports'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'c1c7fd83091a350b',
+  '621de5a08d241e19',
+  '117/250',
+  'HW J-Imports',
+  '8/10',
+  2023,
+  'green',
+  '["Detailed racing headlights","taillights and indicators","black hood","black stripe down hood","HONDA\" front license plate","rear Civic and Honda badging","Hot Wheels logo rear license plate","<a href=\"/wiki/Ryu_Asada\" title=\"Ryu Asada\">INTERNATIONAL RACING COURSE RYULA CIRCUIT</a>\" on rear"]',
+  'MicroGFC3',
+  'Black/Plastic',
+  'Light blue tint',
+  'Black',
+  'Malaysia',
+  'hkg40',
+  'https://images.clausen.app/models/00e9445ffa0ce053.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '621de5a08d241e19',
+  '''73 honda civic custom',
+  'HW J-Imports'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '172509bb429806d9',
+  '621de5a08d241e19',
+  '117/250',
+  'HW J-Imports',
+  '8/10',
+  2023,
+  'orange',
+  '["Detailed racing headlights","taillights and indicators","black hood","orange stripe down hood with yellow highlights","HONDA\" front license plate","rear Civic and Honda badging","Hot Wheels logo rear license plate","<a href=\"/wiki/Ryu_Asada\" title=\"Ryu Asada\">INTERNATIONAL RACING COURSE RYULA CIRCUIT</a>\" on rear"]',
+  'MicroAeroDisc',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkk67',
+  'https://images.clausen.app/models/6e83d5a88e35754f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '621de5a08d241e19',
+  '''73 honda civic custom',
+  'Compact Kings'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'aa2e011d20b2290f',
+  '621de5a08d241e19',
+  '090/250',
+  'Compact Kings',
+  '4/5',
+  2024,
+  'yellow',
+  '["Black hood","black &amp; red stripes","73\" with \"BRIDGESTONE\" in a white square","&amp; MOTUL logos on sides &amp; hood","HONDA\" &amp; Hot Wheels logo on sides"]',
+  'Black Micro5SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htc19',
+  'https://images.clausen.app/models/aea9cb880d844dd7.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '621de5a08d241e19',
+  '''73 honda civic custom',
+  'Compact Kings'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0acf23ba2823063d',
+  '621de5a08d241e19',
+  '090/250',
+  'Compact Kings',
+  '4/5',
+  2024,
+  'metalflake teal',
+  '["Black hood","black &amp; red stripes","73\" with \"BRIDGESTONE\" in a white square","&amp; MOTUL logos on sides &amp; hood","HONDA\" &amp; Hot Wheels logo on sides"]',
+  'White MicroFC3',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htd62',
+  'https://images.clausen.app/models/fd11fc70b356d30d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '621de5a08d241e19',
+  '''73 honda civic custom',
+  'Car Culture: Japan Historics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b60a82295e472a0d',
+  '621de5a08d241e19',
+  '',
+  'Car Culture: Japan Historics',
+  '44/5',
+  2024,
+  'burnt red',
+  '["Detailed headlights","taillights","spotlights and trim","RS\" on rear"]',
+  'Gray MicroRR8SP',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrv85',
+  'https://images.clausen.app/models/36b56d7cd969d712.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b4d7334bbbab79cd',
+  'bmw 507',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '893edb4f0767b5a9',
+  'b4d7334bbbab79cd',
+  '120/250',
+  'Factory Fresh',
+  '2/5',
+  2023,
+  'federweiß',
+  '["Detailed front and side trim","BMW badging on sides"]',
+  'DD8',
+  'Chrome/Plastic',
+  'Clear',
+  'Red',
+  'Malaysia',
+  'hkg30',
+  'https://images.clausen.app/models/ad60cfe399e084ab.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b4d7334bbbab79cd',
+  'bmw 507',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '66379ae74555a850',
+  'b4d7334bbbab79cd',
+  '120/250',
+  'Factory Fresh',
+  '2/5',
+  2023,
+  'kirschrot',
+  '["Detailed front and side trim","BMW badging on sides"]',
+  'DD8',
+  'Chrome/Plastic',
+  'Clear',
+  'Dark Gray',
+  'Malaysia',
+  'hkk77',
+  'https://images.clausen.app/models/aadeab7c394cbc3f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b4d7334bbbab79cd',
+  'bmw 507',
+  'HW Roadsters'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '63b3b36551795e47',
+  'b4d7334bbbab79cd',
+  '067/250',
+  'HW Roadsters',
+  '4/5',
+  2024,
+  'gelb',
+  '["Detailed front and side trim","822\" &amp; BMW badging on sides &amp; hood"]',
+  'DD8',
+  'Chrome/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htc15',
+  'https://images.clausen.app/models/d9e72150c2fab42c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b4d7334bbbab79cd',
+  'bmw 507',
+  'HW Roadsters'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b39978058271cb18',
+  'b4d7334bbbab79cd',
+  '067/250',
+  'HW Roadsters',
+  '4/5',
+  2024,
+  'spectraflame gelb',
+  '["Detailed front and side trim","822","BMW badging on sides","TH logo below number"]',
+  'RR10SP',
+  'Chrome/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htf32',
+  'https://images.clausen.app/models/e5e43976c96b63ef.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2fef9dc6a9dee569',
+  'porsche 911 carrera rs 2.7',
+  'Retro Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f09b45fa4583b264',
+  '2fef9dc6a9dee569',
+  '125/250',
+  'Retro Racers',
+  '8/10',
+  2023,
+  'white',
+  '["Detailed headlights","Porsche emblem on hood","75","Carrera RS","and \"PORSCHE\" on rear","Carrera\" on sides"]',
+  'Chrome Rim RSW',
+  'White/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg42',
+  'https://images.clausen.app/models/ece1e0fb034f3d7d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2fef9dc6a9dee569',
+  'porsche 911 carrera rs 2.7',
+  'Retro Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'eab76f6a637bb79f',
+  '2fef9dc6a9dee569',
+  '125/250',
+  'Retro Racers',
+  '8/10',
+  2023,
+  'orange',
+  '["Detailed headlights","Porsche emblem on hood","75","Carrera RS","and \"PORSCHE\" on rear","Carrera\" on sides"]',
+  'Chrome Rim RSW',
+  'Orange/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkj82',
+  'https://images.clausen.app/models/d926fbb0f25e1328.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2fef9dc6a9dee569',
+  'porsche 911 carrera rs 2.7',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ce1f3739b33aea95',
+  '2fef9dc6a9dee569',
+  '046/250',
+  'Factory Fresh',
+  '4/10',
+  2024,
+  'bright yellow',
+  '["Detailed headlights","Porsche emblem on hood","Carrera RS","and \"PORSCHE\" on rear","Carrera\" on sides"]',
+  'Black, Chrome rim RSW',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htc49',
+  'https://images.clausen.app/models/0b9734ae4ca95bed.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2fef9dc6a9dee569',
+  'porsche 911 carrera rs 2.7',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '72570bab14436f5f',
+  '2fef9dc6a9dee569',
+  '046/250',
+  'Factory Fresh',
+  '4/10',
+  2024,
+  'red',
+  '["Detailed headlights","Porsche emblem on hood","Carrera RS","and \"PORSCHE\" on rear","Carrera\" on sides"]',
+  'CBRSW',
+  'Red/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htd08',
+  'https://images.clausen.app/models/835311e95a955e5c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2fef9dc6a9dee569',
+  'porsche 911 carrera rs 2.7',
+  'Car Culture: Hammer Drop'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '8abfaa9ab6171b4a',
+  '2fef9dc6a9dee569',
+  '',
+  'Car Culture: Hammer Drop',
+  '3/5',
+  2025,
+  'yellow',
+  '["Detailed headlights and trim","PORSCHE\" on sides"]',
+  'RRLW5',
+  'Yellow / Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrw07',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2fef9dc6a9dee569',
+  'porsche 911 carrera rs 2.7',
+  'Hot Wheels Boulevard'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '410d52e406ca6f21',
+  '2fef9dc6a9dee569',
+  '',
+  'Hot Wheels Boulevard',
+  '',
+  2025,
+  'black',
+  '["Detailed headlights and trim","PORSCHE\" on sides"]',
+  'RRLW5',
+  'Black / Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'jbl19',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'ceb18f4bf14d3864',
+  '''72 stingray convertible',
+  'HW Roadsters'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '148600e4e6b98281',
+  'ceb18f4bf14d3864',
+  '132/250',
+  'HW Roadsters',
+  '8/10',
+  2023,
+  'targa blue',
+  '["Detailed headlights and taillights","8HIU313\" California rear license plate","Stingray\" on front fenders","Corvette\" on rear","chrome detailed trim"]',
+  '5SP',
+  'Blue/Plastic',
+  'Blue tint',
+  'Chrome',
+  'Malaysia',
+  'hkg60',
+  'https://images.clausen.app/models/e0b15e1e14bd1d0b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'ceb18f4bf14d3864',
+  '''72 stingray convertible',
+  'HW Roadsters'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '58860c7a04acebba',
+  'ceb18f4bf14d3864',
+  '132/250',
+  'HW Roadsters',
+  '8/10',
+  2023,
+  'pewter silver',
+  '["Detailed headlights and taillights","8HIU313\" California rear license plate","Stingray\" on front fenders","Corvette\" on rear","chrome detailed trim"]',
+  '5SP',
+  'Gray/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'hkk12',
+  'https://images.clausen.app/models/78b14d052f8a1ecf.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'ceb18f4bf14d3864',
+  '''72 stingray convertible',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '51c0a11660094942',
+  'ceb18f4bf14d3864',
+  '047/250',
+  'Factory Fresh',
+  '5/10',
+  2024,
+  'classic white',
+  '["Detailed headlights and taillights","STNGRAY\" Kentucky rear license plate","Stingray\" on front fenders","Corvette\" on rear","chrome detailed trim"]',
+  'RSW',
+  'White/Plastic',
+  'Blue tint',
+  'Chrome',
+  'Malaysia',
+  'htc50',
+  'https://images.clausen.app/models/4abb722d0362862f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'ceb18f4bf14d3864',
+  '''72 stingray convertible',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '58ebec39b73df4fd',
+  'ceb18f4bf14d3864',
+  '047/250',
+  'Factory Fresh',
+  '5/10',
+  2024,
+  'mille miglia red',
+  '["Detailed headlights and tailights","STINGRAY\" Kentucky rear license plate","Stingray\" on front fenders","Corvette\" on rear","chrome detailed trim"]',
+  'RSW',
+  'Red/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'htd09',
+  'https://images.clausen.app/models/c8885dcb09e48639.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3ecdf4478ed86b71',
+  'rollin'' solo',
+  'HW Track Champs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '2e09a1d6479ede43',
+  '3ecdf4478ed86b71',
+  '133/250',
+  'HW Track Champs',
+  '5/5',
+  2023,
+  'metalflake silver',
+  '["Red and silver accents","41\" on sides and hood","MEGAN\" on sides","NO STEP","DUNN","HWGRFX","LOAR CAMS\" on top"]',
+  'HKG41',
+  'Red/Metal',
+  'Black',
+  'Gray RA6',
+  'New ModelBase code(s): R46, R47, R49, R50',
+  'malaysia',
+  'https://images.clausen.app/models/94348f7f73651f47.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3ecdf4478ed86b71',
+  'rollin'' solo',
+  'HW Track Champs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '78cae4ceb0ac4fb1',
+  '3ecdf4478ed86b71',
+  '133/250',
+  'HW Track Champs',
+  '5/5',
+  2023,
+  'red',
+  '["Blue and white accents","41\" on sides and hood","MEGAN\" on sides","NO STEP","DUNN","HWGRFX","LOAR CAMS\" on top"]',
+  'HKK41',
+  'Light Blue/Metal',
+  'Black',
+  'Gray & Black RA6',
+  'New ModelBase code(s): S15',
+  'malaysia',
+  'https://images.clausen.app/models/bb893c79642fc207.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3ecdf4478ed86b71',
+  'rollin'' solo',
+  'HW Track Champs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f8151f8c8f71ded9',
+  '3ecdf4478ed86b71',
+  '154/250',
+  'HW Track Champs',
+  '2/5',
+  2024,
+  'purple',
+  '["Blue camo design on side","hood and wing","5\" on front and sides","ROLLIN'' SOLO\" on sides and wing","CLONE","HWGRFX","Hot Wheels logo on wing","NO STEP"]',
+  'HTC06',
+  'Light Blue / Metal',
+  'Black',
+  'Blue chrome RA6',
+  'Hot Wheels Let''s RaceBase code(s): T05',
+  'malaysia',
+  'https://images.clausen.app/models/dda51058a7b75a51.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3ecdf4478ed86b71',
+  'rollin'' solo',
+  'HW Track Champs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '5a88dbe4b3411d82',
+  '3ecdf4478ed86b71',
+  '154/250',
+  'HW Track Champs',
+  '2/5',
+  2024,
+  'teal',
+  '["Green camo design on side","hood and wing","5\" on front and sides","ROLLIN'' SOLO\" on sides and wing","CLONE","HWGRFX","Hot Wheels logo on wing","NO STEP"]',
+  'HTD93',
+  'Lime / Metal',
+  'Black',
+  'Gray RA6',
+  'Hot Wheels Let''s RaceBase code(s): T29',
+  'malaysia',
+  'https://images.clausen.app/models/e3b6465624eec2ce.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3667287fb0b10079',
+  'honda cb750 café',
+  'HW Moto'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ac56da36fd824dfd',
+  '3667287fb0b10079',
+  '141/250',
+  'HW Moto',
+  '4/5',
+  2023,
+  'navy blue',
+  '["Honda badging","SUPER SPORT\" on sides"]',
+  'HKG49',
+  'Glossy black/Metal',
+  'Navy blue',
+  'MCCR',
+  'New ModelBase code(s): S01, S03',
+  'malaysia',
+  'https://images.clausen.app/models/84cf9d75de187ac9.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3667287fb0b10079',
+  'honda cb750 café',
+  'HW Moto'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b79d7b5a50fbbc1c',
+  '3667287fb0b10079',
+  '141/250',
+  'HW Moto',
+  '4/5',
+  2023,
+  'white',
+  '["Honda badging","SUPER SPORT\" on sides"]',
+  'HKK34',
+  'Glossy black/Metal',
+  'White',
+  'MCCR',
+  'New ModelBase code(s): S25',
+  'malaysia',
+  'https://images.clausen.app/models/37705095a4402834.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3667287fb0b10079',
+  'honda cb750 café',
+  'Rod Squad'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6ea3bb13aa0389cf',
+  '3667287fb0b10079',
+  '049/250',
+  'Rod Squad',
+  '2/5',
+  2024,
+  'dark green',
+  '["White and gold stripes on sides","Honda badging","SUPER SPORT\" on sides"]',
+  'HTC61',
+  'Glossy black/Metal',
+  'Dark green',
+  'MCCR',
+  'Base code(s): S36',
+  'malaysia',
+  'https://images.clausen.app/models/6414b6fd40fff507.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '954c0d77389e572c',
+  'baja bison t5',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '43f604a8e2b9d8e8',
+  '954c0d77389e572c',
+  '143/250',
+  'HW Green Speed',
+  '7/10',
+  2023,
+  'navy blue',
+  '["<i>Baja Bison T5</i>","RALLY EL SEGUNDO 23","<i><a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">SONNY</a></i>","<a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">SF<small>MOTOR SPORTS</small></a>","<a href=\"/wiki/Ted_Wu\" title=\"Ted Wu\">TW</a>","<a href=\"/wiki/Jeremy_Cox\" title=\"Jeremy Cox\">COX<small>1975 <sub>SUSPENSION</sub></small></a>","Hot Wheels EV","044","various other sponsors on sides"]',
+  'AeroDisc',
+  'Metalflake gunmetal gray/Metal',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg44',
+  'https://images.clausen.app/models/fb5a9aa65f0c6236.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '954c0d77389e572c',
+  'baja bison t5',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '76749eb9f3b44b42',
+  '954c0d77389e572c',
+  '143/250',
+  'HW Green Speed',
+  '7/10',
+  2023,
+  'green',
+  '["<i>Baja Bison T5</i>","RALLY EL SEGUNDO 23","<i><a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">SONNY</a></i>","<a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">SF<small>MOTOR SPORTS</small></a>","<a href=\"/wiki/Ted_Wu\" title=\"Ted Wu\">TW</a>","<a href=\"/wiki/Jeremy_Cox\" title=\"Jeremy Cox\">COX<small>1975 <sub>SUSPENSION</sub></small></a>","Hot Wheels EV","044","various other sponsors on sides"]',
+  'AeroDisc',
+  'Metalflake yellow/Metal',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkk23',
+  'https://images.clausen.app/models/0e29781f4a47b026.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '954c0d77389e572c',
+  'baja bison t5',
+  'HW First Response'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6079082ad02ee69b',
+  '954c0d77389e572c',
+  '058/250',
+  'HW First Response',
+  '7/10',
+  2024,
+  'black',
+  '["FIRST RESPONSE","HWGRFX","<a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">SF<small>MOTOR SPORTS</small></a>","Hot Wheels logo","&amp; blue","orange","&amp; white stripes on sides"]',
+  'Orange rim, black AeroDisc',
+  'Gray/Metal',
+  'Orange tint',
+  'Gray',
+  'Malaysia',
+  'htb61',
+  'https://images.clausen.app/models/b6240c6e0e61de44.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '954c0d77389e572c',
+  'baja bison t5',
+  'HW First Response'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6e6f07d864fac8f0',
+  '954c0d77389e572c',
+  '058/250',
+  'HW First Response',
+  '7/10',
+  2024,
+  'red',
+  '["FIRST RESPONSE","HWGRFX","<a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">SF<small>MOTOR SPORTS</small></a>","Hot Wheels logo","&amp; yellow","black","&amp; white stripes on sides"]',
+  'BAJA5',
+  'Black/Metal',
+  'Blue tint',
+  'Yellow',
+  'Malaysia',
+  'htd29',
+  'https://images.clausen.app/models/9ffbfe9d1871345b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '954c0d77389e572c',
+  'baja bison t5',
+  'Purple and Gold'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7475503fb0cd9e53',
+  '954c0d77389e572c',
+  '',
+  'Purple and Gold',
+  '6/6',
+  2025,
+  'chrome gold',
+  '["Hot Wheels logo","57","black and plum on sides"]',
+  'BLOR',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Malaysia',
+  'jdm25',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'cdfe3a84c876b2a6',
+  '''89 mercedes-benz 560 sec amg',
+  'HW Turbo'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '9aab1f6b9158844a',
+  'cdfe3a84c876b2a6',
+  '150/250',
+  'HW Turbo',
+  '4/5',
+  2023,
+  'black',
+  '["Detailed headlights","taillights","trim and badging","AMG license plate"]',
+  'CBRSW',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg45',
+  'https://images.clausen.app/models/581d4e7706cb3862.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'cdfe3a84c876b2a6',
+  '''89 mercedes-benz 560 sec amg',
+  'HW Turbo'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '20fd61206876dd67',
+  'cdfe3a84c876b2a6',
+  '150/250',
+  'HW Turbo',
+  '4/5',
+  2023,
+  'metalflake silver',
+  '["Detailed headlights","taillights","trim and badging","AMG license plate"]',
   'RSW',
   'Black/Plastic',
   'Smoke tint',
   'Black',
   'Malaysia',
-  'HRY58',
-  'https://images.clausen.app/models/2ad32ee4a20ecc6c.webp'
-);
+  'hkk85',
+  'https://images.clausen.app/models/3e295e3374886429.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'ee8008a05cfcf28c',
-  'Nissan Skyline 2000GT-R LBWK (Tooned)',
+  'cdfe3a84c876b2a6',
+  '''89 mercedes-benz 560 sec amg',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bb412cfd52339923',
+  'cdfe3a84c876b2a6',
+  '082/250',
+  'HW Modified',
+  '8/10',
+  2024,
+  'red',
+  '["Detailed headlights","taillights","trim and badging","AMG license plate"]',
+  'CBRSW',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htb70',
+  'https://images.clausen.app/models/9d7a802a5692d800.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'cdfe3a84c876b2a6',
+  '''89 mercedes-benz 560 sec amg',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e79da7d1d6e58b16',
+  'cdfe3a84c876b2a6',
+  '082/250',
+  'HW Modified',
+  '8/10',
+  2024,
+  'spectraflame red',
+  '["Detailed headlights","taillights","trim and badging","AMG license plate","TH tampo on trunk"]',
+  'DRRREx',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htf33',
+  'https://images.clausen.app/models/687ebb9943ee9131.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a73a387344ca19f1',
+  '''70 dodge charger (tooned)',
   'Tooned'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4261,36 +5481,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'ee8008a05cfcf28c',
-  'ee8008a05cfcf28c',
-  '213/250',
+  'd55f1bc85696974e',
+  'a73a387344ca19f1',
+  '153/250',
   'Tooned',
-  '3/5',
-  2024,
-  'Sky blue',
-  '["Detailed door handles and gas cap","Liberty Walk\" on fenders","yellow \"LB★ワークス\" on windshield"]',
-  'Black MicroFC3',
-  'Sky blue/Plastic',
+  '2/5',
+  2023,
+  'black',
+  '["Detailed reflectors and door handles"]',
+  '5SP',
+  'Black/Plastic',
   'Smoke tint',
-  'Black',
+  'Chrome',
   'Malaysia',
-  'HRY85',
-  'https://images.clausen.app/models/ee8008a05cfcf28c.webp'
-);
+  'hkg57',
+  'https://images.clausen.app/models/2a48e0c5ce5d1291.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '1e5d13c2643dc624',
-  'Nissan Skyline 2000GT-R LBWK (Tooned)',
-  'HW J-Imports'
+  'a73a387344ca19f1',
+  '''70 dodge charger (tooned)',
+  'Tooned'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4307,174 +5535,206 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '1e5d13c2643dc624',
-  '1e5d13c2643dc624',
-  '026/250',
-  'HW J-Imports',
+  '34b7f2df1732b182',
+  'a73a387344ca19f1',
+  '161/250',
+  'Tooned',
   '1/5',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'HYW79',
-  'https://images.clausen.app/models/1e5d13c2643dc624.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '3da258ed320eb74d',
-  'Nissan Skyline 2000GT-R LBWK (Tooned)',
-  'HW J-Imports'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '3da258ed320eb74d',
-  '3da258ed320eb74d',
-  '026/250',
-  'HW J-Imports',
-  '1/5',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'HYY30',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '874c52ae8e27d075',
-  'Ravenger S/T',
-  'HW Track Champs'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '874c52ae8e27d075',
-  '874c52ae8e27d075',
-  '217/250',
-  'HW Track Champs',
-  '5/5',
   2024,
+  'black',
+  '["Detailed reflectors and door handles","red stripe on rear quarter panel","R/T logo on sides"]',
+  '5SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'htb40',
+  'https://images.clausen.app/models/adefe1aef3576b56.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a73a387344ca19f1',
+  '''70 dodge charger (tooned)',
+  'Tooned'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b4095388ab1ae701',
+  'a73a387344ca19f1',
+  '161/250',
+  'Tooned',
+  '1/5',
+  2024,
+  'metalflake gray',
+  '["Detailed reflectors","black stripes on rear quarter panel &amp; trunk","R/T logo on sides"]',
+  'Chrome rim, Black 5SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'htd86',
+  'https://images.clausen.app/models/6255f354781130aa.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a73a387344ca19f1',
+  '''70 dodge charger (tooned)',
+  'Tooned Gulf'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f1955e8425a28a59',
+  'a73a387344ca19f1',
+  '',
+  'Tooned Gulf',
+  '2/5',
+  2025,
+  'gulf racing blue',
+  '["Detailed headlights and taillights","7\" on sides","Goodyear logo on front fender","Gulf logo on rear fender"]',
+  'MM5/S5',
+  'Gulf Racing Blue/Plastic',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'bbdc7044c3ec302d',
+  'hw-4-trac',
+  'HW 55 Race Team'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'fb3d1bd7d36dc45f',
+  'bbdc7044c3ec302d',
+  '159/250',
+  'HW 55 Race Team',
+  '5/5',
+  2023,
+  'dark blue',
+  '["White stripe","55th","HWGRFX\" on body"]',
+  'Gray AeroDisc',
+  'White/Metal',
   'Orange',
-  '["Black and metalflake delft blue stripes","blue Hot Wheels logo on front fender"]',
-  'Copper Lip OH5',
-  'Black/Metal',
-  'Blue tint',
-  'Dark chrome',
-  'Malaysia',
-  'HRY81',
-  'https://images.clausen.app/models/874c52ae8e27d075.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '6d45c214ed9ddfae',
-  'Aston Martin DB4GT High-Speed Edition',
-  'Muscle Mania'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '6d45c214ed9ddfae',
-  '6d45c214ed9ddfae',
-  '219/250',
-  'Muscle Mania',
-  '5/5',
-  2024,
-  'ZAMAC',
-  '["Red stripes","4","HW","GB\" on doors","HW/AML\" on roof","Hot Wheels logo","<i>Aston Martin</i>\" on fenders"]',
-  'White, Black Rim 5SP',
-  'Gray / Plastic',
-  'Clear',
   'Black',
   'Malaysia',
-  'HRY86',
-  'https://images.clausen.app/models/6d45c214ed9ddfae.webp'
-);
+  'hkg50',
+  'https://images.clausen.app/models/a48d41a8a6de1e67.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'fc57c183331f1d4d',
-  'Aston Martin DB4GT High-Speed Edition',
-  'HW Dream Garage'
+  'bbdc7044c3ec302d',
+  'hw-4-trac',
+  'HTH34'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4491,36 +5751,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'fc57c183331f1d4d',
-  'fc57c183331f1d4d',
-  '107/250',
-  'HW Dream Garage',
-  '3/5',
-  2025,
+  'c4c635835a60a7a0',
+  'bbdc7044c3ec302d',
+  '2023',
+  'HTH34',
   '',
+  2024,
+  'identical to hkg50base code(s):',
   '[]',
   'Unknown',
   'Unknown',
   'Unknown',
   'Unknown',
-  'Malaysia',
   'Unknown',
+  'unknown',
   'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'c59eadb32eef5f19',
-  'Aston Martin DB4GT High-Speed Edition',
-  'HW Dream Garage'
+  'bbdc7044c3ec302d',
+  'hw-4-trac',
+  'White'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4537,174 +5805,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'c59eadb32eef5f19',
-  'c59eadb32eef5f19',
-  '107/250',
-  'HW Dream Garage',
-  '3/5',
-  2025,
-  '',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Malaysia',
-  'JBC39',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2fbafe35eb76d68a',
-  'Lamborghini Huracán Sterrato',
-  'HW Dirt'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2fbafe35eb76d68a',
-  '2fbafe35eb76d68a',
-  '222/250',
-  'HW Dirt',
-  '6/10',
-  2024,
-  'Arancio Xanto',
-  '["Detailed headlights and trim","black stripes","white highlights","63\" on hood","<i>Sterrato</i>\" wordmark on doors"]',
-  'Black TRAP5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HRY87',
-  'https://images.clausen.app/models/2fbafe35eb76d68a.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '32ec82023675b128',
-  'Lamborghini Huracán Sterrato',
-  'Safari Mode'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '32ec82023675b128',
-  '32ec82023675b128',
-  '041/250',
-  'Safari Mode',
-  '1/5',
-  2025,
-  'Bianco Asopo',
-  '["Detailed headlights and trim","black stripes","orange highlights","63\" on sides","<i>Sterrato</i>\" wordmark on doors"]',
-  'Black TRAP5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HYW93',
-  'https://images.clausen.app/models/32ec82023675b128.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '3831fb434642a797',
-  'Sushi Tuner',
-  'Fast Foodie'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '3831fb434642a797',
-  '3831fb434642a797',
-  '225/250',
-  'Fast Foodie',
-  '5/5',
-  2024,
+  '1ac1f4d8adfdf3f5',
+  'bbdc7044c3ec302d',
+  '2023',
   'White',
-  '["Hot Wheels logo on sides","chopsticks"]',
-  'HRY88',
-  'Black/Metal',
-  'Red tint',
-  'OH5',
-  'New ModelBase code(s): T19',
-  'Malaysia',
-  'https://images.clausen.app/models/3831fb434642a797.webp'
-);
+  '',
+  2024,
+  'dark blue stripe, "55th", "hwgrfx" on body',
+  '["Dark blue<br>/<br>Metal"]',
+  'Unknown',
+  'HKK30',
+  'New ModelBase code(s): S25',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/28dedf13db4876ce.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'ea658b43b434991f',
-  'VW T3 Custom',
-  'HW Vans'
+  'bbdc7044c3ec302d',
+  'hw-4-trac',
+  'HW Race Day'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4721,82 +5859,260 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'ea658b43b434991f',
-  'ea658b43b434991f',
-  '227/250',
-  'HW Vans',
-  '4/5',
+  '30cc7feab35d3fdb',
+  'bbdc7044c3ec302d',
+  '101/250',
+  'HW Race Day',
+  '4/10',
   2024,
-  'Metalflake champagne',
-  '["Black accents","79","cross-eyed smiley face","XX\" on rear wing","⚠︎ CAUTION INTAKE","<a href=\"/wiki/Bryan_Zhao\" title=\"Bryan Zhao\">B. ZHAO</a>","<a href=\"/wiki/Andr%C3%A9s_Andrieu\" title=\"Andrés Andrieu\">A. ANDRIEU</a>","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\">FC</a>\" on sides","BBS","Sparco and Bilstein logos","cross-eyed smiley face on windshield"]',
-  'Chrome Gold AeroDisc',
-  'Black / Plastic',
-  'Smoke tint',
-  'Brown',
-  'Malaysia',
-  'HRY57',
-  'https://images.clausen.app/models/ea658b43b434991f.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '4bfc75bf05723776',
-  'Small Bloc',
-  'Tooned'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '4bfc75bf05723776',
-  '4bfc75bf05723776',
-  '228/250',
-  'Tooned',
-  '5/5',
-  2024,
-  'Tan',
-  '["Black scallops","HWGRFX","Hot Wheels logo","&amp; orange reflectors on sides"]',
-  'HRY92',
-  'ZAMAC',
+  'red',
+  '["White and Black stripes","Tiangco","EMER","M+M","HW GRFX","A SETO","Eng","4 on top; 4","Clone","A SETO\" on sides; Black &amp; White Hot Wheels logo on rear wing"]',
+  'Gray AeroDisc',
+  'Metallic Gray / Metal',
+  'Chrome',
   'Black',
-  'Tan & Chrome L4',
-  'Hot Wheels Let''s RaceNew ModelBase code(s): T22, T23, T25, T28',
   'Malaysia',
-  'https://images.clausen.app/models/4bfc75bf05723776.webp'
-);
+  'htc76',
+  'https://images.clausen.app/models/5440b75497137877.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '4ac4b670d0da752a',
-  'Small Bloc',
+  'bbdc7044c3ec302d',
+  'hw-4-trac',
+  'Metallic Gray / Metal'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ad6d1eebf56637b1',
+  'bbdc7044c3ec302d',
+  'dark olive',
+  'Metallic Gray / Metal',
+  '',
+  2024,
+  'mustard',
+  '["Black"]',
+  'Unknown',
+  'Gray AeroDisc',
+  'HTD81',
+  'Hot Wheels Let''s RaceBase code(s): T27',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/11c0c062d4f605e5.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '638b0c2eb3755408',
+  'honda super cub custom',
+  'HW Moto'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ac41660f1c286a2a',
+  '638b0c2eb3755408',
+  '160/250',
+  'HW Moto',
+  '5/5',
+  2023,
+  'white',
+  '["Red seat","red cargo box w/black Honda logo"]',
+  'HKG43',
+  'White/Metal',
+  'Gray',
+  'MCCR',
+  'New ModelBase code(s): S08, S11, S13',
+  'malaysia',
+  'https://images.clausen.app/models/06597be1b02ee051.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '638b0c2eb3755408',
+  'honda super cub custom',
+  'HW Moto'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e3dfc0f156dc3a98',
+  '638b0c2eb3755408',
+  '160/250',
+  'HW Moto',
+  '5/5',
+  2023,
+  'dark blue',
+  '["White seat","white cargo box w/blue Honda logo"]',
+  'HKK33',
+  'Dark blue/Metal',
+  'Gray',
+  'MCCR',
+  'New ModelBase code(s): S25, S26, S29, S30',
+  'malaysia',
+  'https://images.clausen.app/models/e4ef892f26befb6f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '638b0c2eb3755408',
+  'honda super cub custom',
+  'HW Moto'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ac41660f1c286a2a',
+  '638b0c2eb3755408',
+  '160/250',
+  'HW Moto',
+  '5/5',
+  2023,
+  'white',
+  '["Yellow seat with Honda logo on sides; yellow cargo box with \"HONDA\" &amp; white stripes on sides; Hot Wheels logo on right front panel"]',
+  'HTF60',
+  'White/Metal',
+  'Gray',
+  'MCCR',
+  'New ModelDollar General ExclusiveBase code(s): S36, S37',
+  'malaysia',
+  'https://images.clausen.app/models/06597be1b02ee051.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '638b0c2eb3755408',
+  'honda super cub custom',
   'HW Metro'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4813,36 +6129,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '4ac4b670d0da752a',
-  '4ac4b670d0da752a',
-  '007/250',
+  'e9845817dec71fd7',
+  '638b0c2eb3755408',
+  '159/250',
   'HW Metro',
-  '2/5',
-  2025,
-  'Yellow',
-  '["Black and white checkers","TAXI\" and Hot Wheels logo on sides"]',
-  'HYW65',
-  'Black/Plastic',
-  'White',
-  'Yellow rim MC5',
-  'Hot Wheels Let''s RaceBase code(s):',
-  'Malaysia',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+  '7/10',
+  2024,
+  'dark gray',
+  '["Black cargo box w/ orange and green stripes","white squares and TH logo","Hot Wheels logo on right front panel"]',
+  'HTF23',
+  'Dark gray/Metal',
+  'Black',
+  'MCCR',
+  'Treasure HuntBase code(s): T09, T11',
+  'malaysia',
+  'https://images.clausen.app/models/e8a986bcfd546ec4.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '3cd8fd86bf659a10',
-  'Small Bloc',
-  'Red Edition?/12'
+  '42ac91a9ccf9c338',
+  '''82 toyota supra',
+  'HW: The ''80s'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4859,36 +6183,800 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '3cd8fd86bf659a10',
-  '3cd8fd86bf659a10',
-  '007/250',
-  'Red Edition?/12',
+  '1ed6f1ff2092a8c5',
+  '42ac91a9ccf9c338',
+  '167/250',
+  'HW: The ''80s',
+  '10/10',
+  2023,
+  'red',
+  '["Detailed taillights and reflectors","black stripes down sides","TOYOTA CELICA SUPRA\" on rear"]',
+  'FC3',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg87',
+  'https://images.clausen.app/models/bfb9299999a3aeae.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '42ac91a9ccf9c338',
+  '''82 toyota supra',
+  'HW: The ''80s'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6e7a9596d37334e6',
+  '42ac91a9ccf9c338',
+  '167/250',
+  'HW: The ''80s',
+  '10/10',
+  2023,
+  'spectraflame red',
+  '["Detailed taillights and reflectors","black stripes down sides","TOYOTA CELICA SUPRA","TH logo on rear"]',
+  'RR10SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkl08',
+  'https://images.clausen.app/models/d8f3fefd01b60401.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '42ac91a9ccf9c338',
+  '''82 toyota supra',
+  'Car Culture: World Tour'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a1cbd4dd140e2a7f',
+  '42ac91a9ccf9c338',
+  '',
+  'Car Culture: World Tour',
+  '2/5',
+  2024,
+  'white',
+  '["Detailed headlights","taillights and trim","black stripes with red and silver highlights","RSR Suspension logo on sides and hood"]',
+  'RR10SPM',
+  'Black/Metal',
+  'Heavy smoke tint',
+  'Black',
+  'Thailand',
+  'hrv97',
+  'https://images.clausen.app/models/986093ba6aa9e720.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '42ac91a9ccf9c338',
+  '''82 toyota supra',
+  'Japanese Car Culture Themed Multipack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '3502e1e4c4c7d529',
+  '42ac91a9ccf9c338',
+  '',
+  'Japanese Car Culture Themed Multipack',
   '',
   2025,
   '',
   '[]',
-  'HYY40',
+  'S5',
   'Unknown',
   'Unknown',
   'Unknown',
-  'Target ExclusiveBase code(s):',
-  'Malaysia',
+  'Thailand',
+  'jby77',
   'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'afc5835e6b5a4174',
-  'Gordon Murray Automotive T.50s',
+  '69bc58f4775bcefa',
+  'rockin'' railer',
+  'HW Drag Strip'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '166df7558982b87c',
+  '69bc58f4775bcefa',
+  '171/250',
+  'HW Drag Strip',
+  '6/10',
+  2023,
+  'white',
+  '["Red and gold accents","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\">F/C</a>","<a href=\"/wiki/Anton_Henggono\" title=\"Anton Henggono\">AH</a>","HWGRFX","<a href=\"/wiki/Mike_McClone\" title=\"Mike McClone\">CLONE</a>","<a href=\"/wiki/Leeway_Chang\" title=\"Leeway Chang\">LW</a>\" on body"]',
+  'HKG53',
+  'Red/Plastic',
+  'Chrome',
+  'Chrome Gold SK5SP & M5SP',
+  'New ModelBase code(s): S05, S06',
+  'malaysia',
+  'https://images.clausen.app/models/0868d2d78b88f0be.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '69bc58f4775bcefa',
+  'rockin'' railer',
+  'HW Drag Strip'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '154138a59c54482f',
+  '69bc58f4775bcefa',
+  '171/250',
+  'HW Drag Strip',
+  '6/10',
+  2023,
+  'gray',
+  '["Orange and black accents","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\">F/C</a>","<a href=\"/wiki/Anton_Henggono\" title=\"Anton Henggono\">AH</a>","HWGRFX","<a href=\"/wiki/Mike_McClone\" title=\"Mike McClone\">CLONE</a>","<a href=\"/wiki/Leeway_Chang\" title=\"Leeway Chang\">LW</a>","&amp; Hot Wheels logo on body"]',
+  'HKK05',
+  'Dark Gray/Plastic',
+  'Black',
+  'SK5SP & M5SP',
+  'New ModelBase code(s): S25',
+  'malaysia',
+  'https://images.clausen.app/models/ddd64ade838db694.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '69bc58f4775bcefa',
+  'rockin'' railer',
+  'HW Race Day'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7c71b7071d7fe4ed',
+  '69bc58f4775bcefa',
+  '075/250',
+  'HW Race Day',
+  '2/10',
+  2024,
+  'light blue',
+  '["Rockin'' Railer","F/C","Hot Wheels logo","&amp; cream","blue","&amp; orange stripes on sides"]',
+  'HTC75',
+  'Blue/Plastic',
+  'Chrome',
+  'SK5SP & M5SP',
+  'Hot Wheels Let''s RaceBase code(s): S41',
+  'malaysia',
+  'https://images.clausen.app/models/905b842ff5bf3e7e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '69bc58f4775bcefa',
+  'rockin'' railer',
+  'HW Race Day'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e9a38d131c478043',
+  '69bc58f4775bcefa',
+  '075/250',
+  'HW Race Day',
+  '2/10',
+  2024,
+  'red',
+  '["Rockin'' Railer","F/C","Hot Wheels logo","&amp; gold stripes on sides"]',
+  'HTD26',
+  'Gold/Plastic',
+  'Chrome',
+  'Chrome Gold SK5SP & M5SP',
+  'Hot Wheels Let''s RaceBase code(s): T05',
+  'malaysia',
+  'https://images.clausen.app/models/76146df50fff355a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '91d237ee25083899',
+  'volkswagen id. buzz',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6dfc17c124ba93af',
+  '91d237ee25083899',
+  '173/250',
+  'HW Green Speed',
+  '10/10',
+  2023,
+  'pomelo yellow',
+  '["Detailed headlights and taillights","ID.BUZZ\" rear license plate","<i>Candy White</i> trim"]',
+  'Y5',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg51',
+  'https://images.clausen.app/models/5843873b7a28d645.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '91d237ee25083899',
+  'volkswagen id. buzz',
+  'HW Vans'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '662e56e9b89c7a39',
+  '91d237ee25083899',
+  '202/250',
+  'HW Vans',
+  '2/5',
+  2024,
+  'orange',
+  '["White stripe wrapping completely around","VW logo on front &amp; rear","ID. BUZZ\" on rear &amp; rear license plate","detailed headlights &amp; taillights"]',
+  'Y5',
+  'Black/Plastic',
+  'Smoke tint',
+  'White',
+  'Malaysia',
+  'htb94',
+  'https://images.clausen.app/models/03b354d2fc4358a6.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '061cf4f54a3fbfd9',
+  'mitsubishi pajero evolution',
+  'Mud Studs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e563973a2ce9a8ce',
+  '061cf4f54a3fbfd9',
+  '175/250',
+  'Mud Studs',
+  '3/5',
+  2023,
+  'red',
+  '["Detailed headlights","Ralliart racing livery","EVOLUTION\" on door"]',
+  'White AeroDisc',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg47',
+  'https://images.clausen.app/models/be2607adc2335107.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '061cf4f54a3fbfd9',
+  'mitsubishi pajero evolution',
+  'Dark Gray AeroDisc'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e560f3d57a96bcd8',
+  '061cf4f54a3fbfd9',
+  'white',
+  'Dark Gray AeroDisc',
+  '',
+  2024,
+  'hkk36',
+  '["<i><a href=\"/wiki/2023_New_Models\" title=\"2023 New Models\">New Model</a></i><br>Base code(s): S25","S30","S31"]',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/4d27fbfda2191424.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '061cf4f54a3fbfd9',
+  'mitsubishi pajero evolution',
+  'HW J-Imports'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '09090a595d0ef39d',
+  '061cf4f54a3fbfd9',
+  '169/250',
+  'HW J-Imports',
+  '8/10',
+  2024,
+  'metalflake burnt orange',
+  '["HWGRFX","OFF-ROAD","Ralli Art logo","Hot Wheels logo","&amp; light red","orange","&amp; black stripes on sides; detailed headlights"]',
+  'White 5SP',
+  'Brown/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htc45',
+  'https://images.clausen.app/models/ce5c5008ae908c9c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '061cf4f54a3fbfd9',
+  'mitsubishi pajero evolution',
+  'Black/Plastic'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0c4bc260b27283a7',
+  '061cf4f54a3fbfd9',
+  'spectraflame copper',
+  'Black/Plastic',
+  '',
+  2024,
+  'chrome copper rim rr6sp',
+  '["HTF38"]',
+  'Unknown',
+  'Super Treasure HuntBase code(s):',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/bb7c93b94a304af0.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '061cf4f54a3fbfd9',
+  'mitsubishi pajero evolution',
+  'Car Culture: Terra Trek'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f869927c6ec63689',
+  '061cf4f54a3fbfd9',
+  '',
+  'Car Culture: Terra Trek',
+  '5/5',
+  2024,
+  'red',
+  '["Detailed headlights","taillights and trim","EVOLUTION\" on doors","SUPER SELECT 4WD\" on spare tire"]',
+  'Gray RR6SPM',
+  'Black/Metal',
+  'Clear',
+  'Black',
+  'Thailand',
+  'hrv89',
+  'https://images.clausen.app/models/eedf0a080304381a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4009a798e918660d',
+  'celero gt',
   'HW Exotics'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4905,36 +6993,98 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'afc5835e6b5a4174',
-  'afc5835e6b5a4174',
-  '235/250',
+  '66243d566076dc21',
+  '4009a798e918660d',
+  '178/250',
   'HW Exotics',
-  '7/10',
-  2024,
-  'Metalflake orange',
-  '["Black trim and stripes","GMA badging on hood","Hot Wheels logo on doors"]',
-  'BOH5',
+  '3/10',
+  2023,
+  'gunmetal gray',
+  '["CELERO GT\" on body","Celero badging on hood"]',
+  'Dark Gray E10SP',
   'Black/Plastic',
   'Smoke tint',
-  'Black',
+  'Gray',
   'Malaysia',
-  'HRY89',
-  'https://images.clausen.app/models/afc5835e6b5a4174.webp'
-);
+  'hkg54',
+  'https://images.clausen.app/models/3c5c0545e29222d7.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'cb16655784800924',
-  'Tesla Model S Plaid',
+  '4009a798e918660d',
+  'celero gt',
+  'HW Exotics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ae66eccd319ba381',
+  '4009a798e918660d',
+  '178/250',
+  'HW Exotics',
+  '3/10',
+  2023,
+  'matte cherry red',
+  '["CELERO GT\" on body","Celero badging on hood"]',
+  'Dark Gray E10SP',
+  'Dark chrome/Plastic',
+  'Smoke tint',
+  'Gray',
+  'Malaysia',
+  'hkk55',
+  'https://images.clausen.app/models/980340d7c77cbc2e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4009a798e918660d',
+  'celero gt',
   'Quarter Mile Heroes'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4951,36 +7101,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'cb16655784800924',
-  'cb16655784800924',
-  '238/250',
+  '9288fe664cc8755a',
+  '4009a798e918660d',
+  '231/250',
   'Quarter Mile Heroes',
-  '5/5',
+  '3/5',
   2024,
-  'Metallic Dark Blue',
-  '["Detailed headlights and taillights","badging","HW PLAID\" license plate"]',
-  'Gray Y5',
-  'Black/Plastic',
+  'purple',
+  '["Pink and white accents","9\" on hood and sides"]',
+  'AeroDisc / RA6',
+  'White/Plastic',
   'Smoke tint',
-  'Black',
+  'Magenta',
   'Malaysia',
-  'HRY91',
-  'https://images.clausen.app/models/cb16655784800924.webp'
-);
+  'htb87',
+  'https://images.clausen.app/models/e077aa245dd8386d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '2a2e5a1f2ea70c71',
-  'Tesla Model S Plaid',
-  'HW EV'
+  '4009a798e918660d',
+  'celero gt',
+  'Quarter Mile Heroes'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -4997,82 +7155,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '2a2e5a1f2ea70c71',
-  '2a2e5a1f2ea70c71',
-  '009/250',
-  'HW EV',
-  '1/10',
-  2025,
-  'Ultra Red',
-  '["Detailed headlights and taillights","badging","HW PLAID\" license plate"]',
-  'Gray Y5',
-  'Black/Plastic',
-  'Smoke tint',
-  'Black',
-  'Malaysia',
-  'HYW86',
-  'https://images.clausen.app/models/2a2e5a1f2ea70c71.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '8124ccd3d0e6b858',
-  'Hi-Roller II',
-  'HW Rolling Metal'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '8124ccd3d0e6b858',
-  '8124ccd3d0e6b858',
-  '247/250',
-  'HW Rolling Metal',
-  '5/5',
+  '553cbee2a261e2e0',
+  '4009a798e918660d',
+  '231/250',
+  'Quarter Mile Heroes',
+  '3/5',
   2024,
-  'Metalflake navy blue',
-  '["Hot Wheels logos and four-pointed stars on side cowling","blue stripe down hood"]',
-  'Chrome Copper 10SP',
-  'Silver/Plastic',
-  'Blue tint',
-  'Chrome',
+  'spectraflame purple',
+  '["Pink and white accents","9\" on hood and sides","TH logo on door"]',
+  'RRA / RR10SPM',
+  'White/Plastic',
+  'Smoke tint',
+  'Magenta',
   'Malaysia',
-  'HRY94',
-  'https://images.clausen.app/models/8124ccd3d0e6b858.webp'
-);
+  'htf42',
+  'https://images.clausen.app/models/d27f4367f23dc3b9.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '2592ecf5fea145a3',
-  'Hi-Roller II',
-  'HW Art Cars'
+  '1fe7d942cc4e5b45',
+  '1956 corvette',
+  'HW Screen Time'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -5089,36 +7209,638 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '2592ecf5fea145a3',
-  '2592ecf5fea145a3',
-  '061/250',
-  'HW Art Cars',
-  '6/10',
-  2025,
+  '52c091937197a316',
+  '1fe7d942cc4e5b45',
+  '183/250',
+  'HW Screen Time',
+  '9/10',
+  2023,
+  'barbie pink',
+  '["Detailed headlights","indicators and Corvette badges","Ch<font color=\"blue\">ev</font>rolet\" badges on side and hood","Barbie\" front license plate"]',
+  'AeroDisc',
+  'Black/Plastic',
+  'Clear',
   'White',
-  '["Black and white stripes","R\" on roof","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\">F/C</a>\" on left side","white \"<a href=\"/wiki/Leeway_Chang\" title=\"Leeway Chang\">LW</a>\" on right side"]',
+  'Malaysia',
+  'hkg52',
+  'https://images.clausen.app/models/9fdfca593e7337f1.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '1fe7d942cc4e5b45',
+  '1956 corvette',
+  'HW Screen Time'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '38046d8f2f0b84da',
+  '1fe7d942cc4e5b45',
+  '183/250',
+  'HW Screen Time',
+  '9/10',
+  2023,
+  'baby blue',
+  '["Detailed headlights","indicators and Corvette badges","Ch<font color=\"blue\">ev</font>rolet\" badges on side and hood","Barbie\" front license plate"]',
+  'AeroDisc',
+  'Black/Plastic',
+  'Clear',
+  'White',
+  'Malaysia',
+  'hkk87',
+  'https://images.clausen.app/models/1e31bbe3ae5785aa.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '1fe7d942cc4e5b45',
+  '1956 corvette',
+  'Barbie: The Movie Special Edition'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd7513452543b765c',
+  '1fe7d942cc4e5b45',
+  '',
+  'Barbie: The Movie Special Edition',
+  '',
+  2023,
+  'barbie pink',
+  '["Detailed headlights","indicators and Corvette badges","Ch<font color=\"blue\">ev</font>rolet\" badges on side and hood","Barbie\" front license plate"]',
+  'AeroDisc',
+  'Black/Plastic',
+  'Clear',
+  'White',
+  'Malaysia',
+  'hpr54',
+  'https://images.clausen.app/models/aecff03cec87659d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '1fe7d942cc4e5b45',
+  '1956 corvette',
+  'Barbie: The Movie 1956 Corvette Collector Set'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0274b99b54bb9821',
+  '1fe7d942cc4e5b45',
+  '',
+  'Barbie: The Movie 1956 Corvette Collector Set',
+  '',
+  2023,
+  'barbie pink',
+  '["Detailed headlights","indicators and Corvette badges","Ch<font color=\"blue\">ev</font>rolet\" badges on side and hood"]',
+  'WWDDRR',
+  'Black/Metal',
+  'Clear',
+  'White & Pink',
+  'Thailand',
+  'hrl24',
+  'https://images.clausen.app/models/3ada4bfd413d1fbb.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '1fe7d942cc4e5b45',
+  '1956 corvette',
+  'White & Gray'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '9874ce1be84702af',
+  '1fe7d942cc4e5b45',
+  'gray',
+  'White & Gray',
+  '',
+  2024,
+  'wwddrr',
+  '["<i>Named Ken Custom Silver 1956 Corvette</i><br>Base code(s): S14"]',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/785d7d447d56edae.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '1fe7d942cc4e5b45',
+  '1956 corvette',
+  'White & Blue'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '3cbdaed8a2fbb1ea',
+  '1fe7d942cc4e5b45',
+  'baby blue',
+  'White & Blue',
+  '',
+  2024,
+  'wwddrr',
+  '["<i>Named Baby Blue 1956 Corvette</i><br>Base code(s): S14"]',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/e4feceba815934a4.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '1fe7d942cc4e5b45',
+  '1956 corvette',
+  'White & Yellow'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'af2e327a016ffe72',
+  '1fe7d942cc4e5b45',
+  'pale yellow',
+  'White & Yellow',
+  '',
+  2024,
+  'wwddrr',
+  '["<i>Named Pale Yellow 1956 Corvette</i><br><i>Pack Exclusive</i><br>Base code(s): S14"]',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/f85ae260289b86d2.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '1fe7d942cc4e5b45',
+  '1956 corvette',
+  'HW Screen Time'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '04fdce3049a01b03',
+  '1fe7d942cc4e5b45',
+  '029/250',
+  'HW Screen Time',
+  '3/10',
+  2024,
+  'gray',
+  '["Detailed headlights","indicators and Corvette badges","Ch<font color=\"blue\">ev</font>rolet\" badge on hood","KEN\" front license plate","flames of fires on the sides"]',
+  'AeroDisc',
+  'Black/Plastic',
+  'Clear',
+  'Pale Yellow',
+  'Malaysia',
+  'htb37',
+  'https://images.clausen.app/models/cb4de2fadee77cc1.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'e822a02f392d239f',
+  '2024 gmc hummer ev',
+  'HW Screen Time'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bcb1a8b5c9ebfeff',
+  'e822a02f392d239f',
+  '184/250',
+  'HW Screen Time',
+  '10/10',
+  2023,
+  'meteorite metallic',
+  '["Detailed headlights","taillights","front and rear trim","electricity arcs on sides of body"]',
+  'BLOR',
+  'Gray / Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkh13',
+  'https://images.clausen.app/models/f7957ccbcea30b2d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6a69f90711b01203',
+  'alfa romeo gtv6 3.0',
+  'Retro Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e067940a67633118',
+  '6a69f90711b01203',
+  '185/250',
+  'Retro Racers',
+  '10/10',
+  2023,
+  'rosso alfa',
+  '["Detailed headlights and side indicators","Alfa Romeo logo and quadrifoglio emblem","Brembo","Momo","Agip","Hot Wheels logos on side","6\" on sides","HWGRFX","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\">FLC</a>\" on sides","rear venting"]',
+  'L4',
+  'Gray/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg48',
+  'https://images.clausen.app/models/232e9401876a90e6.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6a69f90711b01203',
+  'alfa romeo gtv6 3.0',
+  'Retro Racers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6f0a03f8acf363d1',
+  '6a69f90711b01203',
+  '185/250',
+  'Retro Racers',
+  '10/10',
+  2023,
+  'bianco alfa',
+  '["Detailed headlights and side indicators","Alfa Romeo logo and quadrifoglio emblem","Brembo","Momo","Agip","Hot Wheels logos on side","6\" on sides","HWGRFX","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\">FLC</a>\" on sides","rear venting"]',
+  'L4',
+  'Gray/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkj83',
+  'https://images.clausen.app/models/ae5215422bca50c3.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6a69f90711b01203',
+  'alfa romeo gtv6 3.0',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd5df193c8d9df00a',
+  '6a69f90711b01203',
+  '098/250',
+  'Factory Fresh',
+  '8/10',
+  2024,
+  'grigio chiaro',
+  '["Black and red stripes on sides with black Hot Wheels logo"]',
   'AeroDisc',
   'Black/Plastic',
   'Smoke tint',
   'Black',
   'Malaysia',
-  'Unknown',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+  'htc53',
+  'https://images.clausen.app/models/49a5e31ff21eabba.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'dc2c30e68f3b98e9',
-  'Hi-Roller II',
-  'HW Art Cars'
+  '6a69f90711b01203',
+  'alfa romeo gtv6 3.0',
+  'Red Edition'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -5135,36 +7857,368 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'dc2c30e68f3b98e9',
-  'dc2c30e68f3b98e9',
-  '061/250',
-  'HW Art Cars',
-  '6/10',
+  '5154191534b7c81c',
+  '6a69f90711b01203',
+  '098/250',
+  'Red Edition',
+  '9/12',
+  2024,
+  'nero',
+  '["Red stripes on sides with white Hot Wheels logo","RED\" on rear quarterpanel"]',
+  'AeroDisc',
+  'Black/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htf81',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6a69f90711b01203',
+  'alfa romeo gtv6 3.0',
+  'Factory Fresh'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a1d831d272783f8b',
+  '6a69f90711b01203',
+  '098/250',
+  'Factory Fresh',
+  '8/10',
+  2024,
+  'metalflake blu atollo',
+  '["Black and red stripes on sides with black Hot Wheels logo"]',
+  'AeroDisc',
+  'Black/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htf13',
+  'https://images.clausen.app/models/6bad3a3ff62192fd.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6a69f90711b01203',
+  'alfa romeo gtv6 3.0',
+  'Car Culture: World Tour'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a77e576c15da6fa2',
+  '6a69f90711b01203',
+  '',
+  'Car Culture: World Tour',
+  '1/5',
+  2024,
+  'rosso alfa',
+  '["Detailed headlights","taillights and trim","Alfa Romeo Quadrifoglio emblem on sides","GTV 630\" rear license plate"]',
+  'Chrome Rim RR8SP',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrv80',
+  'https://images.clausen.app/models/bdfca26b3ff45d0e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6a69f90711b01203',
+  'alfa romeo gtv6 3.0',
+  'Car Culture: World Tour'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd397e0ac6de9d916',
+  '6a69f90711b01203',
+  '',
+  'Car Culture: World Tour',
+  '0/5',
+  2024,
+  'nero',
+  '["Detailed headlights","taillights and trim","Alfa Romeo Quadrifoglio emblem on sides","GTV 630\" rear license plate"]',
+  'Solid black RR8SP',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrv83',
+  'https://images.clausen.app/models/a308f235a5af9cbb.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6a69f90711b01203',
+  'alfa romeo gtv6 3.0',
+  'Hot Wheels Boulevard#120'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '9a2e5d6d05e16fc2',
+  '6a69f90711b01203',
+  '',
+  'Hot Wheels Boulevard#120',
+  '',
   2025,
-  'Spectraflame black',
-  '["White and black stripes","R\" on roof","F/C\" on left side","black \"LW\" on right side","TH logo on trunk"]',
-  'RRA',
+  'bianco alfa',
+  '["Detailed headlights","taillights and trim","green striping with red highlights","Alfa Romeo Quadrifoglio emblems within green striping","Alfa Romeo workdmark on doors","Bell logo on fenders","82\" on sides and hood","Yokohama logo on trunk","Alfa Romeo Quadrifoglio","Hot Wheels logos on hood"]',
+  'C4SPRR',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'jbl16',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd220ee236ab47d4b',
+  'limited grip',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'cbf0df9d8354996e',
+  'd220ee236ab47d4b',
+  '190/250',
+  'HW Hot Trucks',
+  '6/10',
+  2023,
+  'black',
+  '["Red diagonals with white highlights","Black Widow Exhaust logo","12","The King of Sound.\" on sides"]',
+  '10SP',
+  'Black/Plastic',
+  'Light smoke tint',
+  'Red',
+  'Malaysia',
+  'hkg56',
+  'https://images.clausen.app/models/04e9be09745aac38.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd220ee236ab47d4b',
+  'limited grip',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd8e36ac2c94ae4be',
+  'd220ee236ab47d4b',
+  '190/250',
+  'HW Hot Trucks',
+  '6/10',
+  2023,
+  'matte blue',
+  '["Black diagonals with white highlights","Black Widow Exhaust logo","12","The King of Sound.\" on sides"]',
+  'GLW',
   'Black/Plastic',
   'Smoke tint',
-  'White',
+  'Black',
   'Malaysia',
-  'JBC37',
-  'https://images.clausen.app/models/dc2c30e68f3b98e9.webp'
-);
+  'hkk60',
+  'https://images.clausen.app/models/bf55713b3ade04f9.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '2f9b0cb296969044',
-  'Ford Mustang Dark Horse',
-  'Then and Now'
+  'd220ee236ab47d4b',
+  'limited grip',
+  'Rod Squad'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -5181,36 +8235,908 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '2f9b0cb296969044',
-  '2f9b0cb296969044',
-  '250/250',
-  'Then and Now',
-  '10/10',
+  '1c95b0caa288b1d7',
+  'd220ee236ab47d4b',
+  '050/250',
+  'Rod Squad',
+  '3/5',
   2024,
-  'Matte Atlas Blue',
-  '["Detailed headlights and taillights","black trim on hood","roof and spoiler","DRKHRS\" license plate"]',
-  'Black Y5',
+  'burgundy',
+  '["Black stripes and Yellow flame","MCCLONE MOTORSPORTS","Colucci","›ꓘK‹\" \"HWGRFX","Limited Grip\" on sides","Black Checker","Yellow stripe","and Hot Wheels logo on roof"]',
+  'GT5SP',
+  'Grey/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htc62',
+  'https://images.clausen.app/models/37ea96599a08761f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd220ee236ab47d4b',
+  'limited grip',
+  'Rod Squad'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '71354121e6759f7f',
+  'd220ee236ab47d4b',
+  '050/250',
+  'Rod Squad',
+  '3/5',
+  2024,
+  'dark olive',
+  '["Black stripes and Yellow flame","MCCLONE MOTORSPORTS","Colucci","›ꓘK‹\" \"HWGRFX","Limited Grip\" on sides","Black Checker","Yellow stripe","and Hot Wheels logo on roof"]',
+  'Yellow 5SP',
+  'Gray / Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htd50',
+  'https://images.clausen.app/models/922f498fda152f6f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0bfea97168760d03',
+  '''73 jeep j10',
+  'Baja Blazers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b40e139fa1a08d28',
+  '0bfea97168760d03',
+  '196/250',
+  'Baja Blazers',
+  '3/10',
+  2023,
+  'metalflake orange',
+  '["Detailed spotlights","426","Jeep","Hot Wheels logos on side","BFGoodrich and Jeep logos on windshield","detailed spare tires"]',
+  'BLOR',
+  'Black/Plastic',
+  'Heavy smoke tint',
+  'Chrome',
+  'Malaysia',
+  'hkg61',
+  'https://images.clausen.app/models/6ec780cb1cdc7800.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0bfea97168760d03',
+  '''73 jeep j10',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bcd018f98764b888',
+  '0bfea97168760d03',
+  '091/250',
+  'HW Hot Trucks',
+  '4/10',
+  2024,
+  'metalflake bright blue',
+  '["K&amp;N logo on sides and hood; \"JEEP\" &amp; red &amp; orange stripes on sides; black middle section of hood"]',
+  'Orange BLOR',
+  'Black/Plastic',
+  'Smoke tint',
+  'Gray',
+  'Malaysia',
+  'htc31',
+  'https://images.clausen.app/models/7748f0bffbb36c5d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0bfea97168760d03',
+  '''73 jeep j10',
+  'Black'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a687c5ef605e1297',
+  '0bfea97168760d03',
+  'white',
+  'Black',
+  '',
+  2024,
+  'gblor',
+  '["HTF00"]',
+  'Unknown',
+  'Base code(s): T12, T16',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.clausen.app/models/4d61549682249052.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0bfea97168760d03',
+  '''73 jeep j10',
+  'Purple and Gold'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '265efa431af58c63',
+  '0bfea97168760d03',
+  '',
+  'Purple and Gold',
+  '3/6',
+  2025,
+  'metalflake plum',
+  '["Hot Wheels logo","57","gold stripes on sides"]',
+  'BLOR',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Malaysia',
+  'jdm22',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b71be3384da9f3d9',
+  'volvo xc40 recharge',
+  'Mud Studs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '4b5fde40edb7d1d6',
+  'b71be3384da9f3d9',
+  '201/250',
+  'Mud Studs',
+  '5/5',
+  2023,
+  'sage green',
+  '["Detailed taillights","forest livery on sides"]',
+  'BLOR',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg55',
+  'https://images.clausen.app/models/c0553b158130f3dd.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b71be3384da9f3d9',
+  'volvo xc40 recharge',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'cf513e99a07a8e27',
+  'b71be3384da9f3d9',
+  '014/250',
+  'HW Green Speed',
+  '2/10',
+  2024,
+  'bursting blue metallic',
+  '["Detailed taillights","VOLVO XC40\" and White &amp; Yellow stripes on sides"]',
+  'GBLOR',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htb79',
+  'https://images.clausen.app/models/85dd26ebe9aec346.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b71be3384da9f3d9',
+  'volvo xc40 recharge',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '108478afec9b0aeb',
+  'b71be3384da9f3d9',
+  '014/250',
+  'HW Green Speed',
+  '2/10',
+  2024,
+  'fusion red',
+  '["Detailed taillights","VOLVO XC40","White stripes","&amp; Hot Wheels logo on sides"]',
+  'BLOR',
+  'Black/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htf66',
+  'https://images.clausen.app/models/448fca1cdab28315.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b71be3384da9f3d9',
+  'volvo xc40 recharge',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '5c281097bbb12cff',
+  'b71be3384da9f3d9',
+  '014/250',
+  'HW Green Speed',
+  '2/10',
+  2024,
+  'crystal white',
+  '["Detailed taillights","Red stripes","VOLVO XC40\" on sides"]',
+  'Black BLOR',
+  'Black/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htc81',
+  'https://images.clausen.app/models/da5c51f4637fdb45.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0d978119fa8bd871',
+  'trouble decker',
+  'HW Metro'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ca16a2982d380295',
+  '0d978119fa8bd871',
+  '202/250',
+  'HW Metro',
+  '7/10',
+  2023,
+  'red',
+  '["Gold striping","METRO","TROUBLE DECKER\" on sides","EL SEGUNDO","52-22\" on left side","Hot Wheels logo on right side"]',
+  'HKG63',
+  'Metalflake gunmetal gray/Metal',
+  'Black',
+  'DD8 & AeroDisc',
+  'New ModelBase code(s): S15, S17, S20, S21',
+  'malaysia',
+  'https://images.clausen.app/models/345b79bfbe8fda64.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0d978119fa8bd871',
+  'trouble decker',
+  'HW Fast Transit'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '12ff04498d714fa7',
+  '0d978119fa8bd871',
+  '126/250',
+  'HW Fast Transit',
+  '5/5',
+  2024,
+  'tan & red',
+  '["PENANG","GEORGETOWN","28","槟城","navy blue Hot Wheels logo and navy blue stripe on sides","white stripes on spoiler"]',
+  'HTB45',
+  'ZAMAC',
+  'Heavy smoke tint',
+  'Red Rim DD8',
+  'Hot Wheels Let''s RaceBase code(s): S50, S51',
+  'malaysia',
+  'https://images.clausen.app/models/12914ecabd74f7fe.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0d978119fa8bd871',
+  'trouble decker',
+  'HW Fast Transit'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '480e230d8d8378f7',
+  '0d978119fa8bd871',
+  '126/250',
+  'HW Fast Transit',
+  '5/5',
+  2024,
+  'orange & blue',
+  '["PENANG","GEORGETOWN","28","槟城","&amp; light orange stripe on sides","Penang Bridge graphic on right side","MALAYSIA\" with white stripes on left side","navy blue with blue Hot Wheels logo on sides of spoiler"]',
+  'HTD46',
+  'ZAMAC',
+  'Heavy smoke tint',
+  'Orange chrome rim DD8',
+  'Hot Wheels Let''s RaceBase code(s): T18, T19',
+  'malaysia',
+  'https://images.clausen.app/models/93d93617ce441f17.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd33996b66b5805d8',
+  'mod speeder',
+  'Muscle Mania'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e8530a8e9c9f7e59',
+  'd33996b66b5805d8',
+  '206/250',
+  'Muscle Mania',
+  '10/10',
+  2023,
+  'gunmetal matte "moody" blue',
+  '["Gold accents","55\" on sides"]',
+  'TRAP5',
+  'Black/Plastic',
+  'Smoke tint',
+  'Dark Chrome',
+  'Malaysia',
+  'hkg59',
+  'https://images.clausen.app/models/1e5f4b753054aea0.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd33996b66b5805d8',
+  'mod speeder',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd2aa71d118581ad2',
+  'd33996b66b5805d8',
+  '010/250',
+  'HW Modified',
+  '1/10',
+  2024,
+  'matte black',
+  '["Hot Wheels logo on sides","hood and roof"]',
+  'TRAP5',
+  'Red/Plastic',
+  'Clear',
+  'Gold',
+  'Malaysia',
+  'htb64',
+  'https://images.clausen.app/models/4fa55f4d78441276.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd33996b66b5805d8',
+  'mod speeder',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '8f1517c7bd00a045',
+  'd33996b66b5805d8',
+  '010/250',
+  'HW Modified',
+  '1/10',
+  2024,
+  'white',
+  '["Hot Wheels logo on sides","hood and roof"]',
+  'Chrome Cyan TRAP5',
+  'Orange/Plastic',
+  'Light Blue tint',
+  'Dark Gray',
+  'Malaysia',
+  'htd13',
+  'https://images.clausen.app/models/87720c71833a2486.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0b90fa0462a8470d',
+  'porsche 928s safari',
+  'Baja Blazers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'af006a7a121e7248',
+  '0b90fa0462a8470d',
+  '208/250',
+  'Baja Blazers',
+  '5/10',
+  2023,
+  'metalflake gray',
+  '["Inverted German flag deco","<a href=\"/wiki/Dmitriy_Shakhmatov\" title=\"Dmitriy Shakhmatov\">D. SHAKHMATOV</a>","<span class=\"new\" title=\"Daniel Lopez (page does not exist)\" data-uncrawlable-url=\"L3dpa2kvRGFuaWVsX0xvcGV6P2FjdGlvbj1lZGl0JnJlZGxpbms9MQ==\">D. LOPEZ</span>","<a href=\"/wiki/Andr%C3%A9s_Andrieu\" title=\"Andrés Andrieu\">A. ANDREIU</a>","Bilstein","Hot Wheels","Porsche","Porsche 75 logos on sides"]',
+  'Black 5SP',
   'Black / Plastic',
   'Smoke tint',
   'Black',
   'Malaysia',
-  'HRY93',
-  'https://images.clausen.app/models/2f9b0cb296969044.webp'
-);
+  'hkg46',
+  'https://images.clausen.app/models/8a17cba577aa88a0.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '1e29ff1d3705b4dd',
-  '1950 Chevy Fleetline',
-  'Fast & Furious: Dominic Toretto'
+  '0b90fa0462a8470d',
+  'porsche 928s safari',
+  'HW Dirt'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -5227,36 +9153,314 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '1e29ff1d3705b4dd',
-  '1e29ff1d3705b4dd',
-  '',
-  'Fast & Furious: Dominic Toretto',
+  '024480287705f982',
+  '0b90fa0462a8470d',
+  '245/250',
+  'HW Dirt',
+  '10/10',
+  2024,
+  'red',
+  '["Porsche badging","yellow and black striping","Michelin logo on hood","Sparco logo on fenders","Hot Wheels and Porsche logos","8\" on doors","Michelin and Treasure Hunt flame logos on rear fenders"]',
+  '"Muddy" 5SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htf29',
+  'https://images.clausen.app/models/878aa3dfcde168db.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b94095cfe66c12ab',
+  'mad mike drift attack',
+  'HW Exotics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '986e897a82b676d7',
+  'b94095cfe66c12ab',
+  '209/250',
+  'HW Exotics',
+  '5/10',
+  2023,
+  'white',
+  '["Detailed headlights","blue","gray and white accents","Mad Mike logos","123\" on hood","Hot Wheels","Toyo Tires","Rocket Bunny","K&amp;N","Rotiform","Mad Mike logos on sides"]',
+  'AeroDisc & DD8',
+  'Blue/Plastic',
+  'Smoke Tint',
+  'Black',
+  'Malaysia',
+  'hkg58',
+  'https://images.clausen.app/models/85ceb6cb7b8d755a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b94095cfe66c12ab',
+  'mad mike drift attack',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a678dde60a42d597',
+  'b94095cfe66c12ab',
+  '059/250',
+  'HW Modified',
+  '5/10',
+  2024,
+  'matte gray',
+  '["Detailed headlights","dark gray accents","Mad Mike logos","123\" on hood","Hot Wheels","Toyo Tires","Rocket Bunny","K&amp;N","Rotiform","Mad Mike logos on sides"]',
+  'AeroDisc & DD8',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htb66',
+  'https://images.clausen.app/models/edd7b69e933728bb.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b94095cfe66c12ab',
+  'mad mike drift attack',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '29b4d3c1a4071301',
+  'b94095cfe66c12ab',
+  '059/250',
+  'HW Modified',
+  '5/10',
+  2024,
+  'satin blue',
+  '["Detailed headlights","dark gray accents","Mad Mike logos","123\" on hood","Hot Wheels","Toyo Tires","Rocket Bunny","K&amp;N","Rotiform","Mad Mike logos on sides"]',
+  'AeroDisc & DD8',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htc91',
+  'https://images.clausen.app/models/51255a148f0e4b0f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '86f52e03b47e504a',
+  '''94 toyota supra (tooned)',
+  'Tooned'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '24cf947d706ea2f9',
+  '86f52e03b47e504a',
+  '211/250',
+  'Tooned',
+  '3/5',
+  2023,
+  'orange',
+  '["Detailed headlights and hood vents","gladiator deco"]',
+  'OH5',
+  'Orange/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'hkg62',
+  'https://images.clausen.app/models/aabc64bf3a947a13.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '86f52e03b47e504a',
+  '''94 toyota supra (tooned)',
+  'Tooned'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '11ae4cf1e8f2262d',
+  '86f52e03b47e504a',
+  '224/250',
+  'Tooned',
   '4/5',
   2024,
-  'Matte gray',
-  '["Detailed taillights","rust"]',
-  'Copper C5',
-  'Black/Plastic',
-  'Light blue tint',
-  'Black',
-  'Thailand',
-  'HRW49',
-  'https://images.clausen.app/models/1e29ff1d3705b4dd.webp'
-);
+  'metalflake gold',
+  '["Detailed headlights and hood vents","brown and white graphics on sides"]',
+  'OH5',
+  'Gold/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'htf27',
+  'https://images.clausen.app/models/7562d92ad0da905f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '10d2b8a7abaae263',
-  'De Tomaso Pantera',
-  'Fast & Furious: Racing'
+  '86f52e03b47e504a',
+  '''94 toyota supra (tooned)',
+  'Tooned Gulf'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -5273,36 +9477,1502 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '10d2b8a7abaae263',
-  '10d2b8a7abaae263',
+  'c6b1eb6b6f983991',
+  '86f52e03b47e504a',
   '',
-  'Fast & Furious: Racing',
+  'Tooned Gulf',
+  '5/5',
+  2025,
+  'white',
+  '["Detailed headlights and taillights","orange striping","9","Gulf logo on side"]',
+  'C5',
+  'Orange/Plastic',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'unknown',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '84db9065166664d6',
+  'bugatti bolide',
+  'HW Exotics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '56dbd2e8a9415e76',
+  '84db9065166664d6',
+  '213/250',
+  'HW Exotics',
+  '6/10',
+  2023,
+  'black',
+  '["<i>Agile Bleu</i> body panels","detailed headlights","taillights and trim"]',
+  'Black AeroDisc',
+  'Black/Plastic',
+  'Smoke tint',
+  'Gray',
+  'Malaysia',
+  'hkg64',
+  'https://images.clausen.app/models/1a98c29335e44093.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '84db9065166664d6',
+  'bugatti bolide',
+  'HW Exotics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e8ecd6fe4f651045',
+  '84db9065166664d6',
+  '185/250',
+  'HW Exotics',
+  '3/10',
+  2024,
+  'black',
+  '["<i>Jaune Molsheim</i> body panels","detailed headlights","taillights and trim"]',
+  'Black, Yellow Rim AeroDisc',
+  'Black/Plastic',
+  'Smoke tint',
+  'Gray',
+  'Malaysia',
+  'htc22',
+  'https://images.clausen.app/models/ebd27b2856542b3b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '84db9065166664d6',
+  'bugatti bolide',
+  'HW Exotics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'e989c20fb944f6c9',
+  '84db9065166664d6',
+  '185/250',
+  'HW Exotics',
+  '3/10',
+  2024,
+  'black',
+  '["<i>Carbon Red</i> body panels","detailed headlights","taillights and trim"]',
+  'Black, Chrome Red Rim AeroDisc',
+  'Black/Plastic',
+  'Smoke tint',
+  'Gray',
+  'Malaysia',
+  'htf08',
+  'https://images.clausen.app/models/f9fcf88edd1f5039.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b52cecb3b6a6109e',
+  '''57 jeep fc',
+  'Baja Blazers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '686e6be926e4f424',
+  'b52cecb3b6a6109e',
+  '218/250',
+  'Baja Blazers',
+  '6/10',
+  2023,
+  'metalflake blue',
+  '["Detailed headlights","Jeep logo above grille","''Jeep Forward Control'' badges &amp; \"JEEP HELEPHANT <big><b>4</b></big> WHEEL DRIVE\" on sides"]',
+  'BLOR',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg72',
+  'https://images.clausen.app/models/695bce6d67e09587.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b52cecb3b6a6109e',
+  '''57 jeep fc',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '32740be91aa670a4',
+  'b52cecb3b6a6109e',
+  '068/250',
+  'HW Hot Trucks',
+  '3/10',
+  2024,
+  'desert sand',
+  '["Detailed headlights","Jeep logo above grille; yellow","orange &amp; black stripes and ''Jeep Forward Control'' badges on sides"]',
+  'Black BAJA5',
+  'Black/Plastic',
+  'Amber tint',
+  'Black',
+  'Malaysia',
+  'htc30',
+  'https://images.clausen.app/models/9f3693540e42f632.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b52cecb3b6a6109e',
+  '''57 jeep fc',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6a0439e9f1fbfb9a',
+  'b52cecb3b6a6109e',
+  '068/250',
+  'HW Hot Trucks',
+  '3/10',
+  2024,
+  'zamac',
+  '["Detailed headlights","Jeep logo above grille; green","gray &amp; black stripes and ''Jeep Forward Control'' badges on sides"]',
+  'Green chrome rim, black BAJA5',
+  'Black/Plastic',
+  'Green tint',
+  'Black',
+  'Malaysia',
+  'htf48',
+  'https://images.clausen.app/models/66bd598a49204dd9.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b52cecb3b6a6109e',
+  '''57 jeep fc',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ab6a3a475fb6f83a',
+  'b52cecb3b6a6109e',
+  '068/250',
+  'HW Hot Trucks',
+  '3/10',
+  2024,
+  'flat red',
+  '["Detailed headlights","Jeep logo above grille; black","gold &amp; white stripes and ''Jeep Forward Control'' badges on sides"]',
+  'White BAJA5',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htd21',
+  'https://images.clausen.app/models/4abc3dfdd9d5122c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a8f81c53455ce2af',
+  'ford f-150 lightning custom',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '292cb680823a1023',
+  'a8f81c53455ce2af',
+  '226/250',
+  'HW Hot Trucks',
+  '9/10',
+  2023,
+  'metalflake dark blue',
+  '["Triangle-shaped camouflage graphics on hood &amp; sides","Ford wordmark on sides and trunk","''F-150 Lightning'' on sides"]',
+  'AeroDisc',
+  'Black/Plastic',
+  'Clear',
+  'Chrome',
+  'Malaysia',
+  'hkg66',
+  'https://images.clausen.app/models/015d86ac257c1ca5.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a8f81c53455ce2af',
+  'ford f-150 lightning custom',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f1064de78b41e79a',
+  'a8f81c53455ce2af',
+  '037/250',
+  'HW Green Speed',
+  '5/10',
+  2024,
+  'metalflake dark red',
+  '["Black and white accents","F-150 LIGHTNING\" on sides"]',
+  'RA6',
+  'Black/Plastic',
+  'Smoke tint',
+  'Grey',
+  'Malaysia',
+  'htb82',
+  'https://images.clausen.app/models/4db71f282e6c8729.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a8f81c53455ce2af',
+  'ford f-150 lightning custom',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '08f55fa61d296b39',
+  'a8f81c53455ce2af',
+  '037/250',
+  'HW Green Speed',
+  '5/10',
+  2024,
+  'black',
+  '["Red and white accents","F-150 LIGHTNING\" on sides"]',
+  'WBDD8',
+  'Black/Plastic',
+  'Clear',
+  'Grey',
+  'Malaysia',
+  'htd01',
+  'https://images.clausen.app/models/9a2f9067fc7b1b78.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '44bb926be42d4184',
+  'custom ''68 camaro',
+  'HW Slammed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '74ff4023df82a4d0',
+  '44bb926be42d4184',
+  '228/250',
+  'HW Slammed',
+  '2/5',
+  2023,
+  'matte navy blue',
+  '["Yellow stripe down hood","blue and white diagonals","skull","速度\" on roof and sides","<a href=\"/wiki/Dwayne_Vance\" title=\"Dwayne Vance\">DV</a>","Hot Wheels logos on sides","SCREEMING SKULLZ\" on hood"]',
+  'Gray rim, Black DD8',
+  'Black/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'hkg68',
+  'https://images.clausen.app/models/342d2bcd031f7890.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '44bb926be42d4184',
+  'custom ''68 camaro',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ee3b0f2c9eb38267',
+  '44bb926be42d4184',
+  '081/250',
+  'HW Modified',
+  '7/10',
+  2024,
+  'red',
+  '["Black stripe down hood","68 on roof and sides","sponsored stickers on both doors","Hot Wheels logo on the rear"]',
+  'Chrome Gold rim, Black DD8',
+  'Black/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'htb69',
+  'https://images.clausen.app/models/1e1ed85f84b0b70b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '44bb926be42d4184',
+  'custom ''68 camaro',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0533c06a33f159db',
+  '44bb926be42d4184',
+  '081/250',
+  'HW Modified',
+  '7/10',
+  2024,
+  'white',
+  '["Red stripe down hood","68 on roof and sides","sponsored stickers on both doors","Hot Wheels logo on the rear"]',
+  'Gray rim, Black DD8',
+  'Black/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'htd30',
+  'https://images.clausen.app/models/5682356d71f06e50.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '06210f84cd21525c',
+  'surf duty',
+  'HW Rescue'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6792b453084f9eaf',
+  '06210f84cd21525c',
+  '230/250',
+  'HW Rescue',
+  '6/10',
+  2023,
+  'yellow',
+  '["LIFEGUARD","UNIT - 068","SURF PATROL\" on sides","black diagonals"]',
+  'Black RA6',
+  'Black/Plastic',
+  'Red tint',
+  'Black',
+  'Malaysia',
+  'hkg67',
+  'https://images.clausen.app/models/b68c7cf9e0c2585f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '06210f84cd21525c',
+  'surf duty',
+  'HW Metro'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '95e724c3709dbf53',
+  '06210f84cd21525c',
+  '105/250',
+  'HW Metro',
+  '2/10',
+  2024,
+  'blue',
+  '["BEACH PATROL","LIFEGUARD","Yellow &amp; White stripes","&amp; Yellow Hot Wheels logo on sides"]',
+  'Gray TRAP5',
+  'White/Plastic',
+  'Blue tint',
+  'Black',
+  'Malaysia',
+  'htb14',
+  'https://images.clausen.app/models/94ca7c77b28b050d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '06210f84cd21525c',
+  'surf duty',
+  'HW Metro'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a98b01626c530d9e',
+  '06210f84cd21525c',
+  '105/250',
+  'HW Metro',
+  '2/10',
+  2024,
+  'red',
+  '["BEACH PATROL","LIFEGUARD","Silver &amp; White stripes","&amp; White Hot Wheels logo on sides"]',
+  'Gray TRAP5',
+  'Silver/Plastic',
+  'Yellow Tint',
+  'Black',
+  'Malaysia',
+  'htd36',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '06210f84cd21525c',
+  'surf duty',
+  'HW City 5-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '02eac666484f64a9',
+  '06210f84cd21525c',
+  '',
+  'HW City 5-Pack',
+  '',
+  2025,
+  '',
+  '[]',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Indonesia',
+  'jbj75',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '14440368e9c6cc69',
+  'porsche 911 turbo 3.6 (964)',
+  'Tooned'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd9fa6b4e84fb8ba3',
+  '14440368e9c6cc69',
+  '234/250',
+  'Tooned',
+  '5/5',
+  2023,
+  'metalflake black',
+  '["Detailed headlights and taillights","Turbo 3.6\" on rear","964 TURBO\" license plate"]',
+  'Micro5SP',
+  'Gray/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hkg69',
+  'https://images.clausen.app/models/4080032e8e6152cf.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '14440368e9c6cc69',
+  'porsche 911 turbo 3.6 (964)',
+  'Tooned'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ba21485aa718464b',
+  '14440368e9c6cc69',
+  '199/250',
+  'Tooned',
   '2/5',
   2024,
+  'metalflake dark purple',
+  '["Detailed headlights and taillights","Turbo 3.6\" on rear","964 TURBO\" license plate"]',
+  'Micro5SP',
+  'Gray/Plastic',
+  'Blue tint',
   'Black',
-  '["Detailed taillights","PANTERA\" wordmark on sides"]',
-  'MM5',
+  'Malaysia',
+  'htb41',
+  'https://images.clausen.app/models/a131031df45ddcc1.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '14440368e9c6cc69',
+  'porsche 911 turbo 3.6 (964)',
+  'Red Edition'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a626814a07d0d54e',
+  '14440368e9c6cc69',
+  '199/250',
+  'Red Edition',
+  '12/12',
+  2024,
+  '',
+  '[]',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Malaysia',
+  'htf84',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f2ac404c01743fc7',
+  '''92 dodge viper rt/10',
+  'HW Exotics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bdd5cfa20b1f39b3',
+  'f2ac404c01743fc7',
+  '236/250',
+  'HW Exotics',
+  '9/10',
+  2023,
+  'viper red',
+  '["Detailed headlights and taillights"]',
+  'FC3',
+  'Black/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'hkg71',
+  'https://images.clausen.app/models/b65f9bed6c6edaec.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f2ac404c01743fc7',
+  '''92 dodge viper rt/10',
+  'HW Exotics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '986dfab0effd0066',
+  'f2ac404c01743fc7',
+  '218/250',
+  'HW Exotics',
+  '6/10',
+  2024,
+  'dandelion yellow',
+  '["Detailed headlights","VIPER RT/10\" badging on fenders"]',
+  'FC3',
+  'Black/Plastic',
+  'Clear',
+  'Black',
+  'Malaysia',
+  'htc24',
+  'https://images.clausen.app/models/2fd3732c67c130d7.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a7801859c30d54ac',
+  'land rover series ii',
+  'Baja Blazers'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '4cd7bdc70099cd64',
+  'a7801859c30d54ac',
+  '242/250',
+  'Baja Blazers',
+  '10/10',
+  2023,
+  'artichoke green',
+  '["Off-white stripes","Hot Wheels","Cool n Vintage\" &amp; \"BFGoodrich\" logos on sides","surfboard trim with \"LAND ROVER\" logo","detailed spare tire","<a href=\"/wiki/Mike_McClone\" title=\"Mike McClone\">CLONE</a>","<a href=\"/wiki/Fraser_Campbell\" title=\"Fraser Campbell\">CAMPBELL</a>\" &amp; british tax disk on windshield"]',
+  'Black dashboard with gray seats',
+  'ZAMAC',
+  'Black',
+  'Grey',
+  'HKG65',
+  'black baja5',
+  'https://images.clausen.app/models/b1ee7f1c8e4fb6cf.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a7801859c30d54ac',
+  'land rover series ii',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f5b5b24df27fc36b',
+  'a7801859c30d54ac',
+  '092/250',
+  'HW Hot Trucks',
+  '5/10',
+  2024,
+  'light gray',
+  '["Yellow","orange","red &amp; black stripes","Hot Wheels\" &amp; \"Goodyear\" logos on sides","Land Rover\" logo on windshield","beige surfboard trim with black &amp; orange stripes"]',
+  'Black',
+  'ZAMAC',
+  'Black',
+  'Black',
+  'HTC32',
+  'black baja5',
+  'https://images.clausen.app/models/e759a645da1ee2fe.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a7801859c30d54ac',
+  'land rover series ii',
+  'Red Edition'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '654652552ff79482',
+  'a7801859c30d54ac',
+  '092/250',
+  'Red Edition',
+  '8/12',
+  2024,
+  '',
+  '[]',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'HTF80',
+  'unknown',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a7801859c30d54ac',
+  'land rover series ii',
+  'HW Hot Trucks'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '47c0a3789a17a219',
+  'a7801859c30d54ac',
+  '092/250',
+  'HW Hot Trucks',
+  '5/10',
+  2024,
+  'metalflake dark blue',
+  '["Gray","Dark Green","Pale &amp; White stripes","Hot Wheels\" &amp; \"Goodyear\" logos on sides","Land Rover\" logo on windshield","Brown surfboard trim with Gray &amp; Pale stripes"]',
+  'Black',
+  'ZAMAC',
+  'Black',
+  'Black',
+  'HTD41',
+  'white baja5',
+  'https://images.clausen.app/models/1c455898a912c833.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4d59ca4f2b758756',
+  'mclaren solus gt',
+  'HW Exotics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '8956cee976b4cee9',
+  '4d59ca4f2b758756',
+  '250/250',
+  'HW Exotics',
+  '10/10',
+  2023,
+  'white',
+  '["Green stripe down hood","91\" on wing struts","black accents"]',
+  '10SP',
   'Black/Plastic',
   'Heavy smoke tint',
   'Black',
-  'Thailand',
-  'HRW52',
-  'https://images.clausen.app/models/10d2b8a7abaae263.webp'
-);
+  'Malaysia',
+  'hkg70',
+  'https://images.clausen.app/models/18ab266b34858b17.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'af1df2d3fd83e27b',
-  '1966 Chevy Impala',
-  'Fast & Furious: Racing'
+  '4d59ca4f2b758756',
+  'mclaren solus gt',
+  'HW Modified'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -5319,36 +10989,530 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'af1df2d3fd83e27b',
-  'af1df2d3fd83e27b',
-  '',
-  'Fast & Furious: Racing',
-  '3/5',
+  'e84b5224d0d45295',
+  '4d59ca4f2b758756',
+  '070/250',
+  'HW Modified',
+  '6/10',
   2024,
-  'Lavender',
-  '["Detailed headlights","taillights and trim"]',
-  'C5',
-  'ZAMAC',
+  'metalflake blue',
+  '["Blue &amp; black decals on fenders","black accents"]',
+  'G10SP',
+  'Black/Plastic',
+  'Heavy Smoke tint',
+  'Black',
+  'Malaysia',
+  'htb68',
+  'https://images.clausen.app/models/28c5fe8dbc1b4935.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4d59ca4f2b758756',
+  'mclaren solus gt',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bb14ee1c7905f54f',
+  '4d59ca4f2b758756',
+  '070/250',
+  'HW Modified',
+  '6/10',
+  2024,
+  'zamac',
+  '["Black and gray accents on fenders. Orange line and \"McLaren\" branding on hood"]',
+  'G10SP',
+  'Black/Plastic',
+  'Heavy Smoke tint',
+  'Black',
+  'Malaysia',
+  'htf47',
+  'https://images.clausen.app/models/8edff9002ffc452e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4d59ca4f2b758756',
+  'mclaren solus gt',
+  'HW Modified'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '6a608126812a228b',
+  '4d59ca4f2b758756',
+  '070/250',
+  'HW Modified',
+  '6/10',
+  2024,
+  'orange',
+  '["Black and yellow accents on fenders. Black line and \"McLaren\" branding on hood"]',
+  'G10SP',
+  'Black/Plastic',
+  'Heavy Smoke tint',
+  'Black',
+  'Malaysia',
+  'htd14',
+  'https://images.clausen.app/models/8e9919d2548940fc.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f93cbb8eff6bfcd2',
+  'lancer evolution ix',
+  'Fast & Furious (Series 2)'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b290110c74646c75',
+  'f93cbb8eff6bfcd2',
+  '',
+  'Fast & Furious (Series 2)',
+  '3/10',
+  2023,
+  'red',
+  '["Detailed headlights","taillights and trim","black and silver graphics"]',
+  'Chrome Rim 5SP',
+  'Black / Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hnt03',
+  'https://images.clausen.app/models/053566c0ba7b8d3c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f93cbb8eff6bfcd2',
+  'lancer evolution ix',
+  'Mystery Models (Series 1)'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '1494403a0c4eadde',
+  'f93cbb8eff6bfcd2',
+  '',
+  'Mystery Models (Series 1)',
+  '1/10',
+  2024,
+  'white',
+  '["Side triangle graphics","1\" on sides","<a href=\"/wiki/Leeway_Chang\" title=\"Leeway Chang\">LWC</a>\" on sides"]',
+  'White AeroDisc',
+  'Black / Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hvw69',
+  'https://images.clausen.app/models/b2f1173b8db151b2.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'fef8912e70db773b',
+  'lamborghini murciélago (2023)',
+  'Fast & Furious (Series 2)'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b6ae0544cdfc0773',
+  'fef8912e70db773b',
+  '',
+  'Fast & Furious (Series 2)',
+  '8/10',
+  2023,
+  'orange',
+  '["Detailed headlights and taillights"]',
+  'Black PR5',
+  'Black / Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hnt08',
+  'https://images.clausen.app/models/c2310478dfc9e761.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6ee11c3649fac813',
+  '1967 el camino',
+  'Fast & Furious (Series 2)'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '5fe41af7acb2e239',
+  '6ee11c3649fac813',
+  '',
+  'Fast & Furious (Series 2)',
+  '10/10',
+  2023,
+  'matte black',
+  '["Detailed trim"]',
+  '5SP',
+  'Chrome/Plastic',
+  'Smoke tint',
+  'Gray',
+  'Malaysia',
+  'hnt10',
+  'https://images.clausen.app/models/fac68447430b2311.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6ee11c3649fac813',
+  '1967 el camino',
+  'Fast & Furious: HW Decades of Fast'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b9659bba8665fc9d',
+  '6ee11c3649fac813',
+  '',
+  'Fast & Furious: HW Decades of Fast',
+  '1/5',
+  2024,
+  'matte black',
+  '["Detailed taillights"]',
+  'Black S5',
+  'Chrome/Plastic',
+  'Smoke tint',
+  'Gray',
+  'Thailand',
+  'hrw42',
+  'https://images.clausen.app/models/3cb35fee31682565.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'e6b85cb085c86411',
+  'mazda rx-8',
+  'Fast & Furious (Series 3)'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0147e6328a8a2c65',
+  'e6b85cb085c86411',
+  '',
+  'Fast & Furious (Series 3)',
+  '3/10',
+  2023,
+  'blue',
+  '["Detailed headlights and taillights","black gradient","pinstriping"]',
+  '10SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hnt13',
+  'https://images.clausen.app/models/489e382c6d1481ba.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'e6b85cb085c86411',
+  'mazda rx-8',
+  'Fast & Furious: Women of Fast'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7c457dab26fadfbd',
+  'e6b85cb085c86411',
+  '',
+  'Fast & Furious: Women of Fast',
+  '2/5',
+  2024,
+  'black',
+  '["Detailed headlights and taillights","pinstriping","blue gradient"]',
+  'MM5',
+  'Black/Metal',
   'Smoke tint',
   'Black',
   'Thailand',
-  'HRW53',
-  'https://images.clausen.app/models/af1df2d3fd83e27b.webp'
-);
+  'hrw37',
+  'https://images.clausen.app/models/7e66b4b48921dae7.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'b8b5c0a5842e82ef',
-  'Nissan 350Z Custom',
-  'Fast & Furious: Racing'
+  '44d85c994bffdc87',
+  '1971 nissan skyline h/t 2000 gt-r',
+  'Fast & Furious (Series 3)'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -5365,36 +11529,206 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'b8b5c0a5842e82ef',
-  'b8b5c0a5842e82ef',
+  '543ed5076a67c347',
+  '44d85c994bffdc87',
   '',
-  'Fast & Furious: Racing',
-  '4/5',
+  'Fast & Furious (Series 3)',
+  '5/10',
+  2023,
+  'black',
+  '["Detailed headlights and taillights"]',
+  'Black 10SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'hnt15',
+  'https://images.clausen.app/models/ab10e92ee86f7478.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '44d85c994bffdc87',
+  '1971 nissan skyline h/t 2000 gt-r',
+  '8/10-Pack Exclusive'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '3e0f55bb3621e058',
+  '44d85c994bffdc87',
+  '',
+  '8/10-Pack Exclusive',
+  '',
   2024,
-  'Metalflake dark gray',
-  '["Detailed headlights","black graphics from The Fast and the Furious"]',
-  'Chrome Rim BS5',
-  'Black/Metal',
+  'ivory white',
+  '["24\" with racing decals"]',
+  'Gold chrome rim, Black MC5',
+  'Black/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'x6999',
+  'https://images.clausen.app/models/2817fbf7b15e5de5.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '44d85c994bffdc87',
+  '1971 nissan skyline h/t 2000 gt-r',
+  '8/10-Pack Exclusive'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7a6a291465c433ea',
+  '44d85c994bffdc87',
+  '',
+  '8/10-Pack Exclusive',
+  '',
+  2024,
+  'gold',
+  '["24\" with racing decals"]',
+  'Silver chrome rim, Black MC5',
+  'Black/Plastic',
+  'Smoke tint',
+  'Chrome',
+  'Malaysia',
+  'x6999',
+  'https://images.clausen.app/models/69464364e0e8044d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '8842d9ad65324980',
+  'bugatti veyron (2023)',
+  'Fast & Furious (Series 3)'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '044d13b02b4913c4',
+  '8842d9ad65324980',
+  '',
+  'Fast & Furious (Series 3)',
+  '7/10',
+  2023,
+  'pearl white',
+  '["Detailed headlights and taillights"]',
+  '10SP',
+  'Black / Plastic',
   'Heavy smoke tint',
   'Black',
-  'Thailand',
-  'HRW54',
-  'https://images.clausen.app/models/b8b5c0a5842e82ef.webp'
-);
+  'Malaysia',
+  'hnt17',
+  'https://images.clausen.app/models/e3cc6aad50a82a40.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'bb12149189c7b0e3',
-  '2023 Toyota GR Corolla',
-  'Car Culture: Slide Street'
+  '8842d9ad65324980',
+  'bugatti veyron (2023)',
+  'Transformers'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -5411,634 +11745,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'bb12149189c7b0e3',
-  'bb12149189c7b0e3',
+  '461e39c839d82b45',
+  '8842d9ad65324980',
   '',
-  'Car Culture: Slide Street',
-  '22/5',
-  2024,
-  'Yellow',
-  '["Detailed headlights and taillights","yellow accents","blue highlights","Rain-X","Mobil 1","Rotiform","Supertech logos on sides","AC Racing logos on front fender","Nitto logos on rear fender","blue roof","411\" on roof","RS","TUERCK\" on spoiler","Rain-X","Mobil 1","Toyota logos on rear"]',
-  'White RR10SPM',
-  'Black/Metal',
-  'Clear',
-  'Black',
-  'Thailand',
-  'HKC82',
-  'https://images.clausen.app/models/bb12149189c7b0e3.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '0a86c2ec9b9badb4',
-  '2023 Toyota GR Corolla',
-  'Car Culture: Slide Street'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '0a86c2ec9b9badb4',
-  '0a86c2ec9b9badb4',
-  '',
-  'Car Culture: Slide Street',
-  '20/5',
-  2024,
-  'Gloss black',
-  '["Detailed headlights and taillights","Toyota emblem on front &amp; rear","GR Corolla logo on rear"]',
-  'BRR6SPM',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HKC87',
-  'https://images.clausen.app/models/0a86c2ec9b9badb4.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '6f15124e046105b3',
-  '''64 Prince Skyline GT',
-  'Car Culture: Japan Historics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '6f15124e046105b3',
-  '6f15124e046105b3',
-  '',
-  'Car Culture: Japan Historics',
-  '41/5',
-  2024,
-  'Blue',
-  '["Detailed headlights","taillights and trim","taped up headlights","39\" on sides and hood","GT-II\" on front fenders and trunk"]',
-  'Black RR8SP',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV70',
-  'https://images.clausen.app/models/6f15124e046105b3.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'd72ab72b204f8767',
-  '''64 Prince Skyline GT',
-  'Car Culture: Japan Historics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'd72ab72b204f8767',
-  'd72ab72b204f8767',
-  '',
-  'Car Culture: Japan Historics',
-  '40/5',
-  2024,
-  'Black',
-  '["Detailed headlights and taillights"]',
-  'Black RR8SP',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV87',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'fc906064856f710c',
-  '''72 Toyota Corolla Levin',
-  'Car Culture: Japan Historics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'fc906064856f710c',
-  'fc906064856f710c',
-  '',
-  'Car Culture: Japan Historics',
-  '42/5',
-  2024,
-  'Orange',
-  '["Detailed headlights","taillights","badging and trim"]',
-  'Gray RR8SP',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV69',
-  'https://images.clausen.app/models/fc906064856f710c.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '5e43892d420a3e18',
-  '''72 Toyota Corolla Levin',
-  'Car Culture: Team Transport#75'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '5e43892d420a3e18',
-  '5e43892d420a3e18',
-  '',
-  'Car Culture: Team Transport#75',
-  '',
-  2025,
-  'Yellow',
-  '[]',
-  'MiniRR6SPM',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Thailand',
-  'Unknown',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'd0c1f949e480c4c9',
-  'Datsun King Cab Baja Custom',
-  'Car Culture: Terra Trek'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'd0c1f949e480c4c9',
-  'd0c1f949e480c4c9',
-  '',
-  'Car Culture: Terra Trek',
-  '3/5',
-  2024,
-  'White',
-  '["Detailed headlights and taillights","red hood","blue stripes","Datsun logo","720\" on sides","DATSUN\" on tailgate"]',
-  'Gray ORRR8DOT',
-  'ZAMAC',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV71',
-  'https://images.clausen.app/models/d0c1f949e480c4c9.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2212d03b34b871c4',
-  'Datsun King Cab Baja Custom',
-  'Car Culture: Terra Trek'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2212d03b34b871c4',
-  '2212d03b34b871c4',
-  '',
-  'Car Culture: Terra Trek',
-  '0/5',
-  2024,
-  'Black',
-  '["Detailed headlights and taillights","Datsun logo on sides"]',
-  'ORRRBL10SP',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV92',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'af65248e82e6236b',
-  'Porsche 911 GT3 R (992)',
-  'Car Culture: Race Day'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'af65248e82e6236b',
-  'af65248e82e6236b',
-  '',
-  'Car Culture: Race Day',
-  '1/5',
-  2024,
-  'Green',
-  '["Detailed taillights","AO Racing <i>Rexy</i> graphics"]',
-  'Green RR10SPM',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV72',
-  'https://images.clausen.app/models/af65248e82e6236b.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'a890577270dbf25a',
-  'Porsche 911 GT3 R (992)',
-  'Car Culture: Race Day'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'a890577270dbf25a',
-  'a890577270dbf25a',
-  '',
-  'Car Culture: Race Day',
-  '0/5',
-  2024,
-  'Pink',
-  '["Detailed taillights","AO Racing <i>Roxy</i> graphics"]',
-  'Pink RR10SPM',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV96',
-  'https://images.clausen.app/models/a890577270dbf25a.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '0774f639ab446dff',
-  '2023 Nissan Z GT4',
-  'Car Culture: Race Day'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '0774f639ab446dff',
-  '0774f639ab446dff',
-  '',
-  'Car Culture: Race Day',
+  'Transformers',
   '4/5',
   2024,
-  'White',
-  '["Detailed headlights and taillights","red striping","GT4\" on sides"]',
-  'Black RR10SPM',
-  'Black / Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV73',
-  'https://images.clausen.app/models/0774f639ab446dff.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2eb590c2b6ac5fd5',
-  'Nissan Skyline GT-R (R32) Pandem',
-  'Car Culture: Modern Classics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2eb590c2b6ac5fd5',
-  '2eb590c2b6ac5fd5',
-  '',
-  'Car Culture: Modern Classics',
-  '1/5',
-  2024,
-  'White',
-  '["Detailed taillights","Hot Wheels logo","tra-kyoto.com","Rocket Bunny Racing\" on sides","Rocket Bunny Racing\" on front splitter","Toyo Tires","Work","Hot Wheels logo","tra-kyoto.com","Rocket Bunny Racing\" on hood"]',
-  'Bronze, Chrome Rim RR5SPM',
-  'Black / Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV68',
-  'https://images.clausen.app/models/2eb590c2b6ac5fd5.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'b8f9177250062535',
-  'Nissan Skyline GT-R (R32) Pandem',
-  'Car Culture: Modern Classics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'b8f9177250062535',
-  'b8f9177250062535',
-  '',
-  'Car Culture: Modern Classics',
-  '0/5',
-  2024,
-  'Black',
-  '["Detailed taillights","ghost Hot Wheels logo","tra-kyoto.com","Rocket Bunny Racing\" on sides","Rocket Bunny Racing\" on front splitter","Toyo Tires","Work","Hot Wheels logo","tra-kyoto.com","Rocket Bunny Racing\" on hood"]',
-  'Black RR5SPM',
-  'Black / Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRW01',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '4f86344fad3d5af2',
-  'Nissan SilEighty',
-  'Car Culture: Modern Classics'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '4f86344fad3d5af2',
-  '4f86344fad3d5af2',
-  '',
-  'Car Culture: Modern Classics',
-  '3/5',
-  2024,
-  'Metalflake Impact Blue',
-  '["Detailed headlights","taillights and trim"]',
-  'Bronze RR5SPM',
-  'Black / Metal',
+  'ebony metallic',
+  '["Detailed headlights and taillights","blue accents","Autobots logo on front fender"]',
+  'Chrome Blue MM5',
+  'Black / Plastic',
   'Clear',
-  'Black',
+  'Chrome',
   'Thailand',
-  'HRV75',
-  'https://images.clausen.app/models/4f86344fad3d5af2.webp'
-);
+  'hrv61',
+  'https://images.clausen.app/models/efcf16e68ca90464.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '58be35dba179e488',
-  'Nissan SilEighty',
-  'Nissan Silvia Car Culture 2-Pack'
+  '8842d9ad65324980',
+  'bugatti veyron (2023)',
+  'Car Culture: Hammer Drop'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -6055,36 +11799,314 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '58be35dba179e488',
-  '58be35dba179e488',
+  '937c06688a1532e3',
+  '8842d9ad65324980',
   '',
-  'Nissan Silvia Car Culture 2-Pack',
-  '',
+  'Car Culture: Hammer Drop',
+  '1/5',
   2025,
-  'White',
+  'white',
   '[]',
   'RR6SPM',
   'Unknown',
   'Unknown',
   'Unknown',
   'Thailand',
-  'Unknown',
+  'hrw06',
   'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '007c8fa153b8ed99',
-  'Subaru Forester STi',
+  '177a3b271ce49fda',
+  'datsun 240z custom',
+  'Fast & Furious (Series 3)'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bc3cceed15347728',
+  '177a3b271ce49fda',
+  '',
+  'Fast & Furious (Series 3)',
+  '10/10',
+  2023,
+  'yellow',
+  '["Detailed taillights"]',
+  'Black 10SP',
+  'Yellow / Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'hnt20',
+  'https://images.clausen.app/models/bb4059af81a210a8.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f3b4ddc82bb781c5',
+  'lamborghini countach lpi 800-4',
+  'Car Culture: Spettacolare'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f89e99fff679009e',
+  'f3b4ddc82bb781c5',
+  '',
+  'Car Culture: Spettacolare',
+  '4/5',
+  2023,
+  'bianco siderale',
+  '["Detailed headlights","taillights and trim"]',
+  'BRR5SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Red',
+  'Thailand',
+  'hkc40',
+  'https://images.clausen.app/models/23276136fd99a1ac.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f3b4ddc82bb781c5',
+  'lamborghini countach lpi 800-4',
+  'Car Culture: Spettacolare'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '02bb980cd9d756ab',
+  'f3b4ddc82bb781c5',
+  '',
+  'Car Culture: Spettacolare',
+  '0/5',
+  2023,
+  'nero maia',
+  '["Detailed headlights","taillights and trim"]',
+  'BRR5SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkc51',
+  'https://images.clausen.app/models/a4a8a11dbe4fc33d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f3b4ddc82bb781c5',
+  'lamborghini countach lpi 800-4',
+  'Hot Wheels Boulevard#100'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7b2553ba08bb564e',
+  'f3b4ddc82bb781c5',
+  '',
+  'Hot Wheels Boulevard#100',
+  '',
+  2024,
+  'blu uranus',
+  '["Detailed headlights","taillights and trim","Countach\" on front","Countach LPI 800-4\" on rear"]',
+  'Gold RR5SPM',
+  'Black/Metal',
+  'Clear',
+  'Black',
+  'Thailand',
+  'hrt70',
+  'https://images.clausen.app/models/b7385cd4426cb036.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b2b7ff1de4f60cb4',
+  'ford capri gr.5',
+  'Car Culture: Race Day'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0b29b5269da11ffc',
+  'b2b7ff1de4f60cb4',
+  '',
+  'Car Culture: Race Day',
+  '4/5',
+  2023,
+  'white',
+  '["Detailed headlights","taillights and trim","Zakspeed Racing-inspired livery"]',
+  'RR8SP',
+  'Black / Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkc58',
+  'https://images.clausen.app/models/683e9c5ddf8ab8f3.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'ff0fca1043c4e346',
+  '''98 toyota altezza',
   'Car Culture: Modern Classics'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -6101,312 +12123,1016 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '007c8fa153b8ed99',
-  '007c8fa153b8ed99',
+  '88a5031d3b546a78',
+  'ff0fca1043c4e346',
   '',
   'Car Culture: Modern Classics',
+  '2/5',
+  2023,
+  'silver',
+  '["Detailed headlights","taillights and trim"]',
+  'RR5SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Gray',
+  'Thailand',
+  'hkc66',
+  'https://images.clausen.app/models/0ee6bebf12bec582.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'ff0fca1043c4e346',
+  '''98 toyota altezza',
+  'Car Culture: Modern Classics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '991e72d186114c6d',
+  'ff0fca1043c4e346',
+  '',
+  'Car Culture: Modern Classics',
+  '0/5',
+  2023,
+  'black',
+  '["Detailed headlights","taillights and trim"]',
+  'RR5SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkc69',
+  'https://images.clausen.app/models/f422052191b8da60.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '959ac091b5d3aa56',
+  'fiat 131 abarth',
+  'Car Culture: Modern Classics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f7083c80c074f4f1',
+  '959ac091b5d3aa56',
+  '',
+  'Car Culture: Modern Classics',
+  '3/5',
+  2023,
+  'red',
+  '["Detailed headlights","taillights and trim"]',
+  'MiniC4SP',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkc64',
+  'https://images.clausen.app/models/543e7234ca0af7f0.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '959ac091b5d3aa56',
+  'fiat 131 abarth',
+  'Car Culture: Team Transport#62'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '900b17be2c535976',
+  '959ac091b5d3aa56',
+  '',
+  'Car Culture: Team Transport#62',
+  '',
+  2024,
+  'navy blue',
+  '["OLIO FIAT","131","on sides &amp; front","detailed headlights","taillights &amp; trim"]',
+  'Gray C4SPRR',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrv43',
+  'https://images.clausen.app/models/47282abadf8dd81a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '959ac091b5d3aa56',
+  'fiat 131 abarth',
+  'Italian Rally Car Culture 2-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b0327f5d6a195974',
+  '959ac091b5d3aa56',
+  '',
+  'Italian Rally Car Culture 2-Pack',
+  '',
+  2024,
+  'gulf racing blue',
+  '["Gumball \"31\" on sides &amp; hood","Gulf Racing livery &amp; various sponsor logos throughout","HW\" on rear license plate","detailed headlights &amp; taillights"]',
+  'Black MiniC4SP',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrr81',
+  'https://images.clausen.app/models/702a05bdddf3f9ab.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b087d273ddd4a833',
+  'volkswagen corrado vr6',
+  'Car Culture: Modern Classics'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '718e67693090c9b6',
+  'b087d273ddd4a833',
+  '',
+  'Car Culture: Modern Classics',
+  '4/5',
+  2023,
+  'royal violet',
+  '["Detailed headlights","taillights and trim"]',
+  'RR10SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Gray',
+  'Thailand',
+  'hkc65',
+  'https://images.clausen.app/models/0d80e6ac8ce34429.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '104a57b291ce5cf8',
+  '2005 toyota land cruiser prado',
+  'Car Culture: HW Off Road'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd0eb779746ba05d0',
+  '104a57b291ce5cf8',
+  '',
+  'Car Culture: HW Off Road',
+  '1/5',
+  2023,
+  'metalflake gray',
+  '["Detailed headlights","taillights and trim","multi-colored stripes on sides"]',
+  'Black ORRR8DOT',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkc70',
+  'https://images.clausen.app/models/bdb7391db197a68e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '104a57b291ce5cf8',
+  '2005 toyota land cruiser prado',
+  'Car Culture: HW Off Road'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '745114bd6db6ceea',
+  '104a57b291ce5cf8',
+  '',
+  'Car Culture: HW Off Road',
+  '0/5',
+  2023,
+  'black',
+  '["Detailed headlights","taillights and trim","stripes on sides"]',
+  'Black ORRR5SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkc75',
+  'https://images.clausen.app/models/8bf8cf0232c8a5e0.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '104a57b291ce5cf8',
+  '2005 toyota land cruiser prado',
+  'Off-Road Car Culture 2-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '817c4f6519c98e24',
+  '104a57b291ce5cf8',
+  '',
+  'Off-Road Car Culture 2-Pack',
+  '',
+  2024,
+  'white',
+  '["BLACK RHINO HARD ALLOYS\" with logo on sides &amp; hood; \"RIGID\" on sides &amp; either side of front bumper; Eibach logo on sides; black hood; gray contour lines on sides","hood","&amp; rear; detailed headlights","taillights","&amp; roof mounted rally lights"]',
+  'Brown ORRRBL10SP',
+  'Black/Metal',
+  'Light smoke tint',
+  'Black',
+  'Thailand',
+  'hrr76',
+  'https://images.clausen.app/models/221ae36f8c731c71.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7ca607317ec710c3',
+  '''72 chevy ramp truck',
+  'Car Culture: Team Transport#54'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f788d21ae8d303ac',
+  '7ca607317ec710c3',
+  '',
+  'Car Culture: Team Transport#54',
+  '',
+  2023,
+  'red',
+  '["Detailed headlights and taillights","cream trim","red stripe on ramp","1973C20\" on front &amp; rear California license plates"]',
+  'RRMag',
+  'ZAMAC',
+  'Smoke tint',
+  'Chrome',
+  'Thailand',
+  'hkf40',
+  'https://images.clausen.app/models/c36543de3d8fc6d9.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7ca607317ec710c3',
+  '''72 chevy ramp truck',
+  'Car Culture: Team Transport#64'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ae8d6e012dc0d8a4',
+  '7ca607317ec710c3',
+  '',
+  'Car Culture: Team Transport#64',
+  '',
+  2024,
+  'blue',
+  '["White trim with black stripes on sides; \"NOT SHY\" on front &amp; rear blue Hot Wheels license plates; blue Chevy emblem on grill; detailed headlights &amp; taillights"]',
+  'RRMag',
+  'Metallic gray/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrv40',
+  'https://images.clausen.app/models/276527ed7b2ec246.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'e1fb57f1b7a31ba7',
+  'flipsider hauler',
+  'Car Culture: Team Transport#56'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '8682c80b0352a802',
+  'e1fb57f1b7a31ba7',
+  '',
+  'Car Culture: Team Transport#56',
+  '',
+  2023,
+  'white',
+  '["Detailed headlights and taillights","yellow bolts","LBWK livery"]',
+  'Black RRA & MiniRR6SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkf37',
+  'https://images.clausen.app/models/e9b3a391a35513ec.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'e1fb57f1b7a31ba7',
+  'flipsider hauler',
+  'Car Culture: Team Transport#76'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '35f0b73931eb1b80',
+  'e1fb57f1b7a31ba7',
+  '',
+  'Car Culture: Team Transport#76',
+  '',
+  2025,
+  'black',
+  '["Detailed headlights and taillights"]',
+  'Black RR6SPM & MiniRR6SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'jbm31',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '15a051328ceec227',
+  'second story lorry',
+  'Car Culture: Team Transport#57'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '021f755ee4156642',
+  '15a051328ceec227',
+  '',
+  'Car Culture: Team Transport#57',
+  '',
+  2023,
+  'gulf racing blue',
+  '["Detailed headlights and taillights","Gulf Racing livery"]',
+  'RRSteelie',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkf43',
+  'https://images.clausen.app/models/5be98cdc976c52a4.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '15a051328ceec227',
+  'second story lorry',
+  'Car Culture: Team Transport#62'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b602063366c8f870',
+  '15a051328ceec227',
+  '',
+  'Car Culture: Team Transport#62',
+  '',
+  2024,
+  'navy blue',
+  '["OLIO FIAT\" on sides &amp; front","detailed headlights &amp; taillights"]',
+  'RRSteelie',
+  'Black/Plastic',
+  'Light smoke tint',
+  'Black',
+  'Thailand',
+  'hrv43',
+  'https://images.clausen.app/models/b8ab1cedba6b50cb.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'ae03742e1783daf5',
+  'lexus rc f gt3',
+  'Race Cars Car Culture 2-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '5a681b6d61ce51f3',
+  'ae03742e1783daf5',
+  '',
+  'Race Cars Car Culture 2-Pack',
+  '',
+  2023,
+  'matte black',
+  '["Detailed headlights and taillights","third brake light","small silver stripe behind front lip"]',
+  'RR10SPM',
+  'Matte black / Metal',
+  'Clear',
+  'Black with gray rollcage',
+  'Thailand',
+  'hkf51',
+  'https://images.clausen.app/models/974d552039bf4a9d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'c90bbe159e8a6357',
+  'bmw 320 group 5',
+  'BMW Car Culture 2-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd7860c5fe9c7b1cc',
+  'c90bbe159e8a6357',
+  '',
+  'BMW Car Culture 2-Pack',
+  '',
+  2023,
+  'white',
+  '["Detailed headlights","taillights and trim","BMW Motorsport livery","Goodyear","Union and Eibach logos on sides","12\" on sides and hood","BMW windshield banner"]',
+  'Gold, Chrome Rim RR8SP',
+  'White/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkf55',
+  'https://images.clausen.app/models/3c1e069873713890.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'c90bbe159e8a6357',
+  'bmw 320 group 5',
+  'Car Culture: Race Day'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '4d9f755d94953208',
+  'c90bbe159e8a6357',
+  '',
+  'Car Culture: Race Day',
   '5/5',
   2024,
-  'WR Blue Mica',
-  '["Detailed headlights","taillights and trim"]',
-  'Gray RR10SPM',
-  'Black / Metal',
+  'orange',
+  '["Detailed headlights and taillights","green accents","Bell","Bilstein and Castrol logos","68\" on sides"]',
+  'RR8SP',
+  'Black/Metal',
+  'Clear',
+  'Black',
+  'Thailand',
+  'hrv94',
+  'https://images.clausen.app/models/da38fce42c752e25.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'c90bbe159e8a6357',
+  'bmw 320 group 5',
+  'BMW Race Cars Car Culture 2-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ecd76d92cfd3f606',
+  'c90bbe159e8a6357',
+  '',
+  'BMW Race Cars Car Culture 2-Pack',
+  '',
+  2025,
+  'white',
+  '["Detailed headlights","taillights and trim","BMW Motorsport livery","Goodyear","Union and Eibach logos on sides","12\" on sides and hood","BMW windshield banner"]',
+  'Gold, Chrome Rim RR8SP',
+  'White/Metal',
   'Smoke tint',
   'Black',
   'Thailand',
-  'HRV74',
-  'https://images.clausen.app/models/007c8fa153b8ed99.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '8ae494b8f11af525',
-  '''66 Porsche 906 Carrera 6',
-  'Car Culture: Team Transport#66'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '8ae494b8f11af525',
-  '8ae494b8f11af525',
-  '',
-  'Car Culture: Team Transport#66',
-  '',
-  2024,
-  'White',
-  '["Detailed headlights and taillights","Finnish flag","Shell logos","S","82","<i>Carrera 6</i>\" on sides","red hood","82\" on hood"]',
-  'Gray SRR',
-  'Metalflake gray/Metal',
-  'Clear',
-  'Black',
-  'Thailand',
-  'HRV47',
-  'https://images.clausen.app/models/8ae494b8f11af525.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '0b029e82643ea3c2',
-  '''88 Chevy Silverado 3500',
-  'Car Culture: Team Transport#68'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '0b029e82643ea3c2',
-  '0b029e82643ea3c2',
-  '',
-  'Car Culture: Team Transport#68',
-  '',
-  2024,
-  'White',
-  '["Detailed headlights","taillights and marker lights","blue stripes down hood","red striping on body","VP Racing Fuels logo on rear doors","Chevrolet logo on tailgate"]',
-  'Gray SRR',
-  'ZAMAC',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRV42',
-  'https://images.clausen.app/models/0b029e82643ea3c2.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '148b0b1bc9251d03',
-  '''89 Toyota Supra',
-  'Car Culture: Team Transport#72'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '148b0b1bc9251d03',
-  '148b0b1bc9251d03',
-  '',
-  'Car Culture: Team Transport#72',
-  '',
-  2024,
-  'White',
-  '["Detailed taillights and trim","SUPRA\" plates","24 <small>VALVE</small> <b>TWIN turbo</b>\" on doors"]',
-  'WRR6SPM',
-  'Black/Metal',
-  'Clear',
-  'Plum',
-  'Thailand',
-  'HRV37',
-  'https://images.clausen.app/models/148b0b1bc9251d03.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '97e66e639d5227f7',
-  'Open Trailer',
-  'Car Culture: Team Transport#72'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '97e66e639d5227f7',
-  '97e66e639d5227f7',
-  '',
-  'Car Culture: Team Transport#72',
-  '',
-  2024,
-  'ZAMAC',
-  '["Detailed taillights and indicators"]',
-  'HRV37',
-  'Gray/Plastic',
-  'Gray',
-  'GRR6SPM',
-  'Packaged with ''18 Toyota 4Runner and ''89 Toyota SupraBase code(s): T34, T37',
-  'Thailand',
-  'https://images.clausen.app/models/97e66e639d5227f7.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '5c4265d98f6d7087',
-  '''94 Nissan 300ZX GTS',
-  'Car Culture: Team Transport#73'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '5c4265d98f6d7087',
-  '5c4265d98f6d7087',
-  '',
-  'Car Culture: Team Transport#73',
-  '',
-  2024,
-  'Red',
-  '["Detailed headlights and taillights","blue accents","GT <b>S1</b>","75","<small>NISSAN</small> <b>Z</b>\" on sides","Yokohama","BBS logos on fenders","Nissan windshield banner"]',
-  'CPRREURO',
-  'Black/Metal',
-  'Clear',
-  'Black',
-  'Thailand',
-  'HRV44',
-  'https://images.clausen.app/models/5c4265d98f6d7087.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2ec6595e054b0e94',
-  '''94 Nissan 300ZX GTS',
-  'Car Culture: Silhouettes'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2ec6595e054b0e94',
-  '2ec6595e054b0e94',
-  '',
-  'Car Culture: Silhouettes',
-  '3/5',
-  2025,
-  'Calsonic Blue',
-  '["Detailed headlights and taillights","Nissan wordmark","GT <b>S1</b>","25\" on sides","NISMO","BBS logos on fenders","<b>HOTWHEELS</b> RACING","<b>Z</b> <small>NISSAN</small>","25\" on hood"]',
-  'RR5SPM',
-  'Black/Metal',
-  'Clear',
-  'Black',
-  'Thailand',
-  'JBK61',
+  'jbk99',
   'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'c1f847196560c301',
-  '''94 Nissan Primera',
-  'Nissan Race Cars Car Culture 2-Pack'
+  '029eb8bc9e947e1c',
+  '''93 ford escort rs cosworth',
+  'Hot Wheels Boulevard#71'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -6423,220 +13149,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'c1f847196560c301',
-  'c1f847196560c301',
+  '0905e6594ac50315',
+  '029eb8bc9e947e1c',
   '',
-  'Nissan Race Cars Car Culture 2-Pack',
+  'Hot Wheels Boulevard#71',
   '',
-  2024,
-  'Blue',
-  '["Detailed headlights and taillights","Bridgestone logos on sides","HOTWHEELS <small>NISSAN</small>","68 <small>HTC</small>\" on sides and hood","blank Hot Wheels logo on rear fender","HOTWHEELS PRIMERA <big>NISSAN</big>","68 HTC\" on rear"]',
-  'RR5SPM',
-  'ZAMAC',
-  'Clear',
-  'Black with gray roll cage',
-  'Thailand',
-  'HRR74',
-  'https://images.clausen.app/models/c1f847196560c301.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'ed07d4fddf392fff',
-  '1955 Plymouth Savoy',
-  'Hot Wheels Boulevard#101'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'ed07d4fddf392fff',
-  'ed07d4fddf392fff',
-  '',
-  'Hot Wheels Boulevard#101',
-  '',
-  2024,
-  'Matte aqua',
-  '["Detailed headlights","taillights and trim","rust","Dodge logo","SUPERCHARGED HEMI","RED EYE","HOT ROD GARAGE","MOTOR TREND","TAYLOR &amp; COSTA RACING\" on sides","ALEX TAYLOR\" on left door","LUCKY COSTA\" on right door","807 HP\" on hood"]',
-  'RR5SPM & RRDragS',
-  'ZAMAC',
-  'Clear',
-  'Silver with black rollcage',
-  'Thailand',
-  'HRT58',
-  'https://images.clausen.app/models/ed07d4fddf392fff.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'c9eff06f7352e022',
-  '''24 Honda Civic Type-R',
-  'Hot Wheels Boulevard#105'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'c9eff06f7352e022',
-  'c9eff06f7352e022',
-  '',
-  'Hot Wheels Boulevard#105',
-  '',
-  2024,
-  'Spoon Sports Yellow',
-  '["Detailed taillights","Spoon Sports livery","95\" on sides"]',
-  'BRR5SPM',
-  'Black/Metal',
-  'Clear',
-  'Black',
-  'Thailand',
-  'HRT61',
-  'https://images.clausen.app/models/c9eff06f7352e022.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2a773f7a1e118845',
-  '''24 Honda Civic Type-R',
-  'Spoon Honda Car Culture 2-Pack'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2a773f7a1e118845',
-  '2a773f7a1e118845',
-  '',
-  'Spoon Honda Car Culture 2-Pack',
-  '',
-  2025,
-  'Spoon Sports Yellow',
-  '["Detailed taillights","Spoon Sports livery","95\" on sides"]',
-  'BRR5SPM',
-  'Black/Metal',
-  'Clear',
-  'Black',
-  'Thailand',
-  'JBL00',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'ca410f0d03f14c99',
-  'Mazda 323 GTR',
-  'Hot Wheels Boulevard#106'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'ca410f0d03f14c99',
-  'ca410f0d03f14c99',
-  '',
-  'Hot Wheels Boulevard#106',
-  '',
-  2024,
-  'White',
-  '["Detailed headlights","taillights and trim","ICY HOT\" license plate"]',
+  2023,
+  'diamond white',
+  '["Detailed headlights and taillights","blue and light blue accents","Ford Motorsport logo","Motorcraft logo","1\" on door","Ford Motorsport windshield banner","Ford Credit logos on sides","TEAM FORD\" on rear bumper"]',
   'WRRA',
   'Black/Metal',
   'Smoke tint',
-  'Black',
+  'Black with white roll cage',
   'Thailand',
-  'HRT59',
-  'https://images.clausen.app/models/ca410f0d03f14c99.webp'
-);
+  'hkf17',
+  'https://images.clausen.app/models/b339fc15b0e79350.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '5c01e4c4f0a98f80',
-  'Meyers Manx (2024)',
-  'Hot Wheels Boulevard#108'
+  '029eb8bc9e947e1c',
+  '''93 ford escort rs cosworth',
+  'Ford Car Culture 2-Pack'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -6653,128 +13203,152 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '5c01e4c4f0a98f80',
-  '5c01e4c4f0a98f80',
+  '4d8b325561793137',
+  '029eb8bc9e947e1c',
   '',
-  'Hot Wheels Boulevard#108',
+  'Ford Car Culture 2-Pack',
   '',
   2024,
-  'Metalflake gold',
-  '["Detailed headlights &amp; taillights","MEYERS MANX","1\" on hood","MEYERS MANX\" on sides"]',
-  'White',
+  'white',
+  '["Detailed headlights and taillights","blue and light blue accents","Ford Motorsport logo","Motorcraft logo","1\" on door","Ford Motorsport windshield banner","Ford Credit logos on sides","TEAM FORD\" on rear bumper"]',
+  'WRRA',
+  'Black/Metal',
+  'Light smoke tint',
+  'Black with white roll cage',
+  'Thailand',
+  'hrr73',
+  'https://images.clausen.app/models/57ca5c8adf2e1a31.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '26a5e15ca4efd84e',
+  '''04 mazda mazdaspeed miata',
+  'Hot Wheels Boulevard#75'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '203ebe971a8864e7',
+  '26a5e15ca4efd84e',
+  '',
+  'Hot Wheels Boulevard#75',
+  '',
+  2023,
+  'classic red metallic',
+  '["Detailed headlights","taillights and indicators","window trim","Mazda rear license plate"]',
+  'MiniRR5SPM',
+  'Black/Metal',
+  'Clear',
+  'Black',
+  'Thailand',
+  'hkf22',
+  'https://images.clausen.app/models/b133113ceccb79c7.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '26a5e15ca4efd84e',
+  '''04 mazda mazdaspeed miata',
+  'Mazda Car Culture 2-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '1f5d651363fc0132',
+  '26a5e15ca4efd84e',
+  '',
+  'Mazda Car Culture 2-Pack',
+  '',
+  2024,
+  'metalflake dark gray',
+  '["Mazda logo on front &amp; rear; \"MAZDA\" with logo on rear license plate; detailed headlights","taillights","&amp; side markers"]',
+  'Copper MiniC4SP',
   'Black/Metal',
   'Smoke tint',
   'Black',
-  'HRT57',
-  'Black Rim, Red ORRR8DOT',
-  'https://images.clausen.app/models/5c01e4c4f0a98f80.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'f8d7ba5444c5427e',
-  'Meyers Manx (2024)',
-  'Hot Wheels Boulevard'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'f8d7ba5444c5427e',
-  'f8d7ba5444c5427e',
-  '',
-  'Hot Wheels Boulevard',
-  '',
-  2025,
-  'Green',
-  '[]',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'Unknown',
-  'JBL22',
-  'MiniRR5SPM/RR5SP',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'ab240927f61490b4',
-  '1967 Volkswagen Samba Bus',
-  'Hot Wheels Boulevard#114'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'ab240927f61490b4',
-  'ab240927f61490b4',
-  '',
-  'Hot Wheels Boulevard#114',
-  '',
-  2024,
-  'Orange',
-  '["Detailed headlights","taillights and trim","FLUFFY\" license plate"]',
-  'RRLW5',
-  'ZAMAC',
-  'Heavy smoke tint',
-  'Tan',
   'Thailand',
-  'HRT62',
-  'https://images.clausen.app/models/ab240927f61490b4.webp'
-);
+  'hrr75',
+  'https://images.clausen.app/models/a0e43e4e32485a72.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '8f6512015f9995bc',
-  'Toyota Soarer',
-  'Fast & Furious'
+  'a85306657e42bde8',
+  '''77 holden torana a9x',
+  'Hot Wheels Boulevard#77'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -6791,36 +13365,152 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '8f6512015f9995bc',
-  '8f6512015f9995bc',
+  'a55e1acc894a5933',
+  'a85306657e42bde8',
   '',
-  'Fast & Furious',
-  '2/5',
-  2024,
-  'Pearl red',
-  '["Detailed headlights and taillights","Falken logos on front and sides"]',
-  'CBRR6SPM',
-  'Metalflake gunmetal gray/Metal',
+  'Hot Wheels Boulevard#77',
+  '',
+  2023,
+  'white',
+  '["Detailed headlights","taillights and trim","black hood and side mirrors","SS\" on rear","HW-1977\" on front license plate"]',
+  'Gray MiniRR6SPM',
+  'Black/Metal',
+  'Clear',
+  'Black',
+  'Thailand',
+  'hkf12',
+  'https://images.clausen.app/models/0b8452a73fe6b92c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a85306657e42bde8',
+  '''77 holden torana a9x',
+  'Holden Car Culture 2-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '8c77ef81069903be',
+  'a85306657e42bde8',
+  '',
+  'Holden Car Culture 2-Pack',
+  '',
+  2023,
+  'white',
+  '["Detailed headlights","taillights and Red &amp; Black trim; \"Holden","28","SS","Hot Wheels &amp; Castrol Logos; Black \"MJ42823\" on White Front License Plate"]',
+  'Chrome Rim CBRR8SP',
+  'Black/Metal',
+  'Light smoke tint',
+  'Black',
+  'Thailand',
+  'hkf50',
+  'https://images.clausen.app/models/5ffcafc3cde8aab4.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4db1bf534aa4b205',
+  '''67 ford anglia racer',
+  'Hot Wheels Boulevard#86'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '4dd82b4957ee5319',
+  '4db1bf534aa4b205',
+  '',
+  'Hot Wheels Boulevard#86',
+  '',
+  2023,
+  'sky blue',
+  '["Detailed headlights and taillights","67","white stripe down hood and sides","Bell and Ford logos on sides","Anglia\" on rear quarterpanel"]',
+  'MiniC4SP',
+  'Black/Metal',
   'Smoke tint',
   'Black',
   'Thailand',
-  'HRT95',
-  'https://images.clausen.app/models/8f6512015f9995bc.webp'
-);
+  'hkf32',
+  'https://images.clausen.app/models/b98f0f6684272fa3.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'bf5c635f469cbbe2',
-  'Toyota Soarer',
-  'Car Culture: Team Transport'
+  '20ee99985c61e0f9',
+  '''96 honda accord',
+  'Hot Wheels Boulevard#88'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -6837,36 +13527,152 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'bf5c635f469cbbe2',
-  'bf5c635f469cbbe2',
+  '05637940e84e3c07',
+  '20ee99985c61e0f9',
   '',
-  'Car Culture: Team Transport',
+  'Hot Wheels Boulevard#88',
   '',
-  2025,
-  'White',
-  '["Detailed headlights","taillights and trim","Toyota Racing striping on sides"]',
+  2023,
+  'red',
+  '["Detailed headlights and taillights","red and blue accents","1","Honda logos","<i>ACCORD</i>\" on sides"]',
+  'Brown RR5SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkf27',
+  'https://images.clausen.app/models/61e61af20a5dca3c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '20ee99985c61e0f9',
+  '''96 honda accord',
+  'Car Culture: Team Transport#65'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7697ba6b19bcc4e5',
+  '20ee99985c61e0f9',
+  '',
+  'Car Culture: Team Transport#65',
+  '',
+  2024,
+  'black',
+  '["Detailed headlights and taillights","red","white and green accents","16","Castrol","Honda logos","<i>ACCORD</i>\" on sides"]',
+  'Green RR10SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrv46',
+  'https://images.clausen.app/models/fb09bcce7e10d1cd.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd298a1715a672891',
+  'porsche 718 cayman gt4',
+  'Fast & Furious Premium Series'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '663c8e09b5a472ff',
+  'd298a1715a672891',
+  '',
+  'Fast & Furious Premium Series',
+  '4/5',
+  2023,
+  'carrara white',
+  '["Detailed taillights","trim and badging","detailed wing"]',
   'RR5SPM',
-  'ZAMAC',
+  'Glossy black/Metal',
   'Smoke tint',
   'Black',
   'Thailand',
-  'JBM32',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+  'hkd20',
+  'https://images.clausen.app/models/b5edc25cebacffec.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '172d4f8dae43d438',
-  'Mercedes-Benz 500 SEL',
-  'Fast & Furious'
+  'd298a1715a672891',
+  'porsche 718 cayman gt4',
+  'Fast & Furious: Women of Fast'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -6883,82 +13689,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '172d4f8dae43d438',
-  '172d4f8dae43d438',
+  '3b409612886e406a',
+  'd298a1715a672891',
   '',
-  'Fast & Furious',
-  '2/5',
-  2024,
-  'Metalflake silver',
-  '["Detailed headlights","taillights and trim"]',
-  'GRR6SPM',
-  'Black/Metal',
-  'Heavy smoke tint',
-  'Black',
-  'Thailand',
-  'HRT94',
-  'https://images.clausen.app/models/172d4f8dae43d438.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '5caf2afe53f38168',
-  'Porsche 911 Carrera RS 3.8',
-  'Fast & Furious'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '5caf2afe53f38168',
-  '5caf2afe53f38168',
-  '',
-  'Fast & Furious',
+  'Fast & Furious: Women of Fast',
   '3/5',
   2024,
-  'Metalflake silver',
-  '["Detailed headlights","taillights and trim"]',
-  'RRLW5',
+  'carrara white',
+  '["Detailed taillights","trim and badging","detailed wing"]',
+  'BS5',
   'Black/Metal',
-  'Heavy smoke tint',
+  'Smoke tint',
   'Black',
   'Thailand',
-  'HRT97',
-  'https://images.clausen.app/models/5caf2afe53f38168.webp'
-);
+  'hrw38',
+  'https://images.clausen.app/models/2e4e12fd18d5315c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'bb2d39228f78abc4',
-  'Toyota Land Cruiser FJ43',
-  'Fast & Furious'
+  'd298a1715a672891',
+  'porsche 718 cayman gt4',
+  'Porsche'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -6975,36 +13743,530 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'bb2d39228f78abc4',
-  'bb2d39228f78abc4',
+  '9bef5cc7d2fcd915',
+  'd298a1715a672891',
+  '',
+  'Porsche',
+  '5/6',
+  2024,
+  'guards red',
+  '["Detailed taillights","Bilstein logo on sides"]',
+  'BC5',
+  'Glossy Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrw60',
+  'https://images.clausen.app/models/b565fbfe9b5beb1a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd298a1715a672891',
+  'porsche 718 cayman gt4',
+  'Hot Wheels Boulevard#93'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '124211d45dd82108',
+  'd298a1715a672891',
+  '',
+  'Hot Wheels Boulevard#93',
+  '',
+  2024,
+  'miami blue',
+  '["Detailed taillights","detailed front and vents","Porsche logo on hood","GT4\" on rear","HWC RAY\" on front &amp; rear license plates"]',
+  'BRR10SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrt71',
+  'https://images.clausen.app/models/1cd5f6823afdd344.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd298a1715a672891',
+  'porsche 718 cayman gt4',
+  'Fast & Furious 10-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '1e8a97b7be4f3c1e',
+  'd298a1715a672891',
+  '',
+  'Fast & Furious 10-Pack',
+  '',
+  2024,
+  'carrara white',
+  '["Detailed taillights","trim and badging","detailed wing"]',
+  'BS5',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hvx27',
+  'https://images.clausen.app/models/dfc54873d1acadb5.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd298a1715a672891',
+  'porsche 718 cayman gt4',
+  'Porsche Car Culture 2-Pack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bad5686928b0d67e',
+  'd298a1715a672891',
+  '',
+  'Porsche Car Culture 2-Pack',
+  '',
+  2024,
+  'agate gray metallic',
+  '[]',
+  'RR5SPM',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Thailand',
+  'hrr82',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b8a2fc5785952b30',
+  'custom acura integra sedan gsr',
+  'Fast & Furious'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '3c02c97649cfe77f',
+  'b8a2fc5785952b30',
+  '',
+  'Fast & Furious',
+  '1/5',
+  2023,
+  'light blue',
+  '["Detailed headlights and taillights","design on side","Integra Type R","HKS logos on rear"]',
+  'MiniRR6SPM',
+  'Silver/Metal',
+  'Smoke tint',
+  'Navy blue',
+  'Thailand',
+  'hkd27',
+  'https://images.clausen.app/models/a48b8beabb3c812d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b8a2fc5785952b30',
+  'custom acura integra sedan gsr',
+  'Japanese Car Culture Themed Multipack'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '3ec755d6398b60ab',
+  'b8a2fc5785952b30',
+  '',
+  'Japanese Car Culture Themed Multipack',
+  '',
+  2024,
+  'black',
+  '["Yellow and gold stripes on sides","hood and roof","AEM","Sparco","Eibach and NITTO logos on sides","detailed headlights and taillights","Hot Wheels logo on sides","Acura logo on hood"]',
+  'CPS5',
+  'Gray/Metal',
+  'Clear',
+  'Dark Gray',
+  'Thailand',
+  'hrx54',
+  'https://images.clausen.app/models/49f7491d8ed42a83.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b8a2fc5785952b30',
+  'custom acura integra sedan gsr',
+  'Fast & Furious'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'c736fbdcbfc38e8b',
+  'b8a2fc5785952b30',
+  '',
+  'Fast & Furious',
+  '1/5',
+  2024,
+  'light blue',
+  '["Detailed headlights and taillights","design on side","Integra Type R","HKS logos on rear"]',
+  'MiniRR6SPM',
+  'Silver/Metal',
+  'Smoke tint',
+  'Navy blue',
+  'Thailand',
+  'jdj13',
+  'https://images.clausen.app/models/b345c29f41f505a0.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'c88f99cd13c37a53',
+  '1999 nissan maxima',
+  'Fast & Furious'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'fe81dbb867c2c7fc',
+  'c88f99cd13c37a53',
+  '',
+  'Fast & Furious',
+  '2/5',
+  2023,
+  'dark blue',
+  '["Detailed headlights and taillights","design","Toyo Tires logos on side"]',
+  'Gray RR5SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkd23',
+  'https://images.clausen.app/models/5a3e8fc396195542.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'c88f99cd13c37a53',
+  '1999 nissan maxima',
+  'Fast and Furious Premium Bundle 3'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '256d0bd5c79fb6ad',
+  'c88f99cd13c37a53',
+  '',
+  'Fast and Furious Premium Bundle 3',
+  '',
+  2023,
+  'dark blue',
+  '["Detailed headlights and taillights","design","Toyo Tires logos on side"]',
+  'Gray RR5SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkf08',
+  'https://images.clausen.app/models/eb68a71f25554b82.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b1d4ee7eae49e0b9',
+  '1991 bmw m5',
+  'Fast & Furious'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '655d0f9554942d18',
+  'b1d4ee7eae49e0b9',
   '',
   'Fast & Furious',
   '4/5',
-  2024,
-  'Red',
-  '["Detailed headlights","taillights and trim","white roof"]',
-  'ORRR8DOT',
+  2023,
+  'black',
+  '["Detailed headlights and taillights"]',
+  'RR10SPM',
   'Black/Metal',
   'Smoke tint',
   'Black',
   'Thailand',
-  'HRT96',
-  'https://images.clausen.app/models/bb2d39228f78abc4.webp'
-);
+  'hkd28',
+  'https://images.clausen.app/models/2a4eee112783c05c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '34578b6314b7ed66',
-  'Toyota Land Cruiser FJ43',
-  'Hot Wheels Boulevard#119'
+  'b1d4ee7eae49e0b9',
+  '1991 bmw m5',
+  'Hot Wheels Boulevard#118'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7021,36 +14283,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '34578b6314b7ed66',
-  '34578b6314b7ed66',
+  'ad81a3cdf1d89cdf',
+  'b1d4ee7eae49e0b9',
   '',
-  'Hot Wheels Boulevard#119',
+  'Hot Wheels Boulevard#118',
   '',
   2025,
-  'Yellow',
-  '["Detailed headlights","taillights and trim","white roof"]',
-  'SRR',
+  'white',
+  '["Detailed headlights and taillights"]',
+  'RR5SPM',
   'Black/Metal',
   'Smoke tint',
   'Black',
   'Thailand',
-  'JBL25',
+  'jbl24',
   'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '63b43173ca539393',
-  '1987 Chevy Caprice',
-  'Fast & Furious'
+  '662bf50a9c51ab26',
+  'plumber van',
+  'Replica Entertainment: The Super Mario Bros. Movie'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7067,128 +14337,152 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '63b43173ca539393',
-  '63b43173ca539393',
+  '2db6658485a00b76',
+  '662bf50a9c51ab26',
   '',
-  'Fast & Furious',
-  '3/5',
+  'Replica Entertainment: The Super Mario Bros. Movie',
+  '',
+  2023,
+  'matte orange',
+  '["Detailed head- &amp; taillights","''SUPER MARIO BROS. PLUMBING'' on sides","''M4R1O BRO'' license plate","Gray rear windows"]',
+  'Gray Mini RRDragD',
+  'Orange/Metal',
+  'Smoke tint',
+  'Black',
+  'Indonesia',
+  'hkc19',
+  'https://images.clausen.app/models/dc948c5bf5b24608.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '662bf50a9c51ab26',
+  'plumber van',
+  'Pop Culture: The Super Mario Bros. Movie'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '2a780ae34c7cb426',
+  '662bf50a9c51ab26',
+  '',
+  'Pop Culture: The Super Mario Bros. Movie',
+  '',
   2024,
-  'Gray',
-  '["Detailed headlights","taillights and trim"]',
-  'Gray, Red Rim RRPrf',
+  'matte orange',
+  '["Detailed head- &amp; taillights","''SUPER MARIO BROS. PLUMBING'' on sides","''M4R1O BRO'' license plate","Gray rear windows"]',
+  'Gray Mini RRDragD',
+  'Orange/Metal',
+  'Smoke tint',
+  'Black',
+  'Indonesia',
+  'hxf03',
+  'https://images.clausen.app/models/a3f193c2acb73c77.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '9c6adcd7a575fe18',
+  '''75 chevy blazer custom',
+  'Replica Entertainment: Jaws'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '24d88c35ceea9a26',
+  '9c6adcd7a575fe18',
+  '',
+  'Replica Entertainment: Jaws',
+  '',
+  2023,
+  'tan',
+  '["Detailed headlights and taillights","white trim","AMITY <big>POLICE</big> DEPT.\" on sides","trim on windshield","K5 Blazer","Cheyenne badges on sides","↖5688\" license plate"]',
+  'ORDDRR',
   'ZAMAC',
-  'Heavy black tint',
-  'Black',
-  'Thailand',
-  'HRT98',
-  'https://images.clausen.app/models/63b43173ca539393.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'eea19c7a01c187cf',
-  'Toyota FJ Cruiser',
-  'Fast & Furious'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'eea19c7a01c187cf',
-  'eea19c7a01c187cf',
-  '',
-  'Fast & Furious',
-  '5/5',
-  2024,
-  'Matte black',
-  '["Detailed headlights","taillights and trim"]',
-  'ORRR8DOT',
-  'Black/Metal',
   'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRT99',
-  'https://images.clausen.app/models/eea19c7a01c187cf.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '8805f21560aad79c',
-  'Nissan GT-R NISMO GT3',
-  'Pop Culture: Gran Turismo'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '8805f21560aad79c',
-  '8805f21560aad79c',
-  '',
-  'Pop Culture: Gran Turismo',
-  '',
-  2024,
-  'White',
-  '["Detailed taillights and trim","black stripes","red highlights","detailed fuel port and vents","PlayStation","GT Global Championship","Nissan and NISMO logos","23\" on sides","detailed diveplanes","Gran Turismo windshield banner"]',
-  'CBRR6SPM',
-  'Black/Metal',
-  'Heavy smoke tint',
-  'Black',
+  'Brown',
   'Indonesia',
-  'HVJ34',
-  'https://images.clausen.app/models/8805f21560aad79c.webp'
-);
+  'hkc24',
+  'https://images.clausen.app/models/1f5868e565cef543.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '97b5712efd658c3c',
-  'Mutt Cutts Van',
-  'Pop Culture: Dumb and Dumber'
+  '9c6adcd7a575fe18',
+  '''75 chevy blazer custom',
+  'Mattel 2024 Engineering Summit'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7205,36 +14499,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '97b5712efd658c3c',
-  '97b5712efd658c3c',
+  'bf2fda8141e000b2',
+  '9c6adcd7a575fe18',
   '',
-  'Pop Culture: Dumb and Dumber',
+  'Mattel 2024 Engineering Summit',
   '',
   2024,
-  'Textured tan',
-  '["Detailed headlights and taillights","MUTT CUTTS <small>PROVIDENCE R.I.</small>\" on sides"]',
-  'BRRSteelie',
-  'Black/Metal',
+  'spectraflame red',
+  '["Detailed headlights and taillights","white trim","gears and mechanisms on sides","24\" on rear fender","ENGINEERING SUMMIT\" on door"]',
+  'ORDDRR',
+  'ZAMAC',
   'Smoke tint',
-  'Black',
+  'Brown',
   'Indonesia',
-  'HVJ35',
-  'https://images.clausen.app/models/97b5712efd658c3c.webp'
-);
+  'n/a',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '09849ed48aa2e091',
-  'Aston Martin V8',
-  'Pop Culture: No Time to Die'
+  '3228d3e2bcaf951c',
+  'citroën h van',
+  'Pop Culture: Disney'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7251,128 +14553,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '09849ed48aa2e091',
-  '09849ed48aa2e091',
+  '896b9cb9df9f12de',
+  '3228d3e2bcaf951c',
   '',
-  'Pop Culture: No Time to Die',
-  '',
-  2024,
-  'Metalflake dark gray',
-  '["Detailed headlights","taillights and trim","B549 WUU\" license plate"]',
-  'Gray RREURO',
-  'Gloss black/Metal',
-  'Smoke tint',
-  'Black',
-  'Indonesia',
-  'HVJ36',
-  'https://images.clausen.app/models/09849ed48aa2e091.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'e89c9859b83aa086',
-  'F/A-18E Super Hornet',
-  'Pop Culture: Top Gun: Maverick'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'e89c9859b83aa086',
-  'e89c9859b83aa086',
-  '',
-  'Pop Culture: Top Gun: Maverick',
-  '',
-  2024,
-  'Light gray',
-  '["<i>Top Gun: Maverick</i> livery"]',
-  'Clear',
-  'Gray/Metal',
-  'Light smoke tint',
+  'Pop Culture: Disney',
+  '1001/5',
+  2023,
+  'metalflake powder blue',
+  '["Detailed headlights and taillights","white Mickey Mouse graphics on side panels"]',
+  'RR8SP',
+  'Powder blue/Metal',
+  'Red tint',
   'Gray',
   'Indonesia',
-  'HVJ37',
-  'https://images.clausen.app/models/e89c9859b83aa086.webp'
-);
+  'hcn85',
+  'https://images.clausen.app/models/f75281cc5b964167.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '351c992a61c47386',
-  '1967 Porsche 911 R',
-  'German Racers Collector Set'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '351c992a61c47386',
-  '351c992a61c47386',
-  '',
-  'German Racers Collector Set',
-  '',
-  2024,
-  'Yellow',
-  '["Detailed headlights","taillights","indicators and trim","black arrows down hood","67\" on hood and sides","Porsche and \"911R\" wordmarks on rear"]',
-  'Gray RRLW5',
-  'Metalflake black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HRT54',
-  'https://images.clausen.app/models/351c992a61c47386.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '7a55ed1cdda08c6a',
-  'Toyota Stout Drift Truck',
+  '3228d3e2bcaf951c',
+  'citroën h van',
   'Vintage Race Team Collector Set'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7389,36 +14607,98 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '7a55ed1cdda08c6a',
-  '7a55ed1cdda08c6a',
+  'd270ad7a02116ec4',
+  '3228d3e2bcaf951c',
   '',
   'Vintage Race Team Collector Set',
   '',
   2024,
-  'White',
-  '["Detailed headlights","taillights and trim","TRD","Mobil Pegasus logo","RACE SERVICE\" on hood","411","TUERCK\" on roof","Mobil Pegasus logo on sides","BC Racing","VP Racing Fuels","411\" logos on windshield","Mobil 1 logo","ADVANCED FIBERGLASS CONCEPTS\" on front splitter"]',
-  'Copper RREURO',
-  'Black/Metal',
+  'matte celtic blue',
+  '["Detailed headlights and taillights","RACE SERVICE\" on roof","repeated \"THE FUTURE IS OUR FAULT.\" and globe motifs around body","5126\" on side panel","<small>RACE SERVICE</small>","CONIFER\" on rear"]',
+  'RR8SP',
+  'Matte celtic blue/Metal',
+  'Heavy smoke tint',
+  'Gray',
+  'Thailand',
+  'hrt51',
+  'https://images.clausen.app/models/6d1fc17cebc29312.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'c24e30dadbbca336',
+  '1955 mercedes-benz "blaues wunder"',
+  'Jay Leno''s Garage Collector Set'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f71152cc66de3d2e',
+  'c24e30dadbbca336',
+  '',
+  'Jay Leno''s Garage Collector Set',
+  '',
+  2023,
+  'blue',
+  '["Detailed headlights","taillights and trim","MERCEDES-BENZ Rennabteilung\" on sides"]',
+  'Gray RRSteelie',
+  'Silver/Metal',
   'Smoke tint',
   'Black',
   'Thailand',
-  'HRT51',
-  'https://images.clausen.app/models/7a55ed1cdda08c6a.webp'
-);
+  'hkc17',
+  'https://images.clausen.app/models/052f625293b992d5.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '68efd313225e7e0e',
-  '''71 AMC Javelin AMX (RLC)',
-  'RLC Exclusive'
+  'c24e30dadbbca336',
+  '1955 mercedes-benz "blaues wunder"',
+  'Car Culture: Team Transport#70'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7435,128 +14715,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '68efd313225e7e0e',
-  '68efd313225e7e0e',
+  '000c1eaa67f9473f',
+  'c24e30dadbbca336',
   '',
-  'RLC Exclusive',
-  '',
-  2024,
-  'Spectraflame root beer',
-  '["Detailed headlights and taillights","era-correct \"Grandma''s Kitchen\" motif with ''70s-style greens and yellows","FR33KN\" on blue rear Hot Wheels license plate"]',
-  'RRPrf',
-  'Matte Black/Metal',
-  'Light smoke tint',
-  'Tan with Brown painted details',
-  'China',
-  'HMY23',
-  'https://images.clausen.app/models/68efd313225e7e0e.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '90470319bc56aa08',
-  'McLaren F1 (RLC)',
-  'RLC Exclusive'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '90470319bc56aa08',
-  '90470319bc56aa08',
-  '',
-  'RLC Exclusive',
+  'Car Culture: Team Transport#70',
   '',
   2024,
-  'Spectraflame dark orange',
-  '["Detailed headlights","taillights","&amp; trim","McLaren F1 logo on rear"]',
-  'CRR5SPM',
-  'Matte black/Metal',
-  'Light smoke tint',
-  'Matte black with painted details',
-  'China',
-  'HGK75',
-  'https://images.clausen.app/models/90470319bc56aa08.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'cce04fa6035043d9',
-  'Mercedes-AMG G 63 4×42',
-  'RLC Exclusive'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'cce04fa6035043d9',
-  'cce04fa6035043d9',
-  '',
-  'RLC Exclusive',
-  '',
-  2024,
-  'Spectraflame blue',
-  '["Detailed trim","authentic manufacturer logos"]',
-  'Black ORMCRR',
-  'Black/Metal',
+  'blue',
+  '["Detailed headlights","taillights and trim","MERCEDES-BENZ Rennabteilung\" on sides"]',
+  'Gray RRSteelie',
+  'Silver/Metal',
   'Smoke tint',
-  'Brown',
-  'China',
-  'HMY21',
-  'https://images.clausen.app/models/cce04fa6035043d9.webp'
-);
+  'Black',
+  'Thailand',
+  'hrv48',
+  'https://images.clausen.app/models/a794c17911c1095c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'f011b0694f5a0038',
-  '''21 Pagani Huayra R',
-  'RLC Exclusive'
+  'b36f4cc9429e84da',
+  'dodge tradesman',
+  'Spectraflame Purple'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7573,36 +14769,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'f011b0694f5a0038',
-  'f011b0694f5a0038',
-  '',
-  'RLC Exclusive',
+  '0f6342eff2147e4c',
+  'b36f4cc9429e84da',
+  '2023',
+  'Spectraflame Purple',
   '',
   2024,
-  'Spectraflame slate',
-  '["Detailed headlights","taillights and trim","1\" on sides and hood","Italian flag","<i>Huayra R</i>\" on sides"]',
-  'BRR10SPM',
-  'Black/Metal',
-  'Light smoke tint',
-  'Black',
-  'China',
-  'HMY25',
-  'https://images.clausen.app/models/f011b0694f5a0038.webp'
-);
+  'detailed headlights, taillights and trim, "rockn" license plates',
+  '["Silver<br>/<br>Metal"]',
+  'HGK78',
+  'Clear',
+  'Purple',
+  'RRMag',
+  '30,000ProducedProduction date(s):',
+  'china',
+  'https://images.clausen.app/models/1fa607a3eccebe69.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '57942dc864dff19d',
-  '''21 Pagani Huayra R',
-  'RLC Exclusive'
+  'b36f4cc9429e84da',
+  'dodge tradesman',
+  ''
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7619,36 +14823,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '57942dc864dff19d',
-  '57942dc864dff19d',
+  'e95fede44c9e1841',
+  'b36f4cc9429e84da',
+  '2025',
   '',
-  'RLC Exclusive',
   '',
   2024,
-  'Spectraflame Blu Metallizzato',
-  '["Detailed headlights","taillights and trim","Italian flag","<i>Huayra R</i>\" on sides","carbon fiber texture on roof","Italian flag design on canards"]',
-  'RR10SPM',
-  'Black/Metal',
-  'Light smoke tint',
-  'Black',
-  'China',
-  'HWF21',
+  '',
+  '[]',
+  'JCP23',
+  'Unknown',
+  'Unknown',
+  'Unknown',
+  'Production date(s):',
+  'china',
   'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'b6b062abe9b403b4',
-  '1993 Mazda RX-7 R1',
-  'RLC Exclusive'
+  '3186d3ef2968d808',
+  '1975 chevrolet monte carlo',
+  'Spectraflame antifreeze'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7665,36 +14877,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'b6b062abe9b403b4',
-  'b6b062abe9b403b4',
-  '',
-  'RLC Exclusive',
+  '20b6fc1c7c0b44f8',
+  '3186d3ef2968d808',
+  '2023',
+  'Spectraflame antifreeze',
   '',
   2024,
-  'Spectraflame red',
-  '["Detailed headlights","taillights and trim","BRAAAP\" license plate"]',
-  'GRR5SPM',
-  'Black/MetalExhaust details',
+  'detailed headlights and taillights, lowrider graphics, "wstside" on blue front & rear los angeles license plates, "monte carlo" with bowtie emblem on rear',
+  '["Chrome<br>/<br>Metal"]',
+  'HGK77',
   'Light smoke tint',
-  'Black & red',
-  'China',
-  'HWF04',
-  'https://images.clausen.app/models/b6b062abe9b403b4.webp'
-);
+  'Antifreeze',
+  'White stripe RRLACE',
+  'Production code(s): 3562EAA',
+  'china',
+  'https://images.clausen.app/models/91859de9c91c8720.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'aee7978e9dc6c728',
-  '1986 Nissan 720 King Cab',
-  'RLC Exclusive'
+  '3186d3ef2968d808',
+  '1975 chevrolet monte carlo',
+  'Spectraflame teal'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7711,36 +14931,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'aee7978e9dc6c728',
-  'aee7978e9dc6c728',
-  '',
-  'RLC Exclusive',
+  'f2094dfe00179aa2',
+  '3186d3ef2968d808',
+  '2024',
+  'Spectraflame teal',
   '',
   2024,
-  'Spectraflame dark purple',
-  '["NISSAN\" on sides &amp; rear; silver trim on sides; \"Twisted","Red Line Club","Brandon","&amp; \"Coco\" on rear glass; \"TWSTD86\" on front &amp; rear white Hot Wheels license plates; detailed headlights","taillights","&amp; interior","<a href=\"https://en.wikipedia.org/wiki/Masters_of_the_Universe\" class=\"extiw\" title=\"wikipedia:Masters of the Universe\">Masters of the Universe</a> still on TV screen"]',
-  'CMiniRR5SPM',
-  'Metallic silver/Metal',
-  'Medium smoke tint',
-  'Black & purple',
-  'China',
-  'HMY26',
-  'https://images.clausen.app/models/aee7978e9dc6c728.webp'
-);
+  'detailed headlights and taillights; white, light blue, & blue  wave decals on body; "jefe" on blue front & rear los angeles license plates; "monte carlo" with bowtie emblem on rear',
+  '["Chrome<br>/<br>Metal"]',
+  'HWF19',
+  'Light smoke tint',
+  'Metallic white & teal',
+  'White stripe RRLACE',
+  'Production code(s): 1334EAA,  1704EAA',
+  'china',
+  'https://images.clausen.app/models/e6925fd0e9cd2129.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'eea1b996bd135645',
-  '''61 Lincoln Continental',
+  '7e78deb679a16514',
+  '1964 jaguar e-type',
   'RLC Exclusive'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -7757,772 +14985,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'eea1b996bd135645',
-  'eea1b996bd135645',
+  'a575b36bdfb4d3c8',
+  '7e78deb679a16514',
   '',
   'RLC Exclusive',
   '',
-  2024,
-  'Spectraflame black',
-  '["Detailed headlights and taillights"]',
+  2023,
+  'spectraflame british racing green',
+  '["Detailed headlights and taillights","RLC-TYPE\" license plate"]',
   'D7RR',
-  'Black / Metal',
+  'Chrome green / Metal',
   'Clear',
-  'White with black trim',
-  'China',
-  'HMY24',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '7462bbfbfc30a509',
-  '1992 GMC Typhoon',
-  'RLC Exclusive'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '7462bbfbfc30a509',
-  '7462bbfbfc30a509',
-  '',
-  'RLC Exclusive',
-  '',
-  2024,
-  'Spectraflame true black',
-  '["TYPHOON\" on rear &amp; sides","GMC TRUCK\" on rear","PHOON\" on rear Hot Wheels license plate","detailed headlights","taillights","&amp; trim"]',
-  'GRR5SPM',
-  'Gray with details/Metal',
-  'Light smoke tint',
-  'Cool gray',
-  'China',
-  'HWF06',
-  'https://images.clausen.app/models/7462bbfbfc30a509.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '6d36e2b7efe52034',
-  '1997 Toyota Supra',
-  'RLC Exclusive'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '6d36e2b7efe52034',
-  '6d36e2b7efe52034',
-  '',
-  'RLC Exclusive',
-  '',
-  2024,
-  'Spectraflame race team blue',
-  '["Detailed headlights","taillights and trim","TOYOTA\" &amp; Toyota emblem on rear","UNICRN\" on rear white Hot Wheels license plate"]',
-  'GRR6SPM',
-  'Black/Metal',
-  'Light smoke tint',
-  'Black',
-  'China',
-  'HWF07',
-  'https://images.clausen.app/models/6d36e2b7efe52034.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '953d309342c9f92a',
-  'Rally Resilience Nissan Skyline (R33)',
-  'Mattel Creations Collaboratory'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '953d309342c9f92a',
-  '953d309342c9f92a',
-  '',
-  'Mattel Creations Collaboratory',
-  '',
-  2024,
-  'Candy red',
-  '["Detailed headlights","taillights","spotlights and trim","UNLOCK YOUR <b>COURAGE</b>\" on hood","<b><u>UNSTOPPABLE</u></b>\" on wing","1","flames on sides","flame on roof","detailed air intake","POWERFUL <b>FEARLESS</b> <b>BRAVE</b> <b>STRENGTH</b> RESPECT BELIEVE KIND\" on rear fender","pink highlights","<b>SUPERFAN CLUB</b> <small>-EST. 2023-</small>\" on rear tire"]',
-  'Black RRBL10SP',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'Thailand',
-  'HYH22',
-  'https://images.clausen.app/models/953d309342c9f92a.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'a48e7785509067b3',
-  'Eroded Safari',
-  'Mattel Creations Collaboratory'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'a48e7785509067b3',
-  'a48e7785509067b3',
-  '',
-  'Mattel Creations Collaboratory',
-  '',
-  2024,
-  'Arsham grey',
-  '["Colored crystalized erosions"]',
-  'RRPrf',
-  'ZAMAC',
-  'Arsham grey',
-  'N/A',
-  'China',
-  'HPJ31',
-  'https://images.clausen.app/models/a48e7785509067b3.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '9c9ac9015fb9a830',
-  'Eroded Twin Mill',
-  'Mattel Creations Collaboratory'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '9c9ac9015fb9a830',
-  '9c9ac9015fb9a830',
-  '',
-  'Mattel Creations Collaboratory',
-  '',
-  2024,
-  'Arsham pink',
-  '["Colored crystalized erosions"]',
-  'Arsham pink RRLW5',
-  'Arsham pink/Metal',
-  'Arsham pink',
-  'Arsham pink',
-  'China',
-  'HPJ32',
-  'https://images.clausen.app/models/9c9ac9015fb9a830.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'cd4d65c32b1fd985',
-  'Porsche Dirtmeister 944',
-  'Mattel Creations Collaboratory'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'cd4d65c32b1fd985',
-  'cd4d65c32b1fd985',
-  '',
-  'Mattel Creations Collaboratory',
-  '',
-  2024,
-  'Black',
-  '["Detailed taillights and indicators","front and rear badging","detailed front spotlights","seafoam green graphics","pink circles on sides","944 DIRTMEISTER\" logo on sides and rear","75\" on sides","yellow hazard stripes all around car","Mobil horse logo on sides","Hot Wheels logo on hood","DRTMEISTR\" German license plate","Mobil 1 and Hot Wheels logo on rear"]',
-  'RR',
-  'Black/Metal',
-  'Light smoke tint',
-  'Black',
-  'Thailand',
-  'HWF10',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '01aa6f04764caa52',
-  'Porsche Dirtmeister 944',
-  '2024 Hot Wheels Legends Tour Trophy car'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '01aa6f04764caa52',
-  '01aa6f04764caa52',
-  '',
-  '2024 Hot Wheels Legends Tour Trophy car',
-  '',
-  2024,
-  'Black',
-  '["HW Legends Tour\" logo &amp; Mobil 1 logo on sides"]',
-  'Gold 10SP',
-  'Black / Metal',
-  'Clear',
-  'Black',
-  'China',
-  'N/A',
-  'https://images.clausen.app/models/01aa6f04764caa52.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2c5a099af00c49d0',
-  'Optimus Prime',
-  'Mattel Creations Collaboratory'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2c5a099af00c49d0',
-  '2c5a099af00c49d0',
-  '',
-  'Mattel Creations Collaboratory',
-  '',
-  2024,
-  'Spectraflame red',
-  '["White stripes on sides","Autobots logo on cab"]',
-  'RR',
-  'Spectraflame blue/Metal',
-  'Smoke tint',
-  'Blue',
-  'China',
-  'HXT02',
-  'https://images.clausen.app/models/2c5a099af00c49d0.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '4c2d625a78d7285f',
-  'Not Wheels',
-  'Mattel Creations Collaboratory'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '4c2d625a78d7285f',
-  '4c2d625a78d7285f',
-  '',
-  'Mattel Creations Collaboratory',
-  '',
-  2024,
-  'Matte gray',
-  '["Detailed headlights &amp; taillights","rust and damage","PARKING VIOLATION\" parking tickets and large crack on windshield","faded body panels","WASH ME!!!\" stenciled on rear window","blue stripes on roof and trunk","discolored roof panels","2FHCSM4\" license plate","BORN TO DRIVE <small>WORLD IS A TRUCK</small>","I AM HOT WHEEL","stickers on rear bumper","TURBO\" sticker on rear left panel","demon face stenciled on window"]',
-  'Two RRWSP, one Mini RRDragD, one spinning brake rotor',
-  'Black / Metal',
-  'Frosted',
-  'Tan with dirt tampos',
-  'China',
-  'HWV25',
-  'https://images.clausen.app/models/4c2d625a78d7285f.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'ff9ffeaf2852b5e3',
-  'Porsche 928 Safari',
-  'Elite 64#7'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'ff9ffeaf2852b5e3',
-  'ff9ffeaf2852b5e3',
-  '',
-  'Elite 64#7',
-  '',
-  2024,
-  'Orange',
-  '["PORSCHE\" on sides","hood","&amp; rear; gumball \"28\" on sides &amp; roof; black stripe &amp; Shell","various sponsor logos on sides; black hood; detailed headlights","hood &amp; brush-bar mounted rally lights","&amp; taillights"]',
-  'Custom Real Riders',
-  'Matte Black/Metal',
-  'Light smoke-tint',
-  'Black',
-  'China',
-  'HNJ58',
-  'https://images.clausen.app/models/ff9ffeaf2852b5e3.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '80fdbd4303c4bf29',
-  '1990 BMW 318i Touring',
-  'Elite 64#8'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '80fdbd4303c4bf29',
-  '80fdbd4303c4bf29',
-  '',
-  'Elite 64#8',
-  '',
-  2024,
-  'White',
-  '["Detailed trim","BMW M striping on sides","ON TOUR\" license plate"]',
-  'Bespoke RR',
-  'Black/Metal',
-  'Smoke tint',
-  'Black',
-  'China',
-  'HNJ60',
-  'https://images.clausen.app/models/80fdbd4303c4bf29.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '1d7602597a782610',
-  'Pandem Datsun 280ZX',
-  'Elite 64#9'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '1d7602597a782610',
-  '1d7602597a782610',
-  '',
-  'Elite 64#9',
-  '',
-  2024,
-  'White',
-  '["Detailed trim","Hot Wheels logo on sides","blue badging","tra-kyoto.com","Rocket Bunny Racing\" on sides","front","&amp; rear"]',
-  'RR',
-  'Black/Metal with black chrome exhaust piece',
-  'Smoke tint',
-  'Black',
-  'China',
-  'HNJ59',
-  'https://images.clausen.app/models/1d7602597a782610.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'bbbaec32dde4941e',
-  'Bugatti Type 59',
-  'Elite 64#10'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'bbbaec32dde4941e',
-  'bbbaec32dde4941e',
-  '',
-  'Elite 64#10',
-  '',
-  2024,
-  'French Racing Blue',
-  '["Detailed trim"]',
-  'RR',
-  'Silver painted/Metal',
-  'Silver',
-  'Warm amber',
-  'China',
-  'HNJ62',
-  'https://images.clausen.app/models/bbbaec32dde4941e.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '42d3023349b2abdd',
-  '1989 Toyota HiLux Stadium Truck',
-  'Elite 64#11'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '42d3023349b2abdd',
-  '42d3023349b2abdd',
-  '',
-  'Elite 64#11',
-  '',
-  2024,
-  'White',
-  '["Detailed headlights and taillights","TRD racing livery","89\" on rear"]',
-  'RR',
-  'Black / Metal',
-  'Smoke tint',
-  'Black',
-  'China',
-  'HWR90',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '3efb20ed13a9ef8f',
-  '''17 Toyota Tacoma',
-  'Elite 64: Mod Shop'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '3efb20ed13a9ef8f',
-  '3efb20ed13a9ef8f',
-  '',
-  'Elite 64: Mod Shop',
-  '',
-  2024,
-  'Super White',
-  '["Detailed trim","68","lightning bolt design on sides"]',
-  'RR',
-  'Matte black/Metal',
-  'Light & medium smoke-tint',
-  'Black',
-  'China',
-  'HNJ64',
-  'https://images.clausen.app/models/3efb20ed13a9ef8f.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '6cb5a77b15dfe79a',
-  '''94 Land Rover Discovery',
-  'Elite 64: Mod Shop'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '6cb5a77b15dfe79a',
-  '6cb5a77b15dfe79a',
-  '',
-  'Elite 64: Mod Shop',
-  '',
-  2024,
-  'Yellow',
-  '["Detailed trim"]',
-  'RR',
-  'Black/Metal',
-  'Medium smoke tint',
   'Tan',
   'China',
-  'HNJ65',
-  'https://images.clausen.app/models/6cb5a77b15dfe79a.webp'
-);
+  'hgk82',
+  'https://images.clausen.app/models/77e0ab667fe396df.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '25bf7969d7d3517e',
-  'Turbolence Tug',
-  'Silver'
+  '49be98506f7b1cec',
+  'porsche 959 (rlc)',
+  'RLC Exclusive'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -8539,36 +15039,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '25bf7969d7d3517e',
-  '25bf7969d7d3517e',
-  '2024',
-  'Silver',
+  '4e47c46630433aea',
+  '49be98506f7b1cec',
   '',
-  2024,
-  'Dark Green',
-  '["White","red","&amp; black \"HTWLS\" graffiti","blue accents on air intake","68","shark teeth design","Hot Wheels logo on rear wings","TURBOLENCE TUG\" logo","HOTWLS\" graffiti"]',
-  'RA6 & DD8',
-  'Orange/Plastic (Cab)ZAMAC (Trailer)',
-  'Blue tint',
-  'Chrome',
-  'Thailand',
-  'HVD95',
-  'https://images.clausen.app/models/25bf7969d7d3517e.webp'
-);
+  'RLC Exclusive',
+  '',
+  2023,
+  'spectraflame red',
+  '["Detailed headlights and taillights"]',
+  'RRF52O',
+  'Black/Metal',
+  'Light smoke tinted',
+  'Ivory',
+  'China',
+  'hgk85',
+  'https://images.clausen.app/models/691128fbf828bdbe.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '3e35831a2956a430',
-  'Turbolence Tug',
-  'Yellow'
+  '49be98506f7b1cec',
+  'porsche 959 (rlc)',
+  'RLC Exclusive'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -8585,36 +15093,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '3e35831a2956a430',
-  '3e35831a2956a430',
-  '2024',
-  'Yellow',
+  '575ac45a7818929f',
+  '49be98506f7b1cec',
   '',
-  2024,
-  'Silver',
-  '["Black &amp; yellow scallops on nose","various logos","68","TT-6819","HW Logo","Checker pattern on tail","Seto Racing","Scallops &amp; stripes on wings"]',
-  'RA6 & DD8',
-  'Black/Plastic (Cab)ZAMAC (Trailer)',
-  'Blue tint',
-  'Chrome',
-  'Thailand',
-  'HVD98',
-  'https://images.clausen.app/models/3e35831a2956a430.webp'
-);
+  'RLC Exclusive',
+  '',
+  2023,
+  'spectraflame true black',
+  '["Detailed headlights and taillights"]',
+  'Gray RRE',
+  'Black/Metal',
+  'Light smoke tinted',
+  'Red',
+  'China',
+  'hnl18',
+  'https://images.clausen.app/models/5af2ed72bdae24bd.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'e15618362853b5c7',
-  'Scrubba Dub Driver',
-  'Metalflake Grey (Cab)/White (Trailer)'
+  '49be98506f7b1cec',
+  'porsche 959 (rlc)',
+  '38th Annual Hot Wheels Collectors Convention'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -8631,36 +15147,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'e15618362853b5c7',
-  'e15618362853b5c7',
-  '2024',
-  'Metalflake Grey (Cab)/White (Trailer)',
+  'b8dc035d62b3831c',
+  '49be98506f7b1cec',
   '',
+  '38th Annual Hot Wheels Collectors Convention',
+  '2/3',
   2024,
-  'Yellow & multi-color duck design with orange stripes, "H/W", "SINCE 1968" with checkered flags, & "Megan K." on cab; multi-color "SCRUBBA DUB DRIVER" tampo & Hot Wheels logo on trailer',
-  '["Gray<br>/<br>Plastic (Cab)<br><a href=\"/wiki/ZAMAC\" title=\"ZAMAC\">ZAMAC</a> (Trailer)"]',
-  'HVD96HVD84',
-  'Light blue tint',
-  'Chrome',
-  'Transparent Blue, White DD8',
-  'Came with Duck N'' RollBase code(s): T06A, T07A, T21A',
-  'Thailand',
-  'https://images.clausen.app/models/e15618362853b5c7.webp'
-);
+  'yellow',
+  '["Detailed trim","Detailed engine","Porsche logo on sides&nbsp;; Engine deck Convention date; Plate <b>CALI * 24</b>"]',
+  'RR10SP',
+  'Black/Metaldetailed underside',
+  'Light smoke tinted',
+  'Black',
+  'China',
+  'hwf35',
+  'https://images.clausen.app/models/e1dc9969ee39297e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'df45ae0f50ff7b3a',
-  'Straight Freightin''',
-  'Rust (Cab)Dull light blue (Trailers)'
+  '49be98506f7b1cec',
+  'porsche 959 (rlc)',
+  'RLC Exclusive'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -8677,36 +15201,1394 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'df45ae0f50ff7b3a',
-  'df45ae0f50ff7b3a',
-  '2024',
-  'Rust (Cab)Dull light blue (Trailers)',
+  'f2cbebd569d13569',
+  '49be98506f7b1cec',
+  '',
+  'RLC Exclusive',
   '',
   2024,
-  'Graffiti on sides, "HAN", "DV" on trailer',
-  '["Black<br>/<br>Plastic"]',
-  'Gray & black BLOR',
+  'spectraflame dark blue',
+  '["Detailed headlights and taillights"]',
+  'RRF52O',
+  'Black/Metal',
+  'Light smoke tinted',
+  'Tan',
+  'China',
+  'hwf18',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '49be98506f7b1cec',
+  'porsche 959 (rlc)',
+  'RLC Exclusive'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '02f7804f2d3d51e6',
+  '49be98506f7b1cec',
+  '',
+  'RLC Exclusive',
+  '',
+  2025,
+  'gulf racing blue',
+  '["Gulf logo on sides and bonnet","59\" on sides","marigold orange lower body"]',
+  'RR6SPM',
+  'Black/Metal',
+  'Light smoke tinted',
+  'Two-tone orange and black',
+  'China',
+  'jcp15',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '630dda7a49f988a4',
+  '1994 nsx',
+  'RLC Exclusive'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '8a80192617298699',
+  '630dda7a49f988a4',
+  '',
+  'RLC Exclusive',
+  '',
+  2023,
+  'formula red',
+  '["R\" on hood","INTERNATIONAL RACING CIRCUIT SUZUKA CIRCUIT\" on hood and sides","Suzuka Circuit track layout on doors","ADVAN logos on front bumper","Castrol logo on front fender","7LFU720\" license plate"]',
+  'Gray RR5SPM',
+  'Black/Metal',
   'Smoke tint',
-  'Dull light blue',
-  'Grey',
-  'Thailand',
-  'HVD94',
-  'https://images.clausen.app/models/df45ae0f50ff7b3a.webp'
-);
+  'Black',
+  'China',
+  'hgk81',
+  'https://images.clausen.app/models/094e9abe9a924378.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '72f1be44c3fa6480',
-  'Straight Freightin''',
+  'a3a09c7b184f32cd',
+  '1995 honda integra type r',
+  'RLC Exclusive'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ba289df73a412ea0',
+  'a3a09c7b184f32cd',
+  '',
+  'RLC Exclusive',
+  '',
+  2023,
+  'championship white',
+  '["Detailed headlights","taillights and badging","95 TYPE R\" license plate"]',
+  'WRR6SPM',
+  'Matte black/Metal',
+  'Medium smoke-tint',
+  'Black & Red',
+  'China',
+  'hmy22',
+  'https://images.clausen.app/models/43fb6876366896a9.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a3a09c7b184f32cd',
+  '1995 honda integra type r',
+  'RLC Exclusive'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '152e4a557c2ebcf1',
+  'a3a09c7b184f32cd',
+  '',
+  'RLC Exclusive',
+  '',
+  2024,
+  'phoenix yellow',
+  '["Detailed headlights","taillights and badging","VTEC\" license plate"]',
+  'BRR5SPM',
+  'Matte black/Metal',
+  'Medium smoke-tint',
+  'Black & Yellow',
+  'China',
+  'hwf15',
+  'https://images.clausen.app/models/d08ecd6c840502f3.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a3a09c7b184f32cd',
+  '1995 honda integra type r',
+  'RLC Membership'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '21b310a61601f337',
+  'a3a09c7b184f32cd',
+  '',
+  'RLC Membership',
+  '',
+  2025,
+  'spectraflame arctic blue',
+  '["Detailed headlights","taillights and badging","RLC 25\" license plate"]',
+  'GRR6SPM',
+  'Matte black/Metal',
+  'Medium smoke-tint',
+  'Black',
+  'China',
+  'jcp06',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '626b777c7da4e610',
+  '1968 custom plymouth barracuda',
+  '37th Annual Hot Wheels Collectors Convention'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '10f2a8bafb0409a9',
+  '626b777c7da4e610',
+  '',
+  '37th Annual Hot Wheels Collectors Convention',
+  '',
+  2023,
+  'metalflake silver',
+  '["Detailed trim","engine details","headlights","&amp; taillights; \"PR30YR\" on rear black Hot Wheels license plate; black hood; 37th convention wording on rear window; \"Barracuda\" on sides &amp; rear"]',
+  'Chrome rim BRR10SP',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'China',
+  'hnl07',
+  'https://images.clausen.app/models/21af789b6b1fc257.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '626b777c7da4e610',
+  '1968 custom plymouth barracuda',
+  'RLC Exclusive'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '18a0876dbd419f7c',
+  '626b777c7da4e610',
+  '',
+  'RLC Exclusive',
+  '',
+  2024,
+  'spectraflame teal',
+  '["Detailed trim","engine","headlights","&amp; taillights; \"Barracuda\" on sides &amp; rear; Formula S logo &amp; white stripes on sides; \"PLYMOUTH\" on front;  \"V8GILLS\" on black rear Hot Wheels license plate"]',
+  'Chrome & gray RR5SP',
+  'Black/Metal',
+  'Light smoke tint',
+  'Black',
+  'China',
+  'hwf13',
+  'https://images.clausen.app/models/546b200284d6e18d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '067df244645c3fee',
+  '1950 ford f6 roadkill stubby bob',
+  'Motor Trend: Roadkill'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '43d943f5cecde2e6',
+  '067df244645c3fee',
+  '',
+  'Motor Trend: Roadkill',
+  '',
+  2023,
+  'rust',
+  '["Detailed headlights and taillights","rust"]',
+  'RRSteelie',
+  'Maroon/Metal',
+  'Clear',
+  'Maroon',
+  'Thailand',
+  'hkn08',
+  'https://images.clausen.app/models/8a210fe17b844a9f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'fcb8fa5d925ed47b',
+  'eroded porsche 930',
+  'Mattel Creations Collaboratory'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'de9838c125542502',
+  'fcb8fa5d925ed47b',
+  '',
+  'Mattel Creations Collaboratory',
+  '',
+  2023,
+  'arsham white',
+  '["Colored crystalized erosions"]',
+  'RRLW5',
+  'Arsham white/Metal',
+  'Arsham white',
+  'Arsham white',
+  'China',
+  'hpj27',
+  'https://images.clausen.app/models/f19e256c57c2426e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '771a9bab3009e846',
+  'eroded rodger dodger',
+  'Mattel Creations Collaboratory'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '531abd6c62792795',
+  '771a9bab3009e846',
+  '',
+  'Mattel Creations Collaboratory',
+  '',
+  2023,
+  'arsham blue',
+  '["Colored crystalized erosions"]',
+  'Arsham white tyre & Arsham Blue RRLW5',
+  'Arsham blue/Metal',
+  'Arsham blue',
+  'Arsham blue',
+  'China',
+  'hpj28',
+  'https://images.clausen.app/models/bb20abab01366976.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '0af5b4bfeb4c37fe',
+  'eroded deora ii',
+  'Mattel Creations Collaboratory'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a0541e987f8c24ae',
+  '0af5b4bfeb4c37fe',
+  '',
+  'Mattel Creations Collaboratory',
+  '',
+  2023,
+  'arsham bronze patina',
+  '["Colored crystalized erosions"]',
+  'RRLW5 Bronze',
+  'ZAMAC',
+  'Arsham Bronze',
+  'ZAMAC',
+  'China',
+  'hpj34',
+  'https://images.clausen.app/models/77c1da97d591381e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2972b8a9d07c3c77',
+  'delorean alpha5',
+  'DeLorean Collector Set'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '984ba30a7012c132',
+  '2972b8a9d07c3c77',
+  '',
+  'DeLorean Collector Set',
+  '',
+  2023,
+  'polished red',
+  '["Detailed headlights","taillights and trim"]',
+  'RR10SPM',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hrg98',
+  'https://images.clausen.app/models/e9d32aed9ce5d1ea.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2972b8a9d07c3c77',
+  'delorean alpha5',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'c4316ad329c35791',
+  '2972b8a9d07c3c77',
+  '085/250',
+  'HW Green Speed',
+  '7/10',
+  2024,
+  'white',
+  '["Detailed headlights","taillights and trim"]',
+  'G10SP',
+  'Black/Plastic',
+  'Dark smoke tint',
+  'Black',
+  'Malaysia',
+  'htb84',
+  'https://images.clausen.app/models/7b727440ac7b38d6.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2972b8a9d07c3c77',
+  'delorean alpha5',
+  'Red Edition'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '10ebfd91dacb3d43',
+  '2972b8a9d07c3c77',
+  '085/250',
+  'Red Edition',
+  '6/12',
+  2024,
+  'black',
+  '["Detailed headlights","taillights and trim"]',
+  'G10SP',
+  'Black/Plastic',
+  'Smoke tint',
+  'Black',
+  'Malaysia',
+  'htf78',
+  'https://images.clausen.app/models/c7ae2fbb41011d79.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '2972b8a9d07c3c77',
+  'delorean alpha5',
+  'HW Green Speed'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7c3984c5358ddf9b',
+  '2972b8a9d07c3c77',
+  '085/250',
+  'HW Green Speed',
+  '7/10',
+  2024,
+  'metalflake copper',
+  '["Detailed headlights","taillights and trim"]',
+  'G10SP',
+  'Black/Plastic',
+  'Dark smoke tint',
+  'Black',
+  'Malaysia',
+  'htd32',
+  'https://images.clausen.app/models/2f74eb402f2d7340.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'fa7122008868e166',
+  '''92 jeep wrangler sahara',
+  'SDCC Exclusive'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '942e699dd17d2286',
+  'fa7122008868e166',
+  '',
+  'SDCC Exclusive',
+  '',
+  2023,
+  'sand beige',
+  '["Detailed headlights","red stripes","10","Jeep\" and Jurassic Park logo on sides","Jurassic Park logo","10\" license plates"]',
+  'ORRRF52T',
+  'Black/Metal',
+  'Clear',
+  'Gray',
+  'Indonesia',
+  'hrl27',
+  'https://images.clausen.app/models/2d8e9ad0f499aa8a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '5499d6fd262c2b51',
+  'modified ''69 ford mustang',
+  'Elite 64#3'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bf9eec84c59d8911',
+  '5499d6fd262c2b51',
+  '',
+  'Elite 64#3',
+  '',
+  2023,
+  'metallic acapulco blue',
+  '["Detailed trim"]',
+  'Gray RR',
+  'Matte black/Metal',
+  'Light smoke-tinted',
+  'Black with blue rollcage',
+  'China',
+  'hgw13',
+  'https://images.clausen.app/models/42474a68199e4301.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '530414ffa8cd56ef',
+  'lbwk lamborghini aventador lp 700-4',
+  'Elite 64#4'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'b0655bc1666b9642',
+  '530414ffa8cd56ef',
+  '',
+  'Elite 64#4',
+  '',
+  2023,
+  'pearl blue',
+  '["Detailed headlights and taillights","LBWK\" on rear fender","LB★PERFORMANCE","Imagine all the people living life in peace\" on sides"]',
+  'Black RR',
+  'Black/Metal',
+  'Smoke tint',
+  'Black',
+  'China',
+  'hgw14',
+  'https://images.clausen.app/models/7f135b28d845f2b8.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'b3e3c88fca168475',
+  'land rover defender 90 pickup',
+  'Elite 64#5'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '822843adffd29ad9',
+  'b3e3c88fca168475',
+  '',
+  'Elite 64#5',
+  '',
+  2023,
+  'green-cyan',
+  '["Light tan roof; detailed trim; detailed jerry cans; \"DEFENDER\" on front of hood; Land Rover emblem on grill &amp; rear"]',
+  'RR',
+  'Matte black/Metal',
+  'Light smoke-tinted',
+  'Black with black rollcage',
+  'China',
+  'hgw12',
+  'https://images.clausen.app/models/fe494b296068ea6c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3b9dc5fbe8e71781',
+  'audi rs 7 sportback',
+  'Elite 64#6'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a083d749945a0ca7',
+  '3b9dc5fbe8e71781',
+  '',
+  'Elite 64#6',
+  '',
+  2023,
+  'nardo gray',
+  '["Authentic Audi badging; \"RS 7\" on rear; \"RS7 0000\" on white front &amp; rear Euro plates; detailed trim","headlights","&amp; taillights"]',
+  'RR Gloss Black open wheel 5SP',
+  'Black/Metal (with chrome exhaust system)',
+  'Light smoke tint',
+  'Black',
+  'China',
+  'hgw11',
+  'https://images.clausen.app/models/e1ee7fc4de717f41.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '8dcc7669ab87f346',
+  'dine ''n dash',
+  'Light Blue'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '775dab8d61e5f2b2',
+  '8dcc7669ab87f346',
+  '2023',
+  'Light Blue',
+  '',
+  2024,
+  '"lindsey''s burgers fries shakes" on sides',
+  '["Gray<br>/<br>Plastic"]',
+  'HMF90',
+  'yellow tint',
+  'Black',
+  'AeroDisc Pink, White rim',
+  'Packaged with Buns of SteelBase code(s): R44A, R45A, R46A, T03A',
+  'thailand',
+  'https://images.clausen.app/models/c969f02fccdebbcf.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '46ceecf88c715e18',
+  'baja battalion',
+  'Gold'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '54790ecebbb592fc',
+  '46ceecf88c715e18',
+  '2023',
+  'Gold',
+  '',
+  2024,
+  'black stripes, "own the night", "rigid", "068", various sponsors on sides',
+  '["Black<br>/<br>Plastic"]',
+  'HMF91',
+  'Smoke tint',
+  'Gray',
+  'Gold BLOR',
+  'Came with Mountain MaulerBase code(s): R51A',
+  'thailand',
+  'https://images.clausen.app/models/266bf73cb7ef8db2.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '46ceecf88c715e18',
+  'baja battalion',
+  'Red'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ab36de2a4dbaee57',
+  '46ceecf88c715e18',
+  '20232024',
+  'Red',
+  '',
+  2024,
+  'black stripes, "own the night", "rigid", "068", various sponsors on sides',
+  '["Black<br>/<br>Plastic"]',
+  'HMF94',
+  'Smoke tint',
+  'Gray',
+  'Gray BLOR',
+  'Came with Mountain MaulerBase code(s): S17A',
+  'thailand',
+  'https://images.clausen.app/models/97644c088da6ca87.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'de20ae2600278400',
+  'tall order hauler',
+  'Super Rigs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '4196d0aa0db98d2f',
+  'de20ae2600278400',
+  '',
+  'Super Rigs',
+  '',
+  2023,
+  'matte gunmetal gray',
+  '["Green accents","HW RACING TECHNOLOGIES","1006.454.213.1133\" on sides","ORIGIN HTC 90245","HTS","HW RACING TECHNOLOGIES EL SEGUNDO\" on trailer","<a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">S. FISHER</a>\" on cab"]',
+  'RA6',
+  'Neon green/Plastic (cab)Matte gunmetal gray / Metal (trailer)',
+  'Smoke tint',
+  'Gray',
+  'Thailand',
+  'hmf93',
+  'https://images.clausen.app/models/d000cf907ef3c3b4.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'de20ae2600278400',
+  'tall order hauler',
+  'Super Rigs'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd0a73b39a8cae17d',
+  'de20ae2600278400',
+  '',
+  'Super Rigs',
+  '',
+  2024,
+  'black',
+  '["Red accents","HW RACING TECHNOLOGIES","1006.454.213.1133\" on sides","ORIGIN HTC 90245","HTS","HW RACING TECHNOLOGIES EL SEGUNDO\" on trailer","<a href=\"/wiki/Sonny_Fisher\" title=\"Sonny Fisher\">S. FISHER</a>\" on cab"]',
+  'Gray RA6',
+  'Red/Plastic (cab)Black / Metal (trailer)',
+  'Smoke tint',
+  'Gray',
+  'Thailand',
+  'hmf89',
+  'https://images.clausen.app/models/5b582b3e68458778.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7caf63d51f1d9314',
+  'rad rider rig',
   'Black'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -8723,82 +16605,152 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '72f1be44c3fa6480',
-  '72f1be44c3fa6480',
+  'a97297e9cd200faa',
+  '7caf63d51f1d9314',
+  '2023',
+  'Black',
+  '',
+  2024,
+  'gold pinstriping and skull on cab top, gold scallops, skull, and hot wheels logo on trailer',
+  '["Black<br>/<br>Metal"]',
+  'Malaysia',
+  'Chrome',
+  '5SP & RA6',
+  'HMF99',
+  'Unknown',
+  'base code(s): r41',
+  'https://images.clausen.app/models/2c7af31caf7b5528.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7caf63d51f1d9314',
+  'rad rider rig',
+  'Dark Red'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '041d100d8b51ec49',
+  '7caf63d51f1d9314',
+  '2023',
+  'Dark Red',
+  '',
+  2024,
+  'white pinstriping and skull on cab top, white pinstriping, skull, and "hot wheels" on trailer',
+  '["Red<br>/<br>Metal"]',
+  'Malaysia',
+  'Chrome',
+  '5SP & RA6',
+  'HMG02HMN36',
+  'Unknown',
+  'base code(s): s05',
+  'https://images.clausen.app/models/0556e69c35df3ee2.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '7caf63d51f1d9314',
+  'rad rider rig',
+  'Black'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '191cf982f34247fd',
+  '7caf63d51f1d9314',
   '2024',
   'Black',
   '',
   2024,
-  'Light Green / Dark Green cyber camouflage design, White "H.W.T.S"',
-  '["Black<br>/<br>Plastic"]',
-  'Green BLOR',
-  'Smoke tint',
-  'Grey',
-  'Light Grey',
-  'Thailand',
-  'HVD97',
-  'https://images.clausen.app/models/72f1be44c3fa6480.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '0a0d40084e17263b',
-  'Semi Rodger Dodger',
-  'Track Fleet'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '0a0d40084e17263b',
-  '0a0d40084e17263b',
-  '',
-  'Track Fleet',
-  '',
-  2024,
-  'Red',
-  '["76","H/W","&amp; black &amp; silver flames on cab &amp; trailer; \"SEMI RODGER DODGER\" with stars","SINCE 1968\" with checkered flags","&amp; Hot Wheels logo on trailer"]',
-  'DD8',
-  'Black/Plastic',
-  'Smoke tint',
+  'gold pinstriping and skull on cab top, gold scallops, skull, and hot wheels logo on trailer',
+  '["Black<br>/<br>Metal"]',
+  'Malaysia',
   'Chrome',
-  'Malaysia',
-  'HVF01',
-  'https://images.clausen.app/models/0a0d40084e17263b.webp'
-);
+  '5SP & RA6',
+  'HYT57',
+  'Unknown',
+  'base code(s): t14, t19',
+  'https://images.clausen.app/models/dfbccb11c88dac36.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '596fe17a8292ad2b',
-  'Semi Rodger Dodger',
-  'Track Fleet'
+  'b1235400254fa37f',
+  'cyberrig',
+  'White'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -8815,450 +16767,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '596fe17a8292ad2b',
-  '596fe17a8292ad2b',
-  '',
-  'Track Fleet',
-  '',
-  2024,
-  'Blue',
-  '["76","H/W","&amp; black &amp; silver flames on cab &amp; trailer; \"SEMI RODGER DODGER\" with stars","SINCE 1968\" with checkered flags","&amp; Hot Wheels logo on trailer"]',
-  'Blue chrome rim, white DD8',
-  'Gray/Plastic & ZAMAC',
-  'Smoke tint',
-  'Chrome',
-  'Malaysia',
-  'HVF03',
-  'https://images.clausen.app/models/596fe17a8292ad2b.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '7f3490635a2a0aa5',
-  'Volvo 240 Drift Camper',
-  '"Moody" blue (Car)"Moody" blue & white (Trailer)'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '7f3490635a2a0aa5',
-  '7f3490635a2a0aa5',
-  '2024',
-  '"Moody" blue (Car)"Moody" blue & white (Trailer)',
-  '',
-  2024,
-  'Black mesh pattern hood, "VOLVO", & black stripe on sides of car; gold, "moody" blue, & gray accents, Hot Wheels logo, and black painted windows on sides of trailer',
-  '["Black<br>/<br>Plastic &amp; Black<br>/<br>Metal"]',
-  'HVD99',
-  'Yellow tint',
-  'Chrome',
-  'Gray rim DD8',
-  'Base code(s): T14, T19',
-  'Malaysia',
-  'https://images.clausen.app/models/7f3490635a2a0aa5.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'd3a315ecc2b826a0',
-  'Optimus Prime (Track Fleet)',
-  'Track Fleet'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'd3a315ecc2b826a0',
-  'd3a315ecc2b826a0',
-  '',
-  'Track Fleet',
-  '',
-  2024,
-  'Red',
-  '["Autobots logo &amp; silver stripes on sides of cab","Autobots logo with blue and white stripes on sides of trailer"]',
-  'DD8',
-  'Chrome/Plastic & Black/Plastic',
-  'Smoke tint',
-  'Blue',
-  'Malaysia',
-  'HXH02JFF66',
-  'https://images.clausen.app/models/d3a315ecc2b826a0.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '2ee7859dc7c76642',
-  'The Joker (2024)',
-  'Lavender'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '2ee7859dc7c76642',
-  '2ee7859dc7c76642',
-  '2024',
-  'Lavender',
-  '',
-  2024,
-  'Red accents, white hood & teeth, black canopy with green accent, pink fluffball on fenders',
-  '["Light blue<br>/<br>Plastic"]',
-  'Mauve LW',
-  'Yellow tint',
-  'Gold chrome',
-  'Gold chrome',
-  'Thailand',
-  'HTR99',
-  'https://images.clausen.app/models/2ee7859dc7c76642.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '7bf2e00d03ad110c',
-  'Beast (X-Men)',
-  'Marvel Character Cars'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '7bf2e00d03ad110c',
-  '7bf2e00d03ad110c',
-  '',
-  'Marvel Character Cars',
-  '',
-  2024,
-  'Sky blue',
-  '["Dark blue roof","painted taillights"]',
-  'Blue BLOR',
-  'Lime green/Plastic',
-  'Smoke tint',
-  'Gray',
-  'Thailand',
-  'HKV15',
-  'https://images.clausen.app/models/7bf2e00d03ad110c.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'eed0e0c3f81d2fae',
-  'Ghost Rider',
-  'Marvel Character Cars'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'eed0e0c3f81d2fae',
-  'eed0e0c3f81d2fae',
-  '',
-  'Marvel Character Cars',
-  '',
-  2024,
-  'Black',
-  '["Silver and gray accents"]',
-  '5SP',
-  'White/Plastic',
-  'Orange tint',
+  'a1ca486f06194419',
+  'b1235400254fa37f',
+  '2023',
   'White',
-  'Thailand',
-  'HTT01',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  'a7ae03741b28b846',
-  'Zuckuss',
-  'Star Wars Character Cars'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  'a7ae03741b28b846',
-  'a7ae03741b28b846',
-  '',
-  'Star Wars Character Cars',
   '',
   2024,
-  'Brown',
-  '["Black accents"]',
-  'Brown & Gray BLOR',
-  'Light brown/Plastic',
-  'Black',
-  'Gray',
-  'Thailand',
-  'HKV27',
-  'https://images.clausen.app/models/a7ae03741b28b846.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '39f1be3fd3fbdad9',
-  'Anakin Skywalker (2024)',
-  'Star Wars Character Cars'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '39f1be3fd3fbdad9',
-  '39f1be3fd3fbdad9',
-  '',
-  'Star Wars Character Cars',
-  '',
-  2024,
-  'ZAMAC',
-  '["Blue and red accents"]',
-  'HTR97',
-  'Orange/Plastic',
-  'Yellow tint',
-  'BLOR/BAJA5',
-  'Base code(s): T15',
-  'Thailand',
-  'https://images.clausen.app/models/39f1be3fd3fbdad9.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '9419be52de65a35b',
-  'Cad Bane',
-  'Star Wars Character Cars'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '9419be52de65a35b',
-  '9419be52de65a35b',
-  '',
-  'Star Wars Character Cars',
-  '',
-  2024,
-  'Brown',
-  '["Blue and Silver accents"]',
-  'Red rim DD8',
-  'Gray/Plastic',
-  'Red tint',
-  'Gray',
-  'Thailand',
-  'HTR98',
-  'https://images.clausen.app/models/9419be52de65a35b.webp'
-);
-
-
-INSERT OR REPLACE INTO models (
-  id,
-  name,
-  debut_series
-) VALUES (
-  '38b693426c5d0094',
-  'Poppy',
-  'Trolls Band Together Character Cars'
-);
-
-
-INSERT OR REPLACE INTO model_variants (
-  id,
-  model_id,
-  collection_number,
-  series,
-  series_number,
-  year,
-  color,
-  tampos,
-  wheel_type,
-  base_color,
-  window_color,
-  interior_color,
-  country_made,
-  toy_number,
-  image_url
-) VALUES (
-  '38b693426c5d0094',
-  '38b693426c5d0094',
-  '',
-  'Trolls Band Together Character Cars',
-  '',
-  2024,
-  'Pink',
-  '["Easter egg design on sides"]',
-  'AeroDisc',
-  'ZAMAC',
+  'neon pink stripes and skull on cab and trailer',
+  '["Blue<br>/<br>Metal"]',
+  'HMG00',
   'Blue tint',
-  'Powder blue',
-  'Thailand',
-  'HKV19',
-  'https://images.clausen.app/models/38b693426c5d0094.webp'
-);
+  'Chrome',
+  'WBDD8',
+  'Base code(s): R41',
+  'malaysia',
+  'https://images.clausen.app/models/589470bd82e65915.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '784601bdc4876a50',
-  'Branch',
-  'Trolls Band Together Character Cars'
+  'b1235400254fa37f',
+  'cyberrig',
+  'Yellow'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9275,36 +16821,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '784601bdc4876a50',
-  '784601bdc4876a50',
-  '',
-  'Trolls Band Together Character Cars',
+  '0326643065617bf6',
+  'b1235400254fa37f',
+  '2023',
+  'Yellow',
   '',
   2024,
-  'Steel blue',
-  '["Brown accents","patchwork design"]',
+  'black stripes and skull on cab and trailer',
+  '["Orange<br>/<br>Metal"]',
+  'HMG01HMN35',
+  'Orange tint',
+  'Dark chrome',
   'DD8',
-  'Lavender/Plastic',
-  'Black tint',
-  'Black',
-  'Thailand',
-  'HKV20',
-  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
-);
+  'Base code(s): S05',
+  'malaysia',
+  'https://images.clausen.app/models/4015f5a5dc1e1f5c.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '517f03e9a48733db',
-  'Zuko',
-  'Metalflake maroon'
+  'b1235400254fa37f',
+  'cyberrig',
+  'Yellow'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9321,36 +16875,44 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '517f03e9a48733db',
-  '517f03e9a48733db',
+  '6f73e8cadec249cb',
+  'b1235400254fa37f',
   '2024',
-  'Metalflake maroon',
+  'Yellow',
   '',
   2024,
-  'Fire nation emblem on sides & hood, gray door, gold roof & trim, orange flames around base, red & black roof piece for Thai topknot, detailed headlights',
-  '["Black<br>/<br>Plastic"]',
-  'HTT00',
-  'Light smoke tint',
-  'Gray',
-  'Gold chrome & black DD8',
-  'Base code(s): T24',
-  'Thailand',
-  'https://images.clausen.app/models/517f03e9a48733db.webp'
-);
+  'black stripes and skull on cab and trailer',
+  '["Orange<br>/<br>Metal"]',
+  'HMG01HMN35',
+  'Orange tint',
+  'Dark chrome',
+  'DD8',
+  'Same as Track Stars Haulers releaseBase code(s): S47, S50',
+  'malaysia',
+  'https://images.clausen.app/models/864be4758b2cec6f.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'afd3d4d2f3941c2c',
-  'Theatrical Donkey Kong',
-  'Mario Kart: The Super Mario Bros. Movie 4-Pack'
+  'd603a14f73b3e230',
+  'bugcation',
+  'Track Stars Haulers'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9367,36 +16929,1016 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'afd3d4d2f3941c2c',
-  'afd3d4d2f3941c2c',
+  '75ab4afd3bbaa14c',
+  'd603a14f73b3e230',
   '',
-  'Mario Kart: The Super Mario Bros. Movie 4-Pack',
+  'Track Stars Haulers',
   '',
   2023,
-  'Donkey Kong (in style of The Super Mario Bros. Movie)',
-  '["Yellow"]',
-  'HKD43',
-  'Red accents on sides',
-  'Gray/Metal',
-  'MKTDK',
-  'Base code(s):',
-  'Thailand',
-  'https://images.clausen.app/models/afd3d4d2f3941c2c.webp'
-);
+  'powder blue',
+  '["Rust","Hot Wheels","Volkswagen logo on side of hauler"]',
+  'DD8',
+  'Chrome/Plastic',
+  'Heavy smoke tint',
+  'Chrome',
+  'Malaysia',
+  'hmf98',
+  'https://images.clausen.app/models/88608c226df8e6a0.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '9bcf40ddda5354a6',
-  'Theatrical Donkey Kong',
+  'd603a14f73b3e230',
+  'bugcation',
+  'Track Fleet'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '75ab4afd3bbaa14c',
+  'd603a14f73b3e230',
+  '',
+  'Track Fleet',
+  '',
+  2024,
+  'powder blue',
+  '["Rust","Hot Wheels","Volkswagen logo on side of hauler"]',
+  'DD8',
+  'Chrome/Plastic',
+  'Heavy smoke tint',
+  'Chrome',
+  'Malaysia',
+  'hmf98',
+  'https://images.clausen.app/models/56c973e43f4631e1.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '126ac4b07f93bc4f',
+  'crush',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'afa5bf7224e548de',
+  '126ac4b07f93bc4f',
+  '',
+  'Disney Character Cars',
+  '',
+  2023,
+  'moss green & brown',
+  '["Fake woodgrain paneling","turtle shell design on fenders"]',
+  'MC5',
+  'Brown/Plastic',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkv25',
+  'https://images.clausen.app/models/12341f082a94df5b.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'd02c4c4cde7ae762',
+  'zero',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'd00750760e01de97',
+  'd02c4c4cde7ae762',
+  '',
+  'Disney Character Cars',
+  '',
+  2023,
+  'photo-luminescent white',
+  '["White accents","red collar"]',
+  'MC3/SKDisc',
+  'White / Metal',
+  'Frosted',
+  'White',
+  'Thailand',
+  'hkv18',
+  'https://images.clausen.app/models/9be49adff98917a4.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a701f721134b5f33',
+  'steamboat minnie',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '7cb87b79a3fd25a1',
+  'a701f721134b5f33',
+  '',
+  'Disney Character Cars',
+  '',
+  2023,
+  'black',
+  '["White accents","black grille"]',
+  'White OH5',
+  'Black/Plastic',
+  'Clear',
+  'White',
+  'Thailand',
+  'hkv28',
+  'https://images.clausen.app/models/e8c6158bc24b5695.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6384e2b2184bcbf5',
+  'alice',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '37370f154a5a371e',
+  '6384e2b2184bcbf5',
+  '',
+  'Disney Character Cars',
+  '',
+  2023,
+  'baby blue',
+  '["White accents","baby blue headlights","yellow roof with black bow","pink taillights"]',
+  'LW',
+  'Light blue/Plastic',
+  'Clear',
+  'White',
+  'Thailand',
+  'hkv29',
+  'https://images.clausen.app/models/14cc94688c07f00a.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '6384e2b2184bcbf5',
+  'alice',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '4f7b673c007164cb',
+  '6384e2b2184bcbf5',
+  '',
+  'Disney Character Cars',
+  '',
+  2024,
+  'baby blue',
+  '["White accents","baby blue headlights","yellow roof with black bow","pink taillights"]',
+  'LW',
+  'Light blue/Plastic',
+  'Clear',
+  'White',
+  'Thailand',
+  'hxd04',
+  'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'a0df931e7a7f9b60',
+  'carl',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '9f0115af4e8ac114',
+  'a0df931e7a7f9b60',
+  '',
+  'Disney Character Cars',
+  '',
+  2023,
+  'black',
+  '["Yellow hood","brown truck bed","white roof","multicolored balloons in back"]',
+  'DD8',
+  'Dark Gray/Plastic',
+  'Tinted (Blue)',
+  'Black',
+  'Thailand',
+  'hnp61',
+  'https://images.clausen.app/models/a672aa42966b6be3.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '9eb0c9605dc81a68',
+  'miguel',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'de1b2d174bc84616',
+  '9eb0c9605dc81a68',
+  '',
+  'Disney Character Cars',
+  '',
+  2023,
+  'maroon',
+  '["Black accents","RIVERA <small>FAMILIA DE ZAPATEROS</small>\" on sides"]',
+  'Orange 5SP',
+  'Chrome/Plastic',
+  'Blue tint',
+  'Gray',
+  'Thailand',
+  'hnp54',
+  'https://images.clausen.app/models/3802e6806979cff8.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f26b2b90d0384794',
+  'chip ''n dale',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '9b5c3285b01be2a4',
+  'f26b2b90d0384794',
+  '',
+  'Disney Character Cars',
+  '',
+  2023,
+  'brown',
+  '["Tan accents","black &amp; white lines along top of motorcycle &amp; sidecar"]',
+  'Brown',
+  'White/Metal',
+  'Gray',
+  'Black',
+  'HNP68',
+  'mc3/oh5',
+  'https://images.clausen.app/models/cf66dd1ec8960595.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '4200409aee725fcd',
+  'she-hulk',
+  'Marvel Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'f48c2ecb2eea5e1f',
+  '4200409aee725fcd',
+  '',
+  'Marvel Character Cars',
+  '',
+  2023,
+  'green',
+  '["Purple and white accents"]',
+  'BAJA5',
+  'Purple / Plastic',
+  'Clear',
+  'Purple',
+  'Thailand',
+  'hdl54',
+  'https://images.clausen.app/models/c928fe51d3ef83a8.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '724058fabc1fbbd0',
+  'namor',
+  'Marvel Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ed96ea9ab651dc68',
+  '724058fabc1fbbd0',
+  '',
+  'Marvel Character Cars',
+  '',
+  2023,
+  'metalflake goldenrod',
+  '["White and green accents"]',
+  'RA6',
+  'Clear blue / Plastic',
+  'Blue tint',
+  'Forest green',
+  'Thailand',
+  'hdl53',
+  'https://images.clausen.app/models/4845b48007351702.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3a6f707fa80e8e5d',
+  'shuri',
+  'Marvel Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a8a56d459c7787ca',
+  '3a6f707fa80e8e5d',
+  '',
+  'Marvel Character Cars',
+  '',
+  2023,
+  'metalflake indigo',
+  '["Yellow","red and white accents"]',
+  'HKV16',
+  'Black/Plastic',
+  'Indigo',
+  'TRAP5',
+  'Base code(s): R46, R47',
+  'thailand',
+  'https://images.clausen.app/models/a89078f639022176.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3a6f707fa80e8e5d',
+  'shuri',
+  'Disney Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'a8a56d459c7787ca',
+  '3a6f707fa80e8e5d',
+  '',
+  'Disney Character Cars',
+  '',
+  2023,
+  'metalflake indigo',
+  '["Yellow","red and white accents"]',
+  'HNP65',
+  'Black/Plastic',
+  'Indigo',
+  'TRAP5',
+  'Base code(s): S15',
+  'thailand',
+  'https://images.clausen.app/models/a89078f639022176.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3cf84ed7c369dbfd',
+  'spider-punk',
+  'Marvel Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'ff7aaddd03cd1ab3',
+  '3cf84ed7c369dbfd',
+  '',
+  'Marvel Character Cars',
+  '',
+  2023,
+  'red',
+  '["Blue accents","logos on sides"]',
+  'RA6',
+  'Black/Plastic',
+  'Clear',
+  'Gray',
+  'Thailand',
+  'hdl52',
+  'https://images.clausen.app/models/1b5a2d83a13ac978.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '86d7a2f8e47d7f74',
+  'princess leia organa (boushh)',
+  'Star Wars Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bbd59a4cc46bbb89',
+  '86d7a2f8e47d7f74',
+  '',
+  'Star Wars Character Cars',
+  '',
+  2023,
+  'orange',
+  '["Gray accents"]',
+  'BAJA5 & BLOR',
+  'Brown/Metal',
+  'Smoke tint',
+  'Black',
+  'Thailand',
+  'hkv26',
+  'https://images.clausen.app/models/6565eb49dff91749.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  'f9a89e5cd6850209',
+  'classic trolls',
+  'Good Luck Trolls Character Cars'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '0e129c429ffbf553',
+  'f9a89e5cd6850209',
+  '',
+  'Good Luck Trolls Character Cars',
+  '',
+  2023,
+  'yellow',
+  '["White headlights"]',
+  'AeroDisc',
+  'Chrome / Plastic',
+  'Blue tint',
+  'Blue',
+  'Thailand',
+  'hdl71',
+  'https://images.clausen.app/models/794a09bdf1b74194.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '3f01e7effc9d42b1',
+  'sylvester',
+  'Gloss Black, White & Black Satin'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'c58f060179f22afe',
+  '3f01e7effc9d42b1',
+  '2023',
+  'Gloss Black, White & Black Satin',
+  '',
+  2024,
+  'white accents on sides; red grill for nose & taillights; yellow feathers on back dash',
+  '["Red<br>/<br>Plastic"]',
+  'HNP37',
+  'Clear',
+  'Black',
+  '10SPW',
+  'Base code(s): S33',
+  'thailand',
+  'https://images.clausen.app/models/d5c758ce22f1703d.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '9bd479f0aa79d5f5',
+  'superman (2023)',
+  'Dark blue'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  'bf8930d2d7303ffd',
+  '9bd479f0aa79d5f5',
+  '2023',
+  'Dark blue',
+  '',
+  2024,
+  'dark red rear fenders; gold chrome grill & engine exhausts; gold stripe on hood; black textured roof & trunk; small dark blue piece above windshield representing superman''s hair curl in front',
+  '["Gold<br>/<br>Plastic"]',
+  'HNP38',
+  'Smoke tint',
+  'Gold',
+  'AeroDisc',
+  'Base code(s): S31',
+  'thailand',
+  'https://images.clausen.app/models/435c7bb175c68819.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '147d5e314c599ab5',
+  'theatrical mario',
   'Mario Kart: The Super Mario Bros. Movie'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9413,36 +17955,45 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '9bcf40ddda5354a6',
-  '9bcf40ddda5354a6',
+  '6f7e2bed997c29d1',
+  '147d5e314c599ab5',
   '',
   'Mario Kart: The Super Mario Bros. Movie',
   '',
-  2024,
-  'Donkey Kong (in style of The Super Mario Bros. Movie)',
-  '["Yellow"]',
-  'HKD46',
-  'Red accents on sides',
-  'Gray/Metal',
-  'MKTDK',
-  'Base code(s): S40, S41',
-  'Thailand',
-  'https://images.clausen.app/models/9bcf40ddda5354a6.webp'
-);
+  2023,
+  'mario (in style of the super mario bros. movie)',
+  '["Red"]',
+  'HKD42',
+  'Mario emblem
+on body',
+  'Red/Metal',
+  'MKT',
+  'Base code(s): R44, R47',
+  'thailand',
+  'https://images.clausen.app/models/1a942c8488a3c638.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '11130851e190d1f4',
-  'Theatrical Princess Peach',
-  'Mario Kart: The Super Mario Bros. Movie 4-Pack'
+  '99b816e1213709ba',
+  'theatrical toad',
+  'Mario Kart: The Super Mario Bros. Movie'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9459,36 +18010,98 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '11130851e190d1f4',
-  '11130851e190d1f4',
+  '3a476baebc1520e7',
+  '99b816e1213709ba',
   '',
-  'Mario Kart: The Super Mario Bros. Movie 4-Pack',
+  'Mario Kart: The Super Mario Bros. Movie',
   '',
   2023,
-  'Princess Peach (in style of The Super Mario Bros. Movie)',
-  '["Pink"]',
-  'HKD43',
-  'Dark pink accents',
-  'Pink/Metal',
-  'MKTPP',
-  'Base code(s):',
-  'Thailand',
-  'https://images.clausen.app/models/11130851e190d1f4.webp'
-);
+  'toad (in style of the super mario bros. movie)',
+  '["Blue"]',
+  'HKD58',
+  'Various detailing',
+  'Gray/Metal',
+  'MKTT',
+  'Base code(s): S31, S34, S37',
+  'thailand',
+  'https://images.clausen.app/models/01488c5026080f4e.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '18017c41dc72ed27',
-  'List of 1968 Hot Wheels new castings',
+  'a49bc54897c14873',
+  'theatrical koopa troopa',
+  'Mario Kart: The Super Mario Bros. Movie'
+);
+
+
+INSERT INTO model_variants (
+  id,
+  model_id,
+  collection_number,
+  series,
+  series_number,
+  year,
+  color,
+  tampos,
+  wheel_type,
+  base_color,
+  window_color,
+  interior_color,
+  country_made,
+  toy_number,
+  image_url
+) VALUES (
+  '812525b8f9cf08fc',
+  'a49bc54897c14873',
+  '',
+  'Mario Kart: The Super Mario Bros. Movie',
+  '',
+  2023,
+  'koopa troopa (in style of the super mario bros. movie)',
+  '["Gray"]',
+  'HKD59',
+  'Various detailing',
+  'Gray/Metal',
+  'MKTKT',
+  'Base code(s): S31, S37',
+  'thailand',
+  'https://images.clausen.app/models/a3b2607fbdf499de.webp'
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
+
+
+INSERT OR IGNORE INTO models (
+  id,
+  name,
+  debut_series
+) VALUES (
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9505,8 +18118,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '18017c41dc72ed27',
-  '18017c41dc72ed27',
+  '6e44128af5969a59',
+  '32087f68f501a4ca',
   '6205',
   '1968 Hot Wheels',
   '',
@@ -9518,23 +18131,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/18017c41dc72ed27.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '3d510c94dedfd793',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9551,8 +18172,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '3d510c94dedfd793',
-  '3d510c94dedfd793',
+  'bac914c478fb0d9b',
+  '32087f68f501a4ca',
   '6206',
   '1968 Hot Wheels',
   '',
@@ -9564,23 +18185,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/3d510c94dedfd793.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '0e4b931b638f359f',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9597,8 +18226,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '0e4b931b638f359f',
-  '0e4b931b638f359f',
+  '478ff5f84cbdd37b',
+  '32087f68f501a4ca',
   '6207',
   '1968 Hot Wheels',
   '',
@@ -9610,23 +18239,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/0e4b931b638f359f.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '110febc359c02fd8',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9643,8 +18280,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '110febc359c02fd8',
-  '110febc359c02fd8',
+  'b2e2ac6665936d88',
+  '32087f68f501a4ca',
   '6208',
   '1968 Hot Wheels',
   '',
@@ -9656,23 +18293,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/110febc359c02fd8.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '266902c9206fc0a9',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9689,8 +18334,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '266902c9206fc0a9',
-  '266902c9206fc0a9',
+  '41ada6436f23197c',
+  '32087f68f501a4ca',
   '6209',
   '1968 Hot Wheels',
   '',
@@ -9702,23 +18347,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/266902c9206fc0a9.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'd5ea63363013d0b8',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9735,8 +18388,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'd5ea63363013d0b8',
-  'd5ea63363013d0b8',
+  'cca4e2d017878e5e',
+  '32087f68f501a4ca',
   '6210',
   '1968 Hot Wheels',
   '',
@@ -9748,23 +18401,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/d5ea63363013d0b8.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '68f97af22b7c40cc',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9781,8 +18442,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '68f97af22b7c40cc',
-  '68f97af22b7c40cc',
+  '2617cfd884017989',
+  '32087f68f501a4ca',
   '6211',
   '1968 Hot Wheels',
   '',
@@ -9794,23 +18455,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/68f97af22b7c40cc.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'e066e50b8863f5f9',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9827,8 +18496,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'e066e50b8863f5f9',
-  'e066e50b8863f5f9',
+  '6f16679cc007c0d3',
+  '32087f68f501a4ca',
   '6212',
   '1968 Hot Wheels',
   '',
@@ -9840,23 +18509,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/e066e50b8863f5f9.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '1a84f114502af0bf',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9873,8 +18550,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '1a84f114502af0bf',
-  '1a84f114502af0bf',
+  '1948f5c211103e28',
+  '32087f68f501a4ca',
   '6213',
   '1968 Hot Wheels',
   '',
@@ -9886,23 +18563,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/1a84f114502af0bf.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'a42a7b3d7bad5809',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9919,8 +18604,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'a42a7b3d7bad5809',
-  'a42a7b3d7bad5809',
+  '5422f3cc519a8d87',
+  '32087f68f501a4ca',
   '6214',
   '1968 Hot Wheels',
   '',
@@ -9932,23 +18617,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/a42a7b3d7bad5809.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'd047e4381da40d12',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -9965,8 +18658,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'd047e4381da40d12',
-  'd047e4381da40d12',
+  '7857f2aa830baebd',
+  '32087f68f501a4ca',
   '6215',
   '1968 Hot Wheels',
   '',
@@ -9978,23 +18671,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/d047e4381da40d12.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '4005824d295452c4',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -10011,8 +18712,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '4005824d295452c4',
-  '4005824d295452c4',
+  'ccc06a60f0f24b2f',
+  '32087f68f501a4ca',
   '6216',
   '1968 Hot Wheels',
   '',
@@ -10024,23 +18725,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/4005824d295452c4.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'bf46e9012d176a3d',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -10057,8 +18766,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'bf46e9012d176a3d',
-  'bf46e9012d176a3d',
+  '0adaeed4519284cd',
+  '32087f68f501a4ca',
   '6217',
   '1968 Hot Wheels',
   '',
@@ -10070,23 +18779,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/bf46e9012d176a3d.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '326c0ac70adb0d41',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -10103,8 +18820,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '326c0ac70adb0d41',
-  '326c0ac70adb0d41',
+  'cf3c26de698ab47e',
+  '32087f68f501a4ca',
   '6218',
   '1968 Hot Wheels',
   '',
@@ -10116,23 +18833,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/326c0ac70adb0d41.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  'bec009656997175d',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -10149,8 +18874,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  'bec009656997175d',
-  'bec009656997175d',
+  '53debc6d87d08b38',
+  '32087f68f501a4ca',
   '6219',
   '1968 Hot Wheels',
   '',
@@ -10162,23 +18887,31 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/bec009656997175d.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 
 
-INSERT OR REPLACE INTO models (
+INSERT OR IGNORE INTO models (
   id,
   name,
   debut_series
 ) VALUES (
-  '8f7708595e0692e6',
-  'List of 1968 Hot Wheels new castings',
+  '32087f68f501a4ca',
+  'list of 1968 hot wheels new castings',
   '1968 Hot Wheels'
 );
 
 
-INSERT OR REPLACE INTO model_variants (
+INSERT INTO model_variants (
   id,
   model_id,
   collection_number,
@@ -10195,8 +18928,8 @@ INSERT OR REPLACE INTO model_variants (
   toy_number,
   image_url
 ) VALUES (
-  '8f7708595e0692e6',
-  '8f7708595e0692e6',
+  '21f11918e7da3ab6',
+  '32087f68f501a4ca',
   '6220',
   '1968 Hot Wheels',
   '',
@@ -10208,7 +18941,15 @@ INSERT OR REPLACE INTO model_variants (
   'Unknown',
   'Unknown',
   'Unknown',
-  'Unknown',
+  'unknown',
   'https://images.clausen.app/models/8f7708595e0692e6.webp'
-);
+)
+ON CONFLICT(id) DO UPDATE SET
+  color = excluded.color,
+  tampos = excluded.tampos,
+  wheel_type = excluded.wheel_type,
+  base_color = excluded.base_color,
+  window_color = excluded.window_color,
+  interior_color = excluded.interior_color,
+  image_url = excluded.image_url;
 

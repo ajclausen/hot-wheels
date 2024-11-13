@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
@@ -8,25 +8,33 @@ import { ModelCard } from './ModelCard';
 import { ModelList } from './ModelList';
 import { ModelCompact } from './ModelCompact';
 import { ViewToggle, type ViewMode } from './ViewToggle';
-import { useVirtualizer } from '@tanstack/react-virtual';
-
-const PAGE_SIZE = 50;
+import axios from 'axios';
 
 interface SearchViewProps {
-  models: ModelVariant[];
-  userModels: ModelVariant[];
   onToggleOwned: (id: string) => void;
   onEditNotes: (id: string) => void;
   searchInputRef?: React.RefObject<HTMLInputElement>;
 }
 
-export function SearchView({ models, userModels, onToggleOwned, onEditNotes, searchInputRef }: SearchViewProps) {
+interface SearchResponse {
+  models: ModelVariant[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    pages: number;
+  };
+}
+
+export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: SearchViewProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [models, setModels] = useState<ModelVariant[]>([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [filters, setFilters] = useState({
     year: '',
@@ -35,76 +43,48 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
     sort: 'name-asc'
   });
 
-  const uniqueYears = useMemo(() => [...new Set(models.map(m => m.year))].sort((a, b) => b - a), [models]);
-  const uniqueSeries = useMemo(() => [...new Set(models.map(m => m.series))].sort(), [models]);
-  const uniqueColors = useMemo(() => [...new Set(models.map(m => m.color))].sort(), [models]);
+  const fetchModels = async (newPage = 1) => {
+    try {
+      setLoading(true);
+      const params = new URLSearchParams({
+        page: newPage.toString(),
+        limit: '50',
+        sort: filters.sort
+      });
 
-  const filteredModels = useMemo(() => {
-    return models.filter(model => {
-      const matchesSearch = searchQuery
-        ? model.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          model.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          model.collection_number?.toLowerCase().includes(searchQuery.toLowerCase())
-        : true;
+      if (searchQuery) params.append('search', searchQuery);
+      if (filters.year) params.append('year', filters.year);
+      if (filters.series) params.append('series', filters.series);
 
-      const matchesYear = !filters.year || model.year.toString() === filters.year;
-      const matchesSeries = !filters.series || model.series === filters.series;
-      const matchesColor = !filters.color || model.color === filters.color;
-
-      return matchesSearch && matchesYear && matchesSeries && matchesColor;
-    });
-  }, [models, searchQuery, filters]);
-
-  const sortedModels = useMemo(() => {
-    return [...filteredModels].sort((a, b) => {
-      switch (filters.sort) {
-        case 'newest':
-          return b.year - a.year;
-        case 'oldest':
-          return a.year - b.year;
-        case 'name-asc':
-          return a.name.localeCompare(b.name);
-        case 'name-desc':
-          return b.name.localeCompare(a.name);
-        case 'series':
-          return a.series.localeCompare(b.series) || 
-                 (a.collection_number || '').localeCompare(b.collection_number || '');
-        case 'number':
-          const aNum = parseInt((a.collection_number || '').replace(/\D/g, '')) || 0;
-          const bNum = parseInt((b.collection_number || '').replace(/\D/g, '')) || 0;
-          return aNum - bNum;
-        default:
-          return 0;
+      const { data } = await axios.get<SearchResponse>(`/api/models?${params}`);
+      
+      if (newPage === 1) {
+        setModels(data.models);
+      } else {
+        setModels(prev => [...prev, ...data.models]);
       }
-    });
-  }, [filteredModels, filters.sort]);
-
-  const paginatedModels = useMemo(() => {
-    return sortedModels.slice(0, page * PAGE_SIZE);
-  }, [sortedModels, page]);
-
-  const rowVirtualizer = useVirtualizer({
-    count: paginatedModels.length,
-    getScrollElement: () => containerRef.current,
-    estimateSize: () => viewMode === 'compact' ? 48 : viewMode === 'list' ? 96 : 440,
-    overscan: 5,
-  });
+      
+      setHasMore(newPage < data.pagination.pages);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching models:', error);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     setPage(1);
+    fetchModels(1);
   }, [searchQuery, filters]);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current || loading || !hasMore) return;
       
       const { scrollHeight, scrollTop, clientHeight } = containerRef.current;
-      if (scrollHeight - scrollTop - clientHeight < 200 && !loading && paginatedModels.length < sortedModels.length) {
-        setLoading(true);
-        setTimeout(() => {
-          setPage(prev => prev + 1);
-          setLoading(false);
-        }, 100);
+      if (scrollHeight - scrollTop - clientHeight < 200) {
+        setPage(prev => prev + 1);
+        fetchModels(page + 1);
       }
     };
 
@@ -113,7 +93,7 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
       container.addEventListener('scroll', handleScroll);
       return () => container.removeEventListener('scroll', handleScroll);
     }
-  }, [paginatedModels.length, sortedModels.length, loading]);
+  }, [loading, hasMore, page]);
 
   const getGridColumns = () => {
     switch (viewMode) {
@@ -129,39 +109,33 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
   };
 
   const renderModel = (model: ModelVariant) => {
-    const isOwned = userModels.some(m => m.id === model.id);
-    const fullModel = {
-      ...model,
-      owned: isOwned
-    };
-
     switch (viewMode) {
       case 'compact':
         return (
           <ModelCompact
             key={model.id}
-            model={fullModel}
+            model={model}
             onToggleOwned={onToggleOwned}
-            onClick={() => setSelectedModel(fullModel)}
+            onClick={() => setSelectedModel(model)}
           />
         );
       case 'list':
         return (
           <ModelList
             key={model.id}
-            model={fullModel}
+            model={model}
             onToggleOwned={onToggleOwned}
-            onClick={() => setSelectedModel(fullModel)}
+            onClick={() => setSelectedModel(model)}
           />
         );
       default:
         return (
           <ModelCard
             key={model.id}
-            model={fullModel}
+            model={model}
             onToggleOwned={onToggleOwned}
             onEditNotes={onEditNotes}
-            onClick={() => setSelectedModel(fullModel)}
+            onClick={() => setSelectedModel(model)}
           />
         );
     }
@@ -188,9 +162,9 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
           <SearchFilters
             filters={filters}
             onFilterChange={setFilters}
-            years={uniqueYears}
-            series={uniqueSeries}
-            colors={uniqueColors}
+            years={[2024, 2023, 2022, 2021, 2020]}
+            series={[]}
+            colors={[]}
           />
         )}
       </div>
@@ -200,7 +174,7 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
         className="px-4 overflow-auto"
         style={{ height: 'calc(100vh - 200px)' }}
       >
-        {paginatedModels.length === 0 ? (
+        {models.length === 0 && !loading ? (
           <div className="text-center py-8">
             <p className="text-gray-500 dark:text-gray-400">No models found matching your search.</p>
             <p className="text-gray-400 dark:text-gray-500 text-sm">
@@ -208,25 +182,8 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
             </p>
           </div>
         ) : (
-          <div className={`grid ${getGridColumns()}`} style={{ height: `${rowVirtualizer.getTotalSize()}px`, position: 'relative' }}>
-            {rowVirtualizer.getVirtualItems().map((virtualRow) => {
-              const model = paginatedModels[virtualRow.index];
-              return (
-                <div
-                  key={virtualRow.index}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: virtualRow.size,
-                    transform: `translateY(${virtualRow.start}px)`,
-                  }}
-                >
-                  {renderModel(model)}
-                </div>
-              );
-            })}
+          <div className={`grid ${getGridColumns()}`}>
+            {models.map(model => renderModel(model))}
           </div>
         )}
 

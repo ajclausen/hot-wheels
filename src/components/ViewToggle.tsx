@@ -1,7 +1,7 @@
 import React from 'react';
-import { LayoutGrid, List, Maximize2 } from 'lucide-react';
+import { LayoutGrid, List, AlignJustify } from 'lucide-react';
 
-export type ViewMode = 'grid' | 'large' | 'list';
+export type ViewMode = 'grid' | 'compact' | 'list';
 
 interface ViewToggleProps {
   currentView: ViewMode;
@@ -23,15 +23,15 @@ export function ViewToggle({ currentView, onViewChange }: ViewToggleProps) {
         <LayoutGrid className="h-5 w-5" />
       </button>
       <button
-        onClick={() => onViewChange('large')}
+        onClick={() => onViewChange('compact')}
         className={`p-2 rounded-md transition-colors ${
-          currentView === 'large'
+          currentView === 'compact'
             ? 'bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300'
             : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
         }`}
-        title="Large Grid View"
+        title="Compact View"
       >
-        <Maximize2 className="h-5 w-5" />
+        <AlignJustify className="h-5 w-5" />
       </button>
       <button
         onClick={() => onViewChange('list')}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { ModelCard } from './ModelCard';
 import { ModelList } from './ModelList';
+import { ModelCompact } from './ModelCompact';
 import { ModelDetailsModal } from './ModelDetailsModal';
 import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
@@ -70,13 +71,46 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
   const getGridColumns = () => {
     switch (viewMode) {
       case 'grid':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
-      case 'large':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+      case 'compact':
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-2';
       case 'list':
-        return 'grid-cols-1';
+        return 'grid-cols-1 gap-2';
       default:
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+    }
+  };
+
+  const renderModel = (model: ModelVariant) => {
+    switch (viewMode) {
+      case 'compact':
+        return (
+          <ModelCompact
+            key={model.id}
+            model={model}
+            onToggleOwned={onToggleOwned}
+            onClick={() => setSelectedModel(model)}
+          />
+        );
+      case 'list':
+        return (
+          <ModelList
+            key={model.id}
+            model={model}
+            onToggleOwned={onToggleOwned}
+            onClick={() => setSelectedModel(model)}
+          />
+        );
+      default:
+        return (
+          <ModelCard
+            key={model.id}
+            model={model}
+            onToggleOwned={onToggleOwned}
+            onEditNotes={onEditNotes}
+            onClick={() => setSelectedModel(model)}
+          />
+        );
     }
   };
 
@@ -125,26 +159,8 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
             </p>
           </div>
         ) : (
-          <div className={`grid ${getGridColumns()} gap-4 mt-4`}>
-            {sortedModels.map(model => (
-              viewMode === 'list' ? (
-                <ModelList
-                  key={model.id}
-                  model={model}
-                  onToggleOwned={onToggleOwned}
-                  onClick={() => setSelectedModel(model)}
-                />
-              ) : (
-                <ModelCard
-                  key={model.id}
-                  model={model}
-                  onToggleOwned={onToggleOwned}
-                  onEditNotes={onEditNotes}
-                  onClick={() => setSelectedModel(model)}
-                  size={viewMode === 'large' ? 'large' : 'normal'}
-                />
-              )
-            ))}
+          <div className={`grid ${getGridColumns()}`}>
+            {sortedModels.map(renderModel)}
           </div>
         )}
       </div>

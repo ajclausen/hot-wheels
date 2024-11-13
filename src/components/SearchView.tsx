@@ -5,6 +5,7 @@ import { SearchFilters } from './SearchFilters';
 import { ModelDetailsModal } from './ModelDetailsModal';
 import { ModelCard } from './ModelCard';
 import { ModelList } from './ModelList';
+import { ModelCompact } from './ModelCompact';
 import { ViewToggle, type ViewMode } from './ViewToggle';
 
 interface SearchViewProps {
@@ -70,13 +71,52 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
   const getGridColumns = () => {
     switch (viewMode) {
       case 'grid':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
-      case 'large':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+      case 'compact':
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-2';
       case 'list':
-        return 'grid-cols-1';
+        return 'grid-cols-1 gap-2';
       default:
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+    }
+  };
+
+  const renderModel = (model: ModelVariant) => {
+    const isOwned = userModels.some(m => m.id === model.id);
+    const fullModel = {
+      ...model,
+      owned: isOwned
+    };
+
+    switch (viewMode) {
+      case 'compact':
+        return (
+          <ModelCompact
+            key={model.id}
+            model={fullModel}
+            onToggleOwned={onToggleOwned}
+            onClick={() => setSelectedModel(fullModel)}
+          />
+        );
+      case 'list':
+        return (
+          <ModelList
+            key={model.id}
+            model={fullModel}
+            onToggleOwned={onToggleOwned}
+            onClick={() => setSelectedModel(fullModel)}
+          />
+        );
+      default:
+        return (
+          <ModelCard
+            key={model.id}
+            model={fullModel}
+            onToggleOwned={onToggleOwned}
+            onEditNotes={onEditNotes}
+            onClick={() => setSelectedModel(fullModel)}
+          />
+        );
     }
   };
 
@@ -109,32 +149,8 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
       </div>
 
       <div className="px-4">
-        <div className={`grid ${getGridColumns()} gap-4 mt-4`}>
-          {sortedModels.map((model) => {
-            const isOwned = userModels.some(m => m.id === model.id);
-            const fullModel = {
-              ...model,
-              owned: isOwned
-            };
-            
-            return viewMode === 'list' ? (
-              <ModelList
-                key={model.id}
-                model={fullModel}
-                onToggleOwned={onToggleOwned}
-                onClick={() => setSelectedModel(fullModel)}
-              />
-            ) : (
-              <ModelCard
-                key={model.id}
-                model={fullModel}
-                onToggleOwned={onToggleOwned}
-                onEditNotes={onEditNotes}
-                onClick={() => setSelectedModel(fullModel)}
-                size={viewMode === 'large' ? 'large' : 'normal'}
-              />
-            );
-          })}
+        <div className={`grid ${getGridColumns()}`}>
+          {sortedModels.map(renderModel)}
         </div>
 
         {sortedModels.length === 0 && (

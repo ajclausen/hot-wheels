@@ -38,16 +38,15 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
   return (
     <div 
       onClick={onClick}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer h-full flex flex-col"
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer h-full flex flex-col max-w-sm mx-auto"
     >
-      <div className="relative aspect-video">
+      <div className="relative w-full pt-[75%]">
         <img
           src={getImageUrl(model.image_url)}
           alt={model.name}
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           onError={(e) => {
             setImageError(true);
-            // Fallback image if the R2 image fails to load
             e.currentTarget.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
           }}
           loading="lazy"

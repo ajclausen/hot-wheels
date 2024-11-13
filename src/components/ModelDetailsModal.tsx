@@ -41,10 +41,10 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
       <div 
         ref={modalRef}
-        className="relative bg-gray-900 rounded-2xl shadow-2xl w-full max-w-4xl mx-auto my-8 overflow-hidden"
+        className="relative bg-gray-900 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[calc(100vh-2rem)] overflow-hidden flex flex-col"
       >
         <div className="flex justify-between items-center p-6 border-b border-gray-800">
           <h2 className="text-2xl font-bold text-white">{model.name}</h2>
@@ -56,19 +56,21 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
           </button>
         </div>
 
-        <div className="p-6 pb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="relative">
-              <img
-                src={model.image_url}
-                alt={model.name}
-                className="w-full rounded-lg shadow-lg object-contain bg-gray-800 aspect-video"
-                onError={(e) => {
-                  setImageError(true);
-                  e.currentTarget.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
-                }}
-                loading="lazy"
-              />
+              <div className="relative rounded-lg overflow-hidden bg-gray-800">
+                <img
+                  src={model.image_url}
+                  alt={model.name}
+                  className="w-full h-auto object-contain"
+                  onError={(e) => {
+                    setImageError(true);
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+                  }}
+                  loading="lazy"
+                />
+              </div>
               <button
                 onClick={() => onToggleOwned(model.id)}
                 className={`absolute top-4 right-4 p-2 rounded-full shadow-lg ${

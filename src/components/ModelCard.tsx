@@ -25,13 +25,13 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
   return (
     <div 
       onClick={onClick}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer h-full flex flex-col max-w-sm mx-auto"
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer flex flex-col h-[420px] max-w-sm"
     >
-      <div className="relative w-full pt-[75%]">
+      <div className="relative h-48">
         <img
           src={model.image_url}
           alt={model.name}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-full object-cover"
           onError={(e) => {
             setImageError(true);
             e.currentTarget.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
@@ -60,7 +60,7 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
           )}
         </div>
         {model.notes && (
-          <p className="text-sm text-gray-500 dark:text-gray-500 italic mb-3">{model.notes}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-500 italic mb-3 line-clamp-2">{model.notes}</p>
         )}
         <button
           onClick={handleEditNotes}

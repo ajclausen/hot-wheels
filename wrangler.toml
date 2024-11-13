@@ -10,6 +10,7 @@ database_id = "d3fee45a-de0a-4f76-8d03-f461910f2bae"
 [[r2_buckets]]
 binding = "BUCKET"
 bucket_name = "hotwheels-images"
+custom_domain = "images.clausen.app"
 
 [vars]
 ENVIRONMENT = "production"
@@ -21,6 +22,7 @@ bucket = "./dist"
 
 [build]
 command = "npm run build"
+output_dir = "dist"
 
 [dev]
 port = 8788

@@ -2,6 +2,8 @@ import { Hono } from 'hono';
 import { handle } from 'hono/cloudflare-pages';
 import { cors } from 'hono/cors';
 import { decode } from 'hono/jwt';
+import { z } from 'zod';
+import { modelVariantSchema } from '../../src/types';
 
 type Bindings = {
   DB: D1Database;
@@ -62,9 +64,11 @@ app.use('/api/*', async (c, next) => {
     }
 
     // Check if user exists in our database
-    const { results } = await c.env.DB.prepare(
-      `SELECT * FROM users WHERE cloudflare_id = ?`
-    )
+    const { results } = await c.env.DB.prepare(`
+      SELECT id, email, name, alias, created_at, updated_at
+      FROM users 
+      WHERE cloudflare_id = ?
+    `)
       .bind(userId)
       .all();
 
@@ -72,11 +76,11 @@ app.use('/api/*', async (c, next) => {
 
     // If user doesn't exist, create them
     if (!user) {
-      const result = await c.env.DB.prepare(
-        `INSERT INTO users (id, cloudflare_id, email, name)
+      const result = await c.env.DB.prepare(`
+        INSERT INTO users (id, cloudflare_id, email, name)
         VALUES (lower(hex(randomblob(16))), ?, ?, ?)
-        RETURNING *`
-      )
+        RETURNING id, email, name, alias, created_at, updated_at
+      `)
         .bind(userId, email, email.split('@')[0])
         .run();
 
@@ -111,9 +115,6 @@ app.put('/api/me/alias', async (c) => {
   }
 
   try {
-    // Log the incoming request
-    console.log('Update alias request for user:', user.id);
-
     const body = await c.req.json();
     const alias = body.alias?.trim();
 
@@ -121,41 +122,23 @@ app.put('/api/me/alias', async (c) => {
       return c.json({ error: 'Invalid alias format' }, 400);
     }
 
-    // First, verify the user exists and log the result
-    const { results: existingUser } = await c.env.DB.prepare(
-      `SELECT id FROM users WHERE id = ?`
-    )
-      .bind(user.id)
-      .all();
-
-    console.log('Existing user check:', existingUser);
-
-    if (!existingUser.length) {
-      return c.json({ error: 'User not found in database' }, 404);
-    }
-
-    // Attempt the update with detailed error handling
     const result = await c.env.DB.prepare(`
       UPDATE users 
-      SET alias = ?, 
-          updated_at = CURRENT_TIMESTAMP 
-      WHERE id = ? 
-      RETURNING id, email, name, alias
+      SET 
+        alias = ?,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+      RETURNING id, email, name, alias, created_at, updated_at
     `)
       .bind(alias, user.id)
       .run();
 
-    console.log('Update result:', result);
-
     if (!result.success) {
-      throw new Error('Database update failed');
+      throw new Error('Failed to update user alias');
     }
 
     const updatedUser = result.results[0];
-    if (!updatedUser) {
-      return c.json({ error: 'User not found after update' }, 404);
-    }
-
+    
     return c.json({ 
       user: {
         id: updatedUser.id,
@@ -173,25 +156,133 @@ app.put('/api/me/alias', async (c) => {
   }
 });
 
-// Get all models
+// Get all model variants with ownership status
 app.get('/api/models', async (c) => {
   const user = c.get('user');
-  
+  const page = parseInt(c.req.query('page') || '1');
+  const limit = parseInt(c.req.query('limit') || '100');
+  const sort = c.req.query('sort') || 'name-asc';
+  const search = c.req.query('search') || '';
+  const series = c.req.query('series') || '';
+  const year = c.req.query('year') || '';
+  const offset = (page - 1) * limit;
+
   try {
-    const { results } = await c.env.DB.prepare(`
-      SELECT 
-        m.*,
-        CASE WHEN uc.model_id IS NOT NULL THEN 1 ELSE 0 END as owned
-      FROM models m
-      LEFT JOIN user_collections uc 
-        ON m.id = uc.model_id 
-        AND uc.user_id = ?
-      ORDER BY m.name ASC
-    `)
-      .bind(user.id)
+    let query = `
+      WITH filtered_models AS (
+        SELECT 
+          mv.*,
+          m.name,
+          CASE WHEN uc.variant_id IS NOT NULL THEN 1 ELSE 0 END as owned,
+          uc.notes,
+          uc.acquired_date
+        FROM model_variants mv
+        JOIN models m ON mv.model_id = m.id
+        LEFT JOIN user_collections uc 
+          ON mv.id = uc.variant_id 
+          AND uc.user_id = ?
+        WHERE 1=1
+    `;
+
+    const params = [user.id];
+
+    if (search) {
+      query += ` AND (
+        m.name LIKE ?
+        OR mv.series LIKE ?
+        OR mv.collection_number LIKE ?
+      )`;
+      const searchParam = `%${search}%`;
+      params.push(searchParam, searchParam, searchParam);
+    }
+
+    if (series) {
+      query += ` AND mv.series = ?`;
+      params.push(series);
+    }
+
+    if (year) {
+      query += ` AND mv.year = ?`;
+      params.push(year);
+    }
+
+    // Add sorting
+    query += ` ORDER BY `;
+    switch (sort) {
+      case 'newest':
+        query += `mv.year DESC, mv.series ASC, mv.collection_number ASC`;
+        break;
+      case 'oldest':
+        query += `mv.year ASC, mv.series ASC, mv.collection_number ASC`;
+        break;
+      case 'name-desc':
+        query += `m.name DESC`;
+        break;
+      case 'series':
+        query += `mv.series ASC, mv.collection_number ASC`;
+        break;
+      case 'number':
+        query += `mv.collection_number ASC`;
+        break;
+      default: // name-asc
+        query += `m.name ASC`;
+    }
+
+    query += ` LIMIT ? OFFSET ?`;
+    params.push(limit, offset);
+
+    query += `)
+      SELECT * FROM filtered_models
+    `;
+
+    const { results } = await c.env.DB.prepare(query).bind(...params).all();
+
+    // Get total count with the same filters but without pagination
+    let countQuery = `
+      SELECT COUNT(*) as count
+      FROM model_variants mv
+      JOIN models m ON mv.model_id = m.id
+      WHERE 1=1
+    `;
+
+    const countParams = [];
+
+    if (search) {
+      countQuery += ` AND (
+        m.name LIKE ?
+        OR mv.series LIKE ?
+        OR mv.collection_number LIKE ?
+      )`;
+      const searchParam = `%${search}%`;
+      countParams.push(searchParam, searchParam, searchParam);
+    }
+
+    if (series) {
+      countQuery += ` AND mv.series = ?`;
+      countParams.push(series);
+    }
+
+    if (year) {
+      countQuery += ` AND mv.year = ?`;
+      countParams.push(year);
+    }
+
+    const { results: [{ count }] } = await c.env.DB.prepare(countQuery)
+      .bind(...countParams)
       .all();
 
-    return c.json(results);
+    return c.json({
+      models: results.map(variant => ({
+        ...variant,
+        tampos: variant.tampos ? JSON.parse(variant.tampos) : []
+      })),
+      pagination: {
+        page,
+        limit,
+        total: count,
+        pages: Math.ceil(count / limit)
+      }
+    });
   } catch (error) {
     console.error('Get models error:', error);
     return c.json({ error: 'Failed to fetch models' }, 500);
@@ -204,139 +295,112 @@ app.get('/api/collection', async (c) => {
   
   try {
     const { results } = await c.env.DB.prepare(`
-      SELECT m.*, uc.notes, uc.acquired_date
-      FROM models m
-      INNER JOIN user_collections uc ON m.id = uc.model_id
+      SELECT 
+        mv.*,
+        m.name,
+        uc.notes,
+        uc.acquired_date
+      FROM model_variants mv
+      JOIN models m ON mv.model_id = m.id
+      JOIN user_collections uc ON mv.id = uc.variant_id
       WHERE uc.user_id = ?
       ORDER BY uc.acquired_date DESC
     `)
       .bind(user.id)
       .all();
 
-    return c.json(results);
+    return c.json(results.map(variant => ({
+      ...variant,
+      tampos: variant.tampos ? JSON.parse(variant.tampos) : [],
+      owned: true
+    })));
   } catch (error) {
     console.error('Get collection error:', error);
     return c.json({ error: 'Failed to fetch collection' }, 500);
   }
 });
 
-// Export collection
-app.get('/api/collection/export', async (c) => {
+// Add variant to collection
+app.post('/api/collection/:variantId', async (c) => {
   const user = c.get('user');
-  
+  const variantId = c.req.param('variantId');
+  const { notes = '' } = await c.req.json();
+
   try {
-    const { results } = await c.env.DB.prepare(`
-      SELECT 
-        m.name, m.series, m.year, m.color, m.collection_number,
-        uc.notes, uc.acquired_date
-      FROM models m
-      INNER JOIN user_collections uc ON m.id = uc.model_id
-      WHERE uc.user_id = ?
-      ORDER BY uc.acquired_date DESC
+    // First verify the variant exists
+    const { results: [variant] } = await c.env.DB.prepare(`
+      SELECT mv.*, m.name
+      FROM model_variants mv
+      JOIN models m ON mv.model_id = m.id
+      WHERE mv.id = ?
     `)
-      .bind(user.id)
+      .bind(variantId)
       .all();
 
-    return c.json(results);
-  } catch (error) {
-    console.error('Export collection error:', error);
-    return c.json({ error: 'Failed to export collection' }, 500);
-  }
-});
-
-// Import collection
-app.post('/api/collection/import', async (c) => {
-  const user = c.get('user');
-  const { collection } = await c.req.json();
-
-  if (!Array.isArray(collection)) {
-    return c.json({ error: 'Invalid collection format' }, 400);
-  }
-
-  try {
-    // Begin transaction
-    await c.env.DB.prepare('BEGIN TRANSACTION').run();
-
-    for (const item of collection) {
-      // Find the model by collection number or name
-      const { results: [model] } = await c.env.DB.prepare(`
-        SELECT id FROM models 
-        WHERE collection_number = ? OR name = ?
-      `)
-        .bind(item.collection_number, item.name)
-        .all();
-
-      if (model) {
-        // Add to user's collection if not already owned
-        await c.env.DB.prepare(`
-          INSERT INTO user_collections (user_id, model_id, notes)
-          VALUES (?, ?, ?)
-          ON CONFLICT (user_id, model_id) DO UPDATE SET notes = ?
-        `)
-          .bind(user.id, model.id, item.notes || '', item.notes || '')
-          .run();
-      }
+    if (!variant) {
+      return c.json({ error: 'Variant not found' }, 404);
     }
 
-    // Commit transaction
-    await c.env.DB.prepare('COMMIT').run();
-
-    return c.json({ success: true });
-  } catch (error) {
-    // Rollback on error
-    await c.env.DB.prepare('ROLLBACK').run();
-    console.error('Import collection error:', error);
-    return c.json({ error: 'Failed to import collection' }, 500);
-  }
-});
-
-// Add model to collection
-app.post('/api/collection/:modelId', async (c) => {
-  const user = c.get('user');
-  const modelId = c.req.param('modelId');
-  const { notes } = await c.req.json();
-
-  try {
+    // Add to collection
     await c.env.DB.prepare(`
-      INSERT INTO user_collections (user_id, model_id, notes)
+      INSERT INTO user_collections (user_id, variant_id, notes)
       VALUES (?, ?, ?)
     `)
-      .bind(user.id, modelId, notes)
+      .bind(user.id, variantId, notes)
       .run();
 
-    const { results } = await c.env.DB.prepare(`
-      SELECT m.*, uc.notes, uc.acquired_date
-      FROM models m
-      INNER JOIN user_collections uc ON m.id = uc.model_id
-      WHERE m.id = ? AND uc.user_id = ?
-    `)
-      .bind(modelId, user.id)
-      .all();
-
-    return c.json(results[0]);
+    return c.json({
+      ...variant,
+      tampos: variant.tampos ? JSON.parse(variant.tampos) : [],
+      notes,
+      owned: true,
+      acquired_date: new Date().toISOString()
+    });
   } catch (error) {
     console.error('Add to collection error:', error);
-    return c.json({ error: 'Failed to add model to collection' }, 500);
+    return c.json({ error: 'Failed to add variant to collection' }, 500);
   }
 });
 
-// Remove model from collection
-app.delete('/api/collection/:modelId', async (c) => {
+// Remove variant from collection
+app.delete('/api/collection/:variantId', async (c) => {
   const user = c.get('user');
-  const modelId = c.req.param('modelId');
+  const variantId = c.req.param('variantId');
 
   try {
     await c.env.DB.prepare(`
       DELETE FROM user_collections
-      WHERE user_id = ? AND model_id = ?
+      WHERE user_id = ? AND variant_id = ?
     `)
-      .bind(user.id, modelId)
+      .bind(user.id, variantId)
       .run();
 
     return c.json({ success: true });
   } catch (error) {
     console.error('Remove from collection error:', error);
-    return c.json({ error: 'Failed to remove model from collection' }, 500);
+    return c.json({ error: 'Failed to remove variant from collection' }, 500);
+  }
+});
+
+// Update variant notes
+app.put('/api/collection/:variantId/notes', async (c) => {
+  const user = c.get('user');
+  const variantId = c.req.param('variantId');
+  const { notes = '' } = await c.req.json();
+
+  try {
+    await c.env.DB.prepare(`
+      UPDATE user_collections
+      SET notes = ?
+      WHERE user_id = ? AND variant_id = ?
+    `)
+      .bind(notes, user.id, variantId)
+      .run();
+
+    return c.json({ success: true });
+  } catch (error) {
+    console.error('Update notes error:', error);
+    return c.json({ error: 'Failed to update notes' }, 500);
   }
 });
 

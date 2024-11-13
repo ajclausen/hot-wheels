@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Loader2 } from 'lucide-react';
 import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
@@ -7,6 +8,9 @@ import { ModelCard } from './ModelCard';
 import { ModelList } from './ModelList';
 import { ModelCompact } from './ModelCompact';
 import { ViewToggle, type ViewMode } from './ViewToggle';
+import { useVirtualizer } from '@tanstack/react-virtual';
+
+const PAGE_SIZE = 50;
 
 interface SearchViewProps {
   models: ModelVariant[];
@@ -21,6 +25,9 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
   const [showFilters, setShowFilters] = useState(false);
   const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const [filters, setFilters] = useState({
     year: '',
     series: '',
@@ -28,52 +35,92 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
     sort: 'name-asc'
   });
 
-  const uniqueYears = [...new Set(models.map(m => m.year))].sort((a, b) => b - a);
-  const uniqueSeries = [...new Set(models.map(m => m.series))].sort();
-  const uniqueColors = [...new Set(models.map(m => m.color))].sort();
+  const uniqueYears = useMemo(() => [...new Set(models.map(m => m.year))].sort((a, b) => b - a), [models]);
+  const uniqueSeries = useMemo(() => [...new Set(models.map(m => m.series))].sort(), [models]);
+  const uniqueColors = useMemo(() => [...new Set(models.map(m => m.color))].sort(), [models]);
 
-  const filteredModels = models.filter(model => {
-    const matchesSearch = searchQuery
-      ? model.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        model.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        model.collection_number?.toLowerCase().includes(searchQuery.toLowerCase())
-      : true;
+  const filteredModels = useMemo(() => {
+    return models.filter(model => {
+      const matchesSearch = searchQuery
+        ? model.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          model.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          model.collection_number?.toLowerCase().includes(searchQuery.toLowerCase())
+        : true;
 
-    const matchesYear = !filters.year || model.year.toString() === filters.year;
-    const matchesSeries = !filters.series || model.series === filters.series;
-    const matchesColor = !filters.color || model.color === filters.color;
+      const matchesYear = !filters.year || model.year.toString() === filters.year;
+      const matchesSeries = !filters.series || model.series === filters.series;
+      const matchesColor = !filters.color || model.color === filters.color;
 
-    return matchesSearch && matchesYear && matchesSeries && matchesColor;
+      return matchesSearch && matchesYear && matchesSeries && matchesColor;
+    });
+  }, [models, searchQuery, filters]);
+
+  const sortedModels = useMemo(() => {
+    return [...filteredModels].sort((a, b) => {
+      switch (filters.sort) {
+        case 'newest':
+          return b.year - a.year;
+        case 'oldest':
+          return a.year - b.year;
+        case 'name-asc':
+          return a.name.localeCompare(b.name);
+        case 'name-desc':
+          return b.name.localeCompare(a.name);
+        case 'series':
+          return a.series.localeCompare(b.series) || 
+                 (a.collection_number || '').localeCompare(b.collection_number || '');
+        case 'number':
+          const aNum = parseInt((a.collection_number || '').replace(/\D/g, '')) || 0;
+          const bNum = parseInt((b.collection_number || '').replace(/\D/g, '')) || 0;
+          return aNum - bNum;
+        default:
+          return 0;
+      }
+    });
+  }, [filteredModels, filters.sort]);
+
+  const paginatedModels = useMemo(() => {
+    return sortedModels.slice(0, page * PAGE_SIZE);
+  }, [sortedModels, page]);
+
+  const rowVirtualizer = useVirtualizer({
+    count: paginatedModels.length,
+    getScrollElement: () => containerRef.current,
+    estimateSize: () => viewMode === 'compact' ? 48 : viewMode === 'list' ? 96 : 440,
+    overscan: 5,
   });
 
-  const sortedModels = [...filteredModels].sort((a, b) => {
-    switch (filters.sort) {
-      case 'newest':
-        return b.year - a.year;
-      case 'oldest':
-        return a.year - b.year;
-      case 'name-asc':
-        return a.name.localeCompare(b.name);
-      case 'name-desc':
-        return b.name.localeCompare(a.name);
-      case 'series':
-        return a.series.localeCompare(b.series) || 
-               (a.collection_number || '').localeCompare(b.collection_number || '');
-      case 'number':
-        const aNum = parseInt((a.collection_number || '').replace(/\D/g, '')) || 0;
-        const bNum = parseInt((b.collection_number || '').replace(/\D/g, '')) || 0;
-        return aNum - bNum;
-      default:
-        return 0;
+  useEffect(() => {
+    setPage(1);
+  }, [searchQuery, filters]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      
+      const { scrollHeight, scrollTop, clientHeight } = containerRef.current;
+      if (scrollHeight - scrollTop - clientHeight < 200 && !loading && paginatedModels.length < sortedModels.length) {
+        setLoading(true);
+        setTimeout(() => {
+          setPage(prev => prev + 1);
+          setLoading(false);
+        }, 100);
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      return () => container.removeEventListener('scroll', handleScroll);
     }
-  });
+  }, [paginatedModels.length, sortedModels.length, loading]);
 
   const getGridColumns = () => {
     switch (viewMode) {
       case 'grid':
         return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
       case 'compact':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-2';
+        return 'grid-cols-1 gap-2';
       case 'list':
         return 'grid-cols-1 gap-2';
       default:
@@ -148,17 +195,44 @@ export function SearchView({ models, userModels, onToggleOwned, onEditNotes, sea
         )}
       </div>
 
-      <div className="px-4">
-        <div className={`grid ${getGridColumns()}`}>
-          {sortedModels.map(renderModel)}
-        </div>
-
-        {sortedModels.length === 0 && (
+      <div 
+        ref={containerRef} 
+        className="px-4 overflow-auto"
+        style={{ height: 'calc(100vh - 200px)' }}
+      >
+        {paginatedModels.length === 0 ? (
           <div className="text-center py-8">
             <p className="text-gray-500 dark:text-gray-400">No models found matching your search.</p>
             <p className="text-gray-400 dark:text-gray-500 text-sm">
               Try adjusting your search terms or filters.
             </p>
+          </div>
+        ) : (
+          <div className={`grid ${getGridColumns()}`} style={{ height: `${rowVirtualizer.getTotalSize()}px`, position: 'relative' }}>
+            {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+              const model = paginatedModels[virtualRow.index];
+              return (
+                <div
+                  key={virtualRow.index}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: virtualRow.size,
+                    transform: `translateY(${virtualRow.start}px)`,
+                  }}
+                >
+                  {renderModel(model)}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {loading && (
+          <div className="flex justify-center py-4">
+            <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
           </div>
         )}
       </div>

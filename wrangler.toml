@@ -16,12 +16,12 @@ ENVIRONMENT = "production"
 API_URL = "https://hotwheels.clausen.app"
 R2_PUBLIC_URL = "https://images.clausen.app"
 
+[site]
+bucket = "./dist"
+
 [build]
 command = "npm install && npm run build"
 output_dir = "dist"
-
-[site]
-bucket = "./dist"
 
 [dev]
 port = 8788

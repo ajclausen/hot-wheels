@@ -11,6 +11,8 @@ image-cache
 # Production
 dist
 build
+import-data.sql
+scrape-results.json
 
 # Environment files
 .env

@@ -1,202 +1,390 @@
-import React, { useState, useEffect } from 'react';
-import { Loader2 } from 'lucide-react';
-import type { ModelVariant } from '../types';
-import { SearchBar } from './SearchBar';
-import { SearchFilters } from './SearchFilters';
-import { ModelDetailsModal } from './ModelDetailsModal';
-import { ModelCard } from './ModelCard';
-import { ModelList } from './ModelList';
-import { ModelCompact } from './ModelCompact';
-import { ViewToggle, type ViewMode } from './ViewToggle';
-import axios from 'axios';
+import { Hono } from 'hono';
+import { handle } from 'hono/cloudflare-pages';
+import { cors } from 'hono/cors';
+import { decode } from 'hono/jwt';
+import { z } from 'zod';
+import { modelVariantSchema } from '../../src/types';
 
-interface SearchViewProps {
-  onToggleOwned: (id: string) => void;
-  onEditNotes: (id: string) => void;
-  searchInputRef?: React.RefObject<HTMLInputElement>;
-}
+type Bindings = {
+  DB: D1Database;
+  BUCKET: R2Bucket;
+};
 
-interface SearchResponse {
-  models: ModelVariant[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    pages: number;
+type Variables = {
+  user?: {
+    id: string;
+    email: string;
+    name: string;
+    alias?: string;
   };
-}
+};
 
-export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: SearchViewProps) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showFilters, setShowFilters] = useState(false);
-  const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
-  const [loading, setLoading] = useState(false);
-  const [models, setModels] = useState<ModelVariant[]>([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [filters, setFilters] = useState({
-    year: '',
-    series: '',
-    color: '',
-    sort: 'name-asc'
-  });
+const app = new Hono<{ Bindings: Bindings; Variables: Variables }>();
 
-  const fetchModels = async (newPage = 1) => {
-    try {
-      setLoading(true);
-      const params = new URLSearchParams({
-        page: newPage.toString(),
-        limit: '50',
-        sort: filters.sort
-      });
+// CORS configuration
+app.use('*', cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:8788',
+    'https://hotwheels.clausen.app',
+  ],
+  credentials: true,
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowHeaders: [
+    'Content-Type',
+    'CF-Access-Client-Id',
+    'CF-Access-Client-Secret',
+    'Cookie',
+    'CF-Authorization',
+    'Cf-Access-Jwt-Assertion',
+  ],
+  exposeHeaders: ['Set-Cookie'],
+  maxAge: 86400,
+}));
 
-      if (searchQuery) params.append('search', searchQuery);
-      if (filters.year) params.append('year', filters.year);
-      if (filters.series) params.append('series', filters.series);
+// Auth middleware for API routes
+app.use('/api/*', async (c, next) => {
+  const jwtAssertion = c.req.header('Cf-Access-Jwt-Assertion');
+  
+  if (!jwtAssertion) {
+    return c.json({ error: 'Authentication required' }, 401);
+  }
 
-      const { data } = await axios.get<SearchResponse>(`/api/models?${params}`);
-      
-      if (newPage === 1) {
-        setModels(data.models);
-      } else {
-        setModels(prev => [...prev, ...data.models]);
+  try {
+    const decoded = decode(jwtAssertion);
+    
+    if (!decoded || !decoded.payload) {
+      return c.json({ error: 'Invalid token' }, 401);
+    }
+
+    const { email, sub: userId } = decoded.payload;
+
+    if (!email || !userId) {
+      return c.json({ error: 'Invalid token payload' }, 401);
+    }
+
+    // Check if user exists in our database
+    const { results } = await c.env.DB.prepare(`
+      SELECT id, email, name, alias, created_at, updated_at
+      FROM users 
+      WHERE cloudflare_id = ?
+    `)
+      .bind(userId)
+      .all();
+
+    let user = results[0];
+
+    // If user doesn't exist, create them
+    if (!user) {
+      const result = await c.env.DB.prepare(`
+        INSERT INTO users (id, cloudflare_id, email, name)
+        VALUES (lower(hex(randomblob(16))), ?, ?, ?)
+        RETURNING id, email, name, alias, created_at, updated_at
+      `)
+        .bind(userId, email, email.split('@')[0])
+        .run();
+
+      user = result.results[0];
+    }
+
+    c.set('user', {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      alias: user.alias
+    });
+
+    await next();
+  } catch (error) {
+    console.error('Auth error:', error);
+    return c.json({ error: 'Authentication failed' }, 401);
+  }
+});
+
+// API Routes
+app.get('/api/me', (c) => {
+  const user = c.get('user');
+  return c.json({ user });
+});
+
+// Update user alias
+app.put('/api/me/alias', async (c) => {
+  const user = c.get('user');
+  if (!user) {
+    return c.json({ error: 'User not found' }, 401);
+  }
+
+  try {
+    const body = await c.req.json();
+    const alias = body.alias?.trim();
+
+    if (typeof alias !== 'string') {
+      return c.json({ error: 'Invalid alias format' }, 400);
+    }
+
+    const result = await c.env.DB.prepare(`
+      UPDATE users 
+      SET 
+        alias = ?,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+      RETURNING id, email, name, alias, created_at, updated_at
+    `)
+      .bind(alias, user.id)
+      .run();
+
+    if (!result.success) {
+      throw new Error('Failed to update user alias');
+    }
+
+    const updatedUser = result.results[0];
+    
+    return c.json({ 
+      user: {
+        id: updatedUser.id,
+        email: updatedUser.email,
+        name: updatedUser.name,
+        alias: updatedUser.alias
       }
-      
-      setHasMore(newPage < data.pagination.pages);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching models:', error);
-      setLoading(false);
-    }
-  };
+    });
+  } catch (error) {
+    console.error('Update alias error:', error);
+    return c.json({ 
+      error: 'Failed to update alias',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, 500);
+  }
+});
 
-  useEffect(() => {
-    setPage(1);
-    fetchModels(1);
-  }, [searchQuery, filters]);
+// Get all model variants with ownership status and pagination
+app.get('/api/models', async (c) => {
+  const user = c.get('user');
+  const search = c.req.query('search');
+  const year = c.req.query('year');
+  const series = c.req.query('series');
+  const sort = c.req.query('sort') || 'name-asc';
+  const page = parseInt(c.req.query('page') || '1');
+  const limit = parseInt(c.req.query('limit') || '50');
+  const offset = (page - 1) * limit;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (loading || !hasMore) return;
+  try {
+    let query = `
+      SELECT 
+        mv.*,
+        m.name,
+        CASE WHEN uc.variant_id IS NOT NULL THEN 1 ELSE 0 END as owned,
+        uc.notes,
+        uc.acquired_date,
+        COUNT(*) OVER() as total_count
+      FROM model_variants mv
+      JOIN models m ON mv.model_id = m.id
+      LEFT JOIN user_collections uc 
+        ON mv.id = uc.variant_id 
+        AND uc.user_id = ?
+      WHERE 1=1
+    `;
+
+    const params: any[] = [user.id];
+
+    // Add filters
+    if (search) {
+      const terms = search.toLowerCase().split(/\s+/).filter(Boolean);
       
-      const scrollPosition = window.innerHeight + window.scrollY;
-      const threshold = document.documentElement.scrollHeight - 1000;
-      
-      if (scrollPosition > threshold) {
-        setPage(prev => prev + 1);
-        fetchModels(page + 1);
+      if (terms.length > 0) {
+        query += ` AND (`;
+        const searchConditions = terms.map((term, index) => {
+          const paramPlaceholders = [
+            `LOWER(m.name) LIKE ?`,
+            `LOWER(mv.series) LIKE ?`,
+            `LOWER(mv.collection_number) LIKE ?`,
+            `CAST(mv.year AS TEXT) = ?`
+          ];
+          
+          const termParam = `%${term}%`;
+          params.push(termParam, termParam, termParam, term);
+          
+          return `(${paramPlaceholders.join(' OR ')})`;
+        });
+        
+        query += searchConditions.join(' AND ');
+        query += `)`;
       }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [loading, hasMore, page]);
-
-  const getGridColumns = () => {
-    switch (viewMode) {
-      case 'grid':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
-      case 'compact':
-        return 'grid-cols-1 gap-2';
-      case 'list':
-        return 'grid-cols-1 gap-2';
-      default:
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
     }
-  };
 
-  const renderModel = (model: ModelVariant) => {
-    switch (viewMode) {
-      case 'compact':
-        return (
-          <ModelCompact
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
-      case 'list':
-        return (
-          <ModelList
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
-      default:
-        return (
-          <ModelCard
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onEditNotes={onEditNotes}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
+    if (year) {
+      query += ` AND mv.year = ?`;
+      params.push(year);
     }
-  };
 
-  return (
-    <div className="min-h-screen pb-20">
-      <div className="sticky top-0 bg-gray-100 dark:bg-gray-900 pt-4 pb-2 z-10 px-4">
-        <div className="flex gap-4 mb-4">
-          <div className="flex-1">
-            <SearchBar
-              value={searchQuery}
-              onChange={setSearchQuery}
-              showFilter={true}
-              filterActive={showFilters}
-              onFilterClick={() => setShowFilters(!showFilters)}
-              placeholder="Search all Hot Wheels models..."
-            />
-          </div>
-          <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
-        </div>
+    if (series) {
+      query += ` AND mv.series = ?`;
+      params.push(series);
+    }
 
-        {showFilters && (
-          <SearchFilters
-            filters={filters}
-            onFilterChange={setFilters}
-            years={[2024, 2023, 2022, 2021, 2020]}
-            series={[]}
-            colors={[]}
-          />
-        )}
-      </div>
+    // Add sorting
+    query += ` ORDER BY `;
+    switch (sort) {
+      case 'newest':
+        query += `mv.year DESC, mv.series ASC, mv.collection_number ASC`;
+        break;
+      case 'oldest':
+        query += `mv.year ASC, mv.series ASC, mv.collection_number ASC`;
+        break;
+      case 'name-desc':
+        query += `m.name DESC`;
+        break;
+      case 'series':
+        query += `mv.series ASC, mv.collection_number ASC`;
+        break;
+      case 'number':
+        query += `mv.collection_number ASC`;
+        break;
+      case 'name-asc':
+      default:
+        query += `m.name ASC`;
+    }
 
-      <div className="px-4 py-4">
-        {models.length === 0 && !loading ? (
-          <div className="text-center py-8">
-            <p className="text-gray-500 dark:text-gray-400">No models found matching your search.</p>
-            <p className="text-gray-400 dark:text-gray-500 text-sm">
-              Try adjusting your search terms or filters.
-            </p>
-          </div>
-        ) : (
-          <div className={`grid ${getGridColumns()}`}>
-            {models.map(model => renderModel(model))}
-          </div>
-        )}
+    // Add pagination
+    query += ` LIMIT ? OFFSET ?`;
+    params.push(limit, offset);
 
-        {loading && (
-          <div className="flex justify-center py-4">
-            <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
-          </div>
-        )}
-      </div>
+    const { results } = await c.env.DB.prepare(query).bind(...params).all();
 
-      {selectedModel && (
-        <ModelDetailsModal
-          model={selectedModel}
-          isOpen={true}
-          onClose={() => setSelectedModel(null)}
-          onToggleOwned={onToggleOwned}
-          onEditNotes={onEditNotes}
-        />
-      )}
-    </div>
-  );
-}
+    const total = results[0]?.total_count || 0;
+    const totalPages = Math.ceil(total / limit);
+
+    return c.json({
+      models: results.map(variant => ({
+        ...variant,
+        tampos: variant.tampos ? JSON.parse(variant.tampos) : [],
+        owned: Boolean(variant.owned)
+      })),
+      pagination: {
+        page,
+        limit,
+        total,
+        pages: totalPages
+      }
+    });
+  } catch (error) {
+    console.error('Get models error:', error);
+    return c.json({ error: 'Failed to fetch models' }, 500);
+  }
+});
+
+// Get user's collection
+app.get('/api/collection', async (c) => {
+  const user = c.get('user');
+  
+  try {
+    const { results } = await c.env.DB.prepare(`
+      SELECT 
+        mv.*,
+        m.name,
+        uc.notes,
+        uc.acquired_date
+      FROM model_variants mv
+      JOIN models m ON mv.model_id = m.id
+      JOIN user_collections uc ON mv.id = uc.variant_id
+      WHERE uc.user_id = ?
+      ORDER BY uc.acquired_date DESC
+    `)
+      .bind(user.id)
+      .all();
+
+    return c.json(results.map(variant => ({
+      ...variant,
+      tampos: variant.tampos ? JSON.parse(variant.tampos) : [],
+      owned: true
+    })));
+  } catch (error) {
+    console.error('Get collection error:', error);
+    return c.json({ error: 'Failed to fetch collection' }, 500);
+  }
+});
+
+// Add variant to collection
+app.post('/api/collection/:variantId', async (c) => {
+  const user = c.get('user');
+  const variantId = c.req.param('variantId');
+  const { notes = '' } = await c.req.json();
+
+  try {
+    // First verify the variant exists
+    const { results: [variant] } = await c.env.DB.prepare(`
+      SELECT mv.*, m.name
+      FROM model_variants mv
+      JOIN models m ON mv.model_id = m.id
+      WHERE mv.id = ?
+    `)
+      .bind(variantId)
+      .all();
+
+    if (!variant) {
+      return c.json({ error: 'Variant not found' }, 404);
+    }
+
+    // Add to collection
+    await c.env.DB.prepare(`
+      INSERT INTO user_collections (user_id, variant_id, notes)
+      VALUES (?, ?, ?)
+    `)
+      .bind(user.id, variantId, notes)
+      .run();
+
+    return c.json({
+      ...variant,
+      tampos: variant.tampos ? JSON.parse(variant.tampos) : [],
+      notes,
+      owned: true,
+      acquired_date: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Add to collection error:', error);
+    return c.json({ error: 'Failed to add variant to collection' }, 500);
+  }
+});
+
+// Remove variant from collection
+app.delete('/api/collection/:variantId', async (c) => {
+  const user = c.get('user');
+  const variantId = c.req.param('variantId');
+
+  try {
+    await c.env.DB.prepare(`
+      DELETE FROM user_collections
+      WHERE user_id = ? AND variant_id = ?
+    `)
+      .bind(user.id, variantId)
+      .run();
+
+    return c.json({ success: true });
+  } catch (error) {
+    console.error('Remove from collection error:', error);
+    return c.json({ error: 'Failed to remove variant from collection' }, 500);
+  }
+});
+
+// Update variant notes
+app.put('/api/collection/:variantId/notes', async (c) => {
+  const user = c.get('user');
+  const variantId = c.req.param('variantId');
+  const { notes = '' } = await c.req.json();
+
+  try {
+    await c.env.DB.prepare(`
+      UPDATE user_collections
+      SET notes = ?
+      WHERE user_id = ? AND variant_id = ?
+    `)
+      .bind(notes, user.id, variantId)
+      .run();
+
+    return c.json({ success: true });
+  } catch (error) {
+    console.error('Update notes error:', error);
+    return c.json({ error: 'Failed to update notes' }, 500);
+  }
+});
+
+export const onRequest = handle(app);

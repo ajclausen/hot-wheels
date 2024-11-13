@@ -156,54 +156,69 @@ app.put('/api/me/alias', async (c) => {
   }
 });
 
-// Get all model variants with ownership status
+// Get all model variants with ownership status and pagination
 app.get('/api/models', async (c) => {
   const user = c.get('user');
-  const page = parseInt(c.req.query('page') || '1');
-  const limit = parseInt(c.req.query('limit') || '100');
+  const search = c.req.query('search');
+  const year = c.req.query('year');
+  const series = c.req.query('series');
   const sort = c.req.query('sort') || 'name-asc';
-  const search = c.req.query('search') || '';
-  const series = c.req.query('series') || '';
-  const year = c.req.query('year') || '';
+  const page = parseInt(c.req.query('page') || '1');
+  const limit = parseInt(c.req.query('limit') || '50');
   const offset = (page - 1) * limit;
 
   try {
     let query = `
-      WITH filtered_models AS (
-        SELECT 
-          mv.*,
-          m.name,
-          CASE WHEN uc.variant_id IS NOT NULL THEN 1 ELSE 0 END as owned,
-          uc.notes,
-          uc.acquired_date
-        FROM model_variants mv
-        JOIN models m ON mv.model_id = m.id
-        LEFT JOIN user_collections uc 
-          ON mv.id = uc.variant_id 
-          AND uc.user_id = ?
-        WHERE 1=1
+      SELECT 
+        mv.*,
+        m.name,
+        CASE WHEN uc.variant_id IS NOT NULL THEN 1 ELSE 0 END as owned,
+        uc.notes,
+        uc.acquired_date,
+        COUNT(*) OVER() as total_count
+      FROM model_variants mv
+      JOIN models m ON mv.model_id = m.id
+      LEFT JOIN user_collections uc 
+        ON mv.id = uc.variant_id 
+        AND uc.user_id = ?
+      WHERE 1=1
     `;
 
-    const params = [user.id];
+    const params: any[] = [user.id];
 
+    // Add filters
     if (search) {
-      query += ` AND (
-        m.name LIKE ?
-        OR mv.series LIKE ?
-        OR mv.collection_number LIKE ?
-      )`;
-      const searchParam = `%${search}%`;
-      params.push(searchParam, searchParam, searchParam);
-    }
-
-    if (series) {
-      query += ` AND mv.series = ?`;
-      params.push(series);
+      const terms = search.toLowerCase().split(/\s+/).filter(Boolean);
+      
+      if (terms.length > 0) {
+        query += ` AND (`;
+        const searchConditions = terms.map((term, index) => {
+          const paramPlaceholders = [
+            `LOWER(m.name) LIKE ?`,
+            `LOWER(mv.series) LIKE ?`,
+            `LOWER(mv.collection_number) LIKE ?`,
+            `CAST(mv.year AS TEXT) = ?`
+          ];
+          
+          const termParam = `%${term}%`;
+          params.push(termParam, termParam, termParam, term);
+          
+          return `(${paramPlaceholders.join(' OR ')})`;
+        });
+        
+        query += searchConditions.join(' AND ');
+        query += `)`;
+      }
     }
 
     if (year) {
       query += ` AND mv.year = ?`;
       params.push(year);
+    }
+
+    if (series) {
+      query += ` AND mv.series = ?`;
+      params.push(series);
     }
 
     // Add sorting
@@ -224,63 +239,31 @@ app.get('/api/models', async (c) => {
       case 'number':
         query += `mv.collection_number ASC`;
         break;
-      default: // name-asc
+      case 'name-asc':
+      default:
         query += `m.name ASC`;
     }
 
+    // Add pagination
     query += ` LIMIT ? OFFSET ?`;
     params.push(limit, offset);
 
-    query += `)
-      SELECT * FROM filtered_models
-    `;
-
     const { results } = await c.env.DB.prepare(query).bind(...params).all();
 
-    // Get total count with the same filters but without pagination
-    let countQuery = `
-      SELECT COUNT(*) as count
-      FROM model_variants mv
-      JOIN models m ON mv.model_id = m.id
-      WHERE 1=1
-    `;
-
-    const countParams = [];
-
-    if (search) {
-      countQuery += ` AND (
-        m.name LIKE ?
-        OR mv.series LIKE ?
-        OR mv.collection_number LIKE ?
-      )`;
-      const searchParam = `%${search}%`;
-      countParams.push(searchParam, searchParam, searchParam);
-    }
-
-    if (series) {
-      countQuery += ` AND mv.series = ?`;
-      countParams.push(series);
-    }
-
-    if (year) {
-      countQuery += ` AND mv.year = ?`;
-      countParams.push(year);
-    }
-
-    const { results: [{ count }] } = await c.env.DB.prepare(countQuery)
-      .bind(...countParams)
-      .all();
+    const total = results[0]?.total_count || 0;
+    const totalPages = Math.ceil(total / limit);
 
     return c.json({
       models: results.map(variant => ({
         ...variant,
-        tampos: variant.tampos ? JSON.parse(variant.tampos) : []
+        tampos: variant.tampos ? JSON.parse(variant.tampos) : [],
+        owned: Boolean(variant.owned)
       })),
       pagination: {
         page,
         limit,
-        total: count,
-        pages: Math.ceil(count / limit)
+        total,
+        pages: totalPages
       }
     });
   } catch (error) {

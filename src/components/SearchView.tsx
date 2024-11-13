@@ -35,7 +35,6 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
   const [models, setModels] = useState<ModelVariant[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const containerRef = React.useRef<HTMLDivElement>(null);
   const [filters, setFilters] = useState({
     year: '',
     series: '',
@@ -79,20 +78,19 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current || loading || !hasMore) return;
+      if (loading || !hasMore) return;
       
-      const { scrollHeight, scrollTop, clientHeight } = containerRef.current;
-      if (scrollHeight - scrollTop - clientHeight < 200) {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const threshold = document.documentElement.scrollHeight - 1000;
+      
+      if (scrollPosition > threshold) {
         setPage(prev => prev + 1);
         fetchModels(page + 1);
       }
     };
 
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('scroll', handleScroll);
-      return () => container.removeEventListener('scroll', handleScroll);
-    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [loading, hasMore, page]);
 
   const getGridColumns = () => {
@@ -142,7 +140,7 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
   };
 
   return (
-    <div className="pb-20">
+    <div className="min-h-screen pb-20">
       <div className="sticky top-0 bg-gray-100 dark:bg-gray-900 pt-4 pb-2 z-10 px-4">
         <div className="flex gap-4 mb-4">
           <div className="flex-1">
@@ -169,11 +167,7 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
         )}
       </div>
 
-      <div 
-        ref={containerRef} 
-        className="px-4 overflow-auto"
-        style={{ height: 'calc(100vh - 200px)' }}
-      >
+      <div className="px-4 py-4">
         {models.length === 0 && !loading ? (
           <div className="text-center py-8">
             <p className="text-gray-500 dark:text-gray-400">No models found matching your search.</p>

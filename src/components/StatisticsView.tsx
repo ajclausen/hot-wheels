@@ -1,202 +1,202 @@
-import React, { useState, useEffect } from 'react';
-import { Loader2 } from 'lucide-react';
-import type { ModelVariant } from '../types';
-import { SearchBar } from './SearchBar';
-import { SearchFilters } from './SearchFilters';
-import { ModelDetailsModal } from './ModelDetailsModal';
-import { ModelCard } from './ModelCard';
-import { ModelList } from './ModelList';
-import { ModelCompact } from './ModelCompact';
-import { ViewToggle, type ViewMode } from './ViewToggle';
-import axios from 'axios';
+import React, { useMemo } from 'react';
+import { ModelVariant } from '../types';
+import {
+  BarChart,
+  TrendingUp,
+  Calendar,
+  Package,
+  Award,
+  Clock
+} from 'lucide-react';
 
-interface SearchViewProps {
-  onToggleOwned: (id: string) => void;
-  onEditNotes: (id: string) => void;
-  searchInputRef?: React.RefObject<HTMLInputElement>;
-}
-
-interface SearchResponse {
+interface StatisticsViewProps {
   models: ModelVariant[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    pages: number;
-  };
+  userModels: ModelVariant[];
 }
 
-export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: SearchViewProps) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showFilters, setShowFilters] = useState(false);
-  const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
-  const [loading, setLoading] = useState(false);
-  const [models, setModels] = useState<ModelVariant[]>([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [filters, setFilters] = useState({
-    year: '',
-    series: '',
-    color: '',
-    sort: 'name-asc'
-  });
+export function StatisticsView({ models, userModels }: StatisticsViewProps) {
+  const stats = useMemo(() => {
+    const total = models.length;
+    const owned = userModels.length;
+    const completionRate = Math.round((owned / total) * 100);
 
-  const fetchModels = async (newPage = 1) => {
-    try {
-      setLoading(true);
-      const params = new URLSearchParams({
-        page: newPage.toString(),
-        limit: '50',
-        sort: filters.sort
-      });
+    // Series stats
+    const seriesCounts = userModels.reduce((acc, model) => {
+      acc[model.series] = (acc[model.series] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
 
-      if (searchQuery) params.append('search', searchQuery);
-      if (filters.year) params.append('year', filters.year);
-      if (filters.series) params.append('series', filters.series);
+    // Year stats
+    const yearCounts = userModels.reduce((acc, model) => {
+      acc[model.year] = (acc[model.year] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
 
-      const { data } = await axios.get<SearchResponse>(`/api/models?${params}`);
-      
-      if (newPage === 1) {
-        setModels(data.models);
-      } else {
-        setModels(prev => [...prev, ...data.models]);
-      }
-      
-      setHasMore(newPage < data.pagination.pages);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching models:', error);
-      setLoading(false);
-    }
-  };
+    // Color stats
+    const colorCounts = userModels.reduce((acc, model) => {
+      acc[model.color] = (acc[model.color] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
 
-  useEffect(() => {
-    setPage(1);
-    fetchModels(1);
-  }, [searchQuery, filters]);
+    // Series completion rates
+    const seriesCompletionRates = Object.entries(seriesCounts).map(([series, count]) => {
+      const totalInSeries = models.filter(m => m.series === series).length;
+      return {
+        series,
+        rate: Math.round((count / totalInSeries) * 100),
+        owned: count,
+        total: totalInSeries
+      };
+    }).sort((a, b) => b.rate - a.rate);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (loading || !hasMore) return;
-      
-      const scrollPosition = window.innerHeight + window.scrollY;
-      const threshold = document.documentElement.scrollHeight - 1000;
-      
-      if (scrollPosition > threshold) {
-        setPage(prev => prev + 1);
-        fetchModels(page + 1);
-      }
+    // Recent acquisitions
+    const recentAcquisitions = [...userModels]
+      .sort((a, b) => {
+        const dateA = a.acquired_date ? new Date(a.acquired_date).getTime() : 0;
+        const dateB = b.acquired_date ? new Date(b.acquired_date).getTime() : 0;
+        return dateB - dateA;
+      })
+      .slice(0, 5);
+
+    return {
+      total,
+      owned,
+      completionRate,
+      seriesCounts,
+      yearCounts,
+      colorCounts,
+      seriesCompletionRates,
+      recentAcquisitions
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [loading, hasMore, page]);
-
-  const getGridColumns = () => {
-    switch (viewMode) {
-      case 'grid':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
-      case 'compact':
-        return 'grid-cols-1 gap-2';
-      case 'list':
-        return 'grid-cols-1 gap-2';
-      default:
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
-    }
-  };
-
-  const renderModel = (model: ModelVariant) => {
-    switch (viewMode) {
-      case 'compact':
-        return (
-          <ModelCompact
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
-      case 'list':
-        return (
-          <ModelList
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
-      default:
-        return (
-          <ModelCard
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onEditNotes={onEditNotes}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
-    }
-  };
+  }, [models, userModels]);
 
   return (
-    <div className="min-h-screen pb-20">
-      <div className="sticky top-0 bg-gray-100 dark:bg-gray-900 pt-4 pb-2 z-10 px-4">
-        <div className="flex gap-4 mb-4">
-          <div className="flex-1">
-            <SearchBar
-              value={searchQuery}
-              onChange={setSearchQuery}
-              showFilter={true}
-              filterActive={showFilters}
-              onFilterClick={() => setShowFilters(!showFilters)}
-              placeholder="Search all Hot Wheels models..."
-            />
+    <div className="pb-20 px-4 md:px-0 max-w-7xl mx-auto">
+      {/* Main Stats */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold dark:text-white">Collection Size</h3>
+            <Package className="h-6 w-6 text-blue-500 dark:text-blue-400" />
           </div>
-          <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
+          <p className="text-3xl font-bold text-gray-900 dark:text-white">{stats.owned}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">out of {stats.total} models</p>
         </div>
 
-        {showFilters && (
-          <SearchFilters
-            filters={filters}
-            onFilterChange={setFilters}
-            years={[2024, 2023, 2022, 2021, 2020]}
-            series={[]}
-            colors={[]}
-          />
-        )}
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold dark:text-white">Completion Rate</h3>
+            <Award className="h-6 w-6 text-green-500 dark:text-green-400" />
+          </div>
+          <p className="text-3xl font-bold text-gray-900 dark:text-white">{stats.completionRate}%</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">of total collection</p>
+        </div>
+
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors sm:col-span-2 md:col-span-1">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold dark:text-white">Most Complete Series</h3>
+            <TrendingUp className="h-6 w-6 text-purple-500 dark:text-purple-400" />
+          </div>
+          {stats.seriesCompletionRates[0] && (
+            <>
+              <p className="text-xl font-bold text-gray-900 dark:text-white truncate">
+                {stats.seriesCompletionRates[0].series}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {stats.seriesCompletionRates[0].owned} of {stats.seriesCompletionRates[0].total} models
+                ({stats.seriesCompletionRates[0].rate}%)
+              </p>
+            </>
+          )}
+        </div>
       </div>
 
-      <div className="px-4 py-4">
-        {models.length === 0 && !loading ? (
-          <div className="text-center py-8">
-            <p className="text-gray-500 dark:text-gray-400">No models found matching your search.</p>
-            <p className="text-gray-400 dark:text-gray-500 text-sm">
-              Try adjusting your search terms or filters.
-            </p>
-          </div>
-        ) : (
-          <div className={`grid ${getGridColumns()}`}>
-            {models.map(model => renderModel(model))}
-          </div>
-        )}
-
-        {loading && (
-          <div className="flex justify-center py-4">
-            <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
-          </div>
-        )}
+      {/* Series Breakdown */}
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8 transition-colors">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-lg font-semibold dark:text-white">Series Breakdown</h3>
+          <BarChart className="h-6 w-6 text-blue-500 dark:text-blue-400" />
+        </div>
+        <div className="space-y-4">
+          {Object.entries(stats.seriesCounts)
+            .sort(([, a], [, b]) => b - a)
+            .map(([series, count]) => (
+              <div key={series} className="flex items-center">
+                <div className="w-32 md:w-48 truncate text-gray-900 dark:text-white">{series}</div>
+                <div className="flex-1 mx-4">
+                  <div className="h-4 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-blue-500 dark:bg-blue-400 rounded-full transition-all"
+                      style={{
+                        width: `${(count / stats.owned) * 100}%`
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="w-12 text-right text-gray-900 dark:text-white">{count}</div>
+              </div>
+            ))}
+        </div>
       </div>
 
-      {selectedModel && (
-        <ModelDetailsModal
-          model={selectedModel}
-          isOpen={true}
-          onClose={() => setSelectedModel(null)}
-          onToggleOwned={onToggleOwned}
-          onEditNotes={onEditNotes}
-        />
-      )}
+      {/* Year Distribution */}
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8 transition-colors">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-lg font-semibold dark:text-white">Year Distribution</h3>
+          <Calendar className="h-6 w-6 text-green-500 dark:text-green-400" />
+        </div>
+        <div className="space-y-4">
+          {Object.entries(stats.yearCounts)
+            .sort(([a], [b]) => Number(b) - Number(a))
+            .map(([year, count]) => (
+              <div key={year} className="flex items-center">
+                <div className="w-20 md:w-24 text-gray-900 dark:text-white">{year}</div>
+                <div className="flex-1 mx-4">
+                  <div className="h-4 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-green-500 dark:bg-green-400 rounded-full transition-all"
+                      style={{
+                        width: `${(count / stats.owned) * 100}%`
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="w-12 text-right text-gray-900 dark:text-white">{count}</div>
+              </div>
+            ))}
+        </div>
+      </div>
+
+      {/* Recent Acquisitions */}
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-lg font-semibold dark:text-white">Recent Acquisitions</h3>
+          <Clock className="h-6 w-6 text-purple-500 dark:text-purple-400" />
+        </div>
+        <div className="space-y-4">
+          {stats.recentAcquisitions.map((model) => (
+            <div key={model.id} className="flex items-center p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+              <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+                <img
+                  src={model.image_url}
+                  alt={model.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+                  }}
+                />
+              </div>
+              <div className="ml-4 flex-1">
+                <p className="font-medium text-gray-900 dark:text-white truncate">{model.name}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {model.acquired_date ? new Date(model.acquired_date).toLocaleDateString() : 'Date unknown'}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

@@ -7,14 +7,14 @@ import { StatisticsView } from './components/StatisticsView';
 import { Modal } from './components/Modal';
 import { NotesEditor } from './components/NotesEditor';
 import { useAuth } from './context/AuthContext';
-import type { HotWheelsModel } from './types';
+import type { ModelVariant } from './types';
 import axios from 'axios';
 
 export default function App() {
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState('inventory');
-  const [models, setModels] = useState<HotWheelsModel[]>([]);
-  const [userModels, setUserModels] = useState<HotWheelsModel[]>([]);
+  const [models, setModels] = useState<ModelVariant[]>([]);
+  const [userModels, setUserModels] = useState<ModelVariant[]>([]);
   const [selectedModelId, setSelectedModelId] = useState<string | null>(null);
   const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
   const searchInputRef = React.useRef<HTMLInputElement>(null);
@@ -29,8 +29,8 @@ export default function App() {
         axios.get('/api/models'),
         axios.get('/api/collection')
       ]).then(([modelsRes, collectionRes]) => {
-        setModels(modelsRes.data);
-        setUserModels(collectionRes.data);
+        setModels(modelsRes.data.models || []);
+        setUserModels(collectionRes.data || []);
       }).catch(console.error);
     }
   }, [user]);
@@ -65,8 +65,6 @@ export default function App() {
 
         {activeTab === 'search' && (
           <SearchView
-            models={models}
-            userModels={userModels}
             onToggleOwned={handleToggleOwned}
             onEditNotes={handleEditNotes}
             searchInputRef={searchInputRef}

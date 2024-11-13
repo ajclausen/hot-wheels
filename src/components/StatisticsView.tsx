@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ModelVariant } from '../types';
+import type { ModelVariant } from '../types';
 import {
   BarChart,
   TrendingUp,

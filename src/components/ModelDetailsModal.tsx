@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X, Check, Edit3 } from 'lucide-react';
 import type { ModelVariant } from '../types';
 
@@ -10,21 +10,13 @@ interface ModelDetailsModalProps {
   onEditNotes: (id: string) => void;
 }
 
-export function ModelDetailsModal({ 
-  model, 
-  isOpen, 
-  onClose, 
-  onToggleOwned,
-  onEditNotes 
-}: ModelDetailsModalProps) {
+export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEditNotes }: ModelDetailsModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const [imageError, setImageError] = useState(false);
+  const [imageError, setImageError] = React.useState(false);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
+      if (e.key === 'Escape') onClose();
     };
 
     const handleClickOutside = (e: MouseEvent) => {
@@ -46,23 +38,17 @@ export function ModelDetailsModal({
     };
   }, [isOpen, onClose]);
 
-  // Function to get the high-resolution image URL
+  // Function to get the correct image URL
   const getImageUrl = (url: string) => {
-    if (!url || imageError) {
+    if (!url) {
       return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
     }
-    
-    // If it's already a full URL with scale parameter, ensure it's high resolution
-    if (url.includes('scale-to-width-down')) {
-      return url.replace(/\/scale-to-width-down\/\d+/, '/scale-to-width-down/1000');
+    // If it's already an R2 URL, use it as is
+    if (url.includes('r2.dev')) {
+      return url;
     }
-    
-    // If it's a revision URL, get the base image URL
-    if (url.includes('/revision/')) {
-      return url.split('/revision/')[0];
-    }
-    
-    return url;
+    // For wiki URLs, remove the revision parameter
+    return url.split('/revision')[0];
   };
 
   if (!isOpen) return null;
@@ -73,7 +59,6 @@ export function ModelDetailsModal({
         ref={modalRef}
         className="relative bg-gray-900 rounded-2xl shadow-2xl w-full max-w-4xl mx-auto my-8 overflow-hidden"
       >
-        {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-gray-800">
           <h2 className="text-2xl font-bold text-white">{model.name}</h2>
           <button
@@ -84,16 +69,17 @@ export function ModelDetailsModal({
           </button>
         </div>
 
-        {/* Content */}
         <div className="p-6 pb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Image */}
             <div className="relative">
               <img
                 src={getImageUrl(model.image_url)}
                 alt={model.name}
                 className="w-full rounded-lg shadow-lg object-contain bg-gray-800 aspect-video"
-                onError={() => setImageError(true)}
+                onError={(e) => {
+                  setImageError(true);
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+                }}
                 loading="lazy"
               />
               <button
@@ -108,7 +94,6 @@ export function ModelDetailsModal({
               </button>
             </div>
 
-            {/* Details */}
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold text-white mb-4">Details</h3>
@@ -164,7 +149,6 @@ export function ModelDetailsModal({
                 </dl>
               </div>
 
-              {/* Tampos */}
               {model.tampos && model.tampos.length > 0 && (
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-2">Tampos</h3>
@@ -176,7 +160,6 @@ export function ModelDetailsModal({
                 </div>
               )}
 
-              {/* Notes */}
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-lg font-semibold text-white">Notes</h3>

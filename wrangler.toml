@@ -1,5 +1,6 @@
 name = "hotwheels-collection"
 compatibility_date = "2024-02-20"
+main = "functions/[[route]].ts"
 
 [[d1_databases]]
 binding = "DB"
@@ -12,6 +13,8 @@ bucket_name = "hotwheels-images"
 
 [vars]
 ENVIRONMENT = "production"
+API_URL = "https://hotwheels.clausen.app"
+R2_PUBLIC_URL = "https://pub-593fbe5a3cab4c2f9d39d8d8380dcea0.r2.dev"
 
 [site]
 bucket = "./dist"
@@ -19,11 +22,5 @@ bucket = "./dist"
 [build]
 command = "npm run build"
 
-# Configure functions
-[functions]
-directory = "functions"
-node_compat = true
-
-[[routes]]
-pattern = "/api/*"
-custom_domain = true
+[dev]
+port = 8788

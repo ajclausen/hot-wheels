@@ -12,25 +12,6 @@ interface ModelCardProps {
 export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelCardProps) {
   const [imageError, setImageError] = React.useState(false);
 
-  // Function to get the correct image URL
-  const getImageUrl = (url: string) => {
-    if (!url || imageError) {
-      return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
-    }
-    
-    // If it's already a full URL with scale parameter, ensure it's high resolution
-    if (url.includes('scale-to-width-down')) {
-      return url.replace(/\/scale-to-width-down\/\d+/, '/scale-to-width-down/1000');
-    }
-    
-    // If it's a revision URL, get the base image URL
-    if (url.includes('/revision/')) {
-      return url.split('/revision/')[0];
-    }
-    
-    return url;
-  };
-
   const handleToggleOwned = (e: React.MouseEvent) => {
     e.stopPropagation();
     onToggleOwned(model.id);
@@ -41,17 +22,34 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
     onEditNotes(model.id);
   };
 
+  // Function to get the correct image URL
+  const getImageUrl = (url: string) => {
+    if (!url) {
+      return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+    }
+    // If it's already an R2 URL, use it as is
+    if (url.includes('r2.dev')) {
+      return url;
+    }
+    // For wiki URLs, remove the revision parameter
+    return url.split('/revision')[0];
+  };
+
   return (
     <div 
       onClick={onClick}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer"
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer h-full flex flex-col"
     >
-      <div className="relative">
+      <div className="relative aspect-video">
         <img
           src={getImageUrl(model.image_url)}
           alt={model.name}
-          className="w-full h-48 object-cover"
-          onError={() => setImageError(true)}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            setImageError(true);
+            // Fallback image if the R2 image fails to load
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+          }}
           loading="lazy"
         />
         <button
@@ -65,9 +63,9 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
           <Check className="h-4 w-4" />
         </button>
       </div>
-      <div className="p-4">
+      <div className="p-4 flex-1 flex flex-col">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{model.name}</h3>
-        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-3">
+        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-3 flex-1">
           <p>Series: {model.series} {model.series_number}</p>
           <p>Year: {model.year}</p>
           <p>Color: {model.color}</p>
@@ -80,7 +78,7 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick }: ModelC
         )}
         <button
           onClick={handleEditNotes}
-          className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1 transition-colors"
+          className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1 transition-colors mt-auto"
         >
           <Edit3 className="h-4 w-4" />
           <span>Edit Notes</span>

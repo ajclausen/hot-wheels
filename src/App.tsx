@@ -19,10 +19,6 @@ export default function App() {
   const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
   const searchInputRef = React.useRef<HTMLInputElement>(null);
 
-  const selectedModel = selectedModelId 
-    ? models.find(model => model.id === selectedModelId)
-    : null;
-
   useEffect(() => {
     if (user) {
       Promise.all([
@@ -85,7 +81,7 @@ export default function App() {
         <Modal
           isOpen={isNotesModalOpen}
           onClose={() => setIsNotesModalOpen(false)}
-          title={`Edit Notes - ${selectedModel?.name || 'Model'}`}
+          title={`Edit Notes - ${models.find(m => m.id === selectedModelId)?.name || 'Model'}`}
         >
           <NotesEditor
             initialNotes={userModels.find(m => m.id === selectedModelId)?.notes}

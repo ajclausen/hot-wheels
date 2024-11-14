@@ -3,7 +3,6 @@ import { handle } from 'hono/cloudflare-pages';
 import { cors } from 'hono/cors';
 import { decode } from 'hono/jwt';
 import { z } from 'zod';
-import { modelVariantSchema } from '../../src/types';
 
 type Bindings = {
   DB: D1Database;
@@ -26,7 +25,7 @@ app.use('*', cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:8788',
-    'https://hotwheels.clausen.app',
+    'https://hotwheels.clausen.app'
   ],
   credentials: true,
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -36,13 +35,13 @@ app.use('*', cors({
     'CF-Access-Client-Secret',
     'Cookie',
     'CF-Authorization',
-    'Cf-Access-Jwt-Assertion',
+    'Cf-Access-Jwt-Assertion'
   ],
   exposeHeaders: ['Set-Cookie'],
   maxAge: 86400,
 }));
 
-// Auth middleware for API routes
+// Auth middleware
 app.use('/api/*', async (c, next) => {
   const jwtAssertion = c.req.header('Cf-Access-Jwt-Assertion');
   
@@ -63,9 +62,9 @@ app.use('/api/*', async (c, next) => {
       return c.json({ error: 'Invalid token payload' }, 401);
     }
 
-    // Check if user exists in our database
+    // Check if user exists
     const { results } = await c.env.DB.prepare(`
-      SELECT id, email, name, alias, created_at, updated_at
+      SELECT id, email, name, alias
       FROM users 
       WHERE cloudflare_id = ?
     `)
@@ -74,12 +73,12 @@ app.use('/api/*', async (c, next) => {
 
     let user = results[0];
 
-    // If user doesn't exist, create them
+    // Create user if doesn't exist
     if (!user) {
       const result = await c.env.DB.prepare(`
         INSERT INTO users (id, cloudflare_id, email, name)
         VALUES (lower(hex(randomblob(16))), ?, ?, ?)
-        RETURNING id, email, name, alias, created_at, updated_at
+        RETURNING id, email, name, alias
       `)
         .bind(userId, email, email.split('@')[0])
         .run();
@@ -87,13 +86,7 @@ app.use('/api/*', async (c, next) => {
       user = result.results[0];
     }
 
-    c.set('user', {
-      id: user.id,
-      email: user.email,
-      name: user.name,
-      alias: user.alias
-    });
-
+    c.set('user', user);
     await next();
   } catch (error) {
     console.error('Auth error:', error);
@@ -101,82 +94,7 @@ app.use('/api/*', async (c, next) => {
   }
 });
 
-function normalizeSearchTerm(term: string): string {
-  return term
-    .toLowerCase()
-    // Replace special quotes with standard ones
-    .replace(/['']/g, "'")
-    // Remove any other special characters except spaces, numbers, letters, and single quotes
-    .replace(/[^a-z0-9'\s]/g, ' ')
-    .trim();
-}
-
-function expandYearAliases(term: string): string[] {
-  // Handle cases like '84 -> 1984
-  const yearMatch = term.match(/^'(\d{2})$/);
-  if (yearMatch) {
-    const year = parseInt(yearMatch[1]);
-    return [`19${year}`, term];
-  }
-  return [term];
-}
-
-// API Routes
-app.get('/api/me', (c) => {
-  const user = c.get('user');
-  return c.json({ user });
-});
-
-// Update user alias
-app.put('/api/me/alias', async (c) => {
-  const user = c.get('user');
-  if (!user) {
-    return c.json({ error: 'User not found' }, 401);
-  }
-
-  try {
-    const body = await c.req.json();
-    const alias = body.alias?.trim();
-
-    if (typeof alias !== 'string') {
-      return c.json({ error: 'Invalid alias format' }, 400);
-    }
-
-    const result = await c.env.DB.prepare(`
-      UPDATE users 
-      SET 
-        alias = ?,
-        updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-      RETURNING id, email, name, alias, created_at, updated_at
-    `)
-      .bind(alias, user.id)
-      .run();
-
-    if (!result.success) {
-      throw new Error('Failed to update user alias');
-    }
-
-    const updatedUser = result.results[0];
-    
-    return c.json({ 
-      user: {
-        id: updatedUser.id,
-        email: updatedUser.email,
-        name: updatedUser.name,
-        alias: updatedUser.alias
-      }
-    });
-  } catch (error) {
-    console.error('Update alias error:', error);
-    return c.json({ 
-      error: 'Failed to update alias',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, 500);
-  }
-});
-
-// Get all model variants with ownership status
+// Get all models with ownership status
 app.get('/api/models', async (c) => {
   const user = c.get('user');
   const search = c.req.query('search');
@@ -186,36 +104,15 @@ app.get('/api/models', async (c) => {
   const page = parseInt(c.req.query('page') || '1');
   const limit = parseInt(c.req.query('limit') || '50');
   const offset = (page - 1) * limit;
-
+  
   try {
     let query = `
-      WITH SearchTerms AS (
-        SELECT DISTINCT term
-        FROM (
-          SELECT value as orig_term
-          FROM json_each(json_array(${
-            search 
-              ? search.split(/\s+/).map(term => `'${term}'`).join(', ')
-              : ''
-          }))
-          WHERE LENGTH(TRIM(value)) > 0
-        ), json_each(json_array(
-          ${search 
-            ? search.split(/\s+/)
-              .map(term => expandYearAliases(normalizeSearchTerm(term)))
-              .flat()
-              .map(term => `'${term}'`)
-              .join(', ')
-            : ''}
-        )) as expanded(term)
-      )
       SELECT 
         mv.*,
         m.name,
         m.designer,
         CASE WHEN uc.variant_id IS NOT NULL THEN 1 ELSE 0 END as owned,
         uc.notes,
-        uc.status,
         uc.acquired_date,
         COUNT(*) OVER() as total_count
       FROM model_variants mv
@@ -229,27 +126,20 @@ app.get('/api/models', async (c) => {
     const params: any[] = [user.id];
 
     if (search) {
-      query += `
-        AND (
-          SELECT COUNT(DISTINCT orig_term) FROM SearchTerms
-        ) = (
-          SELECT COUNT(DISTINCT orig_term)
-          FROM SearchTerms st
-          WHERE (
-            -- Exact match for year or expanded year
-            CAST(mv.year AS TEXT) = st.term
-            -- Start of name words, handling special characters
-            OR (
-              LOWER(REPLACE(REPLACE(m.name, ''', "'"), '"', '')) LIKE '%' || st.term || '%'
-            )
-            -- Start of series words
-            OR LOWER(mv.series) LIKE '%' || st.term || '%'
-            -- Match collection number or toy number
-            OR LOWER(mv.collection_number) = st.term
-            OR LOWER(mv.toy_number) LIKE '%' || st.term || '%'
+      const terms = search.toLowerCase().split(/\s+/);
+      terms.forEach(term => {
+        query += `
+          AND (
+            LOWER(m.name) LIKE ? 
+            OR LOWER(mv.series) LIKE ? 
+            OR LOWER(mv.collection_number) LIKE ?
+            OR LOWER(mv.toy_number) LIKE ?
+            OR CAST(mv.year AS TEXT) = ?
           )
-        )
-      `;
+        `;
+        const pattern = `%${term}%`;
+        params.push(pattern, pattern, pattern, pattern, term);
+      });
     }
     
     if (year) {
@@ -322,6 +212,8 @@ app.get('/api/collection', async (c) => {
       SELECT 
         mv.*,
         m.name,
+        m.designer,
+        1 as owned,
         uc.notes,
         uc.acquired_date
       FROM model_variants mv
@@ -353,7 +245,7 @@ app.post('/api/collection/:variantId', async (c) => {
   try {
     // First verify the variant exists
     const { results: [variant] } = await c.env.DB.prepare(`
-      SELECT mv.*, m.name
+      SELECT mv.*, m.name, m.designer
       FROM model_variants mv
       JOIN models m ON mv.model_id = m.id
       WHERE mv.id = ?

@@ -12,8 +12,8 @@ interface ModelDetailsModalProps {
 
 export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEditNotes }: ModelDetailsModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const [imageError, setImageError] = React.useState(false);
   const [isOwned, setIsOwned] = useState(model.owned);
+  const [imageError, setImageError] = React.useState(false);
 
   useEffect(() => {
     setIsOwned(model.owned);
@@ -122,6 +122,10 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
                     <div>
                       <dt className="text-sm text-gray-500 dark:text-gray-400">Collection Number</dt>
                       <dd className="text-gray-900 dark:text-white">{model.collection_number}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm text-gray-500 dark:text-gray-400">Toy Number</dt>
+                      <dd className="text-gray-900 dark:text-white">{model.toy_number}</dd>
                     </div>
                     <div>
                       <dt className="text-sm text-gray-500 dark:text-gray-400">Color</dt>

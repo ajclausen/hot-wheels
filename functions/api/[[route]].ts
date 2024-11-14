@@ -2,6 +2,8 @@ import { Hono } from 'hono';
 import { handle } from 'hono/cloudflare-pages';
 import { cors } from 'hono/cors';
 import { decode } from 'hono/jwt';
+import { z } from 'zod';
+import { modelVariantSchema } from '../../src/types';
 
 type Bindings = {
   DB: D1Database;
@@ -55,9 +57,9 @@ app.use('/api/*', async (c, next) => {
       return c.json({ error: 'Invalid token' }, 401);
     }
 
-    const { email, sub: cloudflareId, name } = decoded.payload;
+    const { email, sub: userId } = decoded.payload;
 
-    if (!email || !cloudflareId) {
+    if (!email || !userId) {
       return c.json({ error: 'Invalid token payload' }, 401);
     }
 
@@ -67,8 +69,8 @@ app.use('/api/*', async (c, next) => {
       FROM users 
       WHERE cloudflare_id = ?
     `)
-    .bind(cloudflareId)
-    .all();
+      .bind(userId)
+      .all();
 
     let user = results[0];
 
@@ -79,12 +81,8 @@ app.use('/api/*', async (c, next) => {
         VALUES (lower(hex(randomblob(16))), ?, ?, ?)
         RETURNING id, email, name, alias, created_at, updated_at
       `)
-      .bind(cloudflareId, email, name || email.split('@')[0])
-      .run();
-
-      if (!result.success) {
-        throw new Error('Failed to create user');
-      }
+        .bind(userId, email, email.split('@')[0])
+        .run();
 
       user = result.results[0];
     }
@@ -99,12 +97,29 @@ app.use('/api/*', async (c, next) => {
     await next();
   } catch (error) {
     console.error('Auth error:', error);
-    return c.json({ 
-      error: 'Authentication failed',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, 401);
+    return c.json({ error: 'Authentication failed' }, 401);
   }
 });
+
+function normalizeSearchTerm(term: string): string {
+  return term
+    .toLowerCase()
+    // Replace special quotes with standard ones
+    .replace(/['']/g, "'")
+    // Remove any other special characters except spaces, numbers, letters, and single quotes
+    .replace(/[^a-z0-9'\s]/g, ' ')
+    .trim();
+}
+
+function expandYearAliases(term: string): string[] {
+  // Handle cases like '84 -> 1984
+  const yearMatch = term.match(/^'(\d{2})$/);
+  if (yearMatch) {
+    const year = parseInt(yearMatch[1]);
+    return [`19${year}`, term];
+  }
+  return [term];
+}
 
 // API Routes
 app.get('/api/me', (c) => {
@@ -135,8 +150,8 @@ app.put('/api/me/alias', async (c) => {
       WHERE id = ?
       RETURNING id, email, name, alias, created_at, updated_at
     `)
-    .bind(alias, user.id)
-    .run();
+      .bind(alias, user.id)
+      .run();
 
     if (!result.success) {
       throw new Error('Failed to update user alias');
@@ -161,7 +176,7 @@ app.put('/api/me/alias', async (c) => {
   }
 });
 
-// Get all model variants with ownership status and pagination
+// Get all model variants with ownership status
 app.get('/api/models', async (c) => {
   const user = c.get('user');
   const search = c.req.query('search');
@@ -175,13 +190,24 @@ app.get('/api/models', async (c) => {
   try {
     let query = `
       WITH SearchTerms AS (
-        SELECT DISTINCT LOWER(TRIM(value)) as term
-        FROM json_each(json_array(${
-          search 
-            ? search.toLowerCase().split(/\s+/).map(term => `'${term}'`).join(', ')
-            : ''
-        }))
-        WHERE LENGTH(TRIM(value)) > 0
+        SELECT DISTINCT term
+        FROM (
+          SELECT value as orig_term
+          FROM json_each(json_array(${
+            search 
+              ? search.split(/\s+/).map(term => `'${term}'`).join(', ')
+              : ''
+          }))
+          WHERE LENGTH(TRIM(value)) > 0
+        ), json_each(json_array(
+          ${search 
+            ? search.split(/\s+/)
+              .map(term => expandYearAliases(normalizeSearchTerm(term)))
+              .flat()
+              .map(term => `'${term}'`)
+              .join(', ')
+            : ''}
+        )) as expanded(term)
       )
       SELECT 
         mv.*,
@@ -202,29 +228,30 @@ app.get('/api/models', async (c) => {
 
     const params: any[] = [user.id];
 
-    // Add search filter with exact matching for year and more precise text matching
     if (search) {
       query += `
         AND (
-          SELECT COUNT(*) FROM SearchTerms
+          SELECT COUNT(DISTINCT orig_term) FROM SearchTerms
         ) = (
-          SELECT COUNT(*) FROM SearchTerms st
+          SELECT COUNT(DISTINCT orig_term)
+          FROM SearchTerms st
           WHERE (
-            -- Exact match for year
+            -- Exact match for year or expanded year
             CAST(mv.year AS TEXT) = st.term
-            -- Start of name words
-            OR LOWER(m.name) LIKE st.term || '%'
-            OR LOWER(m.name) LIKE '% ' || st.term || '%'
+            -- Start of name words, handling special characters
+            OR (
+              LOWER(REPLACE(REPLACE(m.name, ''', "'"), '"', '')) LIKE '%' || st.term || '%'
+            )
             -- Start of series words
-            OR LOWER(mv.series) LIKE st.term || '%'
-            OR LOWER(mv.series) LIKE '% ' || st.term || '%'
-            -- Exact match for collection number
+            OR LOWER(mv.series) LIKE '%' || st.term || '%'
+            -- Match collection number or toy number
             OR LOWER(mv.collection_number) = st.term
+            OR LOWER(mv.toy_number) LIKE '%' || st.term || '%'
           )
         )
       `;
     }
-
+    
     if (year) {
       query += ` AND mv.year = ?`;
       params.push(year);
@@ -295,9 +322,7 @@ app.get('/api/collection', async (c) => {
       SELECT 
         mv.*,
         m.name,
-        m.designer,
         uc.notes,
-        uc.status,
         uc.acquired_date
       FROM model_variants mv
       JOIN models m ON mv.model_id = m.id
@@ -305,8 +330,8 @@ app.get('/api/collection', async (c) => {
       WHERE uc.user_id = ?
       ORDER BY uc.acquired_date DESC
     `)
-    .bind(user.id)
-    .all();
+      .bind(user.id)
+      .all();
 
     return c.json(results.map(variant => ({
       ...variant,
@@ -323,18 +348,18 @@ app.get('/api/collection', async (c) => {
 app.post('/api/collection/:variantId', async (c) => {
   const user = c.get('user');
   const variantId = c.req.param('variantId');
-  const { notes = '', status = 'owned' } = await c.req.json();
+  const { notes = '' } = await c.req.json();
 
   try {
     // First verify the variant exists
     const { results: [variant] } = await c.env.DB.prepare(`
-      SELECT mv.*, m.name, m.designer
+      SELECT mv.*, m.name
       FROM model_variants mv
       JOIN models m ON mv.model_id = m.id
       WHERE mv.id = ?
     `)
-    .bind(variantId)
-    .all();
+      .bind(variantId)
+      .all();
 
     if (!variant) {
       return c.json({ error: 'Variant not found' }, 404);
@@ -342,17 +367,16 @@ app.post('/api/collection/:variantId', async (c) => {
 
     // Add to collection
     await c.env.DB.prepare(`
-      INSERT INTO user_collections (user_id, variant_id, notes, status)
-      VALUES (?, ?, ?, ?)
+      INSERT INTO user_collections (user_id, variant_id, notes)
+      VALUES (?, ?, ?)
     `)
-    .bind(user.id, variantId, notes, status)
-    .run();
+      .bind(user.id, variantId, notes)
+      .run();
 
     return c.json({
       ...variant,
       tampos: variant.tampos ? JSON.parse(variant.tampos) : [],
       notes,
-      status,
       owned: true,
       acquired_date: new Date().toISOString()
     });
@@ -372,8 +396,8 @@ app.delete('/api/collection/:variantId', async (c) => {
       DELETE FROM user_collections
       WHERE user_id = ? AND variant_id = ?
     `)
-    .bind(user.id, variantId)
-    .run();
+      .bind(user.id, variantId)
+      .run();
 
     return c.json({ success: true });
   } catch (error) {
@@ -382,36 +406,25 @@ app.delete('/api/collection/:variantId', async (c) => {
   }
 });
 
-// Update variant notes or status
-app.put('/api/collection/:variantId', async (c) => {
+// Update variant notes
+app.put('/api/collection/:variantId/notes', async (c) => {
   const user = c.get('user');
   const variantId = c.req.param('variantId');
-  const { notes, status } = await c.req.json();
+  const { notes = '' } = await c.req.json();
 
   try {
-    let query = 'UPDATE user_collections SET';
-    const params = [];
-
-    if (notes !== undefined) {
-      query += ' notes = ?,';
-      params.push(notes);
-    }
-
-    if (status !== undefined) {
-      query += ' status = ?,';
-      params.push(status);
-    }
-
-    // Remove trailing comma and add WHERE clause
-    query = query.slice(0, -1) + ' WHERE user_id = ? AND variant_id = ?';
-    params.push(user.id, variantId);
-
-    await c.env.DB.prepare(query).bind(...params).run();
+    await c.env.DB.prepare(`
+      UPDATE user_collections
+      SET notes = ?
+      WHERE user_id = ? AND variant_id = ?
+    `)
+      .bind(notes, user.id, variantId)
+      .run();
 
     return c.json({ success: true });
   } catch (error) {
-    console.error('Update collection error:', error);
-    return c.json({ error: 'Failed to update collection item' }, 500);
+    console.error('Update notes error:', error);
+    return c.json({ error: 'Failed to update notes' }, 500);
   }
 });
 

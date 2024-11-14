@@ -1,102 +1,91 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
-import type { User } from '../types';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
+import { User } from '../types';
 
-interface AuthState {
+interface AuthContextType {
   user: User | null;
-  loading: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (
+    username: string,
+    email: string,
+    password: string
+  ) => Promise<void>;
+  logout: () => Promise<void>;
   error: string | null;
 }
 
-interface AuthContextType extends AuthState {
-  updateUser: (user: User) => void;
-  clearError: () => void;
-  logout: () => void;
-}
+export const AuthContext = createContext<AuthContextType | null>(null);
 
-const AuthContext = createContext<AuthContextType | null>(null);
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-// Configure axios defaults
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = import.meta.env.PROD 
-  ? 'https://hotwheels.clausen.app'
-  : 'http://localhost:8788';
-
-// Add interceptor to handle Cloudflare Access headers
-axios.interceptors.request.use((config) => {
-  // Get Cf-Access-Jwt-Assertion from cookie
-  const jwtAssertion = document.cookie
-    .split('; ')
-    .find(row => row.startsWith('CF_Authorization='))
-    ?.split('=')[1];
-
-  if (jwtAssertion) {
-    config.headers['Cf-Access-Jwt-Assertion'] = jwtAssertion;
-  }
-
-  return config;
-});
-
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<AuthState>({
-    user: null,
-    loading: true,
-    error: null
-  });
-
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
+  const login = async (email: string, password: string) => {
     try {
-      const { data } = await axios.get('/api/me');
-      
-      if (data.user) {
-        setState(prev => ({ ...prev, user: data.user, loading: false }));
-      } else {
-        setState(prev => ({ ...prev, user: null, loading: false }));
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Login failed');
       }
+
+      const userData = await response.json();
+      setUser(userData);
+      setError(null);
     } catch (err) {
-      console.error('Auth error:', err);
-      setState(prev => ({ 
-        ...prev, 
-        user: null, 
-        loading: false,
-        error: 'Authentication failed'
-      }));
+      setError(err instanceof Error ? err.message : 'Login failed');
     }
   };
 
-  const logout = () => {
-    window.location.href = '/.auth/logout';
+  const register = async (
+    username: string,
+    email: string,
+    password: string
+  ) => {
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Registration failed');
+      }
+
+      const userData = await response.json();
+      setUser(userData);
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Registration failed');
+    }
   };
 
-  const updateUser = (user: User) => {
-    setState(prev => ({ ...prev, user, error: null }));
+  const logout = async () => {
+    try {
+      await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+      setUser(null);
+      setError(null);
+    } catch (err) {
+      console.error('Logout failed:', err);
+    }
   };
-
-  const clearError = () => {
-    setState(prev => ({ ...prev, error: null }));
-  };
-
-  const value = {
-    ...state,
-    logout,
-    updateUser,
-    clearError
-  };
-
-  if (state.loading) {
-    return (
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ user, login, register, logout, error }}>
       {children}
     </AuthContext.Provider>
   );

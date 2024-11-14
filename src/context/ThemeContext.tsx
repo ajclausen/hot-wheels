@@ -1,73 +1,47 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Sun, Moon, Monitor } from 'lucide-react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Theme = 'light' | 'dark' | 'system';
 
 interface ThemeContextType {
   theme: Theme;
-  resolvedTheme: 'light' | 'dark';
   setTheme: (theme: Theme) => void;
-  ThemeIcon: React.FC<{ className?: string }>;
 }
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('theme') as Theme) || 'system';
-    }
-    return 'system';
+    const savedTheme = localStorage.getItem('theme') as Theme;
+    return savedTheme || 'system';
   });
 
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  useEffect(() => {
+    const root = window.document.documentElement;
+    localStorage.setItem('theme', theme);
+
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.classList.toggle('dark', systemTheme === 'dark');
+    } else {
+      root.classList.toggle('dark', theme === 'dark');
+    }
+  }, [theme]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    function updateTheme() {
-      const root = window.document.documentElement;
-      let resolvedTheme: 'light' | 'dark';
-
+    const handleChange = () => {
       if (theme === 'system') {
-        resolvedTheme = mediaQuery.matches ? 'dark' : 'light';
-      } else {
-        resolvedTheme = theme as 'light' | 'dark';
+        const root = window.document.documentElement;
+        root.classList.toggle('dark', mediaQuery.matches);
       }
+    };
 
-      setResolvedTheme(resolvedTheme);
-
-      if (resolvedTheme === 'dark') {
-        root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
-      }
-    }
-
-    updateTheme();
-    mediaQuery.addEventListener('change', updateTheme);
-    return () => mediaQuery.removeEventListener('change', updateTheme);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const ThemeIcon: React.FC<{ className?: string }> = ({ className = '' }) => {
-    const iconClass = `transition-transform duration-500 ${className}`;
-    
-    if (theme === 'system') {
-      return <Monitor className={iconClass} />;
-    }
-    return resolvedTheme === 'dark' ? (
-      <Moon className={iconClass} />
-    ) : (
-      <Sun className={iconClass} />
-    );
-  };
 
   return (
-    <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme, ThemeIcon }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -125,7 +125,7 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
                     </div>
                     <div>
                       <dt className="text-sm text-gray-500 dark:text-gray-400">Toy Number</dt>
-                      <dd className="text-gray-900 dark:text-white">{model.toy_number}</dd>
+                      <dd className="text-gray-900 dark:text-white">{model.toyNumber}</dd>
                     </div>
                     <div>
                       <dt className="text-sm text-gray-500 dark:text-gray-400">Color</dt>

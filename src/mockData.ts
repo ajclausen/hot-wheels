@@ -1,4 +1,4 @@
-import type { HotWheelsModel } from './types';
+import type { ModelVariant } from './types';
 
 export const mockDatabase = {
   models: [
@@ -11,8 +11,10 @@ export const mockDatabase = {
       tampos: ['Tesla Logo', 'Side Stripes'],
       owned: false,
       notes: 'First edition',
-      imageUrl: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
-      collectionNumber: 'GTR567'
+      image_url:
+        'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+      collection_number: 'GTR567',
+      toyNumber: 'GTR567',
     },
     {
       id: '2',
@@ -22,8 +24,10 @@ export const mockDatabase = {
       color: '#0000FF',
       tampos: ['Porsche Logo', 'Racing Stripes'],
       owned: false,
-      imageUrl: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
-      collectionNumber: 'EXO789'
+      image_url:
+        'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+      collection_number: 'EXO789',
+      toyNumber: 'EXO789',
     },
     {
       id: '3',
@@ -33,8 +37,10 @@ export const mockDatabase = {
       color: '#00FF00',
       tampos: ['Lamborghini Logo', 'Racing Number'],
       owned: false,
-      imageUrl: 'https://images.unsplash.com/photo-1621135802920-133df287f89c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
-      collectionNumber: 'EXO456'
-    }
-  ] as HotWheelsModel[]
+      image_url:
+        'https://images.unsplash.com/photo-1621135802920-133df287f89c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+      collection_number: 'EXO456',
+      toyNumber: 'EXO456',
+    },
+  ] as ModelVariant[],
 };

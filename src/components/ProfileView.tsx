@@ -8,7 +8,7 @@ import { useTheme } from '../context/ThemeContext';
 import axios from 'axios';
 
 export function ProfileView() {
-  const { user, updateUser } = useAuth();
+  const { user } = useAuth();
   const { theme, setTheme } = useTheme();
   const [isEditing, setIsEditing] = useState(false);
   const [alias, setAlias] = useState(user?.alias || '');
@@ -17,8 +17,7 @@ export function ProfileView() {
 
   const handleUpdateAlias = async () => {
     try {
-      const response = await axios.put('/api/me/alias', { alias });
-      updateUser(response.data.user);
+      await axios.put('/api/me/alias', { alias });
       setIsEditing(false);
       setError('');
     } catch (err) {

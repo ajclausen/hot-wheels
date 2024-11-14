@@ -1,9 +1,11 @@
+// src/types.ts
 import { z } from 'zod';
 
 export interface User {
   id: string;
+  username: string;
   email: string;
-  name: string;
+  name?: string;
   alias?: string;
 }
 
@@ -16,22 +18,22 @@ export interface BaseModel {
 
 export interface ModelVariant {
   id: string;
-  model_id: string;
-  collection_number: string;
-  series: string;
-  series_number?: string;
-  year: number;
+  name: string;
   color: string;
-  tampos: string[];
+  year: number;
+  series: string;
+  toyNumber: string;
+  image_url?: string;
+  owned?: boolean;
+  notes?: string;
+  collection_number?: string;
+  series_number?: string;
   wheel_type?: string;
   base_color?: string;
   window_color?: string;
   interior_color?: string;
   country_made?: string;
-  toy_number: string;
-  image_url: string;
-  owned?: boolean;
-  notes?: string;
+  tampos?: string[];
   acquired_date?: string;
 }
 
@@ -50,23 +52,29 @@ export interface CollectionStats {
   recentAcquisitions: ModelVariant[];
 }
 
-export const modelVariantSchema = z.object({
-  id: z.string(),
-  model_id: z.string(),
-  collection_number: z.string(),
-  series: z.string(),
-  series_number: z.string().optional(),
-  year: z.number(),
-  color: z.string(),
-  tampos: z.array(z.string()),
-  wheel_type: z.string().optional(),
-  base_color: z.string().optional(),
-  window_color: z.string().optional(),
-  interior_color: z.string().optional(),
-  country_made: z.string().optional(),
-  toy_number: z.string(),
-  image_url: z.string(),
-  owned: z.boolean().optional(),
-  notes: z.string().optional(),
-  acquired_date: z.string().optional()
-});
+export interface SearchResult {
+  id: string;
+  name: string;
+  title: string;
+  description?: string;
+  url: string;
+  variants: ModelVariant[];
+}
+
+export type ViewMode = 'grid' | 'list' | 'compact';
+
+export interface AuthContextType {
+  user: User | null;
+  loading?: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (username: string, email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+  error: string | null;
+  updateUser?: (user: User) => void;
+}
+
+export interface HotWheelsModel extends ModelVariant {
+  variants: ModelVariant[];
+  addedAt: string;
+  lastModified: string;
+}

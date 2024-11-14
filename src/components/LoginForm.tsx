@@ -3,7 +3,8 @@ import { useAuth } from '../context/AuthContext';
 import { Loader2 } from 'lucide-react';
 
 export function LoginForm() {
-  const { login, loading, error } = useAuth();
+  const { login, error } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -12,9 +13,12 @@ export function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       await login(formData.username, formData.password);
     } catch (err) {
       // Error is handled by AuthContext
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -56,10 +60,10 @@ export function LoginForm() {
 
       <button
         type="submit"
-        disabled={loading}
+        disabled={isLoading}
         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
       >
-        {loading ? (
+        {isLoading ? (
           <Loader2 className="h-5 w-5 animate-spin" />
         ) : (
           'Sign In'

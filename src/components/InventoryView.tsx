@@ -39,7 +39,7 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
       ? model.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         model.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
         model.collection_number?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        model.toy_number?.toLowerCase().includes(searchQuery.toLowerCase())
+        model.toyNumber?.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
 
     const matchesYear = !filters.year || model.year.toString() === filters.year;

@@ -28,15 +28,24 @@ const app = new Hono<{ Bindings: Bindings }>();
 
 // CORS configuration
 app.use('*', cors({
-  origin: [
-    'https://hotwheels.clausen.app',
-    'https://access.clausen.app',
-    'https://development.clausen.app',
-    ...(c.env.ENVIRONMENT === 'development' 
-      ? ['http://localhost:5173', 'http://localhost:8787', 'http://localhost:8788']
-      : []
-    )
-  ],
+  origin: (origin) => {
+    const allowedOrigins = [
+      'https://hotwheels.clausen.app',
+      'https://development.clausen.app',
+      'https://access.clausen.app'
+    ];
+    
+    // Add localhost origins in development
+    if (c.env.ENVIRONMENT === 'development') {
+      allowedOrigins.push(
+        'http://localhost:5173',
+        'http://localhost:8787',
+        'http://localhost:8788'
+      );
+    }
+    
+    return allowedOrigins.includes(origin || '') ? origin : allowedOrigins[0];
+  },
   credentials: true,
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Cookie', 'Authorization'],

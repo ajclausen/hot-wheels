@@ -1,4 +1,4 @@
-name = "authworker"
+name = "authworker"  # This should match your worker name in Cloudflare
 main = "src/auth.ts"
 compatibility_date = "2024-02-14"
 

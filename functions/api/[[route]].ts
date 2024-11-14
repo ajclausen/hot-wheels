@@ -1,8 +1,6 @@
 import { Hono } from 'hono';
 import { handle } from 'hono/cloudflare-pages';
 import { cors } from 'hono/cors';
-import { decode } from 'hono/jwt';
-import { z } from 'zod';
 
 type Bindings = {
   DB: D1Database;

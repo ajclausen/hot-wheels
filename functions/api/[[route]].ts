@@ -170,9 +170,19 @@ app.get('/api/models', async (c) => {
   const sort = c.req.query('sort') || 'name-asc';
   const page = parseInt(c.req.query('page') || '1');
   const limit = parseInt(c.req.query('limit') || '50');
+  const countOnly = c.req.query('count_only') === 'true';
   const offset = (page - 1) * limit;
 
   try {
+    // If we only need the count, use a simpler query
+    if (countOnly) {
+      const { results } = await c.env.DB.prepare(`
+        SELECT COUNT(*) as total FROM model_variants
+      `).all();
+      
+      return c.json({ total: results[0].total });
+    }
+
     let query = `
       WITH SearchTerms AS (
         SELECT DISTINCT LOWER(TRIM(value)) as term

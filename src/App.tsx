@@ -15,12 +15,21 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('inventory');
   const [models, setModels] = useState<ModelVariant[]>([]);
   const [userModels, setUserModels] = useState<ModelVariant[]>([]);
+  const [totalModelsCount, setTotalModelsCount] = useState(0);
   const [selectedModelId, setSelectedModelId] = useState<string | null>(null);
   const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
   const searchInputRef = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (user) {
+      // Get total count first
+      axios.get('/api/models?count_only=true')
+        .then(response => {
+          setTotalModelsCount(response.data.total);
+        })
+        .catch(console.error);
+
+      // Then get paginated models and collection
       Promise.all([
         axios.get('/api/models'),
         axios.get('/api/collection')
@@ -71,6 +80,7 @@ export default function App() {
           <StatisticsView
             models={models}
             userModels={userModels}
+            totalModelsCount={totalModelsCount}
           />
         )}
 

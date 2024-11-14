@@ -12,13 +12,14 @@ import {
 interface StatisticsViewProps {
   models: ModelVariant[];
   userModels: ModelVariant[];
+  totalModelsCount?: number; // Add this prop
 }
 
-export function StatisticsView({ models, userModels }: StatisticsViewProps) {
+export function StatisticsView({ models, userModels, totalModelsCount }: StatisticsViewProps) {
   const stats = useMemo(() => {
-    const total = models.length;
+    const total = totalModelsCount || models.length;
     const owned = userModels.length;
-    const completionRate = Math.round((owned / total) * 100);
+    const completionRate = Math.round((owned / total) * 100) || 0;
 
     // Series stats
     const seriesCounts = userModels.reduce((acc, model) => {
@@ -68,7 +69,7 @@ export function StatisticsView({ models, userModels }: StatisticsViewProps) {
       seriesCompletionRates,
       recentAcquisitions
     };
-  }, [models, userModels]);
+  }, [models, userModels, totalModelsCount]);
 
   return (
     <div className="pb-20 px-4 md:px-0 max-w-7xl mx-auto">

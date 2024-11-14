@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TabNavigation } from './components/TabNavigation';
 import { InventoryView } from './components/InventoryView';
 import { SearchView } from './components/SearchView';
@@ -6,10 +6,9 @@ import { ProfileView } from './components/ProfileView';
 import { StatisticsView } from './components/StatisticsView';
 import { Modal } from './components/Modal';
 import { NotesEditor } from './components/NotesEditor';
-import { useAuth } from './context/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 import { Header } from './components/Header';
-import type { ModelVariant } from './types';
-import type { ViewMode } from './components/ViewToggle';
+import type { ModelVariant, HotWheelsModel, ViewMode } from './types';
 import axios from 'axios';
 import { AuthProvider } from './contexts/AuthContext'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -17,6 +16,14 @@ import Navbar from './components/Navbar'
 import Profile from './pages/Profile'
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState('collection')
+  const [viewMode, setViewMode] = useState<ViewMode>('grid')
+  const [models, setModels] = useState<HotWheelsModel[]>([])
+  const [userModels, setUserModels] = useState<HotWheelsModel[]>([])
+  const [selectedModelId, setSelectedModelId] = useState<string | null>(null)
+  const [isNotesModalOpen, setIsNotesModalOpen] = useState(false)
+  const searchInputRef = useRef<HTMLInputElement>(null)
+
   return (
     <AuthProvider>
       <Router>

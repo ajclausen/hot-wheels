@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "pages:deploy": "npm run build && wrangler pages deploy ./dist",
     "scrape": "tsx scripts/scrape-hotwheels.ts",
-    "clean": "tsx clean-data.js"
+    "clean": "tsx clean-data.js",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.689.0",
@@ -18,7 +20,7 @@
     "@tanstack/react-virtual": "^3.0.0",
     "@tanstack/virtual-core": "^3.0.0",
     "@types/bcryptjs": "^2.4.6",
-    "@types/jsonwebtoken": "^9.0.7",
+    "@types/jsonwebtoken": "^9.0.5",
     "axios": "^1.6.2",
     "base64-arraybuffer": "^1.0.2",
     "bcryptjs": "^2.4.3",
@@ -31,14 +33,19 @@
     "nanoid": "^3.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.28.0",
+    "react-router-dom": "^6.20.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
     "sanitize-html": "^2.13.1",
-    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231121.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
     "dotenv": "^16.4.5",

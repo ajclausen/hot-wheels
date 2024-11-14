@@ -7,17 +7,16 @@ import { ModelDetailsModal } from './ModelDetailsModal';
 import { ModelCard } from './ModelCard';
 import { ModelList } from './ModelList';
 import { ModelCompact } from './ModelCompact';
-import type { ViewMode } from './ViewToggle';
+import type { ViewMode } from '../types';
 import axios from 'axios';
 
-interface SearchViewProps {
-  onToggleOwned: (id: string) => void;
-  onEditNotes: (id: string) => void;
-  searchInputRef?: React.RefObject<HTMLInputElement>;
+export interface SearchViewProps {
   viewMode: ViewMode;
+  onToggleOwned: (id: string) => void;
+  onEditNotes: (id: string, notes: string) => Promise<void>;
 }
 
-export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMode }: SearchViewProps) {
+export function SearchView({ viewMode, onToggleOwned, onEditNotes }: SearchViewProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
@@ -133,7 +132,8 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMod
       key: model.id,
       model,
       onToggleOwned: handleToggleOwned,
-      onClick: () => setSelectedModel(model)
+      onClick: () => setSelectedModel(model),
+      onEditNotes
     };
 
     switch (viewMode) {
@@ -142,7 +142,7 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMod
       case 'list':
         return <ModelList {...props} />;
       default:
-        return <ModelCard {...props} onEditNotes={onEditNotes} />;
+        return <ModelCard {...props} />;
     }
   };
 

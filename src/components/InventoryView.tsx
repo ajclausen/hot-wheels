@@ -7,17 +7,16 @@ import { ModelDetailsModal } from './ModelDetailsModal';
 import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
-import type { ViewMode } from './ViewToggle';
+import type { ViewMode } from '../types';
 
 interface InventoryViewProps {
   models: ModelVariant[];
   onToggleOwned: (id: string) => void;
-  onEditNotes: (id: string) => void;
-  onOpenSearch: () => void;
+  onEditNotes: (id: string, notes: string) => Promise<void>;
   viewMode: ViewMode;
 }
 
-export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch, viewMode }: InventoryViewProps) {
+export function InventoryView({ models, onToggleOwned, onEditNotes, viewMode }: InventoryViewProps) {
   const [showFilters, setShowFilters] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
@@ -89,7 +88,8 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
       key: model.id,
       model: { ...model, owned: true },
       onToggleOwned,
-      onClick: () => setSelectedModel(model)
+      onClick: () => setSelectedModel(model),
+      onEditNotes: () => onEditNotes(model.id, model.notes || '')
     };
 
     switch (viewMode) {
@@ -98,7 +98,7 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
       case 'list':
         return <ModelList {...props} />;
       default:
-        return <ModelCard {...props} onEditNotes={onEditNotes} />;
+        return <ModelCard {...props} />;
     }
   };
 
@@ -126,15 +126,6 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
           />
         )}
       </div>
-
-      {/* Floating Search Button */}
-      <button
-        onClick={onOpenSearch}
-        className="fixed right-6 bottom-24 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition-colors z-20"
-        aria-label="Search Models"
-      >
-        <Search className="h-6 w-6" />
-      </button>
 
       <div className="px-4 py-6">
         {sortedModels.length === 0 ? (

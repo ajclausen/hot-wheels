@@ -7,13 +7,20 @@ interface ModelDetailsModalProps {
   isOpen: boolean;
   onClose: () => void;
   onToggleOwned: (id: string) => void;
-  onEditNotes: (id: string) => void;
+  onEditNotes: (id: string, notes: string) => Promise<void>;
+  readOnly?: boolean;
 }
 
-export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEditNotes }: ModelDetailsModalProps) {
+export function ModelDetailsModal({ 
+  model, 
+  isOpen, 
+  onClose, 
+  onToggleOwned, 
+  onEditNotes,
+  readOnly = false 
+}: ModelDetailsModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const [isOwned, setIsOwned] = useState(model.owned);
-  const [imageError, setImageError] = React.useState(false);
 
   useEffect(() => {
     setIsOwned(model.owned);
@@ -82,22 +89,23 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
                     alt={model.name}
                     className="w-full h-auto object-contain"
                     onError={(e) => {
-                      setImageError(true);
                       e.currentTarget.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
                     }}
                     loading="lazy"
                   />
                 </div>
-                <button
-                  onClick={handleToggleOwned}
-                  className={`absolute top-4 right-4 p-2 rounded-full shadow-lg transition-colors ${
-                    isOwned
-                      ? 'bg-green-500 text-white hover:bg-green-600'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                  }`}
-                >
-                  {isOwned ? <Check className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
-                </button>
+                {!readOnly && (
+                  <button
+                    onClick={handleToggleOwned}
+                    className={`absolute top-4 right-4 p-2 rounded-full shadow-lg transition-colors ${
+                      isOwned
+                        ? 'bg-green-500 text-white hover:bg-green-600'
+                        : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                    }`}
+                  >
+                    {isOwned ? <Check className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
+                  </button>
+                )}
               </div>
 
               <div className="space-y-6">
@@ -175,21 +183,23 @@ export function ModelDetailsModal({ model, isOpen, onClose, onToggleOwned, onEdi
                   </div>
                 )}
 
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Notes</h3>
-                    <button
-                      onClick={() => onEditNotes(model.id)}
-                      className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1"
-                    >
-                      <Edit3 className="h-4 w-4" />
-                      <span>Edit</span>
-                    </button>
+                {!readOnly && (
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Notes</h3>
+                      <button
+                        onClick={() => onEditNotes(model.id, model.notes || '')}
+                        className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1"
+                      >
+                        <Edit3 className="h-4 w-4" />
+                        <span>Edit</span>
+                      </button>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      {model.notes || 'No notes added yet.'}
+                    </p>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    {model.notes || 'No notes added yet.'}
-                  </p>
-                </div>
+                )}
               </div>
             </div>
           </div>

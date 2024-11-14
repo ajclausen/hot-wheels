@@ -1,22 +1,14 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import axios from 'axios';
-import type { User } from '../types';
-
-interface AuthContextType {
-  user: User | null;
-  login: (email: string, password: string) => Promise<void>;
-  register: (username: string, email: string, password: string) => Promise<void>;
-  logout: () => Promise<void>;
-  error: string | null;
-}
+import axios, { AxiosError } from 'axios';
+import type { User, AuthContextType } from '../types';
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  // Check auth status on mount
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -34,6 +26,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (email: string, password: string) => {
     try {
       setError(null);
+      setLoading(true);
       const { data } = await axios.post('/api/auth/login', {
         email,
         password
@@ -42,14 +35,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
       setUser(data.user);
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed');
+      const axiosError = err as AxiosError<{ error: string }>;
+      setError(axiosError.response?.data?.error || 'Login failed');
       throw err;
+    } finally {
+      setLoading(false);
     }
   };
 
   const register = async (username: string, email: string, password: string) => {
     try {
       setError(null);
+      setLoading(true);
       const { data } = await axios.post('/api/auth/register', {
         username,
         email,
@@ -59,8 +56,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
       setUser(data.user);
     } catch (err) {
-      setError(err.response?.data?.error || 'Registration failed');
+      const axiosError = err as AxiosError<{ error: string }>;
+      setError(axiosError.response?.data?.error || 'Registration failed');
       throw err;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -74,8 +74,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const updateUser = (updatedUser: User) => {
+    setUser(updatedUser);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, error }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      login, 
+      register, 
+      logout, 
+      error,
+      loading,
+      updateUser 
+    }}>
       {children}
     </AuthContext.Provider>
   );

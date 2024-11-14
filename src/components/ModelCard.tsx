@@ -5,7 +5,7 @@ import type { ModelVariant } from '../types';
 interface ModelCardProps {
   model: ModelVariant;
   onToggleOwned: (id: string) => void;
-  onEditNotes: (id: string) => void;
+  onEditNotes: (id: string, notes: string) => Promise<void>;
   onClick: () => void;
   size?: 'normal' | 'large';
   readOnly?: boolean;
@@ -19,8 +19,6 @@ export function ModelCard({
   size = 'normal',
   readOnly = false
 }: ModelCardProps) {
-  const [imageError, setImageError] = React.useState(false);
-
   const handleToggleOwned = (e: React.MouseEvent) => {
     e.stopPropagation();
     onToggleOwned(model.id);
@@ -28,7 +26,7 @@ export function ModelCard({
 
   const handleEditNotes = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onEditNotes(model.id);
+    onEditNotes(model.id, model.notes || '');
   };
 
   const imageHeight = size === 'large' ? 'h-64' : 'h-48';
@@ -44,7 +42,6 @@ export function ModelCard({
           alt={model.name}
           className="w-full h-full object-cover"
           onError={(e) => {
-            setImageError(true);
             e.currentTarget.src = 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
           }}
           loading="lazy"

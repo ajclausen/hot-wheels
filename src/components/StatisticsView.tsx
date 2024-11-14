@@ -9,7 +9,7 @@ import {
   Clock
 } from 'lucide-react';
 
-interface StatisticsViewProps {
+export interface StatisticsViewProps {
   models: ModelVariant[];
   userModels: ModelVariant[];
   totalModelsCount?: number;

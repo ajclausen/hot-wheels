@@ -2,71 +2,40 @@ import React, { useState } from 'react';
 import { Share2, Settings, X, Sun, Moon, Monitor } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import type { ViewMode } from './ViewToggle';
+import type { ViewMode } from '../types';
 
-interface HeaderProps {
-  activeTab: string;
-  viewMode: ViewMode;
-  onViewChange: (mode: ViewMode) => void;
+export interface HeaderProps {
+  title: string;
+  viewMode?: ViewMode;
+  onViewChange?: (mode: ViewMode) => void;
 }
 
-export function Header({ activeTab, viewMode, onViewChange }: HeaderProps) {
+export function Header({ title, viewMode, onViewChange }: HeaderProps) {
   const { theme, setTheme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
 
-  const handleShare = async () => {
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: 'Hot Wheels Collection',
-          text: 'Check out my Hot Wheels collection!',
-          url: window.location.href
-        });
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-      }
-    } catch (error) {
-      console.error('Share failed:', error);
-    }
-  };
-
   return (
-    <>
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="h-16 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                {activeTab === 'inventory' && 'My Collection'}
-                {activeTab === 'search' && 'Search Models'}
-                {activeTab === 'statistics' && 'Statistics'}
-                {activeTab === 'profile' && 'Profile'}
-              </h1>
-            </div>
+    <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="h-16 flex items-center justify-between">
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+            {title}
+          </h1>
 
-            <div className="flex items-center gap-2">
-              <button 
-                onClick={handleShare}
-                className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 rounded-full"
-                aria-label="Share"
-              >
-                <Share2 className="h-5 w-5" />
-              </button>
-              <button 
-                onClick={() => setShowSettings(true)}
-                className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 rounded-full"
-                aria-label="Settings"
-              >
-                <Settings className="h-5 w-5" />
-              </button>
-            </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowSettings(true)}
+              className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 rounded-full"
+            >
+              <Settings className="h-5 w-5" />
+            </button>
           </div>
         </div>
-      </header>
+      </div>
 
       <AnimatePresence>
         {showSettings && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -83,7 +52,7 @@ export function Header({ activeTab, viewMode, onViewChange }: HeaderProps) {
             >
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-semibold dark:text-white">Settings</h2>
-                <button 
+                <button
                   onClick={() => setShowSettings(false)}
                   className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 rounded-full"
                 >
@@ -131,46 +100,48 @@ export function Header({ activeTab, viewMode, onViewChange }: HeaderProps) {
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">View Mode</h3>
-                  <div className="grid grid-cols-3 gap-3">
-                    <button
-                      onClick={() => onViewChange('grid')}
-                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
-                        viewMode === 'grid'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                      }`}
-                    >
-                      <span>Grid</span>
-                    </button>
-                    <button
-                      onClick={() => onViewChange('compact')}
-                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
-                        viewMode === 'compact'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                      }`}
-                    >
-                      <span>Compact</span>
-                    </button>
-                    <button
-                      onClick={() => onViewChange('list')}
-                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
-                        viewMode === 'list'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                      }`}
-                    >
-                      <span>List</span>
-                    </button>
+                {viewMode && onViewChange && (
+                  <div>
+                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">View Mode</h3>
+                    <div className="grid grid-cols-3 gap-3">
+                      <button
+                        onClick={() => onViewChange('grid')}
+                        className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                          viewMode === 'grid'
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                        }`}
+                      >
+                        <span>Grid</span>
+                      </button>
+                      <button
+                        onClick={() => onViewChange('compact')}
+                        className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                          viewMode === 'compact'
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                        }`}
+                      >
+                        <span>Compact</span>
+                      </button>
+                      <button
+                        onClick={() => onViewChange('list')}
+                        className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                          viewMode === 'list'
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                        }`}
+                      >
+                        <span>List</span>
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </header>
   );
 }

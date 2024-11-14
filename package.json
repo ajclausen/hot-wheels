@@ -18,14 +18,16 @@
     "axios": "^1.6.2",
     "base64-arraybuffer": "^1.0.2",
     "dotenv": "^16.4.5",
+    "framer-motion": "^10.16.4",
+    "@emotion/is-prop-valid": "^0.8.8",
+    "@emotion/memoize": "^0.7.4",
     "he": "^1.2.0",
     "hono": "^4.6.9",
     "lucide-react": "^0.344.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanitize-html": "^2.13.1",
-    "zod": "^3.22.4",
-    "framer-motion": "^10.16.4"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231121.0",

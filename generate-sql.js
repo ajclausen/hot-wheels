@@ -11,7 +11,7 @@ function escapeString(str) {
 }
 
 function generateSQL() {
-  const data = JSON.parse(fs.readFileSync('scrape-results.json', 'utf8'));
+  const data = JSON.parse(fs.readFileSync('cleaned-scrape-results.json', 'utf8'));
   let sqlStatements = '';
 
   // Add indexes and schema updates at the beginning

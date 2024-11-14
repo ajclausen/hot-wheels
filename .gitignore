@@ -13,6 +13,10 @@ dist
 build
 import-data.sql
 scrape-results.json
+clean-data.js
+cleaned-scrape-results.json
+r2-delete.js
+r2-config.json
 
 # Environment files
 .env

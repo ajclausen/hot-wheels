@@ -1,44 +1,50 @@
 import { Context, Next } from 'hono'
-import { getCookie, setCookie } from 'hono/cookie'
+import { getCookie } from 'hono/cookie'
 import { verify } from 'hono/jwt'
 
 type Bindings = {
   JWT_SECRET: string
+  DB: D1Database
 }
 
 type Variables = {
-  user?: { id: string; username: string }
+  user?: {
+    id: string
+    username: string
+    email: string
+  }
 }
 
-export const authMiddleware = async (
+export async function authMiddleware(
   c: Context<{ Bindings: Bindings; Variables: Variables }>,
   next: Next
-) => {
-  const token = getCookie(c, 'auth-token')
-  
-  // Allow access to login and register endpoints without authentication
-  if (c.req.path === '/api/login' || c.req.path === '/api/register') {
+) {
+  // Allow public routes
+  if (c.req.path.startsWith('/api/auth/')) {
     return next()
   }
 
-  // Require authentication for other API endpoints
+  const token = getCookie(c, 'auth_token')
   if (!token) {
-    return c.json({ error: 'Unauthorized' }, 401)
+    return c.json({ error: 'Authentication required' }, 401)
   }
 
   try {
     const payload = await verify(token, c.env.JWT_SECRET)
-    c.set('user', payload)
+    const user = await c.env.DB.prepare(`
+      SELECT id, username, email
+      FROM users 
+      WHERE id = ?
+    `).bind(payload.sub).first()
+
+    if (!user) {
+      return c.json({ error: 'User not found' }, 401)
+    }
+
+    c.set('user', user)
     await next()
-  } catch (err) {
-    console.error('Auth error:', err)
-    setCookie(c, 'auth-token', '', { 
-      maxAge: 0,
-      path: '/',
-      secure: true,
-      httpOnly: true,
-      sameSite: 'Strict'
-    })
-    return c.json({ error: 'Invalid token' }, 403)
+  } catch (error) {
+    console.error('Auth middleware error:', error)
+    return c.json({ error: 'Invalid token' }, 401)
   }
 }

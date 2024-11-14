@@ -21,6 +21,8 @@ skipped-entries.json
 generate-data.sql
 scrape-save
 process-data.sh
+dist
+.wrangler
 
 # Environment files
 .env
@@ -28,8 +30,10 @@ process-data.sh
 .env.development.local
 .env.test.local
 .env.production.local
+.dev.vars
+.prod.vars
 
-# Debug logs
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -44,6 +48,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Wrangler
+.wrangler/
 
 # Cloudflare
 .wrangler

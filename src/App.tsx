@@ -11,104 +11,82 @@ import { Header } from './components/Header';
 import type { ModelVariant } from './types';
 import type { ViewMode } from './components/ViewToggle';
 import axios from 'axios';
+import { AuthProvider } from './contexts/AuthContext'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Profile from './pages/Profile'
 
 export default function App() {
-  const { user, loading } = useAuth();
-  const [activeTab, setActiveTab] = useState('inventory');
-  const [models, setModels] = useState<ModelVariant[]>([]);
-  const [userModels, setUserModels] = useState<ModelVariant[]>([]);
-  const [selectedModelId, setSelectedModelId] = useState<string | null>(null);
-  const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
-  const [totalModelsCount, setTotalModelsCount] = useState(0);
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
-  const searchInputRef = React.useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (user) {
-      // Get total count first
-      axios.get('/api/models?count_only=true')
-        .then(response => {
-          setTotalModelsCount(response.data.total);
-        })
-        .catch(console.error);
-
-      // Then get paginated models and collection
-      Promise.all([
-        axios.get('/api/models'),
-        axios.get('/api/collection')
-      ]).then(([modelsRes, collectionRes]) => {
-        setModels(modelsRes.data.models || []);
-        setUserModels(collectionRes.data || []);
-      }).catch(console.error);
-    }
-  }, [user]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <Header 
-        activeTab={activeTab} 
-        viewMode={viewMode}
-        onViewChange={setViewMode}
-      />
+    <AuthProvider>
+      <Router>
+        <div className="min-h-screen bg-gray-100">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={
+              <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+                <Header 
+                  activeTab={activeTab} 
+                  viewMode={viewMode}
+                  onViewChange={setViewMode}
+                />
 
-      <main className="pb-20">
-        {activeTab === 'inventory' && (
-          <InventoryView
-            models={userModels}
-            onToggleOwned={handleToggleOwned}
-            onEditNotes={handleEditNotes}
-            onOpenSearch={handleOpenSearch}
-            viewMode={viewMode}
-          />
-        )}
+                <main className="pb-20">
+                  {activeTab === 'inventory' && (
+                    <InventoryView
+                      models={userModels}
+                      onToggleOwned={handleToggleOwned}
+                      onEditNotes={handleEditNotes}
+                      onOpenSearch={handleOpenSearch}
+                      viewMode={viewMode}
+                    />
+                  )}
 
-        {activeTab === 'search' && (
-          <SearchView
-            onToggleOwned={handleToggleOwned}
-            onEditNotes={handleEditNotes}
-            searchInputRef={searchInputRef}
-            viewMode={viewMode}
-          />
-        )}
+                  {activeTab === 'search' && (
+                    <SearchView
+                      onToggleOwned={handleToggleOwned}
+                      onEditNotes={handleEditNotes}
+                      searchInputRef={searchInputRef}
+                      viewMode={viewMode}
+                    />
+                  )}
 
-        {activeTab === 'statistics' && (
-          <StatisticsView
-            models={models}
-            userModels={userModels}
-            totalModelsCount={totalModelsCount}
-          />
-        )}
+                  {activeTab === 'statistics' && (
+                    <StatisticsView
+                      models={models}
+                      userModels={userModels}
+                      totalModelsCount={totalModelsCount}
+                    />
+                  )}
 
-        {activeTab === 'profile' && (
-          <ProfileView />
-        )}
+                  {activeTab === 'profile' && (
+                    <ProfileView />
+                  )}
 
-        <Modal
-          isOpen={isNotesModalOpen}
-          onClose={() => setIsNotesModalOpen(false)}
-          title={`Edit Notes - ${models.find(m => m.id === selectedModelId)?.name || 'Model'}`}
-        >
-          <NotesEditor
-            initialNotes={userModels.find(m => m.id === selectedModelId)?.notes}
-            onSave={handleSaveNotes}
-            onClose={() => setIsNotesModalOpen(false)}
-          />
-        </Modal>
-      </main>
-      
-      <TabNavigation
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-      />
-    </div>
+                  <Modal
+                    isOpen={isNotesModalOpen}
+                    onClose={() => setIsNotesModalOpen(false)}
+                    title={`Edit Notes - ${models.find(m => m.id === selectedModelId)?.name || 'Model'}`}
+                  >
+                    <NotesEditor
+                      initialNotes={userModels.find(m => m.id === selectedModelId)?.notes}
+                      onSave={handleSaveNotes}
+                      onClose={() => setIsNotesModalOpen(false)}
+                    />
+                  </Modal>
+                </main>
+                
+                <TabNavigation
+                  activeTab={activeTab}
+                  onTabChange={setActiveTab}
+                />
+              </div>
+            } />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 
   async function handleToggleOwned(id: string) {

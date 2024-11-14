@@ -43,19 +43,16 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
   });
 
   const handleToggleOwned = async (id: string) => {
-    // Update local state immediately
     setModels(prevModels => 
       prevModels.map(model => 
         model.id === id ? { ...model, owned: !model.owned } : model
       )
     );
 
-    // If we have a selected model, update its state too
     if (selectedModel?.id === id) {
       setSelectedModel(prev => prev ? { ...prev, owned: !prev.owned } : null);
     }
 
-    // Call the parent handler
     onToggleOwned(id);
   };
 
@@ -143,19 +140,22 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
 
   return (
     <div className="min-h-screen pb-20">
-      <div className="sticky top-0 bg-gray-100 dark:bg-gray-900 pt-4 pb-2 z-10 px-4">
-        <div className="flex gap-4 mb-4">
+      <div className="sticky top-16 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-30 px-4 py-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1">
             <SearchBar
               value={searchQuery}
               onChange={setSearchQuery}
+              onClear={() => setSearchQuery('')}
               showFilter={true}
               filterActive={showFilters}
               onFilterClick={() => setShowFilters(!showFilters)}
               placeholder="Search all Hot Wheels models..."
             />
           </div>
-          <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
+          <div className="flex justify-end md:justify-start">
+            <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
+          </div>
         </div>
 
         {showFilters && (

@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { Share2, Settings, X, Sun, Moon, Monitor } from 'lucide-react';
+import { Share2, Settings, X, Sun, Moon, Monitor, LayoutGrid, List, AlignJustify } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { ViewMode } from './ViewToggle';
 
 interface HeaderProps {
   activeTab: string;
+  viewMode: ViewMode;
+  onViewChange: (mode: ViewMode) => void;
 }
 
-export function Header({ activeTab }: HeaderProps) {
-  const { theme, setTheme, ThemeIcon } = useTheme();
+export function Header({ activeTab, viewMode, onViewChange }: HeaderProps) {
+  const { theme, setTheme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
 
   const handleShare = async () => {
@@ -21,7 +24,6 @@ export function Header({ activeTab }: HeaderProps) {
         });
       } else {
         await navigator.clipboard.writeText(window.location.href);
-        // TODO: Show toast notification
       }
     } catch (error) {
       console.error('Share failed:', error);
@@ -43,13 +45,6 @@ export function Header({ activeTab }: HeaderProps) {
             </div>
 
             <div className="flex items-center gap-2">
-              <button 
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 rounded-full"
-                aria-label="Toggle theme"
-              >
-                <ThemeIcon className="h-5 w-5" />
-              </button>
               <button 
                 onClick={handleShare}
                 className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 rounded-full"
@@ -97,6 +92,45 @@ export function Header({ activeTab }: HeaderProps) {
               </div>
 
               <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">View Mode</h3>
+                  <div className="grid grid-cols-3 gap-3">
+                    <button
+                      onClick={() => onViewChange('grid')}
+                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                        viewMode === 'grid'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                      }`}
+                    >
+                      <LayoutGrid className="h-5 w-5" />
+                      <span>Grid</span>
+                    </button>
+                    <button
+                      onClick={() => onViewChange('compact')}
+                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                        viewMode === 'compact'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                      }`}
+                    >
+                      <AlignJustify className="h-5 w-5" />
+                      <span>Compact</span>
+                    </button>
+                    <button
+                      onClick={() => onViewChange('list')}
+                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                        viewMode === 'list'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                      }`}
+                    >
+                      <List className="h-5 w-5" />
+                      <span>List</span>
+                    </button>
+                  </div>
+                </div>
+
                 <div>
                   <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Theme</h3>
                   <div className="grid grid-cols-3 gap-3">

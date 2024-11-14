@@ -9,6 +9,7 @@ import { NotesEditor } from './components/NotesEditor';
 import { useAuth } from './context/AuthContext';
 import { Header } from './components/Header';
 import type { ModelVariant } from './types';
+import type { ViewMode } from './components/ViewToggle';
 import axios from 'axios';
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
   const [selectedModelId, setSelectedModelId] = useState<string | null>(null);
   const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
   const [totalModelsCount, setTotalModelsCount] = useState(0);
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const searchInputRef = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -51,7 +53,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <Header activeTab={activeTab} />
+      <Header 
+        activeTab={activeTab} 
+        viewMode={viewMode}
+        onViewChange={setViewMode}
+      />
 
       <main className="pb-20">
         {activeTab === 'inventory' && (
@@ -60,6 +66,7 @@ export default function App() {
             onToggleOwned={handleToggleOwned}
             onEditNotes={handleEditNotes}
             onOpenSearch={handleOpenSearch}
+            viewMode={viewMode}
           />
         )}
 
@@ -68,6 +75,7 @@ export default function App() {
             onToggleOwned={handleToggleOwned}
             onEditNotes={handleEditNotes}
             searchInputRef={searchInputRef}
+            viewMode={viewMode}
           />
         )}
 

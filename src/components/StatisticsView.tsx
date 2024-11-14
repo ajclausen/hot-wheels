@@ -12,7 +12,7 @@ import {
 interface StatisticsViewProps {
   models: ModelVariant[];
   userModels: ModelVariant[];
-  totalModelsCount?: number; // Add this prop
+  totalModelsCount?: number;
 }
 
 export function StatisticsView({ models, userModels, totalModelsCount }: StatisticsViewProps) {
@@ -72,7 +72,7 @@ export function StatisticsView({ models, userModels, totalModelsCount }: Statist
   }, [models, userModels, totalModelsCount]);
 
   return (
-    <div className="pb-20 px-4 md:px-0 max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto px-4 pb-20">
       {/* Main Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors">

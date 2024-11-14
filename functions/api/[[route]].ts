@@ -57,9 +57,9 @@ app.use('/api/*', async (c, next) => {
       return c.json({ error: 'Invalid token' }, 401);
     }
 
-    const { email, sub: userId } = decoded.payload;
+    const { email, sub: cloudflareId, name } = decoded.payload;
 
-    if (!email || !userId) {
+    if (!email || !cloudflareId) {
       return c.json({ error: 'Invalid token payload' }, 401);
     }
 
@@ -69,8 +69,8 @@ app.use('/api/*', async (c, next) => {
       FROM users 
       WHERE cloudflare_id = ?
     `)
-      .bind(userId)
-      .all();
+    .bind(cloudflareId)
+    .all();
 
     let user = results[0];
 
@@ -81,8 +81,12 @@ app.use('/api/*', async (c, next) => {
         VALUES (lower(hex(randomblob(16))), ?, ?, ?)
         RETURNING id, email, name, alias, created_at, updated_at
       `)
-        .bind(userId, email, email.split('@')[0])
-        .run();
+      .bind(cloudflareId, email, name || email.split('@')[0])
+      .run();
+
+      if (!result.success) {
+        throw new Error('Failed to create user');
+      }
 
       user = result.results[0];
     }
@@ -97,7 +101,10 @@ app.use('/api/*', async (c, next) => {
     await next();
   } catch (error) {
     console.error('Auth error:', error);
-    return c.json({ error: 'Authentication failed' }, 401);
+    return c.json({ 
+      error: 'Authentication failed',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, 401);
   }
 });
 
@@ -130,8 +137,8 @@ app.put('/api/me/alias', async (c) => {
       WHERE id = ?
       RETURNING id, email, name, alias, created_at, updated_at
     `)
-      .bind(alias, user.id)
-      .run();
+    .bind(alias, user.id)
+    .run();
 
     if (!result.success) {
       throw new Error('Failed to update user alias');
@@ -289,8 +296,8 @@ app.get('/api/collection', async (c) => {
       WHERE uc.user_id = ?
       ORDER BY uc.acquired_date DESC
     `)
-      .bind(user.id)
-      .all();
+    .bind(user.id)
+    .all();
 
     return c.json(results.map(variant => ({
       ...variant,
@@ -317,8 +324,8 @@ app.post('/api/collection/:variantId', async (c) => {
       JOIN models m ON mv.model_id = m.id
       WHERE mv.id = ?
     `)
-      .bind(variantId)
-      .all();
+    .bind(variantId)
+    .all();
 
     if (!variant) {
       return c.json({ error: 'Variant not found' }, 404);
@@ -329,8 +336,8 @@ app.post('/api/collection/:variantId', async (c) => {
       INSERT INTO user_collections (user_id, variant_id, notes)
       VALUES (?, ?, ?)
     `)
-      .bind(user.id, variantId, notes)
-      .run();
+    .bind(user.id, variantId, notes)
+    .run();
 
     return c.json({
       ...variant,
@@ -355,8 +362,8 @@ app.delete('/api/collection/:variantId', async (c) => {
       DELETE FROM user_collections
       WHERE user_id = ? AND variant_id = ?
     `)
-      .bind(user.id, variantId)
-      .run();
+    .bind(user.id, variantId)
+    .run();
 
     return c.json({ success: true });
   } catch (error) {
@@ -377,8 +384,8 @@ app.put('/api/collection/:variantId/notes', async (c) => {
       SET notes = ?
       WHERE user_id = ? AND variant_id = ?
     `)
-      .bind(notes, user.id, variantId)
-      .run();
+    .bind(notes, user.id, variantId)
+    .run();
 
     return c.json({ success: true });
   } catch (error) {

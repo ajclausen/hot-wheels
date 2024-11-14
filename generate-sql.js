@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import crypto from 'crypto';
 
 function normalizeString(str) {
@@ -40,7 +39,7 @@ function generateSQL() {
 
     // Generate INSERT statements
     const insertModelQuery = `
-INSERT OR IGNORE INTO models (
+INSERT INTO models (
   id,
   name,
   debut_series
@@ -48,7 +47,8 @@ INSERT OR IGNORE INTO models (
   ${escapeString(modelId)},
   ${escapeString(castingName)},
   ${series}
-);
+)
+ON CONFLICT(id) DO NOTHING;
 `;
 
     const insertVariantQuery = `
@@ -67,7 +67,8 @@ INSERT INTO model_variants (
   interior_color,
   country_made,
   toy_number,
-  image_url
+  image_url,
+  updated_at
 ) VALUES (
   ${escapeString(variantId)},
   ${escapeString(modelId)},
@@ -83,16 +84,24 @@ INSERT INTO model_variants (
   ${interiorColor},
   ${countryMade},
   ${escapeString(toyNumber)},
-  ${imageUrl}
+  ${imageUrl},
+  CURRENT_TIMESTAMP
 )
 ON CONFLICT(id) DO UPDATE SET
+  collection_number = excluded.collection_number,
+  series = excluded.series,
+  series_number = excluded.series_number,
+  year = excluded.year,
   color = excluded.color,
   tampos = excluded.tampos,
   wheel_type = excluded.wheel_type,
   base_color = excluded.base_color,
   window_color = excluded.window_color,
   interior_color = excluded.interior_color,
-  image_url = excluded.image_url;
+  country_made = excluded.country_made,
+  toy_number = excluded.toy_number,
+  image_url = CASE WHEN excluded.image_url != '' THEN excluded.image_url ELSE model_variants.image_url END,
+  updated_at = CURRENT_TIMESTAMP;
 `;
 
     sqlStatements += insertModelQuery + '\n' + insertVariantQuery + '\n';

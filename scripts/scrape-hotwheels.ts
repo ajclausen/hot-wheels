@@ -9,8 +9,8 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 // Load environment variables from .dev.vars
 dotenv.config({ path: '.dev.vars' });
 
-const LIST_PAGE_URL = 'https://hotwheels.fandom.com/wiki/List_of_2019_Hot_Wheels_new_castings';
-const IMAGE_CACHE_DIR = './test-image-cache';
+const CATEGORY_PAGE_URL = 'https://hotwheels.fandom.com/wiki/Category:2024_Hot_Wheels';
+const IMAGE_CACHE_DIR = './image-cache';
 const R2_BUCKET_URL = process.env.R2_PUBLIC_URL || 'https://your-r2-bucket-url';
 
 interface HotWheelsVariant {
@@ -34,13 +34,17 @@ interface HotWheelsVariant {
 async function setupBrowser() {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
-    userAgent: 'HotWheelsCollector/1.0 (Testing)',
+    userAgent: 'HotWheelsCollector/1.0 (Scraping)',
   });
   return { browser, context };
 }
 
+function normalizeString(str: string | null | undefined): string {
+  return str ? str.trim().toLowerCase() : '';
+}
+
 function generateId(variant: Partial<HotWheelsVariant>, castingName: string): string {
-  const idString = `${castingName}-${variant.year}-${variant.collectionNumber}-${variant.color}-${variant.toyNumber}`.toLowerCase();
+  const idString = `${normalizeString(castingName)}-${normalizeString(variant.toyNumber)}`;
   return crypto.createHash('md5').update(idString).digest('hex').slice(0, 16);
 }
 
@@ -105,7 +109,7 @@ async function uploadToR2(buffer: Buffer, modelId: string): Promise<string> {
 async function processImage(imageUrl: string, modelId: string): Promise<string> {
   if (!imageUrl || imageUrl.startsWith('data:') || imageUrl.includes('Image_Not_Available')) {
     console.log(`Skipping invalid image URL for ${modelId}: ${imageUrl}`);
-    return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+    return ''; // Return empty string to indicate missing image
   }
 
   try {
@@ -152,8 +156,42 @@ async function processImage(imageUrl: string, modelId: string): Promise<string> 
     return r2Url;
   } catch (error) {
     console.error(`Error processing image for ${modelId}:`, error);
-    return 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3';
+    return ''; // Return empty string to indicate missing image
   }
+}
+
+async function getAllModelUrls(page): Promise<string[]> {
+  let modelUrls = new Set<string>();
+  let nextPageUrl = CATEGORY_PAGE_URL;
+
+  while (nextPageUrl) {
+    console.log(`Navigating to category page: ${nextPageUrl}`);
+    await page.goto(nextPageUrl, { waitUntil: 'networkidle' });
+
+    const urls = await page.evaluate(() => {
+      const links = Array.from(document.querySelectorAll('.category-page__member-link'));
+      return links.map((link) => link.href);
+    });
+
+    urls.forEach((url) => modelUrls.add(url));
+
+    // Check for pagination
+    const hasNextPage = await page.evaluate(() => {
+      const nextLink = document.querySelector('.category-page__pagination-next');
+      return nextLink ? nextLink.getAttribute('href') : null;
+    });
+
+    if (hasNextPage) {
+      nextPageUrl = hasNextPage;
+      if (!nextPageUrl.startsWith('http')) {
+        nextPageUrl = `https://hotwheels.fandom.com${nextPageUrl}`;
+      }
+    } else {
+      nextPageUrl = null;
+    }
+  }
+
+  return Array.from(modelUrls);
 }
 
 async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheelsVariant[]> {
@@ -178,84 +216,83 @@ async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheel
 
     // Get variants from the versions table
     const variants = await page.evaluate(() => {
-      const table = document.querySelector('table.wikitable');
-      if (!table) return [];
-
-      const rows = Array.from(table.querySelectorAll('tr'));
+      const tables = Array.from(document.querySelectorAll('table.wikitable'));
       const variants = [];
 
-      rows.forEach((row, rowIndex) => {
-        const cells = Array.from(row.querySelectorAll('td, th'));
+      tables.forEach((table) => {
+        const rows = Array.from(table.querySelectorAll('tr'));
 
-        // Skip header rows
-        if (cells[0]?.textContent.trim() === 'Col #' || cells[0]?.textContent.trim() === 'Year') {
-          console.log(`Row ${rowIndex} is a header row. Skipping.`);
-          return;
-        }
+        rows.forEach((row, rowIndex) => {
+          const cells = Array.from(row.querySelectorAll('td, th'));
 
-        // Only process rows with at least one 'td' cell
-        if (cells.length === 0 || row.querySelectorAll('td').length === 0) {
-          console.log(`Row ${rowIndex} has no data cells. Skipping.`);
-          return;
-        }
-
-        // Extract data safely using optional chaining
-        const collectionNumber = cells[0]?.textContent?.trim() || '';
-        const yearText = cells[1]?.textContent?.trim() || '';
-        const year = parseInt(yearText, 10) || new Date().getFullYear();
-        const seriesCell = cells[2]?.textContent?.trim() || '';
-        const color = cells[3]?.textContent?.trim() || '';
-        const tampos = cells[4]?.innerHTML || '';
-        const baseColor = cells[5]?.textContent?.trim() || '';
-        const windowColor = cells[6]?.textContent?.trim() || '';
-        const interiorColor = cells[7]?.textContent?.trim() || '';
-        const wheelType = cells[8]?.textContent?.trim() || '';
-        const toyNumber = cells[9]?.textContent?.trim() || '';
-        const countryMade = cells[10]?.textContent?.trim() || '';
-
-        // Handle series and series number
-        const seriesMatch = seriesCell.match(/^(.*?)(\d+\/\d+)?$/);
-        const series = seriesMatch ? seriesMatch[1].trim() : seriesCell;
-        const seriesNumber = seriesMatch ? seriesMatch[2] || '' : '';
-
-        // Get image URL
-        const imageCell = cells[cells.length - 1];
-        const imageElement = imageCell?.querySelector('img');
-        let imageUrl = '';
-
-        if (imageElement) {
-          const fullSizeLink = imageElement.closest('a');
-          imageUrl = fullSizeLink?.href || '';
-
-          // If no href, try data-src or src
-          if (!imageUrl) {
-            imageUrl =
-              imageElement.getAttribute('data-src') || imageElement.getAttribute('src') || '';
+          // Skip header rows
+          if (cells[0]?.textContent.trim() === 'Col #' || cells[0]?.textContent.trim() === 'Year') {
+            return;
           }
 
-          // Clean up image URL
-          if (imageUrl) {
-            imageUrl = imageUrl.split('#')[0];
-            if (!imageUrl.includes('revision/latest')) {
-              imageUrl = `${imageUrl}/revision/latest`;
+          // Only process rows with at least one 'td' cell
+          if (cells.length === 0 || row.querySelectorAll('td').length === 0) {
+            return;
+          }
+
+          // Extract data safely using optional chaining
+          const collectionNumber = cells[0]?.textContent?.trim() || '';
+          const yearText = cells[1]?.textContent?.trim() || '';
+          const year = parseInt(yearText, 10) || new Date().getFullYear();
+          const seriesCell = cells[2]?.textContent?.trim() || '';
+          const color = cells[3]?.textContent?.trim() || '';
+          const tampos = cells[4]?.innerHTML || '';
+          const baseColor = cells[5]?.textContent?.trim() || '';
+          const windowColor = cells[6]?.textContent?.trim() || '';
+          const interiorColor = cells[7]?.textContent?.trim() || '';
+          const wheelType = cells[8]?.textContent?.trim() || '';
+          const toyNumber = cells[9]?.textContent?.trim() || '';
+          const countryMade = cells[10]?.textContent?.trim() || '';
+
+          // Handle series and series number
+          const seriesMatch = seriesCell.match(/^(.*?)(\d+\/\d+)?$/);
+          const series = seriesMatch ? seriesMatch[1].trim() : seriesCell;
+          const seriesNumber = seriesMatch ? seriesMatch[2] || '' : '';
+
+          // Get image URL
+          const imageCell = cells[cells.length - 1];
+          const imageElement = imageCell?.querySelector('img');
+          let imageUrl = '';
+
+          if (imageElement) {
+            const fullSizeLink = imageElement.closest('a');
+            imageUrl = fullSizeLink?.href || '';
+
+            // If no href, try data-src or src
+            if (!imageUrl) {
+              imageUrl =
+                imageElement.getAttribute('data-src') || imageElement.getAttribute('src') || '';
+            }
+
+            // Clean up image URL
+            if (imageUrl) {
+              imageUrl = imageUrl.split('#')[0];
+              if (!imageUrl.includes('revision/latest')) {
+                imageUrl = `${imageUrl}/revision/latest`;
+              }
             }
           }
-        }
 
-        variants.push({
-          collectionNumber,
-          year,
-          series,
-          seriesNumber,
-          color,
-          tampos,
-          baseColor,
-          windowColor,
-          interiorColor,
-          wheelType,
-          toyNumber,
-          countryMade,
-          image_url: imageUrl,
+          variants.push({
+            collectionNumber,
+            year,
+            series,
+            seriesNumber,
+            color,
+            tampos,
+            baseColor,
+            windowColor,
+            interiorColor,
+            wheelType,
+            toyNumber,
+            countryMade,
+            image_url: imageUrl,
+          });
         });
       });
 
@@ -279,15 +316,19 @@ async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheel
         continue;
       }
 
-      console.log(`Processing variant: ${variant.collectionNumber} (${variant.color})`);
-      console.log(`Original image URL: ${variant.image_url}`);
+      const castingName = castingInfo.name || '';
+      const id = generateId(variant, castingName);
 
-      const id = generateId(variant, castingInfo.name || '');
-      const processedImageUrl = await processImage(variant.image_url, id);
+      // Check if image_url is missing or needs updating
+      let processedImageUrl = variant.image_url;
+      if (!processedImageUrl || processedImageUrl.includes('Image_Not_Available')) {
+        // Try to fetch the image again
+        processedImageUrl = await processImage(variant.image_url, id);
+      }
 
       const fullVariant: HotWheelsVariant = {
         id,
-        castingName: castingInfo.name || '',
+        castingName,
         collectionNumber: variant.collectionNumber,
         series: variant.series,
         seriesNumber: variant.seriesNumber,
@@ -317,28 +358,13 @@ async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheel
   }
 }
 
-async function testScrape() {
+async function scrapeHotWheels() {
   const { browser, context } = await setupBrowser();
   const page = await context.newPage();
 
   try {
-    console.log('Starting test scrape...');
-    await page.goto(LIST_PAGE_URL, { waitUntil: 'networkidle' });
-
-    // Extract model URLs from the list page
-    const modelUrls = await page.evaluate(() => {
-      const tableRows = Array.from(document.querySelectorAll('table.wikitable tbody tr'));
-      const urls = [];
-
-      tableRows.forEach((row) => {
-        const link = row.querySelector('td a');
-        if (link && link.href.includes('/wiki/')) {
-          urls.push(link.href);
-        }
-      });
-
-      return urls;
-    });
+    console.log('Starting scrape...');
+    const modelUrls = await getAllModelUrls(page);
 
     console.log(`Found ${modelUrls.length} model URLs`);
 
@@ -354,13 +380,13 @@ async function testScrape() {
     await fs.writeFile(resultsPath, JSON.stringify(allVariants, null, 2));
     console.log(`\nSaved results to ${resultsPath}`);
     console.log('\nTo import to D1, run:');
-    console.log('wrangler d1 execute hotwheels-collection --file=./migrations/03_import_scrape.sql');
+    console.log('wrangler d1 execute hotwheels-collection --file=./import-data.sql');
   } catch (error) {
-    console.error('Error during test scrape:', error);
+    console.error('Error during scrape:', error);
   } finally {
     await browser.close();
   }
 }
 
-// Run the test
-testScrape().catch(console.error);
+// Run the scraper
+scrapeHotWheels().catch(console.error);

@@ -25,12 +25,30 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMod
   const [models, setModels] = useState<ModelVariant[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [years, setYears] = useState<number[]>([]);
+  const [series, setSeries] = useState<string[]>([]);
+  const [colors, setColors] = useState<string[]>([]);
   const [filters, setFilters] = useState({
     year: '',
     series: '',
     color: '',
     sort: 'name-asc'
   });
+
+  // Fetch filter options
+  useEffect(() => {
+    const fetchFilterOptions = async () => {
+      try {
+        const { data } = await axios.get('/api/models/filters');
+        setYears(data.years || []);
+        setSeries(data.series || []);
+        setColors(data.colors || []);
+      } catch (error) {
+        console.error('Error fetching filter options:', error);
+      }
+    };
+    fetchFilterOptions();
+  }, []);
 
   const handleToggleOwned = async (id: string) => {
     setModels(prevModels => 
@@ -58,6 +76,7 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMod
       if (searchQuery) params.append('search', searchQuery);
       if (filters.year) params.append('year', filters.year);
       if (filters.series) params.append('series', filters.series);
+      if (filters.color) params.append('color', filters.color);
 
       const { data } = await axios.get(`/api/models?${params}`);
       
@@ -147,9 +166,9 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMod
           <SearchFilters
             filters={filters}
             onFilterChange={setFilters}
-            years={[2024, 2023, 2022, 2021, 2020]}
-            series={[]}
-            colors={[]}
+            years={years}
+            series={series}
+            colors={colors}
           />
         )}
       </div>

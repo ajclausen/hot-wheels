@@ -20,7 +20,7 @@ export function SearchFilters({ filters, onFilterChange, years, series, colors }
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-lg mb-4"
+      className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg"
     >
       <div className="space-y-2">
         <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Year</label>

@@ -425,4 +425,37 @@ app.put('/api/collection/:variantId', async (c) => {
   }
 });
 
+app.get('/api/models/filters', async (c) => {
+  try {
+    const yearsQuery = await c.env.DB.prepare(`
+      SELECT DISTINCT year 
+      FROM model_variants 
+      ORDER BY year DESC
+    `).all();
+
+    const seriesQuery = await c.env.DB.prepare(`
+      SELECT DISTINCT series 
+      FROM model_variants 
+      WHERE series IS NOT NULL 
+      ORDER BY series ASC
+    `).all();
+
+    const colorsQuery = await c.env.DB.prepare(`
+      SELECT DISTINCT color 
+      FROM model_variants 
+      WHERE color IS NOT NULL 
+      ORDER BY color ASC
+    `).all();
+
+    return c.json({
+      years: yearsQuery.results.map(r => r.year),
+      series: seriesQuery.results.map(r => r.series),
+      colors: colorsQuery.results.map(r => r.color)
+    });
+  } catch (error) {
+    console.error('Error fetching filter options:', error);
+    return c.json({ error: 'Failed to fetch filter options' }, 500);
+  }
+});
+
 export const onRequest = handle(app);

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import axios, { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
+import api from '../lib/api';
 import type { User, AuthContextType } from '../types';
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -7,17 +8,21 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const { data } = await axios.get('/api/auth/me');
+        const { data } = await api.get('/auth/me');
         if (data.user) {
           setUser(data.user);
         }
       } catch (err) {
-        console.error('Auth check failed:', err);
+        console.log('User not authenticated (this is normal for guests)');
+      } finally {
+        setLoading(false);
+        setInitialized(true);
       }
     };
     checkAuth();
@@ -27,16 +32,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setError(null);
       setLoading(true);
-      const { data } = await axios.post('/api/auth/login', {
+      const { data } = await api.post('/auth/login', {
         email,
         password
-      }, {
-        withCredentials: true
       });
       setUser(data.user);
     } catch (err) {
       const axiosError = err as AxiosError<{ error: string }>;
-      setError(axiosError.response?.data?.error || 'Login failed');
+      const errorMessage = axiosError.response?.data?.error || 'Login failed';
+      console.error('Login error:', errorMessage);
+      setError(errorMessage);
       throw err;
     } finally {
       setLoading(false);
@@ -47,17 +52,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setError(null);
       setLoading(true);
-      const { data } = await axios.post('/api/auth/register', {
+      const { data } = await api.post('/auth/register', {
         username,
         email,
         password
-      }, {
-        withCredentials: true
       });
       setUser(data.user);
     } catch (err) {
       const axiosError = err as AxiosError<{ error: string }>;
-      setError(axiosError.response?.data?.error || 'Registration failed');
+      const errorMessage = axiosError.response?.data?.error || 'Registration failed';
+      console.error('Registration error:', errorMessage, axiosError.response?.data);
+      setError(errorMessage);
       throw err;
     } finally {
       setLoading(false);
@@ -66,7 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     try {
-      await axios.post('/api/auth/logout', {}, { withCredentials: true });
+      await api.post('/auth/logout');
       setUser(null);
       setError(null);
     } catch (err) {
@@ -77,6 +82,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const updateUser = (updatedUser: User) => {
     setUser(updatedUser);
   };
+
+  if (!initialized) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <AuthContext.Provider value={{ 

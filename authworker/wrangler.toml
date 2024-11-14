@@ -1,0 +1,19 @@
+name = "authworker"
+main = "src/auth.ts"
+compatibility_date = "2024-02-14"
+
+# Add your custom domain
+routes = [
+  { pattern = "access.clausen.app", custom_domain = true }
+]
+
+# Add your D1 database
+[[d1_databases]]
+binding = "DB"
+database_name = "hotwheels-collection-dev"
+database_id = "2797cf2b-1805-4d09-8678-ef6f8ef8813d"  # Get this from Cloudflare dashboard
+
+[vars]
+ENVIRONMENT = "development"
+
+# Don't put JWT_SECRET here - it's managed through the Cloudflare dashboard

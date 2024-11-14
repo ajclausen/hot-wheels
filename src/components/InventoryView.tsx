@@ -28,15 +28,18 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
     sort: 'name-asc'
   });
 
+  // Get unique values for filters
   const uniqueYears = [...new Set(models.map(m => m.year))].sort((a, b) => b - a);
   const uniqueSeries = [...new Set(models.map(m => m.series))].sort();
   const uniqueColors = [...new Set(models.map(m => m.color))].sort();
 
+  // Filter models based on search and filters
   const filteredModels = models.filter(model => {
     const matchesSearch = searchQuery
       ? model.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         model.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        model.collection_number?.toLowerCase().includes(searchQuery.toLowerCase())
+        model.collection_number?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        model.toy_number?.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
 
     const matchesYear = !filters.year || model.year.toString() === filters.year;
@@ -46,14 +49,13 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
     return matchesSearch && matchesYear && matchesSeries && matchesColor;
   });
 
+  // Sort filtered models
   const sortedModels = [...filteredModels].sort((a, b) => {
     switch (filters.sort) {
       case 'newest':
         return b.year - a.year;
       case 'oldest':
         return a.year - b.year;
-      case 'name-asc':
-        return a.name.localeCompare(b.name);
       case 'name-desc':
         return b.name.localeCompare(a.name);
       case 'series':
@@ -63,8 +65,9 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
         const aNum = parseInt((a.collection_number || '').replace(/\D/g, '')) || 0;
         const bNum = parseInt((b.collection_number || '').replace(/\D/g, '')) || 0;
         return aNum - bNum;
+      case 'name-asc':
       default:
-        return 0;
+        return a.name.localeCompare(b.name);
     }
   });
 
@@ -82,40 +85,25 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
   };
 
   const renderModel = (model: ModelVariant) => {
+    const props = {
+      key: model.id,
+      model: { ...model, owned: true }, // In inventory, all models are owned
+      onToggleOwned,
+      onClick: () => setSelectedModel(model)
+    };
+
     switch (viewMode) {
       case 'compact':
-        return (
-          <ModelCompact
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
+        return <ModelCompact {...props} />;
       case 'list':
-        return (
-          <ModelList
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
+        return <ModelList {...props} />;
       default:
-        return (
-          <ModelCard
-            key={model.id}
-            model={model}
-            onToggleOwned={onToggleOwned}
-            onEditNotes={onEditNotes}
-            onClick={() => setSelectedModel(model)}
-          />
-        );
+        return <ModelCard {...props} onEditNotes={onEditNotes} />;
     }
   };
 
   return (
-    <div className="pb-20">
+    <div className="min-h-screen pb-20">
       <div className="sticky top-0 bg-gray-100 dark:bg-gray-900 pt-4 pb-2 z-10 px-4">
         <div className="flex gap-4 mb-4">
           <div className="flex-1">
@@ -167,7 +155,7 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
 
       {selectedModel && (
         <ModelDetailsModal
-          model={selectedModel}
+          model={{ ...selectedModel, owned: true }}
           isOpen={true}
           onClose={() => setSelectedModel(null)}
           onToggleOwned={onToggleOwned}

@@ -3,7 +3,6 @@ import { handle } from 'hono/cloudflare-pages';
 import { cors } from 'hono/cors';
 import { decode } from 'hono/jwt';
 import { z } from 'zod';
-import { modelVariantSchema } from '../../src/types';
 
 type Bindings = {
   DB: D1Database;
@@ -176,11 +175,21 @@ app.get('/api/models', async (c) => {
 
   try {
     let query = `
+      WITH SearchTerms AS (
+        SELECT value as term
+        FROM json_each(json_array(${
+          search 
+            ? search.toLowerCase().split(/\s+/).map(term => `'${term}'`).join(', ')
+            : ''
+        }))
+      )
       SELECT 
         mv.*,
         m.name,
+        m.designer,
         CASE WHEN uc.variant_id IS NOT NULL THEN 1 ELSE 0 END as owned,
         uc.notes,
+        uc.status,
         uc.acquired_date,
         COUNT(*) OVER() as total_count
       FROM model_variants mv
@@ -193,29 +202,19 @@ app.get('/api/models', async (c) => {
 
     const params: any[] = [user.id];
 
-    // Add filters
+    // Add search filter
     if (search) {
-      const terms = search.toLowerCase().split(/\s+/).filter(Boolean);
-      
-      if (terms.length > 0) {
-        query += ` AND (`;
-        const searchConditions = terms.map((term, index) => {
-          const paramPlaceholders = [
-            `LOWER(m.name) LIKE ?`,
-            `LOWER(mv.series) LIKE ?`,
-            `LOWER(mv.collection_number) LIKE ?`,
-            `CAST(mv.year AS TEXT) = ?`
-          ];
-          
-          const termParam = `%${term}%`;
-          params.push(termParam, termParam, termParam, term);
-          
-          return `(${paramPlaceholders.join(' OR ')})`;
-        });
-        
-        query += searchConditions.join(' AND ');
-        query += `)`;
-      }
+      query += `
+        AND (
+          SELECT COUNT(*) FROM SearchTerms
+          WHERE (
+            LOWER(m.name) LIKE '%' || term || '%'
+            OR LOWER(mv.series) LIKE '%' || term || '%'
+            OR LOWER(mv.collection_number) LIKE '%' || term || '%'
+            OR CAST(mv.year AS TEXT) = term
+          )
+        ) = (SELECT COUNT(*) FROM SearchTerms)
+      `;
     }
 
     if (year) {
@@ -288,7 +287,9 @@ app.get('/api/collection', async (c) => {
       SELECT 
         mv.*,
         m.name,
+        m.designer,
         uc.notes,
+        uc.status,
         uc.acquired_date
       FROM model_variants mv
       JOIN models m ON mv.model_id = m.id
@@ -314,12 +315,12 @@ app.get('/api/collection', async (c) => {
 app.post('/api/collection/:variantId', async (c) => {
   const user = c.get('user');
   const variantId = c.req.param('variantId');
-  const { notes = '' } = await c.req.json();
+  const { notes = '', status = 'owned' } = await c.req.json();
 
   try {
     // First verify the variant exists
     const { results: [variant] } = await c.env.DB.prepare(`
-      SELECT mv.*, m.name
+      SELECT mv.*, m.name, m.designer
       FROM model_variants mv
       JOIN models m ON mv.model_id = m.id
       WHERE mv.id = ?
@@ -333,16 +334,17 @@ app.post('/api/collection/:variantId', async (c) => {
 
     // Add to collection
     await c.env.DB.prepare(`
-      INSERT INTO user_collections (user_id, variant_id, notes)
-      VALUES (?, ?, ?)
+      INSERT INTO user_collections (user_id, variant_id, notes, status)
+      VALUES (?, ?, ?, ?)
     `)
-    .bind(user.id, variantId, notes)
+    .bind(user.id, variantId, notes, status)
     .run();
 
     return c.json({
       ...variant,
       tampos: variant.tampos ? JSON.parse(variant.tampos) : [],
       notes,
+      status,
       owned: true,
       acquired_date: new Date().toISOString()
     });
@@ -372,25 +374,36 @@ app.delete('/api/collection/:variantId', async (c) => {
   }
 });
 
-// Update variant notes
-app.put('/api/collection/:variantId/notes', async (c) => {
+// Update variant notes or status
+app.put('/api/collection/:variantId', async (c) => {
   const user = c.get('user');
   const variantId = c.req.param('variantId');
-  const { notes = '' } = await c.req.json();
+  const { notes, status } = await c.req.json();
 
   try {
-    await c.env.DB.prepare(`
-      UPDATE user_collections
-      SET notes = ?
-      WHERE user_id = ? AND variant_id = ?
-    `)
-    .bind(notes, user.id, variantId)
-    .run();
+    let query = 'UPDATE user_collections SET';
+    const params = [];
+
+    if (notes !== undefined) {
+      query += ' notes = ?,';
+      params.push(notes);
+    }
+
+    if (status !== undefined) {
+      query += ' status = ?,';
+      params.push(status);
+    }
+
+    // Remove trailing comma and add WHERE clause
+    query = query.slice(0, -1) + ' WHERE user_id = ? AND variant_id = ?';
+    params.push(user.id, variantId);
+
+    await c.env.DB.prepare(query).bind(...params).run();
 
     return c.json({ success: true });
   } catch (error) {
-    console.error('Update notes error:', error);
-    return c.json({ error: 'Failed to update notes' }, 500);
+    console.error('Update collection error:', error);
+    return c.json({ error: 'Failed to update collection item' }, 500);
   }
 });
 

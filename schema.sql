@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS models (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
   debut_series TEXT,
+  designer TEXT,
   created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -56,16 +57,24 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_model_variants_unique ON model_variants (
   toy_number
 );
 
+-- Create indexes on frequently queried columns
+CREATE INDEX IF NOT EXISTS idx_model_variants_year ON model_variants(year);
+CREATE INDEX IF NOT EXISTS idx_model_variants_series ON model_variants(series);
+
 -- Create user_collections table
 CREATE TABLE IF NOT EXISTS user_collections (
   user_id TEXT NOT NULL,
   variant_id TEXT NOT NULL,
   notes TEXT,
+  status TEXT,
   acquired_date TEXT DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (user_id, variant_id),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (variant_id) REFERENCES model_variants(id)
 );
+
+-- Create index on user_collections variant_id
+CREATE INDEX IF NOT EXISTS idx_user_collections_variant ON user_collections(variant_id);
 
 -- Create triggers
 CREATE TRIGGER IF NOT EXISTS update_user_timestamp 

@@ -14,16 +14,31 @@ function generateSQL() {
   const data = JSON.parse(fs.readFileSync('scrape-results.json', 'utf8'));
   let sqlStatements = '';
 
+  // Add indexes and schema updates at the beginning
+  sqlStatements += `
+-- Add designer column to models table if not exists
+ALTER TABLE models ADD COLUMN IF NOT EXISTS designer TEXT;
+
+-- Add status column to user_collections table if not exists
+ALTER TABLE user_collections ADD COLUMN IF NOT EXISTS status TEXT;
+
+-- Create indexes on frequently queried columns
+CREATE INDEX IF NOT EXISTS idx_model_variants_year ON model_variants(year);
+CREATE INDEX IF NOT EXISTS idx_model_variants_series ON model_variants(series);
+CREATE INDEX IF NOT EXISTS idx_user_collections_variant ON user_collections(variant_id);
+`;
+
   for (const item of data) {
     // Normalize data
     const castingName = normalizeString(item.castingName);
     const collectionNumber = normalizeString(item.collectionNumber || '');
     const color = normalizeString(item.color || '');
     const toyNumber = normalizeString(item.toyNumber || 'unknown');
+    const designer = normalizeString(item.designer || 'unknown');
 
     // Generate IDs
     const modelId = crypto.createHash('md5').update(`${castingName}`).digest('hex').slice(0, 16);
-    const variantId = crypto.createHash('md5').update(`${modelId}-${collectionNumber}-${color}-${toyNumber}`).digest('hex').slice(0, 16);
+    const variantId = crypto.createHash('md5').update(`${modelId}-${toyNumber}`).digest('hex').slice(0, 16);
 
     // Prepare other values
     const series = escapeString(item.series);
@@ -42,13 +57,17 @@ function generateSQL() {
 INSERT INTO models (
   id,
   name,
-  debut_series
+  debut_series,
+  designer
 ) VALUES (
   ${escapeString(modelId)},
   ${escapeString(castingName)},
-  ${series}
+  ${series},
+  ${escapeString(designer)}
 )
-ON CONFLICT(id) DO NOTHING;
+ON CONFLICT(id) DO UPDATE SET
+  debut_series = excluded.debut_series,
+  designer = excluded.designer;
 `;
 
     const insertVariantQuery = `

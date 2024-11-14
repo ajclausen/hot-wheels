@@ -29,6 +29,7 @@ interface HotWheelsVariant {
   countryMade: string;
   toyNumber: string;
   image_url: string;
+  designer: string;
 }
 
 async function setupBrowser() {
@@ -201,14 +202,14 @@ async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheel
     console.log(`Navigating to model page: ${modelUrl}`);
     await page.goto(modelUrl, { waitUntil: 'networkidle' });
 
-    // Get basic casting info
+    // Get basic casting info, including designer
     const castingInfo = await page.evaluate(() => {
       const infobox = document.querySelector('.portable-infobox');
 
       return {
         name: document.querySelector('.page-header__title')?.textContent?.trim(),
         debutSeries: infobox?.querySelector('[data-source="series"] .pi-data-value')?.textContent?.trim(),
-        designer: infobox?.querySelector('[data-source="designer"] .pi-data-value')?.textContent?.trim(),
+        designer: infobox?.querySelector('[data-source="designer"] .pi-data-value')?.textContent?.trim() || 'Unknown',
       };
     });
 
@@ -319,12 +320,8 @@ async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheel
       const castingName = castingInfo.name || '';
       const id = generateId(variant, castingName);
 
-      // Check if image_url is missing or needs updating
-      let processedImageUrl = variant.image_url;
-      if (!processedImageUrl || processedImageUrl.includes('Image_Not_Available')) {
-        // Try to fetch the image again
-        processedImageUrl = await processImage(variant.image_url, id);
-      }
+      // Process and upload the image
+      const processedImageUrl = await processImage(variant.image_url, id);
 
       const fullVariant: HotWheelsVariant = {
         id,
@@ -342,6 +339,7 @@ async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheel
         countryMade: variant.countryMade || 'Unknown',
         toyNumber: variant.toyNumber || 'Unknown',
         image_url: processedImageUrl,
+        designer: castingInfo.designer || 'Unknown',
       };
 
       processedVariants.push(fullVariant);
@@ -380,7 +378,7 @@ async function scrapeHotWheels() {
     await fs.writeFile(resultsPath, JSON.stringify(allVariants, null, 2));
     console.log(`\nSaved results to ${resultsPath}`);
     console.log('\nTo import to D1, run:');
-    console.log('wrangler d1 execute hotwheels-collection --file=./import-data.sql');
+    console.log('wrangler d1 execute hotwheels-collection --file=./import-data.sql --remote');
   } catch (error) {
     console.error('Error during scrape:', error);
   } finally {

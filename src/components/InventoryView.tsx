@@ -7,20 +7,20 @@ import { ModelDetailsModal } from './ModelDetailsModal';
 import type { ModelVariant } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
-import { ViewToggle, type ViewMode } from './ViewToggle';
+import type { ViewMode } from './ViewToggle';
 
 interface InventoryViewProps {
   models: ModelVariant[];
   onToggleOwned: (id: string) => void;
   onEditNotes: (id: string) => void;
   onOpenSearch: () => void;
+  viewMode: ViewMode;
 }
 
-export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch }: InventoryViewProps) {
+export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch, viewMode }: InventoryViewProps) {
   const [showFilters, setShowFilters] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [filters, setFilters] = useState({
     year: '',
     series: '',
@@ -114,9 +114,6 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
             filterActive={showFilters}
             onFilterClick={() => setShowFilters(!showFilters)}
           />
-          <div className="flex justify-end">
-            <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
-          </div>
         </div>
 
         {showFilters && (

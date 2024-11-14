@@ -72,7 +72,7 @@ export function StatisticsView({ models, userModels, totalModelsCount }: Statist
   }, [models, userModels, totalModelsCount]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 pb-20">
+    <div className="max-w-7xl mx-auto px-4 pb-20 pt-6">
       {/* Main Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors">

@@ -7,7 +7,6 @@ import { ModelDetailsModal } from './ModelDetailsModal';
 import { ModelCard } from './ModelCard';
 import { ModelList } from './ModelList';
 import { ModelCompact } from './ModelCompact';
-import { ViewToggle } from './ViewToggle';
 import type { ViewMode } from './ViewToggle';
 import axios from 'axios';
 
@@ -15,13 +14,13 @@ interface SearchViewProps {
   onToggleOwned: (id: string) => void;
   onEditNotes: (id: string) => void;
   searchInputRef?: React.RefObject<HTMLInputElement>;
+  viewMode: ViewMode;
 }
 
-export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: SearchViewProps) {
+export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMode }: SearchViewProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [selectedModel, setSelectedModel] = useState<ModelVariant | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [loading, setLoading] = useState(false);
   const [models, setModels] = useState<ModelVariant[]>([]);
   const [page, setPage] = useState(1);
@@ -142,9 +141,6 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
             onFilterClick={() => setShowFilters(!showFilters)}
             placeholder="Search all Hot Wheels models..."
           />
-          <div className="flex justify-end">
-            <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
-          </div>
         </div>
 
         {showFilters && (

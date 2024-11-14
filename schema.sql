@@ -49,12 +49,14 @@ CREATE TABLE IF NOT EXISTS model_variants (
   FOREIGN KEY (model_id) REFERENCES models(id)
 );
 
--- Create unique index on model_variants
+-- Create unique index on model_variants that includes year and series
 CREATE UNIQUE INDEX IF NOT EXISTS idx_model_variants_unique ON model_variants (
   model_id,
   collection_number,
   color,
-  toy_number
+  toy_number,
+  year,
+  series
 );
 
 -- Create indexes on frequently queried columns

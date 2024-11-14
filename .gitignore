@@ -19,6 +19,7 @@ r2-delete.js
 r2-config.json
 skipped-entries.json
 generate-data.sql
+scrape-save
 
 # Environment files
 .env

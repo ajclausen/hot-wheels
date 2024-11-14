@@ -4,7 +4,7 @@ compatibility_date = "2024-02-20"
 [[d1_databases]]
 binding = "DB"
 database_name = "hotwheels-collection"
-database_id = "e7771725-3a60-4cf5-9087-b18b5dbd1987"
+database_id = "47ebe64b-d99a-46b9-8ed1-680df6367403"
 
 [[r2_buckets]]
 binding = "BUCKET"

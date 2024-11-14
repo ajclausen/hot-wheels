@@ -1,82 +1,72 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from 'react';
-import { User } from '../types';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import axios from 'axios';
+import type { User } from '../types';
 
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
-  register: (
-    username: string,
-    email: string,
-    password: string
-  ) => Promise<void>;
+  register: (username: string, email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   error: string | null;
 }
 
-export const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Check auth status on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const { data } = await axios.get('/api/auth/me');
+        if (data.user) {
+          setUser(data.user);
+        }
+      } catch (err) {
+        console.error('Auth check failed:', err);
+      }
+    };
+    checkAuth();
+  }, []);
+
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-        credentials: 'include',
-      });
-
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-
-      const userData = await response.json();
-      setUser(userData);
       setError(null);
+      const { data } = await axios.post('/api/auth/login', {
+        email,
+        password
+      }, {
+        withCredentials: true
+      });
+      setUser(data.user);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed');
+      setError(err.response?.data?.error || 'Login failed');
+      throw err;
     }
   };
 
-  const register = async (
-    username: string,
-    email: string,
-    password: string
-  ) => {
+  const register = async (username: string, email: string, password: string) => {
     try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password }),
-        credentials: 'include',
-      });
-
-      if (!response.ok) {
-        throw new Error('Registration failed');
-      }
-
-      const userData = await response.json();
-      setUser(userData);
       setError(null);
+      const { data } = await axios.post('/api/auth/register', {
+        username,
+        email,
+        password
+      }, {
+        withCredentials: true
+      });
+      setUser(data.user);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Registration failed');
+      setError(err.response?.data?.error || 'Registration failed');
+      throw err;
     }
   };
 
   const logout = async () => {
     try {
-      await fetch('/api/auth/logout', {
-        method: 'POST',
-        credentials: 'include',
-      });
+      await axios.post('/api/auth/logout', {}, { withCredentials: true });
       setUser(null);
       setError(null);
     } catch (err) {

@@ -2,7 +2,6 @@ import { Hono } from 'hono';
 import { handle } from 'hono/cloudflare-pages';
 import { cors } from 'hono/cors';
 import { decode } from 'hono/jwt';
-import { z } from 'zod';
 
 type Bindings = {
   DB: D1Database;
@@ -176,12 +175,13 @@ app.get('/api/models', async (c) => {
   try {
     let query = `
       WITH SearchTerms AS (
-        SELECT value as term
+        SELECT DISTINCT LOWER(TRIM(value)) as term
         FROM json_each(json_array(${
           search 
             ? search.toLowerCase().split(/\s+/).map(term => `'${term}'`).join(', ')
             : ''
         }))
+        WHERE LENGTH(TRIM(value)) > 0
       )
       SELECT 
         mv.*,
@@ -202,18 +202,26 @@ app.get('/api/models', async (c) => {
 
     const params: any[] = [user.id];
 
-    // Add search filter
+    // Add search filter with exact matching for year and more precise text matching
     if (search) {
       query += `
         AND (
           SELECT COUNT(*) FROM SearchTerms
+        ) = (
+          SELECT COUNT(*) FROM SearchTerms st
           WHERE (
-            LOWER(m.name) LIKE '%' || term || '%'
-            OR LOWER(mv.series) LIKE '%' || term || '%'
-            OR LOWER(mv.collection_number) LIKE '%' || term || '%'
-            OR CAST(mv.year AS TEXT) = term
+            -- Exact match for year
+            CAST(mv.year AS TEXT) = st.term
+            -- Start of name words
+            OR LOWER(m.name) LIKE st.term || '%'
+            OR LOWER(m.name) LIKE '% ' || st.term || '%'
+            -- Start of series words
+            OR LOWER(mv.series) LIKE st.term || '%'
+            OR LOWER(mv.series) LIKE '% ' || st.term || '%'
+            -- Exact match for collection number
+            OR LOWER(mv.collection_number) = st.term
           )
-        ) = (SELECT COUNT(*) FROM SearchTerms)
+        )
       `;
     }
 

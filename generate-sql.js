@@ -14,15 +14,46 @@ function generateSQL() {
   const data = JSON.parse(fs.readFileSync('cleaned-scrape-results.json', 'utf8'));
   let sqlStatements = '';
 
-  // Add indexes and schema updates at the beginning
+  // Simple CREATE TABLE statements instead of ALTER TABLE
   sqlStatements += `
--- Add designer column to models table if not exists
-ALTER TABLE models ADD COLUMN IF NOT EXISTS designer TEXT;
+-- Create tables if they don't exist
+CREATE TABLE IF NOT EXISTS models (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  debut_series TEXT,
+  designer TEXT
+);
 
--- Add status column to user_collections table if not exists
-ALTER TABLE user_collections ADD COLUMN IF NOT EXISTS status TEXT;
+CREATE TABLE IF NOT EXISTS model_variants (
+  id TEXT PRIMARY KEY,
+  model_id TEXT NOT NULL,
+  collection_number TEXT,
+  series TEXT,
+  series_number TEXT,
+  year INTEGER,
+  color TEXT,
+  tampos TEXT,
+  wheel_type TEXT,
+  base_color TEXT,
+  window_color TEXT,
+  interior_color TEXT,
+  country_made TEXT,
+  toy_number TEXT,
+  image_url TEXT,
+  updated_at DATETIME,
+  FOREIGN KEY(model_id) REFERENCES models(id)
+);
 
--- Create indexes on frequently queried columns
+CREATE TABLE IF NOT EXISTS user_collections (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  variant_id TEXT NOT NULL,
+  status TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY(variant_id) REFERENCES model_variants(id)
+);
+
+-- Create indexes
 CREATE INDEX IF NOT EXISTS idx_model_variants_year ON model_variants(year);
 CREATE INDEX IF NOT EXISTS idx_model_variants_series ON model_variants(series);
 CREATE INDEX IF NOT EXISTS idx_user_collections_variant ON user_collections(variant_id);

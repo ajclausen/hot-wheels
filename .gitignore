@@ -17,6 +17,8 @@ clean-data.js
 cleaned-scrape-results.json
 r2-delete.js
 r2-config.json
+skipped-entries.json
+generate-data.sql
 
 # Environment files
 .env

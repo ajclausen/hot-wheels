@@ -1,3 +1,5 @@
+// scrape-hotwheels.ts
+
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import path from 'path';
@@ -5,11 +7,12 @@ import fs from 'fs/promises';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 
 // Load environment variables from .dev.vars
 dotenv.config({ path: '.dev.vars' });
 
-const CATEGORY_PAGE_URL = 'https://hotwheels.fandom.com/wiki/Category:2024_Hot_Wheels';
+const CATEGORY_PAGE_URL = 'https://hotwheels.fandom.com/wiki/Category:2023_Hot_Wheels';
 const IMAGE_CACHE_DIR = './image-cache';
 const R2_BUCKET_URL = process.env.R2_PUBLIC_URL || 'https://your-r2-bucket-url';
 
@@ -45,8 +48,8 @@ function normalizeString(str: string | null | undefined): string {
 }
 
 function generateId(variant: Partial<HotWheelsVariant>, castingName: string): string {
-  const idString = `${normalizeString(castingName)}-${normalizeString(variant.toyNumber)}`;
-  return crypto.createHash('md5').update(idString).digest('hex').slice(0, 16);
+  const uniqueString = `${normalizeString(castingName)}-${normalizeString(variant.toyNumber)}-${variant.year}`;
+  return crypto.createHash('md5').update(uniqueString).digest('hex').slice(0, 16);
 }
 
 function parseTampos(tamposText: string): string[] {
@@ -195,7 +198,23 @@ async function getAllModelUrls(page): Promise<string[]> {
   return Array.from(modelUrls);
 }
 
-async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheelsVariant[]> {
+// Load the list of already scraped variants
+function loadScrapedVariants(): Set<string> {
+  const filePath = path.join(process.cwd(), 'scraped-variants.json');
+  if (existsSync(filePath)) {
+    const data = JSON.parse(readFileSync(filePath, 'utf8'));
+    return new Set(data);
+  }
+  return new Set();
+}
+
+// Save the updated list of scraped variants
+function saveScrapedVariants(scrapedVariants: Set<string>) {
+  const filePath = path.join(process.cwd(), 'scraped-variants.json');
+  writeFileSync(filePath, JSON.stringify(Array.from(scrapedVariants), null, 2));
+}
+
+async function scrapeModelPage(modelUrl: string, context: any, scrapedVariants: Set<string>): Promise<HotWheelsVariant[]> {
   const page = await context.newPage();
 
   try {
@@ -320,6 +339,12 @@ async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheel
       const castingName = castingInfo.name || '';
       const id = generateId(variant, castingName);
 
+      // Check if the variant has already been scraped
+      if (scrapedVariants.has(id)) {
+        console.log(`Skipping already scraped variant: ${id}`);
+        continue;
+      }
+
       // Process and upload the image
       const processedImageUrl = await processImage(variant.image_url, id);
 
@@ -345,6 +370,9 @@ async function scrapeModelPage(modelUrl: string, context: any): Promise<HotWheel
       processedVariants.push(fullVariant);
       console.log(JSON.stringify(fullVariant, null, 2));
       console.log();
+
+      // Add the variant ID to the scraped variants set
+      scrapedVariants.add(id);
     }
 
     await page.close();
@@ -360,6 +388,9 @@ async function scrapeHotWheels() {
   const { browser, context } = await setupBrowser();
   const page = await context.newPage();
 
+  // Load existing scraped variants
+  const scrapedVariants = loadScrapedVariants();
+
   try {
     console.log('Starting scrape...');
     const modelUrls = await getAllModelUrls(page);
@@ -369,9 +400,12 @@ async function scrapeHotWheels() {
     const allVariants = [];
 
     for (const modelUrl of modelUrls) {
-      const variants = await scrapeModelPage(modelUrl, context);
+      const variants = await scrapeModelPage(modelUrl, context, scrapedVariants);
       allVariants.push(...variants);
     }
+
+    // Save the updated list of scraped variants
+    saveScrapedVariants(scrapedVariants);
 
     // Save results to file
     const resultsPath = path.join(process.cwd(), 'scrape-results.json');

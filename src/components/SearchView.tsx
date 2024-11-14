@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
-import type { ModelVariant } from '../types';
+import type { ModelVariant, ViewMode } from '../types';
 import { SearchBar } from './SearchBar';
 import { SearchFilters } from './SearchFilters';
 import { ModelDetailsModal } from './ModelDetailsModal';
 import { ModelCard } from './ModelCard';
 import { ModelList } from './ModelList';
 import { ModelCompact } from './ModelCompact';
-import type { ViewMode } from '../types';
 import axios from 'axios';
 
 export interface SearchViewProps {
   viewMode: ViewMode;
-  onToggleOwned: (id: string) => void;
+  onToggleOwned: (id: string) => Promise<void>;
   onEditNotes: (id: string, notes: string) => Promise<void>;
 }
 
@@ -59,7 +58,7 @@ export function SearchView({ viewMode, onToggleOwned, onEditNotes }: SearchViewP
       setSelectedModel(prev => prev ? { ...prev, owned: !prev.owned } : null);
     }
 
-    onToggleOwned(id);
+    await onToggleOwned(id);
   };
 
   const fetchModels = async (newPage = 1) => {
@@ -85,9 +84,9 @@ export function SearchView({ viewMode, onToggleOwned, onEditNotes }: SearchViewP
       }
       
       setHasMore(newPage < data.pagination.pages);
-      setLoading(false);
     } catch (error) {
       console.error('Error fetching models:', error);
+    } finally {
       setLoading(false);
     }
   };

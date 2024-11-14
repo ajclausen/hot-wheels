@@ -1,3 +1,4 @@
+-- Create users table
 CREATE TABLE IF NOT EXISTS users (
   id TEXT PRIMARY KEY,
   username TEXT UNIQUE NOT NULL,
@@ -7,6 +8,14 @@ CREATE TABLE IF NOT EXISTS users (
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create rate limits table
+CREATE TABLE IF NOT EXISTS rate_limits (
+  key TEXT PRIMARY KEY,
+  count INTEGER NOT NULL,
+  expires INTEGER NOT NULL
+);
+
+-- Create trigger for updating timestamps
 CREATE TRIGGER IF NOT EXISTS update_user_timestamp 
 AFTER UPDATE ON users
 BEGIN

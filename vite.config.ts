@@ -4,17 +4,17 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    target: 'esnext',
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: true
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:8788',
+      '/auth': {
+        target: 'http://localhost:8787',
         changeOrigin: true,
         secure: false,
-      },
-    },
-  },
+        rewrite: (path) => path.replace(/^\/auth/, '')
+      }
+    }
+  }
 });

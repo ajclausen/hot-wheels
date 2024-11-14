@@ -1,0 +1,30 @@
+name = "hotwheels-collection-dev"
+compatibility_date = "2024-02-20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hotwheels-collection-dev"
+database_id = "2797cf2b-1805-4d09-8678-ef6f8ef8813d"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "hotwheels-images"  # Keep same bucket
+custom_domain = "images.clausen.app"  # Keep same domain
+
+[vars]
+ENVIRONMENT = "development"
+API_URL = "https://development.clausen.app"  # Your dev domain
+R2_PUBLIC_URL = "https://images.clausen.app"  # Keep same R2 URL
+JWT_SECRET = ""  # Will be provided by environment
+
+[site]
+bucket = "./dist"
+
+[build]
+command = "npm install && npm run build"
+output_dir = "dist"
+
+pages_build_output_dir = "dist"
+
+[dev]
+port = 8788

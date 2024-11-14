@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Edit3 } from 'lucide-react';
+import { Check, Edit3, Plus } from 'lucide-react';
 import type { ModelVariant } from '../types';
 
 interface ModelCardProps {
@@ -8,9 +8,17 @@ interface ModelCardProps {
   onEditNotes: (id: string) => void;
   onClick: () => void;
   size?: 'normal' | 'large';
+  readOnly?: boolean;
 }
 
-export function ModelCard({ model, onToggleOwned, onEditNotes, onClick, size = 'normal' }: ModelCardProps) {
+export function ModelCard({ 
+  model, 
+  onToggleOwned, 
+  onEditNotes, 
+  onClick, 
+  size = 'normal',
+  readOnly = false
+}: ModelCardProps) {
   const [imageError, setImageError] = React.useState(false);
 
   const handleToggleOwned = (e: React.MouseEvent) => {
@@ -41,16 +49,18 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick, size = '
           }}
           loading="lazy"
         />
-        <button
-          onClick={handleToggleOwned}
-          className={`absolute top-2 right-2 p-1.5 rounded-full shadow-lg ${
-            model.owned 
-              ? 'bg-green-500 text-white' 
-              : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
-          }`}
-        >
-          <Check className="h-4 w-4" />
-        </button>
+        {!readOnly && (
+          <button
+            onClick={handleToggleOwned}
+            className={`absolute top-2 right-2 p-1.5 rounded-full shadow-lg ${
+              model.owned 
+                ? 'bg-green-500 text-white' 
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
+            }`}
+          >
+            {model.owned ? <Check className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+          </button>
+        )}
       </div>
       <div className="p-4 flex-1 flex flex-col">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{model.name}</h3>
@@ -68,13 +78,15 @@ export function ModelCard({ model, onToggleOwned, onEditNotes, onClick, size = '
         {model.notes && (
           <p className="text-sm text-gray-500 dark:text-gray-500 italic mb-3">{model.notes}</p>
         )}
-        <button
-          onClick={handleEditNotes}
-          className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1 transition-colors mt-auto"
-        >
-          <Edit3 className="h-4 w-4" />
-          <span>Edit Notes</span>
-        </button>
+        {!readOnly && (
+          <button
+            onClick={handleEditNotes}
+            className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1 transition-colors mt-auto"
+          >
+            <Edit3 className="h-4 w-4" />
+            <span>Edit Notes</span>
+          </button>
+        )}
       </div>
     </div>
   );

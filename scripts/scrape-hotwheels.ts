@@ -12,7 +12,7 @@ import { existsSync, readFileSync, writeFileSync } from 'fs';
 // Load environment variables from .dev.vars
 dotenv.config({ path: '.dev.vars' });
 
-const CATEGORY_PAGE_URL = 'https://hotwheels.fandom.com/wiki/Category:2024_Hot_Wheels';
+const CATEGORY_PAGE_URL = 'https://hotwheels.fandom.com/wiki/Category:2021_Hot_Wheels';
 const IMAGE_CACHE_DIR = './image-cache';
 const R2_BUCKET_URL = process.env.R2_PUBLIC_URL || 'https://your-r2-bucket-url';
 

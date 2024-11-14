@@ -7,23 +7,14 @@ import { ModelDetailsModal } from './ModelDetailsModal';
 import { ModelCard } from './ModelCard';
 import { ModelList } from './ModelList';
 import { ModelCompact } from './ModelCompact';
-import { ViewToggle, type ViewMode } from './ViewToggle';
+import { ViewToggle } from './ViewToggle';
+import type { ViewMode } from './ViewToggle';
 import axios from 'axios';
 
 interface SearchViewProps {
   onToggleOwned: (id: string) => void;
   onEditNotes: (id: string) => void;
   searchInputRef?: React.RefObject<HTMLInputElement>;
-}
-
-interface SearchResponse {
-  models: ModelVariant[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    pages: number;
-  };
 }
 
 export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: SearchViewProps) {
@@ -69,7 +60,7 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
       if (filters.year) params.append('year', filters.year);
       if (filters.series) params.append('series', filters.series);
 
-      const { data } = await axios.get<SearchResponse>(`/api/models?${params}`);
+      const { data } = await axios.get(`/api/models?${params}`);
       
       if (newPage === 1) {
         setModels(data.models);
@@ -110,18 +101,18 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
   const getGridColumns = () => {
     switch (viewMode) {
       case 'grid':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6';
       case 'compact':
-        return 'grid-cols-1 gap-2';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-2';
       case 'list':
         return 'grid-cols-1 gap-2';
       default:
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6';
     }
   };
 
   const renderModel = (model: ModelVariant) => {
-    const commonProps = {
+    const props = {
       key: model.id,
       model,
       onToggleOwned: handleToggleOwned,
@@ -130,30 +121,28 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
 
     switch (viewMode) {
       case 'compact':
-        return <ModelCompact {...commonProps} />;
+        return <ModelCompact {...props} />;
       case 'list':
-        return <ModelList {...commonProps} />;
+        return <ModelList {...props} />;
       default:
-        return <ModelCard {...commonProps} onEditNotes={onEditNotes} />;
+        return <ModelCard {...props} onEditNotes={onEditNotes} />;
     }
   };
 
   return (
     <div className="min-h-screen pb-20">
       <div className="sticky top-16 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-30 px-4 py-4 border-b border-gray-200 dark:border-gray-700">
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="flex-1">
-            <SearchBar
-              value={searchQuery}
-              onChange={setSearchQuery}
-              onClear={() => setSearchQuery('')}
-              showFilter={true}
-              filterActive={showFilters}
-              onFilterClick={() => setShowFilters(!showFilters)}
-              placeholder="Search all Hot Wheels models..."
-            />
-          </div>
-          <div className="flex justify-end md:justify-start">
+        <div className="flex flex-col gap-4">
+          <SearchBar
+            value={searchQuery}
+            onChange={setSearchQuery}
+            onClear={() => setSearchQuery('')}
+            showFilter={true}
+            filterActive={showFilters}
+            onFilterClick={() => setShowFilters(!showFilters)}
+            placeholder="Search all Hot Wheels models..."
+          />
+          <div className="flex justify-end">
             <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
           </div>
         </div>
@@ -169,7 +158,7 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
         )}
       </div>
 
-      <div className="px-4 py-4">
+      <div className="px-4 py-6">
         {models.length === 0 && !loading ? (
           <div className="text-center py-8">
             <p className="text-gray-500 dark:text-gray-400">No models found matching your search.</p>
@@ -179,7 +168,7 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef }: Searc
           </div>
         ) : (
           <div className={`grid ${getGridColumns()}`}>
-            {models.map(model => renderModel(model))}
+            {models.map(renderModel)}
           </div>
         )}
 

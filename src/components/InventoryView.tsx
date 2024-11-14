@@ -74,20 +74,20 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
   const getGridColumns = () => {
     switch (viewMode) {
       case 'grid':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6';
       case 'compact':
         return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-2';
       case 'list':
         return 'grid-cols-1 gap-2';
       default:
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6';
     }
   };
 
   const renderModel = (model: ModelVariant) => {
     const props = {
       key: model.id,
-      model: { ...model, owned: true }, // In inventory, all models are owned
+      model: { ...model, owned: true },
       onToggleOwned,
       onClick: () => setSelectedModel(model)
     };
@@ -105,18 +105,16 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
   return (
     <div className="min-h-screen pb-20">
       <div className="sticky top-16 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-30 px-4 py-4 border-b border-gray-200 dark:border-gray-700">
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="flex-1">
-            <SearchBar
-              value={searchQuery}
-              onChange={setSearchQuery}
-              onClear={() => setSearchQuery('')}
-              showFilter={true}
-              filterActive={showFilters}
-              onFilterClick={() => setShowFilters(!showFilters)}
-            />
-          </div>
-          <div className="flex justify-end md:justify-start">
+        <div className="flex flex-col gap-4">
+          <SearchBar
+            value={searchQuery}
+            onChange={setSearchQuery}
+            onClear={() => setSearchQuery('')}
+            showFilter={true}
+            filterActive={showFilters}
+            onFilterClick={() => setShowFilters(!showFilters)}
+          />
+          <div className="flex justify-end">
             <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
           </div>
         </div>
@@ -141,7 +139,7 @@ export function InventoryView({ models, onToggleOwned, onEditNotes, onOpenSearch
         <Search className="h-6 w-6" />
       </button>
 
-      <div className="px-4">
+      <div className="px-4 py-6">
         {sortedModels.length === 0 ? (
           <div className="text-center py-8">
             <p className="text-gray-500 dark:text-gray-400">No models match your filters.</p>

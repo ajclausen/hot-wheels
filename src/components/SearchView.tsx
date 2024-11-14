@@ -35,7 +35,6 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMod
     sort: 'name-asc'
   });
 
-  // Fetch filter options
   useEffect(() => {
     const fetchFilterOptions = async () => {
       try {
@@ -149,7 +148,7 @@ export function SearchView({ onToggleOwned, onEditNotes, searchInputRef, viewMod
 
   return (
     <div className="min-h-screen pb-20">
-      <div className="sticky top-16 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-30 px-4 py-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-30 px-4 py-4 border-b border-gray-200 dark:border-gray-700">
         <div className="flex flex-col gap-4">
           <SearchBar
             value={searchQuery}

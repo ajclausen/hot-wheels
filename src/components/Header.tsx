@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Share2, Settings, X, Sun, Moon, Monitor, LayoutGrid, List, AlignJustify } from 'lucide-react';
+import { Share2, Settings, X, Sun, Moon, Monitor } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ViewMode } from './ViewToggle';
@@ -32,7 +32,7 @@ export function Header({ activeTab, viewMode, onViewChange }: HeaderProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <div className="h-16 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -93,45 +93,6 @@ export function Header({ activeTab, viewMode, onViewChange }: HeaderProps) {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">View Mode</h3>
-                  <div className="grid grid-cols-3 gap-3">
-                    <button
-                      onClick={() => onViewChange('grid')}
-                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
-                        viewMode === 'grid'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                      }`}
-                    >
-                      <LayoutGrid className="h-5 w-5" />
-                      <span>Grid</span>
-                    </button>
-                    <button
-                      onClick={() => onViewChange('compact')}
-                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
-                        viewMode === 'compact'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                      }`}
-                    >
-                      <AlignJustify className="h-5 w-5" />
-                      <span>Compact</span>
-                    </button>
-                    <button
-                      onClick={() => onViewChange('list')}
-                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
-                        viewMode === 'list'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                      }`}
-                    >
-                      <List className="h-5 w-5" />
-                      <span>List</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div>
                   <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Theme</h3>
                   <div className="grid grid-cols-3 gap-3">
                     <button
@@ -171,22 +132,38 @@ export function Header({ activeTab, viewMode, onViewChange }: HeaderProps) {
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Layout</h3>
-                  <div className="space-y-2">
-                    <label className="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-700 rounded-xl">
-                      <span className="text-gray-900 dark:text-white">Compact Search Bar</span>
-                      <input
-                        type="checkbox"
-                        className="form-checkbox h-5 w-5 text-blue-500 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-700 rounded-xl">
-                      <span className="text-gray-900 dark:text-white">Show Quick Actions</span>
-                      <input
-                        type="checkbox"
-                        className="form-checkbox h-5 w-5 text-blue-500 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
-                      />
-                    </label>
+                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">View Mode</h3>
+                  <div className="grid grid-cols-3 gap-3">
+                    <button
+                      onClick={() => onViewChange('grid')}
+                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                        viewMode === 'grid'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                      }`}
+                    >
+                      <span>Grid</span>
+                    </button>
+                    <button
+                      onClick={() => onViewChange('compact')}
+                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                        viewMode === 'compact'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                      }`}
+                    >
+                      <span>Compact</span>
+                    </button>
+                    <button
+                      onClick={() => onViewChange('list')}
+                      className={`flex items-center justify-center gap-2 p-3 rounded-xl ${
+                        viewMode === 'list'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                      }`}
+                    >
+                      <span>List</span>
+                    </button>
                   </div>
                 </div>
               </div>

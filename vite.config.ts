@@ -6,15 +6,15 @@ export default defineConfig({
   build: {
     target: 'esnext',
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
   },
   server: {
     proxy: {
       '/api': {
-        target: process.env.VITE_API_URL || 'access.clausen.app',
+        target: 'http://localhost:8788',
         changeOrigin: true,
-        secure: false
-      }
-    }
-  }
+        secure: false,
+      },
+    },
+  },
 });

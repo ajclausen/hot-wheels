@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
@@ -8,17 +8,7 @@ import Profile from './pages/Profile';
 import Collection from './pages/Collection';
 import Search from './pages/Search';
 import Stats from './pages/Stats';
-import { useAuth } from './context/AuthContext';
-
-function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
-  return user ? <>{children}</> : <Navigate to="/auth" />;
-}
-
-function PublicRoute({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
-  return !user ? <>{children}</> : <Navigate to="/" />;
-}
+import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
   return (
@@ -27,27 +17,13 @@ export default function App() {
         <Router>
           <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
             <Routes>
-              <Route 
-                path="/auth" 
-                element={
-                  <PublicRoute>
-                    <Auth />
-                  </PublicRoute>
-                } 
-              />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/search" element={<Search />} />
               <Route 
                 path="/" 
                 element={
                   <PrivateRoute>
                     <Collection />
-                  </PrivateRoute>
-                } 
-              />
-              <Route 
-                path="/search" 
-                element={
-                  <PrivateRoute>
-                    <Search />
                   </PrivateRoute>
                 } 
               />

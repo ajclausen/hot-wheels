@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: '/api',  // This will use the relative path
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -17,4 +17,4 @@ api.interceptors.response.use(
   }
 );
 
-export default api; 
+export default api;

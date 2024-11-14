@@ -174,35 +174,48 @@ app.get('/api/models', async (c) => {
 
   try {
     let query = `
-      WITH SearchTerms AS (
-        SELECT DISTINCT LOWER(TRIM(value)) as term
+      WITH 
+      SearchTerms AS (
+        SELECT DISTINCT 
+          LOWER(TRIM(REPLACE(REPLACE(value, '''', ''), '"', ''))) as term,
+          CASE 
+            WHEN CAST(REPLACE(REPLACE(value, '''', ''), '"', '') AS INTEGER) IS NOT NULL 
+            THEN CAST(REPLACE(REPLACE(value, '''', ''), '"', '') AS INTEGER)
+            ELSE NULL 
+          END as year_value
         FROM json_each(json_array(${
           search 
             ? search.toLowerCase().split(/\s+/).map(term => `'${term}'`).join(', ')
             : ''
         }))
         WHERE LENGTH(TRIM(value)) > 0
+      ),
+      ProcessedModels AS (
+        SELECT 
+          mv.*,
+          m.name,
+          m.designer,
+          REPLACE(LOWER(m.name), '''', '') as normalized_name,
+          REPLACE(LOWER(mv.series), '''', '') as normalized_series
+        FROM model_variants mv
+        JOIN models m ON mv.model_id = m.id
       )
       SELECT 
-        mv.*,
-        m.name,
-        m.designer,
+        pm.*,
         CASE WHEN uc.variant_id IS NOT NULL THEN 1 ELSE 0 END as owned,
         uc.notes,
         uc.status,
         uc.acquired_date,
         COUNT(*) OVER() as total_count
-      FROM model_variants mv
-      JOIN models m ON mv.model_id = m.id
+      FROM ProcessedModels pm
       LEFT JOIN user_collections uc 
-        ON mv.id = uc.variant_id 
+        ON pm.id = uc.variant_id 
         AND uc.user_id = ?
       WHERE 1=1
     `;
 
     const params: any[] = [user.id];
 
-    // Add search filter with exact matching for year and more precise text matching
     if (search) {
       query += `
         AND (
@@ -210,28 +223,32 @@ app.get('/api/models', async (c) => {
         ) = (
           SELECT COUNT(*) FROM SearchTerms st
           WHERE (
-            -- Exact match for year
-            CAST(mv.year AS TEXT) = st.term
-            -- Start of name words
-            OR LOWER(m.name) LIKE st.term || '%'
-            OR LOWER(m.name) LIKE '% ' || st.term || '%'
-            -- Start of series words
-            OR LOWER(mv.series) LIKE st.term || '%'
-            OR LOWER(mv.series) LIKE '% ' || st.term || '%'
-            -- Exact match for collection number
-            OR LOWER(mv.collection_number) = st.term
+            -- Year matching (including variations like '81, 1981)
+            (st.year_value IS NOT NULL AND (
+              pm.year = st.year_value OR
+              pm.year = st.year_value + 1900 OR
+              pm.year = st.year_value + 2000
+            ))
+            -- Name matching with special character handling
+            OR pm.normalized_name LIKE '%' || st.term || '%'
+            -- Series matching with special character handling
+            OR pm.normalized_series LIKE '%' || st.term || '%'
+            -- Collection number matching
+            OR LOWER(pm.collection_number) = st.term
+            -- Toy number matching
+            OR LOWER(pm.toy_number) = st.term
           )
         )
       `;
     }
 
     if (year) {
-      query += ` AND mv.year = ?`;
+      query += ` AND pm.year = ?`;
       params.push(year);
     }
 
     if (series) {
-      query += ` AND mv.series = ?`;
+      query += ` AND pm.series = ?`;
       params.push(series);
     }
 
@@ -239,26 +256,25 @@ app.get('/api/models', async (c) => {
     query += ` ORDER BY `;
     switch (sort) {
       case 'newest':
-        query += `mv.year DESC, mv.series ASC, mv.collection_number ASC`;
+        query += `pm.year DESC, pm.series ASC, pm.collection_number ASC`;
         break;
       case 'oldest':
-        query += `mv.year ASC, mv.series ASC, mv.collection_number ASC`;
+        query += `pm.year ASC, pm.series ASC, pm.collection_number ASC`;
         break;
       case 'name-desc':
-        query += `m.name DESC`;
+        query += `pm.name DESC`;
         break;
       case 'series':
-        query += `mv.series ASC, mv.collection_number ASC`;
+        query += `pm.series ASC, pm.collection_number ASC`;
         break;
       case 'number':
-        query += `mv.collection_number ASC`;
+        query += `pm.collection_number ASC`;
         break;
       case 'name-asc':
       default:
-        query += `m.name ASC`;
+        query += `pm.name ASC`;
     }
 
-    // Add pagination
     query += ` LIMIT ? OFFSET ?`;
     params.push(limit, offset);
 
